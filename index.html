@@ -1382,8 +1382,88 @@
     }
     .df-check-item:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.65); }
     .df-check { width: 14px; height: 14px; margin-top: 2px; flex-shrink: 0; accent-color: #5a8a9a; }
+
+    /* Step indicator */
+    .df-progress-indicator {
+      display: flex; justify-content: center; gap: 24px; align-items: center;
+      margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .df-progress-step {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.04em;
+    }
+    .df-progress-step.active {
+      color: var(--trust-cool);
+    }
+    .df-progress-step::before {
+      content: ''; width: 6px; height: 6px; background: rgba(255,255,255,0.15); border-radius: 50%;
+      display: block; flex-shrink: 0;
+    }
+    .df-progress-step.active::before {
+      background: var(--trust-cool);
+    }
+    .df-progress-step.active:last-child::after {
+      display: none;
+    }
+
+    /* Form steps */
+    .df-form-step {
+      display: none;
+    }
+    .df-form-step.active {
+      display: block;
+    }
+
+    /* Step 1 button to advance */
+    .df-step-advance-btn {
+      display: none;
+      font-size: 0.88rem; font-weight: 600;
+      padding: 14px 30px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px; border: 2px solid var(--trust-cool);
+      transition: all 0.2s; cursor: pointer; font-family: 'Sora', sans-serif;
+    }
+    .df-step-advance-btn:hover {
+      background: #4a7a8a; border-color: #4a7a8a; transform: translateY(-2px);
+    }
+    .df-step-advance-btn.visible {
+      display: inline-block;
+    }
+
+    /* Step 2 optional section */
+    .df-optional-section {
+      margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .df-optional-label {
+      font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .df-collapse-toggle {
+      display: none; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 600; color: var(--trust-cool);
+      background: rgba(90,138,154,0.08); border: 1px solid rgba(90,138,154,0.15);
+      padding: 10px 14px; border-radius: 6px; cursor: pointer; margin-bottom: 16px;
+    }
+    .df-collapse-toggle.visible {
+      display: flex;
+    }
+    .df-collapse-toggle::before {
+      content: '▶'; transition: transform 0.2s; display: inline-block; font-size: 0.6rem;
+    }
+    .df-collapse-toggle.expanded::before {
+      transform: rotate(90deg);
+    }
+    .df-collapse-content {
+      display: none;
+    }
+    .df-collapse-content.visible {
+      display: block;
+    }
+
     @media (max-width: 700px) {
       .df-fields-2, .df-fields-3 { grid-template-columns: 1fr; }
+      .df-progress-indicator { gap: 16px; margin-bottom: 32px; }
     }
 
   </style>
@@ -1550,6 +1630,12 @@
             <div id="hc-insights"></div>
           </div>
 
+          <!-- Share buttons -->
+          <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=trustos.missionctrl.agency&summary=I+just+took+the+TrustOS+Trust+Health+Check" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.8rem;padding:11px 20px;text-decoration:none;cursor:pointer;">Share on LinkedIn &#8594;</a>
+            <button onclick="downloadTrustScore()" class="btn-ghost" style="font-size:0.8rem;padding:11px 20px;border:2px solid rgba(90,138,154,0.3);background:transparent;color:rgba(90,138,154,0.6);cursor:pointer;font-family:'Sora',sans-serif;">Download your Trust Score &#8595;</button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1707,14 +1793,23 @@
 <!-- PROOF -->
 <section style="background:rgba(10,15,26,0.98);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);padding:26px 5%;">
   <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:space-between;">
-    <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
-      <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-right:4px;white-space:nowrap;">Built for</span>
-      <span class="proof-pill">Manufacturing</span>
-      <span class="proof-pill">Professional Services</span>
-      <span class="proof-pill">Healthcare</span>
-      <span class="proof-pill">Regulated Industries</span>
+    <div style="margin-bottom:64px;">
+      <p style="font-size:1.2rem;font-style:italic;color:rgba(255,255,255,0.65);line-height:1.8;max-width:620px;margin:0 0 20px 0;font-weight:500;">&#8220;It explains the <em style="font-style:normal;color:rgba(255,255,255,1);">why</em> behind the numbers, before the numbers move.&#8221;</p>
+      <p style="font-size:0.8rem;font-style:normal;color:rgba(255,255,255,0.4);margin:0;">Senior Brand Leader, Global Manufacturer</p>
     </div>
-    <p style="font-size:0.76rem;font-style:italic;color:rgba(255,255,255,0.35);line-height:1.6;max-width:360px;margin:0;">&#8220;It explains the <em style="font-style:normal;color:rgba(255,255,255,0.6);">why</em> behind the numbers, before the numbers move.&#8221; <span style="display:block;font-size:0.56rem;font-style:normal;color:rgba(255,255,255,0.2);font-weight:600;margin-top:4px;">Senior Brand Leader, Global Manufacturer</span></p>
+
+    <div style="margin-bottom:40px;">
+      <p style="font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:0.04em;margin-bottom:20px;text-transform:uppercase;">Trust measurement intelligence for organisations that serve multiple stakeholders</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));gap:12px;">
+        <div style="padding:12px 14px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.15);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">Manufacturing &amp; Resources</div>
+        <div style="padding:12px 14px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.15);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">Professional Services</div>
+        <div style="padding:12px 14px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.15);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">Education</div>
+        <div style="padding:12px 14px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.15);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">Social Care &amp; Public Services</div>
+        <div style="padding:12px 14px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.15);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">Healthcare</div>
+        <div style="padding:12px 14px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.15);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">NGO &amp; Charity</div>
+        <div style="padding:12px 14px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.15);border-radius:6px;font-size:0.78rem;color:rgba(255,255,255,0.6);">Technology &amp; AI</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1722,11 +1817,88 @@
 <section style="background:var(--deep);padding:64px 5%;border-top:1px solid rgba(255,255,255,0.05);" id="process">
   <div style="max-width:1080px;margin:0 auto;">
     <p class="section-label">What happens next</p>
-    <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:40px;line-height:1.12;">Live in six weeks.<br/>Board-ready from day one.</h2>
+    <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:40px;line-height:1.12;">Full deployment across stakeholder groups in six weeks.<br/>Board-ready insights from your first assessment.</h2>
     <div class="phases">
       <div class="phase fade-up"><div class="phase-num">01</div><p class="phase-sub">Sense</p><h3>Establish baseline</h3><p>We align on your stakeholder groups, data sources, and what the dashboard needs to show. Baseline live within six weeks.</p></div>
       <div class="phase fade-up"><div class="phase-num">02</div><p class="phase-sub">Measure</p><h3>Track quarterly</h3><p>Every quarter: updated trust scores, driver breakdown, and a &#8220;what changed&#8221; narrative tied to real decisions and events.</p></div>
       <div class="phase fade-up"><div class="phase-num">03</div><p class="phase-sub">Act</p><h3>Close the gaps</h3><p>Prioritised Insights &amp; Actions tell your leadership team exactly where to focus &#8212; and whether interventions are working.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section style="background:var(--deep);padding:80px 5%;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <h2 style="font-size:clamp(1.5rem,2.8vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:16px;line-height:1.12;">See TrustOS in action</h2>
+    <p style="font-size:0.95rem;color:rgba(255,255,255,0.45);margin-bottom:40px;line-height:1.75;max-width:580px;margin-left:auto;margin-right:auto;">A 60-second walkthrough of the TrustOS dashboard — from Trust Health Check to board-ready reporting.</p>
+    <div style="aspect-ratio:16/9;max-width:800px;margin:0 auto;background:rgba(45,58,74,0.6);border-radius:12px;display:flex;align-items:center;justify-content:center;color:rgba(109,160,184,0.8);border:1px solid rgba(90,138,154,0.15);">
+      <p style="font-size:0.95rem;font-weight:500;">Video coming soon</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section style="background:var(--deep);padding:80px 5%;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="max-width:1080px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:52px;">
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.12;max-width:620px;margin:0 auto;">You're already measuring awareness. Why aren't you measuring trust?</h2>
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+        <thead>
+          <tr style="border-bottom:2px solid rgba(90,138,154,0.3);">
+            <th style="padding:16px 12px;text-align:left;color:rgba(255,255,255,0.5);font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;border-right:1px solid rgba(90,138,154,0.15);">Capability</th>
+            <th style="padding:16px 12px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;border-right:1px solid rgba(90,138,154,0.15);">NPS</th>
+            <th style="padding:16px 12px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;border-right:1px solid rgba(90,138,154,0.15);">Brand Tracking</th>
+            <th style="padding:16px 12px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;border-right:1px solid rgba(90,138,154,0.15);">Employee Surveys</th>
+            <th style="padding:16px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">TrustOS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
+            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Measures trust specifically</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
+            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Multi-stakeholder</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
+            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Real-time</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
+            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Identifies trust drivers</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
+            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Board-ready reporting</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">✓</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
+            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Actionable insights</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
+            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
+            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -1736,7 +1908,7 @@
   <div class="grid-bg"></div>
   <div style="max-width:860px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:44px;">
-      <p class="section-label" style="justify-content:center;">Book a TrustOS demo</p>
+      <p style="display:inline-flex;align-items:center;gap:10px;font-size:0.63rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:14px;justify-content:center;"><span style="width:20px;height:2px;background:var(--trust-cool);display:block;"></span>Join the organisations already measuring what matters.</p>
       <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.12;">Get your organisation&#8217;s brand trust picture in one session.</h2>
       <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);max-width:520px;margin:0 auto;line-height:1.75;">We use the latest AI technology to prepare a baseline Trust Snapshot before we meet &#8212; so you arrive at a live, contextualised dashboard, not a generic demo. Share what you can below and we&#8217;ll do the rest.</p>
     </div>
@@ -1744,93 +1916,114 @@
     <form class="df-form" id="demo-form" name="trustos-demo" method="POST" data-netlify="true" onsubmit="return handleDemoSubmit(event)">
       <input type="hidden" name="form-name" value="trustos-demo">
 
-      <!-- Step 1: Contact -->
-      <div class="df-section">
-        <div class="df-section-label">01 &mdash; Your details</div>
-        <div class="df-fields-2">
-          <div class="df-field">
-            <label class="df-label">Full name</label>
-            <input type="text" class="df-input" id="df-name" placeholder="Your name">
+      <!-- Progress Indicator -->
+      <div class="df-progress-indicator">
+        <div class="df-progress-step active" id="progress-step-1">Step 1 of 2</div>
+        <div class="df-progress-step" id="progress-step-2">Step 2 of 2 (optional)</div>
+      </div>
+
+      <!-- STEP 1: Your details + Sector -->
+      <div class="df-form-step active" id="form-step-1">
+        <!-- Contact Info Section -->
+        <div class="df-section">
+          <div class="df-section-label">Your details</div>
+          <div class="df-fields-2">
+            <div class="df-field">
+              <label class="df-label">Full name</label>
+              <input type="text" class="df-input" id="df-name" placeholder="Your name">
+            </div>
+            <div class="df-field">
+              <label class="df-label">Job title</label>
+              <input type="text" class="df-input" id="df-title" placeholder="e.g. Chief Brand Officer">
+            </div>
+            <div class="df-field">
+              <label class="df-label">Organisation</label>
+              <input type="text" class="df-input" id="df-org" placeholder="Your organisation">
+            </div>
+            <div class="df-field">
+              <label class="df-label">Work email</label>
+              <input type="email" class="df-input" id="df-email" placeholder="you@organisation.com">
+            </div>
           </div>
-          <div class="df-field">
-            <label class="df-label">Job title</label>
-            <input type="text" class="df-input" id="df-title" placeholder="e.g. Chief Brand Officer">
+        </div>
+
+        <!-- Sector Selection -->
+        <div class="df-section">
+          <div class="df-section-label">Your sector</div>
+          <div class="df-fields-3">
+            <label class="df-sector-chip"><input type="radio" name="sector" value="manufacturing"> Manufacturing &amp; Resources</label>
+            <label class="df-sector-chip"><input type="radio" name="sector" value="professional"> Professional Services</label>
+            <label class="df-sector-chip"><input type="radio" name="sector" value="education"> Education</label>
+            <label class="df-sector-chip"><input type="radio" name="sector" value="socialcare"> Social Care &amp; Public Services</label>
+            <label class="df-sector-chip"><input type="radio" name="sector" value="healthcare"> Healthcare</label>
+            <label class="df-sector-chip"><input type="radio" name="sector" value="ngo"> NGO &amp; Charity</label>
+            <label class="df-sector-chip"><input type="radio" name="sector" value="tech"> Technology &amp; AI</label>
+            <label class="df-sector-chip"><input type="radio" name="sector" value="other"> Other</label>
           </div>
-          <div class="df-field">
-            <label class="df-label">Organisation</label>
-            <input type="text" class="df-input" id="df-org" placeholder="Your organisation">
-          </div>
-          <div class="df-field">
-            <label class="df-label">Work email</label>
-            <input type="email" class="df-input" id="df-email" placeholder="you@organisation.com">
-          </div>
+        </div>
+
+        <!-- Advance button for Step 1 -->
+        <div class="df-section" style="border:none;padding-top:4px;">
+          <button type="button" class="btn-primary df-step-advance-btn visible" onclick="advanceDemoForm()" style="font-size:0.9rem;padding:15px 40px;">Book your demo &#8594;</button>
+          <p style="font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:12px;line-height:1.6;">No worries about Step 2 &#8212; we can help you prepare for your demo without extra details.</p>
         </div>
       </div>
 
-      <!-- Step 2: Sector -->
-      <div class="df-section">
-        <div class="df-section-label">02 &mdash; Your sector</div>
-        <div class="df-fields-3">
-          <label class="df-sector-chip"><input type="radio" name="sector" value="manufacturing"> Manufacturing &amp; Resources</label>
-          <label class="df-sector-chip"><input type="radio" name="sector" value="professional"> Professional Services</label>
-          <label class="df-sector-chip"><input type="radio" name="sector" value="education"> Education</label>
-          <label class="df-sector-chip"><input type="radio" name="sector" value="socialcare"> Social Care &amp; Public Services</label>
-          <label class="df-sector-chip"><input type="radio" name="sector" value="healthcare"> Healthcare</label>
-          <label class="df-sector-chip"><input type="radio" name="sector" value="ngo"> NGO &amp; Charity</label>
-          <label class="df-sector-chip"><input type="radio" name="sector" value="tech"> Technology &amp; AI</label>
-          <label class="df-sector-chip"><input type="radio" name="sector" value="other"> Other</label>
-        </div>
-      </div>
+      <!-- STEP 2: Optional customization -->
+      <div class="df-form-step" id="form-step-2">
+        <div class="df-section">
+          <div class="df-section-label" style="color:var(--trust-cool);">Help us prepare your demo (optional)</div>
+          <p class="df-optional-label">Want a more tailored demo? Tell us more:</p>
 
-      <!-- Step 3: Trust self-assessment (snapshot questions) -->
-      <div class="df-section">
-        <div class="df-section-label">03 &mdash; Your brand trust self-assessment</div>
-        <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:18px;line-height:1.6;">This gives us a starting point. Rate honestly &#8212; there are no wrong answers, and gaps are exactly what TrustOS is designed to close.</p>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div class="df-q-block">
-            <label class="df-q-label">How clearly do your stakeholders understand what your brand stands for?</label>
-            <div class="df-rating-row" data-q="clarity"></div>
+          <!-- Trust self-assessment (snapshot questions) -->
+          <div style="margin-bottom:28px;">
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:18px;line-height:1.6;">Rate your brand across the three trust drivers &#8212; this helps us focus the session on your biggest gaps.</p>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div class="df-q-block">
+                <label class="df-q-label">How clearly do your stakeholders understand what your brand stands for?</label>
+                <div class="df-rating-row" data-q="clarity"></div>
+              </div>
+              <div class="df-q-block">
+                <label class="df-q-label">How consistent is the brand experience across your stakeholder groups?</label>
+                <div class="df-rating-row" data-q="connection"></div>
+              </div>
+              <div class="df-q-block">
+                <label class="df-q-label">How well can your stakeholders articulate your brand&#8217;s distinctive advantage?</label>
+                <div class="df-rating-row" data-q="confidence"></div>
+              </div>
+              <div class="df-q-block">
+                <label class="df-q-label">Where is the single biggest trust gap slowing your brand&#8217;s momentum?</label>
+                <textarea class="df-input df-textarea" id="df-trustleak" placeholder="e.g. Internal teams and external messaging are misaligned. Clients like us but can&#39;t explain why we&#39;re different. Leadership isn&#39;t telling a coherent story..."></textarea>
+              </div>
+            </div>
           </div>
-          <div class="df-q-block">
-            <label class="df-q-label">How consistent is the brand experience across your stakeholder groups?</label>
-            <div class="df-rating-row" data-q="connection"></div>
-          </div>
-          <div class="df-q-block">
-            <label class="df-q-label">How well can your stakeholders articulate your brand&#8217;s distinctive advantage?</label>
-            <div class="df-rating-row" data-q="confidence"></div>
-          </div>
-          <div class="df-q-block">
-            <label class="df-q-label">Where is the single biggest trust gap slowing your brand&#8217;s momentum?</label>
-            <textarea class="df-input df-textarea" id="df-trustleak" placeholder="e.g. Internal teams and external messaging are misaligned. Clients like us but can&#39;t explain why we&#39;re different. Leadership isn&#39;t telling a coherent story..."></textarea>
-          </div>
-        </div>
-      </div>
 
-      <!-- Step 4: Data availability -->
-      <div class="df-section">
-        <div class="df-section-label">04 &mdash; Data &amp; materials</div>
-        <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:18px;line-height:1.6;">We use AI to analyse your available materials and prepare a baseline Snapshot before the session. Tick what you have &#8212; even partial data is useful. Public documents can be shared freely; for internal materials, just indicating you have them helps us scope the session.</p>
-        <div class="df-fields-2">
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="strategy"> Annual report / strategy documents</label>
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="brand"> Brand guidelines / messaging framework</label>
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="esg"> ESG / impact / sustainability report</label>
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="survey"> Previous stakeholder survey or NPS data</label>
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="brand_tracker"> Existing brand tracker or research</label>
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="comms"> Press / content archive (public)</label>
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="employee"> Employee engagement data</label>
-          <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="none"> None of the above yet</label>
+          <!-- Data availability -->
+          <div>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:18px;line-height:1.6;">We use AI to analyse your available materials and prepare a baseline Snapshot. Tick what you have &#8212; even partial data is useful.</p>
+            <div class="df-fields-2">
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="strategy"> Annual report / strategy documents</label>
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="brand"> Brand guidelines / messaging framework</label>
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="esg"> ESG / impact / sustainability report</label>
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="survey"> Previous stakeholder survey or NPS data</label>
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="brand_tracker"> Existing brand tracker or research</label>
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="comms"> Press / content archive (public)</label>
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="employee"> Employee engagement data</label>
+              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="none"> None of the above yet</label>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Submit -->
-      <div class="df-section" style="border:none;padding-top:4px;">
-        <button class="btn-primary" id="df-submit" onclick="submitDemoForm()" style="font-size:0.9rem;padding:15px 40px;border:none;cursor:pointer;font-family:'Sora',sans-serif;">Request a TrustOS session &#8594;</button>
-        <p style="font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:12px;line-height:1.6;">We&#8217;ll review your submission and come back within one working day to schedule your session. No commitment required.</p>
-        <div id="df-success" style="display:none;margin-top:20px;padding:18px 22px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:8px;">
-          <p style="font-size:0.82rem;font-weight:700;color:#4ade80;margin-bottom:4px;">&#10003; Request received.</p>
-          <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.6;margin:0;">We&#8217;ll review your details and be in touch within one working day to schedule your TrustOS session.</p>
+        <!-- Submit button for Step 2 -->
+        <div class="df-section" style="border:none;padding-top:4px;">
+          <button class="btn-primary" id="df-submit" onclick="submitDemoForm()" style="font-size:0.9rem;padding:15px 40px;border:none;cursor:pointer;font-family:'Sora',sans-serif;">Request a TrustOS session &#8594;</button>
+          <p style="font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:12px;line-height:1.6;">We&#8217;ll review your submission and come back within one working day to schedule your session. No commitment required.</p>
+          <div id="df-success" style="display:none;margin-top:20px;padding:18px 22px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:8px;">
+            <p style="font-size:0.82rem;font-weight:700;color:#4ade80;margin-bottom:4px;">&#10003; Request received.</p>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.6;margin:0;">We&#8217;ll review your details and be in touch within one working day to schedule your TrustOS session.</p>
+          </div>
+          <div id="df-error" style="display:none;margin-top:14px;font-size:0.72rem;color:#f87171;"></div>
         </div>
-        <div id="df-error" style="display:none;margin-top:14px;font-size:0.72rem;color:#f87171;"></div>
       </div>
 
     </div>
@@ -2525,7 +2718,7 @@ document.getElementById('ai-input').addEventListener('keydown',function(e){
         <svg width="10" height="12" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="ft-mg" x1="0" y1="148" x2="120" y2="0"><stop offset="0%" stop-color="#ff6b2b"/><stop offset="100%" stop-color="#ffad3b"/></linearGradient><clipPath id="ft-mlc"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z"/></clipPath></defs><rect width="120" height="148" fill="url(#ft-mg)" clip-path="url(#ft-mlc)"/></svg>
         A MissionCTRL product
       </p>
-      <p class="footer-brand-desc">Trust measurement intelligence for enterprise leaders. Turn trust into impact.</p>
+      <p class="footer-brand-desc" style="font-size:0.76rem;color:rgba(255,255,255,0.3);line-height:1.65;">TrustOS is the measurement intelligence layer of the Brand Effect — MissionCTRL's methodology for turning purpose-led brands into movements. <a href="https://missionctrl.agency" style="color:var(--trust-cool);text-decoration:underline;" target="_blank" rel="noopener">Learn about the Brand Effect at missionctrl.agency</a></p>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
@@ -2638,6 +2831,120 @@ document.getElementById('ai-input').addEventListener('keydown',function(e){
   window.submitDemoForm = function() {
     var form = document.getElementById('demo-form');
     if (form) form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+  };
+
+  /* Download trust score as image */
+  window.downloadTrustScore = function() {
+    var clarity = document.getElementById('hc-clarity') ? document.getElementById('hc-clarity').value : 50;
+    var connection = document.getElementById('hc-connection') ? document.getElementById('hc-connection').value : 50;
+    var confidence = document.getElementById('hc-confidence') ? document.getElementById('hc-confidence').value : 50;
+    var overall = Math.round((parseInt(clarity) + parseInt(connection) + parseInt(confidence)) / 3);
+
+    // Create a canvas for the downloadable image
+    var canvas = document.createElement('canvas');
+    canvas.width = 800;
+    canvas.height = 600;
+    var ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#0a0f1a';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Grid pattern
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    for (var i = 0; i < canvas.width; i += 60) {
+      ctx.beginPath();
+      ctx.moveTo(i, 0);
+      ctx.lineTo(i, canvas.height);
+      ctx.stroke();
+    }
+    for (var i = 0; i < canvas.height; i += 60) {
+      ctx.beginPath();
+      ctx.moveTo(0, i);
+      ctx.lineTo(canvas.width, i);
+      ctx.stroke();
+    }
+
+    // Title
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 32px Sora';
+    ctx.textAlign = 'center';
+    ctx.fillText('Your Trust Score', canvas.width / 2, 60);
+
+    // Overall score
+    ctx.fillStyle = '#5a8a9a';
+    ctx.font = 'bold 64px Sora';
+    ctx.fillText(overall, canvas.width / 2, 160);
+
+    // Score label
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.font = '16px Sora';
+    ctx.fillText('Overall Trust Score', canvas.width / 2, 200);
+
+    // Driver scores
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.font = '16px Sora';
+    ctx.textAlign = 'left';
+    ctx.fillText('Clarity: ' + clarity, 80, 280);
+    ctx.fillText('Connection: ' + connection, 80, 330);
+    ctx.fillText('Confidence: ' + confidence, 80, 380);
+
+    // CTA
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '14px Sora';
+    ctx.textAlign = 'center';
+    ctx.fillText('Want the full picture? Book a TrustOS demo', canvas.width / 2, 480);
+    ctx.fillText('trustos.missionctrl.agency', canvas.width / 2, 520);
+
+    // TrustOS branding
+    ctx.fillStyle = 'rgba(90,138,154,0.4)';
+    ctx.font = 'bold 16px Sora';
+    ctx.fillText('TrustOS', canvas.width / 2, 570);
+
+    // Download
+    canvas.toBlob(function(blob) {
+      var url = window.URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'trustos-trust-score.png';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    });
+  };
+
+  /* Form step navigation */
+  window.advanceDemoForm = function() {
+    var name = document.getElementById('df-name').value.trim();
+    var email = document.getElementById('df-email').value.trim();
+    var org = document.getElementById('df-org').value.trim();
+    var err = document.getElementById('df-error');
+    err.style.display = 'none';
+
+    if (!name || !email || !org) {
+      err.textContent = 'Please fill in your name, email, and organisation to continue.';
+      err.style.display = 'block';
+      return false;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      err.textContent = 'Please enter a valid work email address.';
+      err.style.display = 'block';
+      return false;
+    }
+
+    // Hide step 1, show step 2
+    document.getElementById('form-step-1').classList.remove('active');
+    document.getElementById('form-step-2').classList.add('active');
+
+    // Update progress indicator
+    document.getElementById('progress-step-1').classList.remove('active');
+    document.getElementById('progress-step-2').classList.add('active');
+
+    // Scroll to form
+    var form = document.getElementById('demo-form');
+    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
 })();
