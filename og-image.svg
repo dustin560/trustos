@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0f1a"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#grid)" opacity="0.03"/>
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="tri-grad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#6da0b8"/>
+      <stop offset="100%" stop-color="#5a8a9a"/>
+    </linearGradient>
+  </defs>
+  <!-- Triangle logo -->
+  <g transform="translate(530, 120) scale(1.2)">
+    <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.04"/>
+    <polygon points="30,12 90,12 60,88" fill="url(#tri-grad)" opacity="0.9"/>
+  </g>
+  <!-- TrustOS wordmark -->
+  <text x="600" y="370" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" letter-spacing="-2">
+    <tspan fill="#8fb5c0">Trust</tspan><tspan fill="#5a8a9a">OS</tspan>
+  </text>
+  <!-- Tagline -->
+  <text x="600" y="430" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="rgba(255,255,255,0.45)">Brand Trust Measurement &amp; Intelligence</text>
+  <!-- Three pillars -->
+  <g transform="translate(300, 490)">
+    <text x="0" y="0" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#5a8a9a">Clarity</text>
+    <rect x="-20" y="-25" width="40" height="2" rx="1" fill="#5a8a9a" opacity="0.6"/>
+  </g>
+  <g transform="translate(600, 490)">
+    <text x="0" y="0" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#5a8a9a">Connection</text>
+    <rect x="-30" y="-25" width="60" height="2" rx="1" fill="#5a8a9a" opacity="0.6"/>
+  </g>
+  <g transform="translate(900, 490)">
+    <text x="0" y="0" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#5a8a9a">Confidence</text>
+    <rect x="-30" y="-25" width="60" height="2" rx="1" fill="#5a8a9a" opacity="0.6"/>
+  </g>
+  <!-- MissionCTRL badge -->
+  <text x="600" y="570" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="rgba(255,255,255,0.25)">A MissionCTRL product</text>
+</svg>
