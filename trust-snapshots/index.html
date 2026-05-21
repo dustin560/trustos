@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trust Snapshots — Sector Points of View | TrustOS</title>
+  <meta name="description" content="TrustOS Sector Trust Snapshots: data-led points of view on where trust stands in mining, healthcare, water, housing, education and regulated industries. Built on the TrustOS methodology.">
+  <meta name="keywords" content="trust measurement, sector trust analysis, mining trust, stakeholder trust, brand trust, ESG trust, TrustOS, trust intelligence">
+  <link rel="canonical" href="https://trustos.missionctrl.agency/trust-snapshots/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Trust Snapshots — Sector Points of View | TrustOS" />
+  <meta property="og:description" content="Data-led sector trust analysis. TrustOS maps where trust stands across mining, healthcare, water, housing, education and regulated industries." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trustos.missionctrl.agency/trust-snapshots/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Trust Snapshots — Sector Points of View | TrustOS" />
+  <meta name="twitter:description" content="Data-led sector trust analysis. TrustOS maps where trust stands across mining, healthcare, water, housing, education and regulated industries." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "TrustOS Sector Trust Snapshots",
+    "description": "Data-led sector trust analysis and points of view from TrustOS — mapping where trust stands across regulated and high-trust industries.",
+    "url": "https://trustos.missionctrl.agency/trust-snapshots/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MissionCTRL",
+      "url": "https://missionctrl.agency"
+    },
+    "hasPart": [
+      {
+        "@type": "Article",
+        "name": "Mining's Trust Window: 2026–2030",
+        "url": "https://trustos.missionctrl.agency/trust-snapshots/mining.html",
+        "description": "An operating picture of mining sector trust — where it stands now, where it's leaking, and what the 2026–2030 window demands."
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --trust-slate: #2d3a4a;
+      --trust-cool:  #5a8a9a;
+      --system-grey: #f4f4f6;
+      --deep:        #0a0f1a;
+      --white:       #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Sora', sans-serif; color: var(--trust-slate); background: var(--deep); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(10,15,26,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav-wordmark {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em;
+      display: flex; align-items: center; gap: 2px;
+    }
+    .nav-wordmark .trust { color: #8fb5c0; }
+    .nav-wordmark .os { color: var(--trust-cool); }
+    .nav-product-link {
+      font-size: 0.62rem; font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      margin-left: 16px;
+      transition: color 0.2s;
+    }
+    .nav-product-link:hover { color: var(--trust-cool); }
+    .nav-left { display: flex; align-items: center; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); }
+    .nav-cta {
+      font-size: 0.88rem; font-weight: 600;
+      padding: 10px 22px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #4a7a8a; transform: translateY(-1px); }
+
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .page-header {
+      position: relative;
+      padding: 160px 5% 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-header .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 14px;
+      justify-content: center;
+    }
+    .page-header .section-label::before { content: ''; width: 20px; height: 2px; background: var(--trust-cool); display: block; }
+    .page-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; line-height: 1.1;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+    .page-header h1 em { font-style: normal; color: var(--trust-cool); }
+    .page-header p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .snapshots-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 5% 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    .snapshot-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 36px 32px;
+      transition: border-color 0.25s, background 0.25s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .snapshot-card:hover {
+      border-color: rgba(90,138,154,0.3);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-3px);
+    }
+    .snapshot-card .card-sector {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--trust-cool);
+      margin-bottom: 14px;
+    }
+    .snapshot-card h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .snapshot-card .card-summary {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .snapshot-card .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .snapshot-card .card-date {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.25);
+      font-weight: 500;
+    }
+    .card-read-link {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--trust-cool);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .snapshot-card:hover .card-read-link { gap: 10px; }
+
+    .coming-soon-card {
+      background: rgba(255,255,255,0.015);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 240px;
+    }
+    .coming-soon-card p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.6;
+    }
+    .coming-soon-card .cs-label {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+      margin-bottom: 10px;
+    }
+
+    .cta-section {
+      padding: 60px 5% 80px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .cta-section h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .cta-section p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-block;
+      font-size: 0.88rem; font-weight: 600;
+      padding: 14px 30px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px; border: 2px solid var(--trust-cool);
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: #4a7a8a; border-color: #4a7a8a; transform: translateY(-2px); }
+
+    footer {
+      padding: 48px 5% 32px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .footer-inner { max-width: 1080px; margin: 0 auto; }
+    .footer-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.04);
+      margin-bottom: 20px;
+    }
+    .footer-wordmark {
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.03em;
+    }
+    .footer-wordmark .trust { color: #8fb5c0; }
+    .footer-wordmark .os { color: var(--trust-cool); }
+    .footer-legal {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+    }
+    .footer-legal a { color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--trust-cool); }
+
+    .breadcrumb {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 100px 5% 0;
+    }
+    .breadcrumb a, .breadcrumb span {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+    }
+    .breadcrumb a:hover { color: var(--trust-cool); }
+    .breadcrumb .sep { margin: 0 8px; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-product-link { display: none; }
+      .snapshots-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="/" class="nav-wordmark" style="display:flex;align-items:center;gap:10px;">
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
+        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
+      </svg>
+      <span><span class="trust">Trust</span><span class="os">OS</span></span>
+    </a>
+    <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;">
+      <svg width="10" height="12" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="nav-mg" x1="0" y1="148" x2="120" y2="0"><stop offset="0%" stop-color="#ff6b2b"/><stop offset="100%" stop-color="#ffad3b"/></linearGradient><clipPath id="nav-mlc"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z"/></clipPath></defs><rect width="120" height="148" fill="url(#nav-mg)" clip-path="url(#nav-mlc)"/></svg>
+      A MissionCTRL product &rarr;
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/#health-check">Trust Health Check</a></li>
+    <li><a href="/trust-snapshots/" class="active">Trust Snapshots</a></li>
+    <li><a href="/#book-demo">Book a demo</a></li>
+  </ul>
+  <a href="/#book-demo" class="nav-cta">Book a demo</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span class="sep">/</span><span>Trust Snapshots</span>
+</div>
+
+<header class="page-header">
+  <div class="grid-bg"></div>
+  <div style="position:relative;z-index:2;">
+    <p class="section-label">Sector Trust Intelligence</p>
+    <h1>Trust Snapshots: <em>Sector Points of View</em></h1>
+    <p>Data-led operating pictures of where trust stands in the sectors that need it most. Each snapshot runs the TrustOS methodology at sector level &mdash; mapping Intent, Expectation and Reality to show where the trust signal is strong and where it&rsquo;s leaking.</p>
+  </div>
+</header>
+
+<section class="snapshots-grid">
+
+  <!-- Mining Snapshot Card -->
+  <a href="/trust-snapshots/mining.html" class="snapshot-card">
+    <div class="card-sector">Mining &amp; Industrial Sustainability</div>
+    <h2>Mining&rsquo;s Trust Window: 2026&ndash;2030</h2>
+    <p class="card-summary">An operating picture of mining sector trust. From GISTM conformance and Indigenous co-management to activist-grade confidence gaps &mdash; where the sector stands now and what the next five years demand.</p>
+    <div class="card-meta">
+      <span class="card-date">May 2026</span>
+      <span class="card-read-link">Read the snapshot &rarr;</span>
+    </div>
+  </a>
+
+  <!-- Coming Soon -->
+  <div class="coming-soon-card">
+    <p class="cs-label">More Sectors Coming Soon</p>
+    <p>Healthcare, Water &amp; Utilities, Social Housing, Higher Education and more. Each sector snapshot maps trust across stakeholders using the TrustOS methodology.</p>
+  </div>
+
+</section>
+
+<section class="cta-section">
+  <h3>Want a Trust Snapshot for your sector?</h3>
+  <p>TrustOS runs trust diagnostics across regulated and high-trust industries. Get in touch to discuss your sector.</p>
+  <a href="/#book-demo" class="btn-primary">Book a demo</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-legal">
+      &copy; 2026 TrustOS &middot; A MissionCTRL product &middot; MissionCTRL Ltd &middot; Company No. 17018199 &middot; Registered in England &amp; Wales &middot; <a href="/#">Privacy Policy</a> &middot; <a href="/#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
