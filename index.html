@@ -979,6 +979,9 @@
     input#gap-connection::-moz-range-thumb { background: #7cc4a8; }
     input#gap-confidence::-moz-range-thumb { background: #a78bdb; }
 
+    /* ── SECTOR INSIGHT CARD ── */
+    #sector-insights a:hover { border-color: rgba(90,138,154,0.45); transform: translateY(-2px); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero-inner, .problem-grid, .dashboard-layout,
@@ -1493,6 +1496,7 @@
     <li><a href="#health-check">Trust Health Check</a></li>
     <li><a href="#dashboard">Dashboard</a></li>
     <li><a href="#process">How it works</a></li>
+    <li><a href="#sector-insights">Sector Insights</a></li>
   </ul>
   <a href="#book-demo" class="nav-cta">Book a demo</a>
 </nav>
@@ -1858,6 +1862,42 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTOR INSIGHTS -->
+<section id="sector-insights" style="background:var(--deep);padding:80px 5%;border-top:1px solid rgba(255,255,255,0.05);position:relative;overflow:hidden;">
+  <div class="grid-bg"></div>
+  <div style="max-width:1080px;margin:0 auto;position:relative;z-index:2;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p style="display:inline-flex;align-items:center;gap:10px;font-size:0.63rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:14px;justify-content:center;"><span style="width:20px;height:2px;background:var(--trust-cool);display:block;"></span>Sector Point of View</p>
+      <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.12;max-width:620px;margin:0 auto 12px;">Trust looks different in every sector.<br/><em style="color:var(--trust-cool);font-style:normal;">Here&#8217;s what the data shows.</em></h2>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);max-width:520px;margin:0 auto;line-height:1.75;">Each sector POV unpacks the trust shape for a specific industry &#8212; the drivers, the gaps, and what the best-positioned organisations are doing differently.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;max-width:680px;margin:0 auto;gap:24px;">
+      <a href="/mining-trust-window/" style="display:block;text-decoration:none;background:rgba(90,138,154,0.06);border:1px solid rgba(90,138,154,0.18);border-radius:12px;padding:32px;transition:border-color 0.2s,transform 0.15s;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:240px;">
+            <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:10px;">Mining &middot; Q2 2026</p>
+            <h3 style="font-size:clamp(1.1rem,2vw,1.4rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.2;margin-bottom:10px;">The Mining Trust Window: Where the sector picture shifts in 2026</h3>
+            <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:14px;">Clarity leads at 81. Connection trails at 58. The gap between what mining organisations say and what stakeholders experience is where trust is won or lost.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+              <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(90,138,154,0.12);color:#5a8a9a;">Clarity 81</span>
+              <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(124,196,168,0.12);color:#7cc4a8;">Connection 58</span>
+              <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(167,139,219,0.12);color:#a78bdb;">Confidence 62</span>
+            </div>
+            <span style="font-size:0.82rem;font-weight:600;color:var(--trust-cool);">Read the full sector POV &rarr;</span>
+          </div>
+          <div style="width:100px;height:100px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="90" height="90" viewBox="0 0 200 200" role="img" aria-label="Mining sector trust triangle">
+              <polygon points="100,20 180,160 20,160" fill="none" stroke="rgba(90,138,154,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
+              <polygon points="100,38 162,148 38,148" fill="rgba(90,138,154,0.08)" stroke="var(--trust-cool)" stroke-width="2" opacity="0.7"/>
+              <text x="100" y="105" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="22" font-weight="700" font-family="Sora,sans-serif">65</text>
+            </svg>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -2685,6 +2725,7 @@ document.getElementById('ai-input').addEventListener('keydown',function(e){
         <li><a href="#model">What it measures</a></li>
         <li><a href="#dashboard">Dashboard</a></li>
         <li><a href="#process">How it works</a></li>
+        <li><a href="#sector-insights">Sector Insights</a></li>
         <li><a href="#solutions">Solutions</a></li>
         <li><a href="#snapshot-form">Free Snapshot</a></li>
       </ul>
