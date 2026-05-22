@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mining Sector Trust Window — TrustOS Sector POV</title>
+  <meta name="description" content="The Mining sector trust picture: where Clarity, Connection and Confidence sit across the sector — and how to benchmark your organisation against the 2026 sector baseline.">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --trust-slate: #2d3a4a;
+      --trust-cool:  #5a8a9a;
+      --system-grey: #f4f4f6;
+      --deep:        #0a0f1a;
+      --white:       #ffffff;
+      --clarity-col:    #5a8a9a;
+      --connection-col: #7cc4a8;
+      --confidence-col: #a78bdb;
+      --delta-green:  #4ade80;
+      --delta-amber:  #f59e0b;
+      --delta-muted:  rgba(255,255,255,0.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Sora', sans-serif; color: var(--white); background: var(--deep); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    .grid-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(10,15,26,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav-left { display: flex; align-items: center; }
+    .nav-wordmark {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em;
+      display: flex; align-items: center; gap: 2px;
+    }
+    .nav-wordmark .trust { color: #8fb5c0; }
+    .nav-wordmark .os { color: var(--trust-cool); }
+    .nav-product-link {
+      font-size: 0.62rem; font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      margin-left: 16px;
+      transition: color 0.2s;
+    }
+    .nav-product-link:hover { color: var(--trust-cool); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-size: 0.88rem; font-weight: 600;
+      padding: 10px 22px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #4a7a8a; transform: translateY(-1px); }
+    .btn-primary {
+      display: inline-block;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 10px 24px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'Sora', sans-serif;
+    }
+    .btn-primary:hover { background: #4a7a8a; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 10px 24px;
+      background: transparent; color: var(--trust-cool);
+      border: 2px solid rgba(90,138,154,0.3);
+      border-radius: 6px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      font-family: 'Sora', sans-serif;
+    }
+    .btn-ghost:hover { border-color: var(--trust-cool); color: var(--white); }
+
+    /* ARTICLE */
+    .article-wrap {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 120px 5% 80px;
+    }
+    .article-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 20px;
+    }
+    .article-eyebrow::before {
+      content: ''; width: 20px; height: 2px;
+      background: var(--trust-cool); display: block;
+    }
+    .article-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; color: var(--white);
+      margin-bottom: 20px;
+    }
+    .article-subtitle {
+      font-size: 1.15rem; font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75; margin-bottom: 32px;
+      max-width: 760px;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 16px;
+      font-size: 0.76rem; color: rgba(255,255,255,0.3);
+      margin-bottom: 52px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .article-meta .author { color: rgba(255,255,255,0.55); font-weight: 600; }
+
+    .article-body h2 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      color: var(--white); margin: 52px 0 18px;
+      line-height: 1.15;
+    }
+    .article-body h3 {
+      font-size: 1.1rem; font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      margin: 36px 0 12px;
+    }
+    .article-body p {
+      font-size: 1.05rem; line-height: 1.9;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+    .article-body p strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+    .article-body p em { color: rgba(255,255,255,0.6); }
+    .article-body blockquote {
+      margin: 28px 0;
+      padding: 0 0 0 16px;
+      border-left: 3px solid var(--trust-cool);
+      font-size: 0.95rem; font-style: italic;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.85;
+    }
+    .article-body a.inline-link {
+      color: var(--trust-cool); font-weight: 600;
+      border-bottom: 1px solid rgba(90,138,154,0.3);
+      transition: border-color 0.2s;
+    }
+    .article-body a.inline-link:hover { border-color: var(--trust-cool); }
+
+    /* INLINE ARTICLE GRAPHS */
+    .article-graph {
+      margin: 36px 0;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+    .article-graph-title {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+    .article-graph svg { width: 100%; height: auto; display: block; }
+    .article-graph-caption {
+      font-size: 0.72rem; color: rgba(255,255,255,0.25);
+      margin-top: 14px; line-height: 1.5;
+      font-style: italic;
+    }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: ''; width: 20px; height: 2px;
+      background: var(--trust-cool); display: block;
+    }
+
+    /* TRUST TRIANGLE WIDGET */
+    .tt-widget {
+      max-width: 1080px; margin: 0 auto;
+      padding: 64px 5%;
+    }
+    .tt-header {
+      margin-bottom: 36px;
+    }
+    .tt-header h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 800; color: var(--white);
+      letter-spacing: -0.03em; margin-bottom: 10px;
+      line-height: 1.12;
+    }
+    .tt-header h2 em {
+      color: var(--trust-cool); font-style: normal;
+    }
+    .tt-header p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.38);
+      max-width: 600px; line-height: 1.7;
+    }
+
+    /* Dual-triangle layout */
+    .tt-triangles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .tt-tri-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+    }
+    .tt-tri-label {
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 4px;
+    }
+    .tt-tri-sublabel {
+      font-size: 0.68rem; color: rgba(255,255,255,0.2);
+      margin-bottom: 12px;
+    }
+    .tt-tri-svg-wrap {
+      display: flex; justify-content: center;
+    }
+    .tt-tri-svg-wrap svg {
+      width: 100%; max-width: 320px; height: auto; overflow: visible;
+    }
+    .tt-tri-score {
+      margin-top: 10px;
+      font-size: 0.7rem; color: rgba(255,255,255,0.4);
+    }
+    .tt-tri-score strong {
+      font-size: 1.4rem; font-weight: 800;
+      color: var(--trust-cool);
+      letter-spacing: -0.04em;
+    }
+
+    /* Triangle SVG styles */
+    .tt-fill { transition: all 0.2s ease-out; }
+    .tt-edge-c  { stroke: var(--clarity-col); fill: none; stroke-linecap: round; stroke-linejoin: round; transition: all 0.2s ease-out; }
+    .tt-edge-n  { stroke: var(--connection-col); fill: none; stroke-linecap: round; stroke-linejoin: round; transition: all 0.2s ease-out; }
+    .tt-edge-f  { stroke: var(--confidence-col); fill: none; stroke-linecap: round; stroke-linejoin: round; transition: all 0.2s ease-out; }
+    .tt-div  { stroke: rgba(90,138,154,0.1); stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+    .tt-baseline { stroke: rgba(255,255,255,0.06); stroke-width: 1; fill: none; stroke-dasharray: 4 4; }
+    .tt-vtx  { font-family: 'Sora', sans-serif; font-size: 9px; font-weight: 700; fill: rgba(255,255,255,0.65); }
+    .tt-cen  { font-family: 'Sora', sans-serif; font-size: 8px; font-weight: 600; fill: rgba(90,138,154,0.6); text-anchor: middle; dominant-baseline: middle; }
+    .tt-lbl  { font-family: 'Sora', sans-serif; font-size: 7px; font-weight: 800; letter-spacing: 0.11em; }
+    .tt-lbl.lc { fill: var(--clarity-col); } .tt-lbl.ln { fill: var(--connection-col); } .tt-lbl.lf { fill: var(--confidence-col); }
+
+    /* Sliders */
+    .tt-sliders {
+      display: flex; flex-direction: column; gap: 20px;
+      margin-bottom: 28px;
+    }
+    .tt-slider-row {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 18px 22px;
+      transition: border-color 0.2s;
+    }
+    .tt-slider-row:focus-within { border-color: rgba(255,255,255,0.14); }
+    .tt-slider-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .tt-driver-badge {
+      font-size: 0.58rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px;
+    }
+    .tt-driver-badge.clarity    { background: rgba(90,138,154,0.12); color: var(--clarity-col); }
+    .tt-driver-badge.connection { background: rgba(124,196,168,0.12); color: var(--connection-col); }
+    .tt-driver-badge.confidence { background: rgba(167,139,219,0.12); color: var(--confidence-col); }
+    .tt-slider-val {
+      font-size: 1.4rem; font-weight: 800;
+      letter-spacing: -0.04em; line-height: 1;
+      min-width: 36px; text-align: right;
+    }
+    .tt-slider-val.clarity    { color: var(--clarity-col); }
+    .tt-slider-val.connection { color: var(--connection-col); }
+    .tt-slider-val.confidence { color: var(--confidence-col); }
+    .tt-slider-question {
+      font-size: 0.82rem; color: rgba(255,255,255,0.65);
+      line-height: 1.5; margin-bottom: 12px;
+    }
+    .tt-slider-question strong { color: rgba(255,255,255,0.88); font-weight: 600; }
+
+    input.tt-slider {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 3px;
+      border-radius: 2px; outline: none;
+      cursor: pointer;
+    }
+    input.tt-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 16px; height: 16px;
+      border-radius: 50%; cursor: pointer;
+      transition: transform 0.15s;
+    }
+    input.tt-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    input.tt-slider::-moz-range-thumb {
+      width: 16px; height: 16px;
+      border-radius: 50%; cursor: pointer;
+      border: none;
+    }
+    input.tt-slider.clarity::-webkit-slider-thumb    { background: var(--clarity-col); }
+    input.tt-slider.connection::-webkit-slider-thumb { background: var(--connection-col); }
+    input.tt-slider.confidence::-webkit-slider-thumb { background: var(--confidence-col); }
+    input.tt-slider.clarity::-moz-range-thumb    { background: var(--clarity-col); }
+    input.tt-slider.connection::-moz-range-thumb { background: var(--connection-col); }
+    input.tt-slider.confidence::-moz-range-thumb { background: var(--confidence-col); }
+    .tt-slider-labels {
+      display: flex; justify-content: space-between;
+      font-size: 0.56rem; color: rgba(255,255,255,0.22);
+      font-weight: 500; margin-top: 7px;
+    }
+
+    /* Comparison strip */
+    .tt-comparison {
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tt-comp-row {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.78rem; font-weight: 500;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .tt-comp-driver {
+      font-weight: 700; min-width: 100px;
+    }
+    .tt-comp-driver.clarity { color: var(--clarity-col); }
+    .tt-comp-driver.connection { color: var(--connection-col); }
+    .tt-comp-driver.confidence { color: var(--confidence-col); }
+    .tt-comp-val {
+      color: rgba(255,255,255,0.65); font-weight: 600;
+      min-width: 24px;
+    }
+    .tt-comp-sep { color: rgba(255,255,255,0.2); }
+    .tt-comp-sector { color: rgba(255,255,255,0.35); }
+    .tt-comp-delta { font-weight: 700; margin-left: auto; }
+    .tt-comp-delta.above { color: var(--delta-green); }
+    .tt-comp-delta.below { color: var(--delta-amber); }
+    .tt-comp-delta.neutral { color: var(--delta-muted); }
+
+    /* Diagnostic sentence */
+    .tt-diagnostic {
+      font-size: 0.92rem; line-height: 1.75;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
+      min-height: 52px;
+    }
+
+    /* CTA block */
+    .tt-cta-block {
+      background: rgba(90,138,154,0.10);
+      border: 1px solid rgba(90,138,154,0.30);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .tt-cta-primary {
+      display: inline-block;
+      font-size: 0.95rem; font-weight: 700;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #5a8a9a, #4a7a8a);
+      color: var(--white);
+      border-radius: 8px; border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: 'Sora', sans-serif;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    .tt-cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(90,138,154,0.25);
+    }
+    .tt-cta-subcopy {
+      font-size: 0.76rem; color: rgba(255,255,255,0.38);
+      margin-top: 12px; line-height: 1.6;
+    }
+    .tt-cta-secondary-row {
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 20px; padding-top: 18px;
+      border-top: 1px solid rgba(90,138,154,0.15);
+    }
+    .tt-cta-secondary {
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--trust-cool);
+      border-bottom: 1px solid rgba(90,138,154,0.3);
+      transition: border-color 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .tt-cta-secondary:hover { border-color: var(--trust-cool); color: var(--white); }
+    .tt-share-btn {
+      font-size: 0.72rem; font-weight: 600;
+      padding: 7px 14px;
+      background: transparent;
+      border: 1px solid rgba(90,138,154,0.25);
+      border-radius: 6px;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      font-family: 'Sora', sans-serif;
+      margin-left: auto;
+    }
+    .tt-share-btn:hover { border-color: var(--trust-cool); color: var(--white); }
+
+    /* Bottom repeat CTA */
+    .bottom-cta {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 5% 80px;
+      position: relative; z-index: 1;
+    }
+    .bottom-cta-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+    .bottom-cta-card h3 {
+      font-size: 1rem; font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 6px; line-height: 1.3;
+    }
+    .bottom-cta-card p {
+      font-size: 0.78rem; color: rgba(255,255,255,0.38);
+      line-height: 1.6; margin: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep); padding: 48px 5% 36px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      position: relative; z-index: 1;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-wordmark {
+      font-size: 1.1rem; font-weight: 800;
+    }
+    .footer-wordmark .trust { color: #8fb5c0; }
+    .footer-wordmark .os { color: var(--trust-cool); }
+    footer p { font-size: 0.76rem; color: rgba(255,255,255,0.3); }
+    footer a.footer-link { color: var(--trust-cool); transition: color 0.2s; }
+    footer a.footer-link:hover { color: #4a7a8a; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0s !important;
+        animation-duration: 0s !important;
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .tt-triangles {
+        grid-template-columns: 1fr;
+      }
+      .tt-triangles .tt-tri-card:first-child {
+        order: 2;
+      }
+      .tt-triangles .tt-tri-card:last-child {
+        order: 1;
+      }
+      .nav-links { display: none; }
+      .nav-product-link { display: none !important; }
+      .nav-cta { font-size: 0.78rem; padding: 8px 16px; }
+      .bottom-cta-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .tt-cta-secondary-row {
+        flex-direction: column; align-items: flex-start;
+      }
+      .tt-share-btn { margin-left: 0; }
+    }
+    @media (max-width: 480px) {
+      .article-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      .tt-cta-primary { padding: 14px 24px; font-size: 0.88rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="/" class="nav-wordmark" style="display:flex;align-items:center;gap:10px;">
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
+        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
+      </svg>
+      <span><span class="trust">Trust</span><span class="os">OS</span></span>
+    </a>
+    <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;">
+      <svg width="10" height="12" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="nav-mg" x1="0" y1="148" x2="120" y2="0"><stop offset="0%" stop-color="#ff6b2b"/><stop offset="100%" stop-color="#ffad3b"/></linearGradient><clipPath id="nav-mlc"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z"/></clipPath></defs><rect width="120" height="148" fill="url(#nav-mg)" clip-path="url(#nav-mlc)"/></svg>
+      A MissionCTRL product &rarr;
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/#health-check">Trust Health Check</a></li>
+    <li><a href="/#dashboard">Dashboard</a></li>
+    <li><a href="/#process">How it works</a></li>
+    <li><a href="/#sector-insights">Sector Insights</a></li>
+  </ul>
+  <a href="/#book-demo" class="nav-cta">Book a demo</a>
+</nav>
+
+<!-- ARTICLE -->
+<article class="article-wrap">
+
+  <div class="article-eyebrow">Sector POV &mdash; Mining</div>
+
+  <h1 class="article-title">The Mining Trust Window:<br/>Where the sector picture shifts in 2026</h1>
+
+  <p class="article-subtitle">Trust in mining has always been measured in decades &mdash; the licence to operate, the generational contract with communities, the slow-moving regulatory dialogue. But the signal is accelerating. This is what the data shows, and where the trust enablers are actually moving.</p>
+
+  <div class="article-meta">
+    <span class="author">MissionCTRL Research</span>
+    <span>&middot;</span>
+    <span>May 2026</span>
+    <span>&middot;</span>
+    <span>8 min read</span>
+  </div>
+
+  <div class="article-body">
+
+    <h2>The trust landscape in mining has a shape</h2>
+
+    <p>Every sector has a trust profile. Not a score &mdash; a shape. The shape is defined by three drivers: <strong>Clarity</strong> (how well stakeholders understand what an organisation stands for), <strong>Connection</strong> (how consistent the experience is across every touchpoint), and <strong>Confidence</strong> (how clearly stakeholders can see distinctive advantage and proof of delivery).</p>
+
+    <p>When all three align, the triangle is equilateral and the trust signal is coherent. When they diverge, the shape distorts &mdash; and the distortion tells you exactly where the gap sits.</p>
+
+    <p>Mining in 2026 has a distinctive shape. It is not the shape most communications teams expect.</p>
+
+    <!-- GRAPH 1: Mining Sector Trust Profile — Driver Scores -->
+    <div class="article-graph">
+      <div class="article-graph-title">Mining sector trust profile — Q2 2026</div>
+      <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart showing Mining sector trust driver scores: Clarity 81, Connection 58, Confidence 62, Composite 65">
+        <defs>
+          <linearGradient id="g-clarity" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.3"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+          <linearGradient id="g-connection" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7cc4a8" stop-opacity="0.3"/><stop offset="100%" stop-color="#7cc4a8"/></linearGradient>
+          <linearGradient id="g-confidence" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a78bdb" stop-opacity="0.3"/><stop offset="100%" stop-color="#a78bdb"/></linearGradient>
+          <linearGradient id="g-composite" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.05"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0.2"/></linearGradient>
+        </defs>
+        <!-- Grid lines -->
+        <line x1="160" y1="20" x2="160" y2="195" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="295" y1="20" x2="295" y2="195" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="430" y1="20" x2="430" y2="195" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="565" y1="20" x2="565" y2="195" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="700" y1="20" x2="700" y2="195" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <!-- Grid labels -->
+        <text x="160" y="210" font-family="Sora" font-size="9" fill="rgba(255,255,255,0.2)" text-anchor="middle">0</text>
+        <text x="295" y="210" font-family="Sora" font-size="9" fill="rgba(255,255,255,0.2)" text-anchor="middle">25</text>
+        <text x="430" y="210" font-family="Sora" font-size="9" fill="rgba(255,255,255,0.2)" text-anchor="middle">50</text>
+        <text x="565" y="210" font-family="Sora" font-size="9" fill="rgba(255,255,255,0.2)" text-anchor="middle">75</text>
+        <text x="700" y="210" font-family="Sora" font-size="9" fill="rgba(255,255,255,0.2)" text-anchor="middle">100</text>
+        <!-- Clarity bar -->
+        <text x="148" y="46" font-family="Sora" font-size="11" font-weight="600" fill="#5a8a9a" text-anchor="end">Clarity</text>
+        <rect x="160" y="32" width="437" height="24" rx="4" fill="url(#g-clarity)"/>
+        <text x="603" y="49" font-family="Sora" font-size="13" font-weight="800" fill="#5a8a9a">81</text>
+        <!-- Connection bar -->
+        <text x="148" y="91" font-family="Sora" font-size="11" font-weight="600" fill="#7cc4a8" text-anchor="end">Connection</text>
+        <rect x="160" y="77" width="313" height="24" rx="4" fill="url(#g-connection)"/>
+        <text x="479" y="94" font-family="Sora" font-size="13" font-weight="800" fill="#7cc4a8">58</text>
+        <!-- Confidence bar -->
+        <text x="148" y="136" font-family="Sora" font-size="11" font-weight="600" fill="#a78bdb" text-anchor="end">Confidence</text>
+        <rect x="160" y="122" width="335" height="24" rx="4" fill="url(#g-confidence)"/>
+        <text x="501" y="139" font-family="Sora" font-size="13" font-weight="800" fill="#a78bdb">62</text>
+        <!-- Composite line -->
+        <line x1="511" y1="22" x2="511" y2="193" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="511" y="15" font-family="Sora" font-size="9" font-weight="700" fill="rgba(255,255,255,0.35)" text-anchor="middle">COMPOSITE 65</text>
+        <!-- Composite bar -->
+        <text x="148" y="181" font-family="Sora" font-size="11" font-weight="600" fill="rgba(255,255,255,0.35)" text-anchor="end">Composite</text>
+        <rect x="160" y="167" width="351" height="24" rx="4" fill="url(#g-composite)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <text x="517" y="184" font-family="Sora" font-size="13" font-weight="800" fill="rgba(255,255,255,0.5)">65</text>
+      </svg>
+      <p class="article-graph-caption">Source: TrustOS Mining Sector POV, Q2 2026. Scores indexed 0–100 across stakeholder groups.</p>
+    </div>
+
+    <h2>Clarity: the sector has largely closed this gap</h2>
+
+    <p>The sector scores <strong>81 on Clarity</strong> &mdash; the highest of the three drivers and meaningfully above the cross-sector average. This is the result of a decade of sustained investment in purpose-led narratives, ESG frameworks, and stakeholder communication programmes.</p>
+
+    <p>Mining companies have become fluent at articulating what they stand for. The question is whether that articulation is matched by the lived experience of the people it reaches.</p>
+
+    <h3>What this means for comms leaders</h3>
+
+    <p>If your organisation is at or above the sector on Clarity, the narrative is landing. The leverage is elsewhere. If you sit materially below 81, you are operating on a different baseline to the sector and the corporate narrative work becomes the highest-priority move.</p>
+
+    <h2>Connection: the live-edge gap</h2>
+
+    <p>The sector scores <strong>58 on Connection</strong> &mdash; the weakest driver by a meaningful margin. This is where the trust shape distorts most visibly.</p>
+
+    <p>Connection measures consistency: whether the experience a community liaison officer delivers in the Pilbara matches the story a government affairs director presents in Canberra. Whether the employee onboarding in Johannesburg reflects the same values as the investor deck in London.</p>
+
+    <p>In mining, the operational footprint is inherently dispersed. Multiple regions, multiple community contexts, multiple regulatory regimes. The result is that Connection &mdash; the <em>coherence</em> of trust delivery &mdash; is where the sector leaks most consistently.</p>
+
+    <!-- GRAPH 2: Driver Gap Analysis -->
+    <div class="article-graph">
+      <div class="article-graph-title">Driver distance from sector average — the shape of the gap</div>
+      <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart showing driver gap: Clarity is 23 points above average, Connection is 10 below, Confidence is 6 below average">
+        <defs>
+          <linearGradient id="g2-pos" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.08"/></linearGradient>
+          <linearGradient id="g2-neg-cn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7cc4a8" stop-opacity="0.08"/><stop offset="100%" stop-color="#7cc4a8" stop-opacity="0.45"/></linearGradient>
+          <linearGradient id="g2-neg-cf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a78bdb" stop-opacity="0.08"/><stop offset="100%" stop-color="#a78bdb" stop-opacity="0.35"/></linearGradient>
+        </defs>
+        <!-- Baseline (sector average = 67) -->
+        <line x1="80" y1="140" x2="640" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="650" y="144" font-family="Sora" font-size="9" font-weight="600" fill="rgba(255,255,255,0.25)" text-anchor="start">AVG 67</text>
+        <!-- Scale lines -->
+        <line x1="80" y1="70" x2="640" y2="70" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="3 4"/>
+        <text x="70" y="74" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.15)" text-anchor="end">+20</text>
+        <line x1="80" y1="210" x2="640" y2="210" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="3 4"/>
+        <text x="70" y="214" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.15)" text-anchor="end">−20</text>
+        <!-- Clarity: +14 above average -->
+        <rect x="140" y="91" width="100" height="49" rx="4" fill="url(#g2-pos)"/>
+        <text x="190" y="82" font-family="Sora" font-size="18" font-weight="800" fill="#5a8a9a" text-anchor="middle">+14</text>
+        <text x="190" y="256" font-family="Sora" font-size="11" font-weight="700" fill="#5a8a9a" text-anchor="middle">CLARITY</text>
+        <text x="190" y="270" font-family="Sora" font-size="10" font-weight="600" fill="rgba(255,255,255,0.35)" text-anchor="middle">81</text>
+        <!-- Connection: −9 below average -->
+        <rect x="300" y="140" width="100" height="32" rx="4" fill="url(#g2-neg-cn)"/>
+        <text x="350" y="188" font-family="Sora" font-size="18" font-weight="800" fill="#7cc4a8" text-anchor="middle">−9</text>
+        <text x="350" y="256" font-family="Sora" font-size="11" font-weight="700" fill="#7cc4a8" text-anchor="middle">CONNECTION</text>
+        <text x="350" y="270" font-family="Sora" font-size="10" font-weight="600" fill="rgba(255,255,255,0.35)" text-anchor="middle">58</text>
+        <!-- Confidence: −5 below average -->
+        <rect x="460" y="140" width="100" height="18" rx="4" fill="url(#g2-neg-cf)"/>
+        <text x="510" y="174" font-family="Sora" font-size="18" font-weight="800" fill="#a78bdb" text-anchor="middle">−5</text>
+        <text x="510" y="256" font-family="Sora" font-size="11" font-weight="700" fill="#a78bdb" text-anchor="middle">CONFIDENCE</text>
+        <text x="510" y="270" font-family="Sora" font-size="10" font-weight="600" fill="rgba(255,255,255,0.35)" text-anchor="middle">62</text>
+      </svg>
+      <p class="article-graph-caption">Distance from the cross-sector average (67). Connection is the primary leak point across the mining sector, trailing Clarity by 23 points.</p>
+    </div>
+
+    <h3>Where activism finds its entry point</h3>
+
+    <p>Connection gaps are not abstract. They are the gaps that activist investors, NGOs, and investigative journalists are trained to find. A community that experiences one version of the brand while investors hear another is a Connection gap made visible.</p>
+
+    <h2>Confidence: the proof question</h2>
+
+    <p>The sector scores <strong>62 on Confidence</strong>. This is the driver that measures whether stakeholders can point to evidence &mdash; outcomes, commitments met, distinctive qualities that make the brand credibly different.</p>
+
+    <p>Mining has always struggled with Confidence because the proof cycle is long. A rehabilitation programme takes years. A community investment strategy takes a generation. The challenge is not absence of action but absence of <em>visible, attributable, distinctive</em> action that stakeholders can connect to the brand rather than the sector.</p>
+
+    <h2>Where the trust enablers are actually leaking</h2>
+
+    <p>The composite trust score for the Mining sector is <strong>65</strong>. That number sits in the mid-range: not in crisis, not in command. The shape tells the more useful story.</p>
+
+    <p>Three gap shapes define the sector picture in Q2 2026:</p>
+
+    <p><strong>The Clarity-Connection gap:</strong> A strong narrative that is not consistently delivered. This is the most common shape across the top 40 mining brands. The corporate story is clear; the stakeholder experience is uneven.</p>
+
+    <p><strong>The Connection-Confidence gap:</strong> Inconsistent delivery coupled with weak proof. This is where the sector is most vulnerable to external challenge. If the experience varies <em>and</em> the proof is thin, activist exposure finds fertile ground.</p>
+
+    <p><strong>The flat-mid shape:</strong> All three drivers in the 55&ndash;65 range with no standout strength. This is the shape that reads as &ldquo;adequate&rdquo; in board packs but leaves the organisation with no distinctive trust position and no natural defence when the cycle turns.</p>
+
+    <!-- GRAPH 3: Three Gap Shapes — Pattern Comparison -->
+    <div class="article-graph">
+      <div class="article-graph-title">Three trust shapes observed across the Mining sector — Q2 2026</div>
+      <svg viewBox="0 0 700 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart showing three trust shape patterns: Clarity-Connection gap, Connection-Confidence gap, and Flat-mid shape">
+        <!-- Column headers -->
+        <text x="260" y="22" font-family="Sora" font-size="9" font-weight="700" fill="#5a8a9a" text-anchor="middle" letter-spacing="0.1em">CLARITY</text>
+        <text x="420" y="22" font-family="Sora" font-size="9" font-weight="700" fill="#7cc4a8" text-anchor="middle" letter-spacing="0.1em">CONNECTION</text>
+        <text x="580" y="22" font-family="Sora" font-size="9" font-weight="700" fill="#a78bdb" text-anchor="middle" letter-spacing="0.1em">CONFIDENCE</text>
+        <!-- Scale -->
+        <text x="260" y="38" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.15)" text-anchor="middle">|</text>
+        <text x="420" y="38" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.15)" text-anchor="middle">|</text>
+        <text x="580" y="38" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.15)" text-anchor="middle">|</text>
+        <!-- Gridlines -->
+        <line x1="180" y1="50" x2="180" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="340" y1="50" x2="340" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="500" y1="50" x2="500" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="660" y1="50" x2="660" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+        <!-- SHAPE 1: Clarity-Connection gap -->
+        <text x="20" y="85" font-family="Sora" font-size="10" font-weight="700" fill="rgba(255,255,255,0.6)" text-anchor="start">Clarity–</text>
+        <text x="20" y="99" font-family="Sora" font-size="10" font-weight="700" fill="rgba(255,255,255,0.6)" text-anchor="start">Connection gap</text>
+        <!-- Range bar -->
+        <line x1="260" y1="88" x2="420" y2="88" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+        <!-- Dots -->
+        <circle cx="380" cy="88" r="11" fill="rgba(90,138,154,0.15)" stroke="#5a8a9a" stroke-width="1.5"/>
+        <text x="380" y="92" font-family="Sora" font-size="9" font-weight="800" fill="#5a8a9a" text-anchor="middle">82</text>
+        <circle cx="260" cy="88" r="11" fill="rgba(124,196,168,0.15)" stroke="#7cc4a8" stroke-width="1.5"/>
+        <text x="260" y="92" font-family="Sora" font-size="9" font-weight="800" fill="#7cc4a8" text-anchor="middle">52</text>
+        <circle cx="320" cy="88" r="11" fill="rgba(167,139,219,0.15)" stroke="#a78bdb" stroke-width="1.5"/>
+        <text x="320" y="92" font-family="Sora" font-size="9" font-weight="800" fill="#a78bdb" text-anchor="middle">64</text>
+        <text x="20" y="120" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="start">Strong narrative, uneven delivery</text>
+        <!-- Separator -->
+        <line x1="20" y1="140" x2="660" y2="140" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+        <!-- SHAPE 2: Connection-Confidence gap -->
+        <text x="20" y="173" font-family="Sora" font-size="10" font-weight="700" fill="rgba(255,255,255,0.6)" text-anchor="start">Connection–</text>
+        <text x="20" y="187" font-family="Sora" font-size="10" font-weight="700" fill="rgba(255,255,255,0.6)" text-anchor="start">Confidence gap</text>
+        <!-- Range bar -->
+        <line x1="230" y1="176" x2="440" y2="176" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+        <!-- Dots -->
+        <circle cx="440" cy="176" r="11" fill="rgba(90,138,154,0.15)" stroke="#5a8a9a" stroke-width="1.5"/>
+        <text x="440" y="180" font-family="Sora" font-size="9" font-weight="800" fill="#5a8a9a" text-anchor="middle">78</text>
+        <circle cx="230" cy="176" r="11" fill="rgba(124,196,168,0.15)" stroke="#7cc4a8" stroke-width="1.5"/>
+        <text x="230" y="180" font-family="Sora" font-size="9" font-weight="800" fill="#7cc4a8" text-anchor="middle">48</text>
+        <circle cx="260" cy="176" r="11" fill="rgba(167,139,219,0.15)" stroke="#a78bdb" stroke-width="1.5"/>
+        <text x="260" y="180" font-family="Sora" font-size="9" font-weight="800" fill="#a78bdb" text-anchor="middle">55</text>
+        <text x="20" y="208" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="start">Vulnerable to external challenge — inconsistent delivery with thin proof</text>
+        <!-- Separator -->
+        <line x1="20" y1="228" x2="660" y2="228" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+        <!-- SHAPE 3: Flat-mid -->
+        <text x="20" y="258" font-family="Sora" font-size="10" font-weight="700" fill="rgba(255,255,255,0.6)" text-anchor="start">Flat-mid shape</text>
+        <!-- Range bar -->
+        <line x1="290" y1="262" x2="360" y2="262" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+        <!-- Dots -->
+        <circle cx="340" cy="262" r="11" fill="rgba(90,138,154,0.15)" stroke="#5a8a9a" stroke-width="1.5"/>
+        <text x="340" y="266" font-family="Sora" font-size="9" font-weight="800" fill="#5a8a9a" text-anchor="middle">62</text>
+        <circle cx="290" cy="262" r="11" fill="rgba(124,196,168,0.15)" stroke="#7cc4a8" stroke-width="1.5"/>
+        <text x="290" y="266" font-family="Sora" font-size="9" font-weight="800" fill="#7cc4a8" text-anchor="middle">57</text>
+        <circle cx="320" cy="262" r="11" fill="rgba(167,139,219,0.15)" stroke="#a78bdb" stroke-width="1.5"/>
+        <text x="320" y="266" font-family="Sora" font-size="9" font-weight="800" fill="#a78bdb" text-anchor="middle">60</text>
+        <text x="20" y="290" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="start">Adequate on paper, no distinctive trust position</text>
+
+        <!-- Scale footer -->
+        <text x="180" y="308" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.12)" text-anchor="middle">40</text>
+        <text x="340" y="308" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.12)" text-anchor="middle">60</text>
+        <text x="500" y="308" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.12)" text-anchor="middle">80</text>
+        <text x="660" y="308" font-family="Sora" font-size="8" fill="rgba(255,255,255,0.12)" text-anchor="middle">100</text>
+      </svg>
+      <p class="article-graph-caption">Representative trust shapes across the top 40 mining brands. The spread between Clarity and Connection defines the most common distortion.</p>
+    </div>
+
+    <p>The three gap shapes above are the sector picture. The question that matters for every brand, comms and corporate affairs leader reading this is: where does your organisation sit on the same picture? <a href="#your-trust-picture" class="inline-link">Run the diagnostic on your own organisation &rarr;</a></p>
+
+  </div>
+</article>
+
+<!-- TRUST TRIANGLE WIDGET -->
+<section id="your-trust-picture" style="background:var(--deep);border-top:1px solid rgba(255,255,255,0.05);position:relative;">
+  <div class="tt-widget">
+
+    <div class="tt-header">
+      <p class="section-label">Your Trust Picture</p>
+      <h2>Your organisation against the sector.<br/><em>See the shape take form.</em></h2>
+      <p>Move each slider to reflect your honest assessment. The right triangle morphs in real time. Your shape compared to the sector benchmark tells you where the gap sits &mdash; and where the leverage is.</p>
+    </div>
+
+    <!-- Dual triangles -->
+    <div class="tt-triangles">
+
+      <!-- LEFT: Sector benchmark (locked) -->
+      <div class="tt-tri-card">
+        <div class="tt-tri-label">Mining sector benchmark</div>
+        <div class="tt-tri-sublabel">Q2 2026 &middot; Locked</div>
+        <div class="tt-tri-svg-wrap">
+          <svg id="tt-sector-svg" viewBox="0 0 290 260" xmlns="http://www.w3.org/2000/svg" overflow="visible" role="img" aria-label="Mining sector trust triangle: Clarity 81, Connection 58, Confidence 62">
+            <defs>
+              <linearGradient id="tt-sector-grad" x1="0.5" y1="0" x2="0.5" y2="1">
+                <stop offset="0%" stop-color="rgba(90,138,154,0.06)"/>
+                <stop offset="100%" stop-color="rgba(90,138,154,0.16)"/>
+              </linearGradient>
+            </defs>
+            <polygon id="tt-sector-baseline" class="tt-baseline"/>
+            <polygon id="tt-sector-poly" class="tt-fill" fill="url(#tt-sector-grad)"/>
+            <line id="tt-s-div1" class="tt-div"/> <line id="tt-s-div2" class="tt-div"/> <line id="tt-s-div3" class="tt-div"/>
+            <line id="tt-s-ec" class="tt-edge-c"/> <line id="tt-s-en" class="tt-edge-n"/> <line id="tt-s-ef" class="tt-edge-f"/>
+            <text id="tt-s-lc" class="tt-lbl lc"></text>
+            <text id="tt-s-ln" class="tt-lbl ln"></text>
+            <text id="tt-s-lf" class="tt-lbl lf"></text>
+            <text id="tt-s-vi" class="tt-vtx"></text>
+            <text id="tt-s-ve" class="tt-vtx"></text>
+            <text id="tt-s-vr" class="tt-vtx"></text>
+            <text id="tt-s-cen" class="tt-cen">Integrity</text>
+            <text id="tt-s-score" class="tt-cen" style="font-size:14px;font-weight:800;fill:var(--trust-cool);"></text>
+          </svg>
+        </div>
+        <div class="tt-tri-score"><strong>65</strong> composite trust score</div>
+      </div>
+
+      <!-- RIGHT: User's organisation (adjustable) -->
+      <div class="tt-tri-card">
+        <div class="tt-tri-label">Your organisation</div>
+        <div class="tt-tri-sublabel">Adjustable &middot; Move the sliders below</div>
+        <div class="tt-tri-svg-wrap">
+          <svg id="tt-user-svg" viewBox="0 0 290 260" xmlns="http://www.w3.org/2000/svg" overflow="visible" role="img" aria-label="Your trust triangle: Clarity 50, Connection 50, Confidence 50">
+            <defs>
+              <linearGradient id="tt-user-grad" x1="0.5" y1="0" x2="0.5" y2="1">
+                <stop offset="0%" stop-color="rgba(90,138,154,0.08)"/>
+                <stop offset="100%" stop-color="rgba(90,138,154,0.22)"/>
+              </linearGradient>
+              <filter id="tt-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+                <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.54  0 0 0 0 0.6  0 0 0 0.3 0" result="tealBlur"/>
+                <feMerge><feMergeNode in="tealBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <polygon id="tt-user-baseline" class="tt-baseline"/>
+            <polygon id="tt-user-poly" class="tt-fill" fill="url(#tt-user-grad)" filter="url(#tt-glow)"/>
+            <line id="tt-u-div1" class="tt-div"/> <line id="tt-u-div2" class="tt-div"/> <line id="tt-u-div3" class="tt-div"/>
+            <line id="tt-u-ec" class="tt-edge-c"/> <line id="tt-u-en" class="tt-edge-n"/> <line id="tt-u-ef" class="tt-edge-f"/>
+            <text id="tt-u-lc" class="tt-lbl lc"></text>
+            <text id="tt-u-ln" class="tt-lbl ln"></text>
+            <text id="tt-u-lf" class="tt-lbl lf"></text>
+            <text id="tt-u-vi" class="tt-vtx"></text>
+            <text id="tt-u-ve" class="tt-vtx"></text>
+            <text id="tt-u-vr" class="tt-vtx"></text>
+            <text id="tt-u-cen" class="tt-cen">Integrity</text>
+            <text id="tt-u-score" class="tt-cen" style="font-size:14px;font-weight:800;fill:var(--trust-cool);"></text>
+          </svg>
+        </div>
+        <div class="tt-tri-score">
+          <strong id="tt-user-composite">50</strong> your indicative trust score
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sliders -->
+    <div class="tt-sliders">
+
+      <div class="tt-slider-row">
+        <div class="tt-slider-head">
+          <span class="tt-driver-badge clarity">Clarity</span>
+          <span class="tt-slider-val clarity" id="tt-val-clarity">50</span>
+        </div>
+        <p class="tt-slider-question"><strong>How well do your stakeholders understand what your organisation stands for?</strong></p>
+        <input type="range" class="tt-slider clarity" id="tt-clarity" min="0" max="100" value="50" step="1" aria-label="Clarity score: 50">
+        <div class="tt-slider-labels"><span>Disconnected</span><span>Crystal clear</span></div>
+      </div>
+
+      <div class="tt-slider-row">
+        <div class="tt-slider-head">
+          <span class="tt-driver-badge connection">Connection</span>
+          <span class="tt-slider-val connection" id="tt-val-connection">50</span>
+        </div>
+        <p class="tt-slider-question"><strong>How consistent is the experience your stakeholders have across teams, channels and touchpoints?</strong></p>
+        <input type="range" class="tt-slider connection" id="tt-connection" min="0" max="100" value="50" step="1" aria-label="Connection score: 50">
+        <div class="tt-slider-labels"><span>Highly inconsistent</span><span>Completely coherent</span></div>
+      </div>
+
+      <div class="tt-slider-row">
+        <div class="tt-slider-head">
+          <span class="tt-driver-badge confidence">Confidence</span>
+          <span class="tt-slider-val confidence" id="tt-val-confidence">50</span>
+        </div>
+        <p class="tt-slider-question"><strong>How clearly can your stakeholders see your brand&#8217;s distinctive advantage and proof of follow-through?</strong></p>
+        <input type="range" class="tt-slider confidence" id="tt-confidence" min="0" max="100" value="50" step="1" aria-label="Confidence score: 50">
+        <div class="tt-slider-labels"><span>No visible distinction</span><span>Clear &amp; proven edge</span></div>
+      </div>
+
+    </div>
+
+    <!-- Comparison strip -->
+    <div class="tt-comparison" id="tt-comparison">
+      <div class="tt-comp-row">
+        <span class="tt-comp-driver clarity">Your Clarity:</span>
+        <span class="tt-comp-val" id="tt-comp-cl">50</span>
+        <span class="tt-comp-sep">&middot;</span>
+        <span class="tt-comp-sector">vs sector 81</span>
+        <span class="tt-comp-sep">&middot;</span>
+        <span class="tt-comp-delta neutral" id="tt-delta-cl">&minus;31</span>
+      </div>
+      <div class="tt-comp-row">
+        <span class="tt-comp-driver connection">Your Connection:</span>
+        <span class="tt-comp-val" id="tt-comp-cn">50</span>
+        <span class="tt-comp-sep">&middot;</span>
+        <span class="tt-comp-sector">vs sector 58</span>
+        <span class="tt-comp-sep">&middot;</span>
+        <span class="tt-comp-delta neutral" id="tt-delta-cn">&minus;8</span>
+      </div>
+      <div class="tt-comp-row">
+        <span class="tt-comp-driver confidence">Your Confidence:</span>
+        <span class="tt-comp-val" id="tt-comp-cf">50</span>
+        <span class="tt-comp-sep">&middot;</span>
+        <span class="tt-comp-sector">vs sector 62</span>
+        <span class="tt-comp-sep">&middot;</span>
+        <span class="tt-comp-delta neutral" id="tt-delta-cf">&minus;12</span>
+      </div>
+    </div>
+
+    <!-- Diagnostic sentence -->
+    <div class="tt-diagnostic" id="tt-diagnostic" aria-live="polite"></div>
+
+    <!-- CTA block -->
+    <div class="tt-cta-block">
+      <a href="/#book-demo" class="tt-cta-primary" id="tt-cta-btn">
+        See what TrustOS surfaces for your Connection gap &rarr;
+      </a>
+      <p class="tt-cta-subcopy">Book a 20-minute demo. We&#8217;ll prepare a baseline Trust Snapshot of your organisation before we meet.</p>
+      <div class="tt-cta-secondary-row">
+        <a href="/#book-demo" class="tt-cta-secondary">Or get a free AI-prepared Trust Snapshot for your organisation &mdash; ready in 48 hours, no call required &rarr;</a>
+        <button class="tt-share-btn" id="tt-share-btn" type="button">Share your result on LinkedIn</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Continue article after widget -->
+<article class="article-wrap" style="padding-top:52px;">
+  <div class="article-body">
+
+    <h2>The quarterly signal: what changes from here</h2>
+
+    <p>Trust in mining does not move in annual cycles. The signal is quarterly &mdash; shaped by ESG reporting seasons, community engagement milestones, regulatory consultations and market events.</p>
+
+    <p>TrustOS measures this quarterly signal across every stakeholder group. The sector benchmark above is the starting position. What matters is the trajectory: whether Connection is improving quarter-on-quarter, whether Confidence holds when a rehabilitation commitment is tested, whether Clarity sustains when the executive team changes.</p>
+
+    <p><strong>The trend is the signal.</strong> A single quarter's snapshot is useful for diagnosis. The trend over four quarters is what tells a board whether the trust position is strengthening, holding, or eroding before it shows in the numbers that everyone else watches.</p>
+
+    <h2>What this means for the next 12 months</h2>
+
+    <p>Mining enters the second half of 2026 with a trust shape that is <em>readable</em> &mdash; the drivers are measurable, the gaps are identifiable, and the levers are known. The question is no longer &ldquo;do we have a trust problem?&rdquo; It is &ldquo;which trust enabler gives us the most leverage, and can we prove it is moving?&rdquo;</p>
+
+    <p>For comms and corporate affairs leaders, the answer is almost always Connection. For investor relations teams, it is Confidence. For the CEO and board, it is the composite &mdash; the single number that tracks whether the brand is converting purpose into trust, quarter after quarter.</p>
+
+    <p>TrustOS exists to make that number visible, attributable, and actionable. The sector benchmark above is where the picture starts. Your organisation's shape is where it becomes useful.</p>
+
+  </div>
+</article>
+
+<!-- BOTTOM REPEAT CTA -->
+<div class="bottom-cta">
+  <div class="bottom-cta-card">
+    <div>
+      <h3>See where your organisation sits on the Mining trust picture</h3>
+      <p>Scroll back to the interactive diagnostic above, or book a 20-minute demo to see your full trust shape across every stakeholder group.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="#your-trust-picture" class="btn-primary" style="white-space:nowrap;">Run the diagnostic &uarr;</a>
+      <a href="/#book-demo" class="btn-ghost" style="white-space:nowrap;">Book a demo &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">
+      <span class="trust">Trust</span><span class="os">OS</span>
+    </a>
+    <p>&copy; 2026 MissionCTRL &middot; <a href="/" class="footer-link">trustos.missionctrl.agency</a></p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ── Sector benchmark data (parameterisable per sector) ── */
+  var SECTOR = {
+    clarity: 81,
+    connection: 58,
+    confidence: 62,
+    composite: 65,
+    label: 'Mining sector benchmark',
+    period: 'Q2 2026'
+  };
+
+  var STORAGE_KEY = 'trustos:sector-mining';
+
+  /* ── Diagnostic sentences (parameterisable per sector) ── */
+  var DIAGNOSTICS = {
+    connection: "Your Connection score sits below the sector benchmark. In mining, this is the live-edge gap — lived experience varying across regions, mines and communities while the group narrative stays consistent.",
+    confidence: "Your Confidence score sits below the sector. In mining, this is where activism lives — civil society and activist investors expose the gap between commitment and delivery.",
+    clarity: "Your Clarity score sits below the sector. The sector has largely closed this gap — your organisation is operating on a different baseline and the corporate narrative work is the highest-leverage move.",
+    allAbove: "Your shape is ahead of the sector benchmark. The sustaining question is whether the trend holds quarterly — TrustOS is built for the trend, not the snapshot."
+  };
+
+  /* ── CTA copy (parameterisable per sector) ── */
+  var CTA_COPY = {
+    connection: "See what TrustOS surfaces for your Connection gap →",
+    confidence: "See what TrustOS surfaces for your Confidence gap →",
+    clarity: "Your trust picture is unusual — see how TrustOS reads it →",
+    allAbove: "See how TrustOS sustains a leading trust position →"
+  };
+
+  /* ── Triangle geometry ── */
+  var C = {x: 145, y: 110}, R = 105;
+  var ang30 = Math.PI / 6;
+  var EQ = {
+    intent:      {x: C.x + R * Math.cos(Math.PI + ang30), y: C.y + R * Math.sin(Math.PI + ang30)},
+    expectation: {x: C.x, y: C.y + R},
+    reality:     {x: C.x + R * Math.cos(-ang30), y: C.y + R * Math.sin(-ang30)}
+  };
+
+  var baselinePoints = f1(EQ.intent.x) + ',' + f1(EQ.intent.y) + ' ' +
+    f1(EQ.expectation.x) + ',' + f1(EQ.expectation.y) + ' ' +
+    f1(EQ.reality.x) + ',' + f1(EQ.reality.y);
+
+  function computeVerts(cl, cn, cf) {
+    var fi = (cl + cf) / 200;
+    var fe = (cl + cn) / 200;
+    var fr = (cn + cf) / 200;
+    return {
+      intent:      {x: C.x + (EQ.intent.x - C.x) * fi,      y: C.y + (EQ.intent.y - C.y) * fi},
+      expectation: {x: C.x + (EQ.expectation.x - C.x) * fe, y: C.y + (EQ.expectation.y - C.y) * fe},
+      reality:     {x: C.x + (EQ.reality.x - C.x) * fr,     y: C.y + (EQ.reality.y - C.y) * fr}
+    };
+  }
+
+  function centroid(v) {
+    return {x: (v.intent.x + v.expectation.x + v.reality.x) / 3, y: (v.intent.y + v.expectation.y + v.reality.y) / 3};
+  }
+
+  function f1(n) { return n.toFixed(1); }
+
+  function setLn(id, a, b) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.setAttribute('x1', f1(a.x)); el.setAttribute('y1', f1(a.y));
+    el.setAttribute('x2', f1(b.x)); el.setAttribute('y2', f1(b.y));
+  }
+
+  function setTx(id, x, y, anchor, txt) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.setAttribute('x', f1(x)); el.setAttribute('y', f1(y));
+    el.setAttribute('text-anchor', anchor); el.textContent = txt;
+  }
+
+  function placeLbl(id, a, b, cen, txt) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+    var dx = b.x - a.x, dy = b.y - a.y, len = Math.sqrt(dx * dx + dy * dy);
+    if (len < 4) return;
+    var ang = Math.atan2(dy, dx) * 180 / Math.PI;
+    if (ang > 90) ang -= 180;
+    if (ang < -90) ang += 180;
+    var px = -dy / len, py = dx / len;
+    if (px * (cen.x - mx) + py * (cen.y - my) > 0) { px = -px; py = -py; }
+    var lx = mx + px * 14, ly = my + py * 14;
+    el.setAttribute('x', f1(lx)); el.setAttribute('y', f1(ly));
+    el.setAttribute('text-anchor', 'middle');
+    el.setAttribute('dominant-baseline', 'middle');
+    el.setAttribute('transform', 'rotate(' + ang.toFixed(1) + ',' + f1(lx) + ',' + f1(ly) + ')');
+    el.textContent = txt;
+  }
+
+  function edgeThickness(score) {
+    return 1.5 + (score / 100) * 2;
+  }
+
+  function edgeOpacity(score) {
+    return 0.4 + (score / 100) * 0.6;
+  }
+
+  function renderTriangle(prefix, cl, cn, cf) {
+    var v = computeVerts(cl, cn, cf);
+    var cen = centroid(v);
+    var I = v.intent, E = v.expectation, Rv = v.reality;
+
+    var poly = document.getElementById(prefix + '-poly');
+    if (poly) poly.setAttribute('points', f1(I.x) + ',' + f1(I.y) + ' ' + f1(E.x) + ',' + f1(E.y) + ' ' + f1(Rv.x) + ',' + f1(Rv.y));
+
+    var baseline = document.getElementById(prefix + '-baseline');
+    if (baseline) baseline.setAttribute('points', baselinePoints);
+
+    var pref = prefix === 'tt-sector' ? 'tt-s' : 'tt-u';
+    setLn(pref + '-div1', cen, I); setLn(pref + '-div2', cen, E); setLn(pref + '-div3', cen, Rv);
+    setLn(pref + '-ec', I, E); setLn(pref + '-en', E, Rv); setLn(pref + '-ef', Rv, I);
+
+    var ecEl = document.getElementById(pref + '-ec');
+    var enEl = document.getElementById(pref + '-en');
+    var efEl = document.getElementById(pref + '-ef');
+    if (ecEl) { ecEl.style.strokeWidth = edgeThickness(cl); ecEl.style.opacity = edgeOpacity(cl); }
+    if (enEl) { enEl.style.strokeWidth = edgeThickness(cn); enEl.style.opacity = edgeOpacity(cn); }
+    if (efEl) { efEl.style.strokeWidth = edgeThickness(cf); efEl.style.opacity = edgeOpacity(cf); }
+
+    placeLbl(pref + '-lc', I, E, cen, 'CLARITY');
+    placeLbl(pref + '-ln', E, Rv, cen, 'CONNECTION');
+    placeLbl(pref + '-lf', Rv, I, cen, 'CONFIDENCE');
+    setTx(pref + '-vi', I.x - 6, I.y - 10, 'end', 'Intent');
+    setTx(pref + '-ve', E.x, E.y + 16, 'middle', 'Expectation');
+    setTx(pref + '-vr', Rv.x + 6, Rv.y - 10, 'start', 'Reality');
+
+    var gc = document.getElementById(pref + '-cen');
+    if (gc) { gc.setAttribute('x', f1(cen.x)); gc.setAttribute('y', f1(cen.y - 10)); }
+
+    var sc = document.getElementById(pref + '-score');
+    if (sc) {
+      var composite = Math.round((cl + cn + cf) / 3);
+      sc.setAttribute('x', f1(cen.x));
+      sc.setAttribute('y', f1(cen.y + 6));
+      sc.textContent = composite;
+    }
+  }
+
+  function updateTrack(id, val, color) {
+    var el = document.getElementById(id);
+    if (el) el.style.background = 'linear-gradient(to right, ' + color + ' ' + val + '%, rgba(255,255,255,0.08) ' + val + '%)';
+  }
+
+  function getDelta(userVal, sectorVal) {
+    var diff = userVal - sectorVal;
+    var prefix = diff >= 0 ? '+' : '−';
+    var cls = diff >= 3 ? 'above' : diff <= -3 ? 'below' : 'neutral';
+    return { text: prefix + Math.abs(diff), cls: cls };
+  }
+
+  function getLowest(cl, cn, cf) {
+    var min = Math.min(cl, cn, cf);
+    if (cl === min) return 'clarity';
+    if (cn === min) return 'connection';
+    return 'confidence';
+  }
+
+  function allAboveSector(cl, cn, cf) {
+    return cl >= SECTOR.clarity && cn >= SECTOR.connection && cf >= SECTOR.confidence;
+  }
+
+  function update() {
+    var cl = parseInt(document.getElementById('tt-clarity').value);
+    var cn = parseInt(document.getElementById('tt-connection').value);
+    var cf = parseInt(document.getElementById('tt-confidence').value);
+
+    document.getElementById('tt-val-clarity').textContent = cl;
+    document.getElementById('tt-val-connection').textContent = cn;
+    document.getElementById('tt-val-confidence').textContent = cf;
+
+    document.getElementById('tt-clarity').setAttribute('aria-label', 'Clarity score: ' + cl);
+    document.getElementById('tt-connection').setAttribute('aria-label', 'Connection score: ' + cn);
+    document.getElementById('tt-confidence').setAttribute('aria-label', 'Confidence score: ' + cf);
+
+    var userSvg = document.getElementById('tt-user-svg');
+    if (userSvg) userSvg.setAttribute('aria-label', 'Your trust triangle: Clarity ' + cl + ', Connection ' + cn + ', Confidence ' + cf);
+
+    updateTrack('tt-clarity', cl, '#5a8a9a');
+    updateTrack('tt-connection', cn, '#7cc4a8');
+    updateTrack('tt-confidence', cf, '#a78bdb');
+
+    var composite = Math.round((cl + cn + cf) / 3);
+    document.getElementById('tt-user-composite').textContent = composite;
+
+    renderTriangle('tt-user', cl, cn, cf);
+
+    document.getElementById('tt-comp-cl').textContent = cl;
+    document.getElementById('tt-comp-cn').textContent = cn;
+    document.getElementById('tt-comp-cf').textContent = cf;
+
+    var dCl = getDelta(cl, SECTOR.clarity);
+    var dCn = getDelta(cn, SECTOR.connection);
+    var dCf = getDelta(cf, SECTOR.confidence);
+
+    var elDCl = document.getElementById('tt-delta-cl');
+    var elDCn = document.getElementById('tt-delta-cn');
+    var elDCf = document.getElementById('tt-delta-cf');
+    elDCl.textContent = dCl.text; elDCl.className = 'tt-comp-delta ' + dCl.cls;
+    elDCn.textContent = dCn.text; elDCn.className = 'tt-comp-delta ' + dCn.cls;
+    elDCf.textContent = dCf.text; elDCf.className = 'tt-comp-delta ' + dCf.cls;
+
+    var diagEl = document.getElementById('tt-diagnostic');
+    var ctaBtn = document.getElementById('tt-cta-btn');
+
+    if (allAboveSector(cl, cn, cf)) {
+      diagEl.textContent = DIAGNOSTICS.allAbove;
+      ctaBtn.textContent = CTA_COPY.allAbove;
+    } else {
+      var lowest = getLowest(cl, cn, cf);
+      var lowestBelowSector = false;
+      if (lowest === 'clarity' && cl < SECTOR.clarity) lowestBelowSector = true;
+      if (lowest === 'connection' && cn < SECTOR.connection) lowestBelowSector = true;
+      if (lowest === 'confidence' && cf < SECTOR.confidence) lowestBelowSector = true;
+
+      if (lowestBelowSector) {
+        diagEl.textContent = DIAGNOSTICS[lowest];
+        ctaBtn.textContent = CTA_COPY[lowest];
+      } else {
+        diagEl.textContent = DIAGNOSTICS.allAbove;
+        ctaBtn.textContent = CTA_COPY.allAbove;
+      }
+    }
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({cl: cl, cn: cn, cf: cf}));
+    } catch (e) {}
+  }
+
+  function loadSaved() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        var data = JSON.parse(saved);
+        if (data.cl != null) document.getElementById('tt-clarity').value = data.cl;
+        if (data.cn != null) document.getElementById('tt-connection').value = data.cn;
+        if (data.cf != null) document.getElementById('tt-confidence').value = data.cf;
+      }
+    } catch (e) {}
+  }
+
+  renderTriangle('tt-sector', SECTOR.clarity, SECTOR.connection, SECTOR.confidence);
+
+  loadSaved();
+
+  ['tt-clarity', 'tt-connection', 'tt-confidence'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', update);
+  });
+
+  update();
+
+  /* ── LinkedIn share ── */
+  var shareBtn = document.getElementById('tt-share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function() {
+      var cl = document.getElementById('tt-clarity').value;
+      var cn = document.getElementById('tt-connection').value;
+      var cf = document.getElementById('tt-confidence').value;
+      var text = encodeURIComponent(
+        "I just ran the TrustOS Mining Trust Health Check. My shape vs the sector benchmark from the 2026 sector POV. Full read: " +
+        window.location.href.split('#')[0]
+      );
+      window.open(
+        'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href.split('#')[0]) + '&summary=' + text,
+        '_blank',
+        'width=600,height=400'
+      );
+    });
+  }
+
+  /* ── Scroll fade-up ── */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+
+})();
+</script>
+
+</body>
+</html>
