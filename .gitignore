@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Netlify CLI / build cache
+.netlify/
+node_modules/
+
+# Local dev
+.env
+.env.local

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sector Insights &mdash; TrustOS</title>
+  <meta name="description" content="TrustOS sector POVs and Trust Briefings — the methodology applied to live trust events across mission-driven industries." />
+  <meta property="og:title" content="TrustOS Sector Insights" />
+  <meta property="og:description" content="Live trust events, run through the TrustOS methodology — sector POVs across Energy, Mining, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trustos.missionctrl.agency/insights/" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --trust-slate: #2d3a4a;
+      --trust-cool:  #5a8a9a;
+      --trust-ice:   #6da0b8;
+      --trust-mid:   #8fb5c0;
+      --deep:        #0a0f1a;
+      --white:       #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Sora', system-ui, sans-serif;
+      color: rgba(255,255,255,0.78);
+      background: var(--deep);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.65;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(10,15,26,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav-left { display: flex; align-items: center; }
+    .nav-wordmark {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-wordmark .trust { color: #8fb5c0; }
+    .nav-wordmark .os { color: var(--trust-cool); }
+    .nav-product-link {
+      font-size: 0.62rem; font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      margin-left: 16px;
+      transition: color 0.2s;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .nav-product-link:hover { color: var(--trust-cool); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--trust-cool); }
+    .nav-cta {
+      font-size: 0.88rem; font-weight: 600;
+      padding: 10px 22px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #4a7a8a; transform: translateY(-1px); }
+
+    /* Page hero */
+    .page-hero { padding: 130px 5% 60px; position: relative; overflow: hidden; }
+    .page-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+    .breadcrumb {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--trust-cool); }
+    .breadcrumb .sep { color: rgba(255,255,255,0.25); }
+    .breadcrumb .here { color: var(--trust-cool); }
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 22px;
+    }
+    .page-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--trust-cool); display: block; }
+    .page-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800; line-height: 1.04;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      margin-bottom: 22px;
+    }
+    .page-hero h1 em {
+      color: var(--trust-cool);
+      font-style: normal;
+    }
+    .page-hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 300; line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+      max-width: 720px;
+    }
+
+    /* Article grid */
+    .insights-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 5% 60px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .insight-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+      display: block;
+    }
+    .insight-card:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(90,138,154,0.4);
+      transform: translateY(-2px);
+    }
+    .insight-card-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 0;
+      align-items: stretch;
+    }
+    .insight-card-content { padding: 40px 44px; }
+    .insight-card-eyebrow {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 16px;
+    }
+    .insight-card-eyebrow .latest-pill {
+      margin-left: 10px;
+      background: var(--trust-cool); color: var(--white);
+      font-size: 0.55rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 3px;
+      letter-spacing: 0.14em;
+    }
+    .insight-card h2 {
+      font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+    .insight-card p.desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .insight-card-chips {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .insight-card-chips .chip {
+      font-size: 0.68rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 4px;
+    }
+    .chip.clarity { background: rgba(90,138,154,0.12); color: #5a8a9a; }
+    .chip.connection { background: rgba(124,196,168,0.12); color: #7cc4a8; }
+    .chip.confidence { background: rgba(167,139,219,0.12); color: #a78bdb; }
+    .insight-card-meta {
+      display: flex; flex-wrap: wrap; gap: 16px 28px;
+      font-size: 0.72rem; color: rgba(255,255,255,0.4);
+    }
+    .insight-card-meta strong { color: rgba(255,255,255,0.7); font-weight: 600; }
+    .insight-card-meta .cta {
+      color: var(--trust-cool); font-weight: 600;
+      margin-left: auto;
+    }
+    .insight-card-img {
+      position: relative;
+      min-height: 280px;
+      background-size: cover;
+      background-position: center;
+    }
+    .insight-card-img.energy { background-image: url('/energy-integrity-test/banner.png'); }
+    .insight-card-img.mining { background-image: url('/mining-trust-window/banner.png'); }
+
+    /* Coming soon */
+    .coming-soon {
+      background: rgba(255,255,255,0.015);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 32px 44px;
+      text-align: center;
+    }
+    .coming-soon h3 {
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-bottom: 10px;
+    }
+    .coming-soon p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+    .coming-soon-list {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+      margin-top: 16px;
+    }
+    .coming-soon-list span {
+      font-size: 0.7rem; font-weight: 600;
+      padding: 5px 12px; border-radius: 4px;
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+    .coming-soon a {
+      color: var(--trust-cool);
+      border-bottom: 1px solid rgba(90,138,154,0.4);
+    }
+
+    /* CTA STRIP */
+    .cta-strip {
+      background: var(--trust-slate);
+      padding: 70px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-strip .grid-bg { opacity: 0.4; }
+    .cta-strip-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .cta-strip h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800; color: var(--white);
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-strip p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 26px;
+      line-height: 1.7;
+    }
+    .cta-btn {
+      display: inline-block;
+      font-size: 0.86rem; font-weight: 600;
+      padding: 13px 28px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px; border: 2px solid var(--trust-cool);
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { background: #4a7a8a; border-color: #4a7a8a; transform: translateY(-2px); }
+
+    /* Footer */
+    footer {
+      background: var(--deep);
+      padding: 48px 5% 36px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .footer-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 36px;
+    }
+    .footer-wordmark { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; }
+    .footer-wordmark .trust { color: #8fb5c0; }
+    .footer-wordmark .os { color: var(--trust-cool); }
+    .footer-brand-tagline { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin: 8px 0 14px; }
+    .footer-brand-desc { font-size: 0.76rem; color: rgba(255,255,255,0.3); line-height: 1.65; max-width: 360px; }
+    .footer-brand-desc a { color: var(--trust-cool); border-bottom: 1px solid rgba(90,138,154,0.4); }
+    .footer-col h4 { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { margin-bottom: 10px; }
+    .footer-nav-list a { font-size: 0.82rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-nav-list a:hover { color: var(--white); }
+    .footer-connect-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 12px; }
+    .footer-connect-item a { color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-connect-item a:hover { color: var(--trust-cool); }
+    .footer-legal {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.7rem; color: rgba(255,255,255,0.3); line-height: 1.65;
+    }
+    .footer-legal a { color: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-legal a:hover { color: var(--trust-cool); }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .insight-card-inner { grid-template-columns: 1fr; }
+      .insight-card-img { min-height: 220px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      .insight-card-content { padding: 28px 26px; }
+      .coming-soon { padding: 26px 22px; }
+      .nav-cta { font-size: 0.8rem; padding: 8px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="/" class="nav-wordmark">
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
+        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
+      </svg>
+      <span><span class="trust">Trust</span><span class="os">OS</span></span>
+    </a>
+    <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener">
+      <svg width="10" height="12" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="nav-mg" x1="0" y1="148" x2="120" y2="0"><stop offset="0%" stop-color="#ff6b2b"/><stop offset="100%" stop-color="#ffad3b"/></linearGradient><clipPath id="nav-mlc"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z"/></clipPath></defs><rect width="120" height="148" fill="url(#nav-mg)" clip-path="url(#nav-mlc)"/></svg>
+      A MissionCTRL product &rarr;
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/#health-check">Trust Health Check</a></li>
+    <li><a href="/#dashboard">Dashboard</a></li>
+    <li><a href="/#process">How it works</a></li>
+    <li><a href="/insights/" class="active">Sector Insights</a></li>
+  </ul>
+  <a href="/#book-demo" class="nav-cta">Book a demo</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="grid-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="/">TrustOS</a>
+      <span class="sep">/</span>
+      <span class="here">Sector Insights</span>
+    </div>
+    <div class="page-eyebrow">Sector POVs &amp; Trust Briefings</div>
+    <h1>Live trust events, run through the <em>methodology</em>.</h1>
+    <p class="page-hero-sub">When TrustOS is applied at sector level, the news cycle becomes a diagnostic. Each POV runs Intent, Expectation and Reality &mdash; with the three trust enablers and the Integrity foundation &mdash; against a current event in a mission-driven industry.</p>
+  </div>
+</section>
+
+<!-- INSIGHTS GRID -->
+<div class="insights-grid">
+
+  <!-- ENERGY (latest) -->
+  <a href="/energy-integrity-test/" class="insight-card">
+    <div class="insight-card-inner">
+      <div class="insight-card-content">
+        <div class="insight-card-eyebrow">2026 Sector POV  ·  Energy<span class="latest-pill">Latest</span></div>
+        <h2>When the chair falls. Energy&#8217;s Integrity test.</h2>
+        <p class="desc">Energy&#8217;s Integrity layer just became visible. The TrustOS methodology applied at sector level across Oil &amp; Gas, Utilities and Renewables &mdash; what the BP chair event proves about the foundation under every other trust claim.</p>
+        <div class="insight-card-chips">
+          <span class="chip clarity">Clarity 74</span>
+          <span class="chip connection">Connection 55</span>
+          <span class="chip confidence">Confidence 54</span>
+        </div>
+        <div class="insight-card-meta">
+          <span><strong>27 May 2026</strong></span>
+          <span>12 min read</span>
+          <span class="cta">Read the POV  &rarr;</span>
+        </div>
+      </div>
+      <div class="insight-card-img energy"></div>
+    </div>
+  </a>
+
+  <!-- MINING -->
+  <a href="/mining-trust-window/" class="insight-card">
+    <div class="insight-card-inner">
+      <div class="insight-card-content">
+        <div class="insight-card-eyebrow">2026 Sector POV  ·  Mining</div>
+        <h2>When the merger clears. Mining&#8217;s architecture test.</h2>
+        <p class="desc">Anglo Teck cleared Canada last month. The story underneath the approval is the one Mining hasn&#8217;t been telling itself: trust architecture is no longer a communications layer &mdash; it is deal infrastructure. The methodology applied at sector level across the major houses.</p>
+        <div class="insight-card-chips">
+          <span class="chip clarity">Clarity 81</span>
+          <span class="chip connection">Connection 58</span>
+          <span class="chip confidence">Confidence 62</span>
+        </div>
+        <div class="insight-card-meta">
+          <span><strong>27 May 2026</strong></span>
+          <span>12 min read</span>
+          <span class="cta">Read the POV  &rarr;</span>
+        </div>
+      </div>
+      <div class="insight-card-img mining"></div>
+    </div>
+  </a>
+
+  <!-- Coming soon -->
+  <div class="coming-soon">
+    <h3>More sector POVs publishing through 2026</h3>
+    <p>Local Government, Healthcare and Higher Education next in the rotation. Want an early read on your sector? <a href="/#book-demo">Book a Trust Snapshot demo</a>.</p>
+    <div class="coming-soon-list">
+      <span>Local Government</span>
+      <span>Healthcare</span>
+      <span>Higher Education</span>
+      <span>Financial Services</span>
+      <span>Social Housing</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="grid-bg"></div>
+  <div class="cta-strip-inner">
+    <h2>See your sector's Trust Shape &mdash; in your own scoring.</h2>
+    <p>Every POV maps a sector. The Trust Snapshot maps your house against it. Thirty minutes, your public disclosures, the methodology running on your own data.</p>
+    <a href="/#book-demo" class="cta-btn">Book a Trust Snapshot demo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <svg width="24" height="30" viewBox="0 0 120 148" fill="none">
+          <defs>
+            <linearGradient id="ft-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+            <filter id="ft-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
+          <polygon points="30,12 90,12 60,88" fill="url(#ft-tg)" filter="url(#ft-glow)"/>
+        </svg>
+        <span class="footer-wordmark"><span class="trust">Trust</span><span class="os">OS</span></span>
+      </div>
+      <p class="footer-brand-tagline" style="display:flex;align-items:center;gap:6px;">
+        <svg width="10" height="12" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="ft-mg" x1="0" y1="148" x2="120" y2="0"><stop offset="0%" stop-color="#ff6b2b"/><stop offset="100%" stop-color="#ffad3b"/></linearGradient><clipPath id="ft-mlc"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z"/></clipPath></defs><rect width="120" height="148" fill="url(#ft-mg)" clip-path="url(#ft-mlc)"/></svg>
+        A MissionCTRL product
+      </p>
+      <p class="footer-brand-desc">TrustOS is the measurement intelligence layer of the Brand Effect &mdash; MissionCTRL&#8217;s methodology for turning purpose-led brands into movements. <a href="https://missionctrl.agency" target="_blank" rel="noopener">Learn about the Brand Effect at missionctrl.agency</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul class="footer-nav-list">
+        <li><a href="/#model">What it measures</a></li>
+        <li><a href="/#dashboard">Dashboard</a></li>
+        <li><a href="/#process">How it works</a></li>
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/insights/">Sector Insights</a></li>
+        <li><a href="/#snapshot-form">Free Snapshot</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-connect-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://www.linkedin.com/company/112306250/" target="_blank" rel="noopener">Follow MissionCTRL on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    &copy; 2026 TrustOS &middot; A MissionCTRL product &middot; MissionCTRL Ltd &middot; Company No. 17018199 &middot; Registered in England &amp; Wales &middot; <a href="/">Privacy Policy</a> &middot; <a href="/">Cookie Policy</a>
+  </div>
+</footer>
+
+</body>
+</html>
