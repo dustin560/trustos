@@ -423,8 +423,23 @@
   .modal-foot .caveat{font-size:0.7rem;color:var(--text-faint);line-height:1.55;margin-bottom:14px;}
   .modal-foot .btn-row{display:flex;gap:10px;flex-wrap:wrap;}
   .dim-lbl{font-size:0.58rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:8px;}
+  /* booking step */
+  .back-est{display:inline-block;font-size:0.74rem;font-weight:600;color:var(--cool);text-decoration:none;cursor:pointer;margin-bottom:16px;}
+  .book-h{font-size:1.2rem;font-weight:800;color:white;letter-spacing:-0.02em;margin-bottom:6px;}
+  .book-d{font-size:0.82rem;color:var(--text-muted);line-height:1.5;margin-bottom:18px;}
+  .hp{position:absolute;left:-9999px;}
+  .fld{margin-bottom:13px;display:flex;flex-direction:column;gap:5px;}
+  .fld label{font-size:0.7rem;font-weight:700;letter-spacing:0.04em;color:var(--text-body);}
+  .fld label span{color:var(--text-faint);font-weight:500;}
+  .fld input,.fld textarea{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:10px 12px;color:var(--text-primary);font-family:inherit;font-size:0.88rem;}
+  .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--cool);}
+  #navSubmit{margin-top:6px;border:none;cursor:pointer;}
+  .book-thanks{font-size:0.92rem;color:var(--text-primary);line-height:1.5;margin-bottom:14px;border-left:2px solid var(--green);padding-left:12px;}
+  #calMount{border-radius:8px;overflow:hidden;}
   @media(max-width:560px){.chk-grid{grid-template-columns:1fr;}}
 </style>
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
 
@@ -802,7 +817,7 @@
       </div>
       <button class="modal-x" id="snapClose" aria-label="Close">&#215;</button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body modal-step" id="stepEstimate">
       <div class="modal-row">
         <div class="mr-lbl">Currency</div>
         <div class="cur-row" id="curRow"></div>
@@ -823,11 +838,37 @@
       </div>
       <div class="est" id="estBox"></div>
     </div>
-    <div class="modal-foot">
+    <div class="modal-foot" id="stepFoot">
       <div class="caveat">Indicative only &#8212; excludes bespoke programming and add-ons. Final scope and price are confirmed after a full data assessment. Non-&pound; values are converted at indicative rates; confirm before quoting.</div>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://missionctrl.agency#contact">Book the hour &#8594;</a>
+        <button class="btn btn-primary" id="goBook">Book a 30-min call &#8594;</button>
         <button class="btn btn-ghost" id="snapClose2">Close</button>
+      </div>
+    </div>
+    <div class="modal-body modal-step" id="stepBook" style="display:none;">
+      <a class="back-est" id="backToEst">&#8592; Back to estimate</a>
+      <div id="bookForm">
+        <div class="book-h">Book a 30-minute call</div>
+        <div class="book-d">Tell us where to reach you. We'll be alerted and bring your estimate to the call.</div>
+        <form name="navigator-booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" id="navForm">
+          <input type="hidden" name="form-name" value="navigator-booking">
+          <p class="hp"><label>Leave blank <input name="bot-field"></label></p>
+          <div class="fld"><label>Name</label><input type="text" name="name" required></div>
+          <div class="fld"><label>Work email</label><input type="email" name="email" required></div>
+          <div class="fld"><label>Company</label><input type="text" name="company" required></div>
+          <div class="fld"><label>Role <span>(optional)</span></label><input type="text" name="role"></div>
+          <div class="fld"><label>Anything to flag? <span>(optional)</span></label><textarea name="message" rows="2"></textarea></div>
+          <input type="hidden" name="estimate-currency" id="hfCur">
+          <input type="hidden" name="estimate-engagement" id="hfMode">
+          <input type="hidden" name="estimate-readiness" id="hfTier">
+          <input type="hidden" name="estimate-range" id="hfRange">
+          <input type="hidden" name="page" value="Solmax Navigator">
+          <button type="submit" class="btn btn-measure" id="navSubmit">Request my 30-min call &#8594;</button>
+        </form>
+      </div>
+      <div id="bookCal" style="display:none;">
+        <div class="book-thanks">Thanks &#8212; we've been alerted and have your estimate. Pick a time that suits you:</div>
+        <div id="calMount"></div>
       </div>
     </div>
   </div>
@@ -866,13 +907,32 @@
       '</div>';
   }
   var ov=document.getElementById('snapModal');
-  function openM(e){if(e)e.preventDefault();ov.classList.add('open');render();}
+  function openM(e){if(e)e.preventDefault();ov.classList.add('open');showEst();render();}
   function closeM(){ov.classList.remove('open');}
   document.getElementById('snapClose').onclick=closeM;
   document.getElementById('snapClose2').onclick=closeM;
   ov.addEventListener('click',function(e){if(e.target===ov)closeM();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
-  document.querySelectorAll('.btn-measure, .sn-cta, #stickyCta').forEach(function(el){el.addEventListener('click',openM);});
+  document.querySelectorAll('.btn-measure, .sn-cta, #stickyCta').forEach(function(el){if(ov.contains(el))return;el.addEventListener('click',openM);});
+  var stepEst=document.getElementById('stepEstimate'),stepFoot=document.getElementById('stepFoot'),stepBook=document.getElementById('stepBook');
+  function showEst(){if(stepBook)stepBook.style.display='none';if(stepEst)stepEst.style.display='block';if(stepFoot)stepFoot.style.display='flex';}
+  function showBook(){var t=tier(state.reality.size/REALITY.length),waves=state.mode==='annual'?WAVES_ANNUAL:1,fixed=FIXED*waves,field=FIELD*waves*t.f,total=fixed+field;
+    document.getElementById('hfCur').value=state.cur;
+    document.getElementById('hfMode').value=(state.mode==='annual'?'Annual (4 waves)':'Once-off (1 wave)');
+    document.getElementById('hfTier').value=t.name;
+    document.getElementById('hfRange').value=fmt(total*0.92)+' - '+fmt(total*1.08);
+    document.getElementById('bookForm').style.display='block';document.getElementById('bookCal').style.display='none';
+    stepEst.style.display='none';stepFoot.style.display='none';stepBook.style.display='block';}
+  var goBook=document.getElementById('goBook');if(goBook)goBook.addEventListener('click',showBook);
+  var backToEst=document.getElementById('backToEst');if(backToEst)backToEst.addEventListener('click',showEst);
+  function revealCal(name,email){document.getElementById('bookForm').style.display='none';document.getElementById('bookCal').style.display='block';var mount=document.getElementById('calMount');
+    if(window.Calendly&&Calendly.initInlineWidget){mount.style.minHeight='640px';Calendly.initInlineWidget({url:'https://calendly.com/dl-unicornunited/trustos-snapshot?hide_gdpr_banner=1',parentElement:mount,prefill:{name:name||'',email:email||''}});}
+    else{mount.innerHTML='<a class="btn btn-measure" target="_blank" rel="noopener" href="https://calendly.com/dl-unicornunited/trustos-snapshot">Open the scheduler &#8594;</a>';}}
+  var navForm=document.getElementById('navForm');
+  if(navForm)navForm.addEventListener('submit',function(e){e.preventDefault();var btn=document.getElementById('navSubmit');if(btn){btn.textContent='Sending…';btn.disabled=true;}var data=new FormData(navForm);
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()})
+      .then(function(){revealCal(data.get('name'),data.get('email'));})
+      .catch(function(){revealCal(data.get('name'),data.get('email'));});});
   render();
 })();
 </script>
