@@ -1508,7 +1508,21 @@
       .df-progress-indicator { gap: 16px; margin-bottom: 32px; }
     }
 
-  </style>
+  
+  /* demo modal */
+  .dm-ov{position:fixed;inset:0;z-index:300;background:rgba(5,8,15,0.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;}
+  .dm-ov.open{display:flex;}
+  .dm-box{position:relative;background:#0e1422;border:1px solid rgba(255,255,255,0.08);border-radius:14px;max-width:560px;width:100%;padding:30px 32px 32px;box-shadow:0 30px 80px rgba(0,0,0,0.6);}
+  .dm-x{position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:1.5rem;line-height:1;cursor:pointer;}
+  .dm-x:hover{color:#fff;}
+  .dm-eyebrow{font-size:0.6rem;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:10px;}
+  .dm-box h3{font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.2;margin-bottom:8px;}
+  .dm-sub{font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:20px;}
+  .dm-box form{display:flex;flex-direction:column;gap:13px;}
+  .dm-thanks{font-size:0.92rem;color:#fff;line-height:1.5;margin-bottom:14px;border-left:2px solid var(--trust-cool);padding-left:12px;}
+</style>
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
 
@@ -1533,7 +1547,7 @@
   </div>
   <ul class="nav-links">
     <li><a href="#health-check">Trust Health Check</a></li>
-    <li><a href="#dashboard">Dashboard</a></li>
+    
     <li><a href="#process">How it works</a></li>
     <li><a href="#sector-insights">Sector Insights</a></li>
   </ul>
@@ -1560,7 +1574,7 @@
       <p class="hero-sub hero-anim hero-anim-d3">TrustOS gives brand, comms and marketing leaders the data to prove their impact, pinpoint where trust is leaking, and walk into the boardroom with a recommendation the board respects.</p>
       <div class="hero-actions hero-anim hero-anim-d4">
         <a href="#navigator" class="btn-primary" style="font-size:0.9rem;padding:15px 38px;">Request your TrustOS Navigator</a>
-        <a href="#book-demo" class="btn-ghost" style="font-size:0.85rem;padding:13px 24px;">Book a demo &#8594;</a>
+        <a href="#" onclick="openDemo(event)" class="btn-ghost" style="font-size:0.85rem;padding:13px 24px;cursor:pointer;">Book a Demo</a>
       </div>
       <div class="hero-pillars hero-anim hero-anim-d5">
         <div class="hero-pillar">
@@ -1684,9 +1698,9 @@
           </div>
 
           <!-- Share buttons -->
-          <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=trustos.missionctrl.agency&summary=I+just+took+the+TrustOS+Trust+Health+Check" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.8rem;padding:11px 20px;text-decoration:none;cursor:pointer;">Share on LinkedIn &#8594;</a>
-            <button onclick="downloadTrustScore()" class="btn-ghost" style="font-size:0.8rem;padding:11px 20px;border:2px solid rgba(90,138,154,0.3);background:transparent;color:rgba(90,138,154,0.6);cursor:pointer;font-family:'Sora',sans-serif;">Download your Trust Score &#8595;</button>
+          <div style="display:none;">
+            
+            
           </div>
 
         </div>
@@ -1698,103 +1712,17 @@
       <div>
         <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:6px;">This is a high-level read</div>
         <p style="font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.85);margin-bottom:6px;line-height:1.3;">A full TrustOS deployment measures all of this across every stakeholder group, quarterly.</p>
-        <p style="font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.6;margin:0;">Below you can explore what the real dashboard looks like &#8212; with per-stakeholder trust scores, prioritised actions, and Brand AI that answers questions about your trust data.</p>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.6;margin:0;">Book a 30-minute demo to see the live dashboard built on your own stakeholder groups.</p>
       </div>
-      <a href="#dashboard" class="btn-ghost" style="font-size:0.8rem;padding:11px 22px;white-space:nowrap;flex-shrink:0;">See the full dashboard &#8595;</a>
+      <a href="#" onclick="openDemo(event)" class="btn-ghost" style="font-size:0.8rem;padding:11px 22px;white-space:nowrap;flex-shrink:0;cursor:pointer;">Book a Demo &#8594;</a>
     </div>
 
   </div>
 </section>
 
 <!-- FULL DASHBOARD -->
-<section id="dashboard" style="background:rgba(8,12,22,1);padding:72px 5% 80px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.05);">
-  <div class="grid-bg"></div>
-  <div style="max-width:1080px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:32px;">
-      <p class="section-label" style="justify-content:center;">The TrustOS Dashboard</p>
-      <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:10px;">What your leadership team sees every quarter.</h2>
-      <p style="font-size:0.85rem;color:rgba(255,255,255,0.35);max-width:540px;margin:0 auto;line-height:1.7;">Four stakeholder groups. Three drivers. One signal. Select a stakeholder to see their profile &#8212; or open <strong style="color:rgba(255,255,255,0.65);">Brand AI</strong> to see how TrustOS turns your data into an always-on brand intelligence layer you can question directly.</p>
-    </div>
-    <div class="demo-shell fade-up" id="demo-shell">
-
-        <!-- Header -->
-        <div class="demo-header">
-          <span class="demo-logo"><span class="t">Trust</span><span class="o">OS</span></span>
-          <div class="demo-tabs" id="demo-tabs">
-            <button class="demo-tab" data-tab="scores">Trust Scores</button>
-            <button class="demo-tab active" data-tab="insights">Insights &amp; Actions</button>
-            <button class="demo-tab" data-tab="ai">Brand AI &#9733;</button>
-          </div>
-          <span class="demo-period">Q1 2026</span>
-        </div>
-
-        <!-- ── TAB 1: TRUST SCORES ── -->
-        <div class="demo-panel" id="panel-scores">
-          <div class="mst-selector" id="mst-selector"></div>
-          <div class="mst-main">
-            <div class="mst-tri-wrap">
-              <svg viewBox="0 0 260 210" id="mst-featured-svg" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-                <defs>
-                  <linearGradient id="ft-tri-grad" x1="0.5" y1="0" x2="0.5" y2="1">
-                    <stop offset="0%" stop-color="rgba(90,138,154,0.06)"/>
-                    <stop offset="100%" stop-color="rgba(90,138,154,0.18)"/>
-                  </linearGradient>
-                </defs>
-                <polygon id="ft-poly" class="ft-fill"/>
-                <line id="ft-div1" class="ft-divider"/> <line id="ft-div2" class="ft-divider"/> <line id="ft-div3" class="ft-divider"/>
-                <line id="ft-ec" class="ft-edge-clarity"/> <line id="ft-en" class="ft-edge-connection"/> <line id="ft-ef" class="ft-edge-confidence"/>
-                <text id="ft-lc" class="ft-edge-label lc"></text> <text id="ft-ln" class="ft-edge-label ln"></text> <text id="ft-lf" class="ft-edge-label lf"></text>
-                <text id="ft-vi" class="ft-vertex"></text> <text id="ft-ve" class="ft-vertex"></text> <text id="ft-vr" class="ft-vertex"></text>
-                <text id="ft-cen" class="ft-center" text-anchor="middle" dominant-baseline="middle">Integrity</text>
-              </svg>
-            </div>
-            <div class="mst-scores">
-              <div>
-                <div class="mst-sh-label">Trust score</div>
-                <div class="mst-sh-big" id="mst-big-score">65</div>
-                <div class="mst-sh-trend up" id="mst-trend">&#9650; +8 vs prev.</div>
-              </div>
-              <div class="mst-bar-row"><span class="mst-bar-name clarity">Clarity</span><div class="mst-bar-track"><div class="mst-bar-fill clarity" id="mst-bar-c" style="width:78%"></div></div><span class="mst-bar-num" id="mst-num-c">78</span></div>
-              <div class="mst-bar-row"><span class="mst-bar-name connection">Connection</span><div class="mst-bar-track"><div class="mst-bar-fill connection" id="mst-bar-n" style="width:55%"></div></div><span class="mst-bar-num" id="mst-num-n">55</span></div>
-              <div class="mst-bar-row"><span class="mst-bar-name confidence">Confidence</span><div class="mst-bar-track"><div class="mst-bar-fill confidence" id="mst-bar-f" style="width:62%"></div></div><span class="mst-bar-num" id="mst-num-f">62</span></div>
-              <div class="what-changed" id="what-changed"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── TAB 2: INSIGHTS & ACTIONS ── -->
-        <div class="demo-panel active" id="panel-insights">
-          <div class="ia-stakeholder-row" id="ia-selector"></div>
-          <div class="ia-cards" id="ia-cards"></div>
-        </div>
-
-        <!-- ── TAB 3: BRAND AI CHAT ── -->
-        <div class="demo-panel" id="panel-ai">
-          <div style="padding:8px 2px 12px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:8px;">
-            <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(90,138,154,0.65);margin-bottom:4px;">Brand AI &#8212; your data, your questions</p>
-            <p style="font-size:0.7rem;color:rgba(255,255,255,0.35);line-height:1.6;margin:0;">TrustOS turns your trust data into an always-on brand intelligence layer. Every answer is anchored to your real stakeholder data &#8212; not generic AI. Ask anything below.</p>
-          </div>
-          <div class="ai-chat-wrap">
-            <div class="ai-messages" id="ai-messages"></div>
-            <div class="ai-suggestions" id="ai-suggestions"></div>
-            <div class="ai-input-row">
-              <input type="text" class="ai-input" id="ai-input" placeholder="Ask your dashboard anything...">
-              <button class="ai-send" id="ai-send">&#9656;</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="demo-footer">Per-stakeholder trust gaps. Shape becomes equilateral when all three drivers align &mdash; and TrustOS tells you how to get there.</div>
-      </div>
-    <div style="text-align:center;margin-top:36px;padding-top:4px;">
-      <a href="#book-demo" class="btn-primary" style="font-size:0.88rem;padding:14px 36px;display:inline-block;margin-bottom:12px;">Book a full demo &#8594;</a>
-      <p style="font-size:0.63rem;color:rgba(255,255,255,0.28);font-weight:500;line-height:1.6;">A one-hour session using your real stakeholder groups. No templates.</p>
-    </div>
-  </div>
-</section>
-
 <!-- BESPOKE -->
-<section style="background:rgba(8,12,22,1);padding:0 5% 72px;">
+<section style="background:var(--deep);padding:64px 5% 72px;border-top:1px solid rgba(255,255,255,0.05);">
   <div style="max-width:1080px;margin:0 auto;">
     <div class="bespoke-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;">
       <div>
@@ -1995,132 +1923,6 @@
   </section>
 
 <!-- DEMO FORM -->
-<section id="book-demo" style="background:var(--deep);padding:72px 5% 80px;border-top:1px solid rgba(255,255,255,0.05);">
-  <div class="grid-bg"></div>
-  <div style="max-width:860px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:44px;">
-      <p style="display:inline-flex;align-items:center;gap:10px;font-size:0.63rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:14px;justify-content:center;"><span style="width:20px;height:2px;background:var(--trust-cool);display:block;"></span>Join the organisations already measuring what matters.</p>
-      <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.12;">Get your organisation&#8217;s brand trust picture in one session.</h2>
-      <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);max-width:520px;margin:0 auto;line-height:1.75;">We use the latest AI technology to prepare your TrustOS Navigator &#8212; a baseline trust read from public signal &#8212; before we meet, so you arrive at a live, contextualised dashboard, not a generic demo. Share what you can below and we&#8217;ll do the rest.</p>
-    </div>
-
-    <form class="df-form" id="demo-form" name="trustos-demo" method="POST" data-netlify="true" onsubmit="return handleDemoSubmit(event)">
-      <input type="hidden" name="form-name" value="trustos-demo">
-
-      <!-- Progress Indicator -->
-      <div class="df-progress-indicator">
-        <div class="df-progress-step active" id="progress-step-1">Step 1 of 2</div>
-        <div class="df-progress-step" id="progress-step-2">Step 2 of 2 (optional)</div>
-      </div>
-
-      <!-- STEP 1: Your details + Sector -->
-      <div class="df-form-step active" id="form-step-1">
-        <!-- Contact Info Section -->
-        <div class="df-section">
-          <div class="df-section-label">Your details</div>
-          <div class="df-fields-2">
-            <div class="df-field">
-              <label class="df-label">Full name</label>
-              <input type="text" class="df-input" id="df-name" placeholder="Your name">
-            </div>
-            <div class="df-field">
-              <label class="df-label">Job title</label>
-              <input type="text" class="df-input" id="df-title" placeholder="e.g. Chief Brand Officer">
-            </div>
-            <div class="df-field">
-              <label class="df-label">Organisation</label>
-              <input type="text" class="df-input" id="df-org" placeholder="Your organisation">
-            </div>
-            <div class="df-field">
-              <label class="df-label">Work email</label>
-              <input type="email" class="df-input" id="df-email" placeholder="you@organisation.com">
-            </div>
-          </div>
-        </div>
-
-        <!-- Sector Selection -->
-        <div class="df-section">
-          <div class="df-section-label">Your sector</div>
-          <div class="df-fields-3">
-            <label class="df-sector-chip"><input type="radio" name="sector" value="manufacturing"> Manufacturing &amp; Resources</label>
-            <label class="df-sector-chip"><input type="radio" name="sector" value="professional"> Professional Services</label>
-            <label class="df-sector-chip"><input type="radio" name="sector" value="education"> Education</label>
-            <label class="df-sector-chip"><input type="radio" name="sector" value="socialcare"> Social Care &amp; Public Services</label>
-            <label class="df-sector-chip"><input type="radio" name="sector" value="healthcare"> Healthcare</label>
-            <label class="df-sector-chip"><input type="radio" name="sector" value="ngo"> NGO &amp; Charity</label>
-            <label class="df-sector-chip"><input type="radio" name="sector" value="tech"> Technology &amp; AI</label>
-            <label class="df-sector-chip"><input type="radio" name="sector" value="other"> Other</label>
-          </div>
-        </div>
-
-        <!-- Advance button for Step 1 -->
-        <div class="df-section" style="border:none;padding-top:4px;">
-          <button type="button" class="btn-primary df-step-advance-btn visible" onclick="advanceDemoForm()" style="font-size:0.9rem;padding:15px 40px;">Book your demo &#8594;</button>
-          <p style="font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:12px;line-height:1.6;">No worries about Step 2 &#8212; we can help you prepare for your demo without extra details.</p>
-        </div>
-      </div>
-
-      <!-- STEP 2: Optional customization -->
-      <div class="df-form-step" id="form-step-2">
-        <div class="df-section">
-          <div class="df-section-label" style="color:var(--trust-cool);">Help us prepare your demo (optional)</div>
-          <p class="df-optional-label">Want a more tailored demo? Tell us more:</p>
-
-          <!-- Trust self-assessment (snapshot questions) -->
-          <div style="margin-bottom:28px;">
-            <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:18px;line-height:1.6;">Rate your brand across the three trust drivers &#8212; this helps us focus the session on your biggest gaps.</p>
-            <div style="display:flex;flex-direction:column;gap:14px;">
-              <div class="df-q-block">
-                <label class="df-q-label">How clearly do your stakeholders understand what your brand stands for?</label>
-                <div class="df-rating-row" data-q="clarity"></div>
-              </div>
-              <div class="df-q-block">
-                <label class="df-q-label">How consistent is the brand experience across your stakeholder groups?</label>
-                <div class="df-rating-row" data-q="connection"></div>
-              </div>
-              <div class="df-q-block">
-                <label class="df-q-label">How well can your stakeholders articulate your brand&#8217;s distinctive advantage?</label>
-                <div class="df-rating-row" data-q="confidence"></div>
-              </div>
-              <div class="df-q-block">
-                <label class="df-q-label">Where is the single biggest trust gap slowing your brand&#8217;s momentum?</label>
-                <textarea class="df-input df-textarea" id="df-trustleak" placeholder="e.g. Internal teams and external messaging are misaligned. Clients like us but can&#39;t explain why we&#39;re different. Leadership isn&#39;t telling a coherent story..."></textarea>
-              </div>
-            </div>
-          </div>
-
-          <!-- Data availability -->
-          <div>
-            <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:18px;line-height:1.6;">We use AI to analyse your available materials and prepare your TrustOS Navigator. Tick what you have &#8212; even partial data is useful.</p>
-            <div class="df-fields-2">
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="strategy"> Annual report / strategy documents</label>
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="brand"> Brand guidelines / messaging framework</label>
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="esg"> ESG / impact / sustainability report</label>
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="survey"> Previous stakeholder survey or NPS data</label>
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="brand_tracker"> Existing brand tracker or research</label>
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="comms"> Press / content archive (public)</label>
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="employee"> Employee engagement data</label>
-              <label class="df-check-item"><input type="checkbox" class="df-check" name="data" value="none"> None of the above yet</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Submit button for Step 2 -->
-        <div class="df-section" style="border:none;padding-top:4px;">
-          <button class="btn-primary" id="df-submit" onclick="submitDemoForm()" style="font-size:0.9rem;padding:15px 40px;border:none;cursor:pointer;font-family:'Sora',sans-serif;">Request a TrustOS session &#8594;</button>
-          <p style="font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:12px;line-height:1.6;">We&#8217;ll review your submission and come back within one working day to schedule your session. No commitment required.</p>
-          <div id="df-success" style="display:none;margin-top:20px;padding:18px 22px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:8px;">
-            <p style="font-size:0.82rem;font-weight:700;color:#4ade80;margin-bottom:4px;">&#10003; Request received.</p>
-            <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.6;margin:0;">We&#8217;ll review your details and be in touch within one working day to schedule your TrustOS session.</p>
-          </div>
-          <div id="df-error" style="display:none;margin-top:14px;font-size:0.72rem;color:#f87171;"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="grid-bg"></div>
@@ -2128,13 +1930,14 @@
     <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;">Ready to see your real trust picture?</p>
     <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1.1;margin-bottom:16px;">One hour.<br/>Your full trust picture, live.</h2>
     <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:460px;margin:0 auto 32px;line-height:1.75;">We run a live TrustOS session using your stakeholder groups. You see the dashboard with your context. No templates. No generic demos.</p>
-    <a href="#book-demo" class="btn-light" style="font-size:0.92rem;padding:16px 42px;font-weight:700;display:inline-block;">Book a demo &#8594;</a>
+    <a href="#" onclick="openDemo(event)" class="btn-light" style="font-size:0.92rem;padding:16px 42px;font-weight:700;display:inline-block;cursor:pointer;">Book a Demo</a>
     <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:14px;">Prefer to self-serve? <a href="#health-check" style="color:rgba(255,255,255,0.38);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.18);">Complete the Trust Health Check above.</a></p>
   </div>
 </section>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function() {
+if(!document.getElementById('demo-shell'))return;
 
 /* ── DATA ── */
 var SH = [
@@ -2815,7 +2618,7 @@ document.getElementById('ai-input').addEventListener('keydown',function(e){
       <h4>Navigate</h4>
       <ul class="footer-nav-list">
         <li><a href="#health-check">What it measures</a></li>
-        <li><a href="#dashboard">Dashboard</a></li>
+        
         <li><a href="#process">How it works</a></li>
         <li><a href="#sector-insights">Sector Insights</a></li>
         <li><a href="https://missionctrl.agency" target="_blank" rel="noopener">MissionCTRL Solutions</a></li>
@@ -3056,6 +2859,50 @@ document.getElementById('ai-input').addEventListener('keydown',function(e){
   };
 
 })();
+</script>
+
+<!-- BOOK A DEMO MODAL -->
+<div class="dm-ov" id="demoModal" role="dialog" aria-modal="true" aria-label="Book a TrustOS demo">
+  <div class="dm-box">
+    <button class="dm-x" onclick="closeDemo()" aria-label="Close">&#215;</button>
+    <div id="dm-step1">
+      <p class="dm-eyebrow">Book a 30-minute demo</p>
+      <h3>See TrustOS on your own stakeholder groups.</h3>
+      <p class="dm-sub">Tell us where to reach you, then pick a time. It&#8217;s a live 30-minute session &#8212; not a generic demo.</p>
+      <form name="trustos-demo" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="dm-form" onsubmit="return submitDemo(event)">
+        <input type="hidden" name="form-name" value="trustos-demo">
+        <p style="position:absolute;left:-9999px;"><label>Leave blank <input name="bot-field"></label></p>
+        <input type="text" class="df-input" id="dm-name" name="name" placeholder="Your name">
+        <input type="email" class="df-input" id="dm-email" name="email" placeholder="you@organisation.com">
+        <input type="text" class="df-input" id="dm-org" name="organisation" placeholder="Your organisation">
+        <input type="text" class="df-input" name="role" placeholder="Your role (optional)">
+        <div id="dm-error" style="display:none;color:#ef4444;font-size:0.8rem;"></div>
+        <button type="submit" class="btn-primary" id="dm-submit" style="width:100%;border:none;cursor:pointer;font-size:0.9rem;padding:14px;">Continue to scheduling &#8594;</button>
+      </form>
+    </div>
+    <div id="dm-step2" style="display:none;">
+      <button class="dm-x" onclick="closeDemo()" aria-label="Close">&#215;</button>
+      <p class="dm-thanks">Thanks &#8212; we&#8217;ve got your details and we&#8217;ve been alerted. Pick a time that suits you:</p>
+      <div id="dm-cal"></div>
+    </div>
+  </div>
+</div>
+<script>
+  window.openDemo=function(e){if(e)e.preventDefault();var m=document.getElementById('demoModal');m.classList.add('open');document.getElementById('dm-step1').style.display='block';document.getElementById('dm-step2').style.display='none';};
+  window.closeDemo=function(){document.getElementById('demoModal').classList.remove('open');};
+  window.submitDemo=function(e){e.preventDefault();
+    var n=document.getElementById('dm-name').value.trim(),em=document.getElementById('dm-email').value.trim(),o=document.getElementById('dm-org').value.trim(),err=document.getElementById('dm-error');err.style.display='none';
+    if(!n||!em||!o){err.textContent='Please add your name, email and organisation.';err.style.display='block';return false;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){err.textContent='Please enter a valid work email.';err.style.display='block';return false;}
+    var b=document.getElementById('dm-submit');b.textContent='Sending…';b.disabled=true;
+    var data=new FormData(document.getElementById('dm-form'));
+    fetch('/',{method:'POST',headers:{'Accept':'application/x-www-form-urlencoded'},body:new URLSearchParams(data)})
+      .then(function(){showDemoCal(n,em);}).catch(function(){showDemoCal(n,em);});
+    return false;};
+  function showDemoCal(n,em){document.getElementById('dm-step1').style.display='none';var s2=document.getElementById('dm-step2');s2.style.display='block';var m=document.getElementById('dm-cal');
+    if(window.Calendly&&Calendly.initInlineWidget){m.style.minHeight='640px';Calendly.initInlineWidget({url:'https://calendly.com/dl-unicornunited/trustos-demo?hide_gdpr_banner=1',parentElement:m,prefill:{name:n||'',email:em||''}});}
+    else{m.innerHTML='<a class="btn-primary" target="_blank" rel="noopener" href="https://calendly.com/dl-unicornunited/trustos-demo">Open the scheduler &#8594;</a>';}}
+  (function(){var ov=document.getElementById('demoModal');if(ov){ov.addEventListener('click',function(e){if(e.target===ov)closeDemo();});}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDemo();});if(/[?&]book=demo/.test(location.search)){window.addEventListener('load',function(){if(window.openDemo)openDemo();});}})();
 </script>
 </body>
 </html>
