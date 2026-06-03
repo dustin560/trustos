@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Trust Snapshot — TrustOS</title>
+  <title>Your TrustOS Navigator — TrustOS</title>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -498,7 +498,7 @@
 <nav>
   <div style="display:flex;align-items:center;gap:12px;">
     <a href="/" class="nav-wordmark"><span class="trust">Trust</span><span class="os">OS</span></a>
-    <span class="nav-badge">Snapshot Report</span>
+    <span class="nav-badge">Navigator Report</span>
   </div>
   <div class="nav-right" id="nav-name"></div>
 </nav>
@@ -520,7 +520,7 @@
 <div id="error-screen">
   <div class="error-icon">⊘</div>
   <div class="error-title">Analysis unavailable</div>
-  <div class="error-msg" id="error-msg">We were unable to generate your Trust Snapshot at this time. Please return and try again, or contact us directly.</div>
+  <div class="error-msg" id="error-msg">We were unable to generate your TrustOS Navigator at this time. Please return and try again, or contact us directly.</div>
   <button class="error-back" onclick="window.location.href='/'">← Return to TrustOS</button>
 </div>
 
@@ -529,7 +529,7 @@
 
   <!-- HEADER -->
   <div class="result-header">
-    <p class="result-eyebrow">TrustOS Snapshot</p>
+    <p class="result-eyebrow">TrustOS Navigator</p>
     <h1 id="result-title">Your Trust Profile</h1>
     <p class="result-meta" id="result-meta"></p>
   </div>
@@ -539,7 +539,7 @@
     <div class="score-main">
       <p class="s-label">Indicative Trust Score</p>
       <p class="s-value" id="score-overall">—</p>
-      <p class="s-sub">Based on your Snapshot inputs</p>
+      <p class="s-sub">Based on your Navigator inputs</p>
     </div>
     <div class="driver-score-block ds-clarity">
       <div>
@@ -566,7 +566,7 @@
 
   <!-- HEADLINE -->
   <div class="headline-card">
-    <div class="hc-label">Snapshot Headline</div>
+    <div class="hc-label">Navigator Headline</div>
     <p id="snapshot-headline">Generating your trust headline...</p>
   </div>
 
@@ -609,16 +609,16 @@
   <!-- CTA -->
   <div class="results-cta">
     <div class="cta-eyebrow">Next Step</div>
-    <h3>Turn this Snapshot into a full Trust Measurement system.</h3>
+    <h3>Turn this Navigator into a full TrustOS Snapshot.</h3>
     <p>A one-hour session with TrustOS gives you a live dashboard, quarterly tracking, and recommended interventions — mapped to your biggest trust leak.</p>
     <div class="cta-buttons">
-      <a href="mailto:hello@missionctrl.co?subject=TrustOS%20Snapshot%20-%20Book%20a%20Demo" class="btn-primary-cta">Book a TrustOS session →</a>
+      <a href="mailto:hello@missionctrl.agency?subject=TrustOS%20Navigator%20-%20Book%20a%20session" class="btn-primary-cta">Book a TrustOS session →</a>
       <a href="/" class="btn-ghost-cta">Return to TrustOS</a>
     </div>
   </div>
 
   <div class="snapshot-disclaimer">
-    <strong>About this Snapshot:</strong> This report is generated from your self-assessed inputs using TrustOS's trust framework (Clarity, Connection, Confidence, Integrity). It is an indicative diagnostic — not a statistically validated measurement. Scores are directional and based on the signals you provided. A full TrustOS deployment uses multi-stakeholder survey data, operational signals, and secondary research to produce board-ready trust intelligence. TrustOS is a product of MissionCTRL Ltd (Company No. 17018199, England &amp; Wales).
+    <strong>About this Navigator:</strong> This report is generated from your self-assessed inputs using TrustOS's trust framework (Clarity, Connection, Confidence, Integrity). It is an indicative diagnostic — not a statistically validated measurement. Scores are directional and based on the signals you provided. A full TrustOS deployment uses multi-stakeholder survey data, operational signals, and secondary research to produce board-ready trust intelligence. TrustOS is a product of MissionCTRL Ltd (Company No. 17018199, England &amp; Wales).
   </div>
 
 </main>
@@ -674,13 +674,13 @@
   var trustLeak  = params.get('trustleak') || '';
 
   if (!company) {
-    showError('No snapshot data found. Please complete the TrustOS Snapshot form first.');
+    showError('No Navigator data found. Please complete the TrustOS Navigator form first.');
     return;
   }
 
   // ── UI: populate known fields immediately ────────────────────────────
   qs('nav-name').textContent = name ? name + ' · ' + company : company;
-  qs('result-title').textContent = company + ' — Trust Snapshot';
+  qs('result-title').textContent = company + ' — TrustOS Navigator';
   var now = new Date();
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   qs('result-meta').innerHTML =
@@ -689,7 +689,7 @@
     'This report is indicative and based on self-assessed inputs.';
 
   // ── Build AI prompt ──────────────────────────────────────────────────
-  var systemPrompt = `You are a TrustOS Snapshot Analyst. You generate concise, actionable trust diagnostics for organisational leaders using the TrustOS framework.
+  var systemPrompt = `You are a TrustOS Navigator Analyst. You generate concise, actionable trust diagnostics for organisational leaders using the TrustOS framework.
 
 TrustOS measures trust through three drivers on a foundation of Integrity:
 - Clarity (Intent ↔ Expectation): Are promises clear, consistent, and decision-ready?
@@ -721,7 +721,7 @@ You MUST respond with ONLY a valid JSON object — no markdown, no preamble, no 
 
 Scores must be integers between 20 and 90. The overall score should be a weighted average of the three drivers. Base them on the self-assessed inputs — treat the clarity slider (1-10) and connection slider (0-100%) as primary signals, and the trust leak description as the key diagnostic input.`;
 
-  var userPrompt = `Generate a TrustOS Snapshot for the following organisation:
+  var userPrompt = `Generate a TrustOS Navigator for the following organisation:
 
 Company: ${company}
 Respondent: ${title ? title + (name ? ' (' + name + ')' : '') : (name || 'Unknown')}
@@ -731,7 +731,7 @@ Self-assessed inputs:
 2. CONNECTION — Stakeholder loyalty depth (0-100%, where 0 = purely transactional, 100 = unshakeable advocacy): ${connection}%
 3. CONFIDENCE / TRUST LEAK — Self-identified biggest trust leak slowing momentum: "${trustLeak || 'Not specified — respondent did not identify a specific trust leak.'}"
 
-Based on these signals, produce a TrustOS Snapshot in the JSON format specified. Make the analysis specific to these inputs, not generic. The lower the clarity score, the more acute the Clarity gap. The lower the connection score, the more acute the Connection risk. Use the trust leak description to anchor the Confidence analysis and priority actions.`;
+Based on these signals, produce a TrustOS Navigator in the JSON format specified. Make the analysis specific to these inputs, not generic. The lower the clarity score, the more acute the Clarity gap. The lower the connection score, the more acute the Connection risk. Use the trust leak description to anchor the Confidence analysis and priority actions.`;
 
   // ── Simulate loading progress while calling API ───────────────────────
   var loadingSteps = [
@@ -739,7 +739,7 @@ Based on these signals, produce a TrustOS Snapshot in the JSON format specified.
     [28, 'Calibrating Clarity indicators...'],
     [46, 'Analysing Connection depth...'],
     [64, 'Assessing Confidence evidence...'],
-    [80, 'Building your Snapshot...'],
+    [80, 'Building your Navigator...'],
     [92, 'Finalising report...']
   ];
   var stepIndex = 0;
@@ -790,7 +790,7 @@ Based on these signals, produce a TrustOS Snapshot in the JSON format specified.
   .catch(function(err) {
     clearInterval(loadingInterval);
     console.error(err);
-    showError('We could not generate your Snapshot right now. Please try again, or contact hello@missionctrl.co for a direct consultation.');
+    showError('We could not generate your Navigator right now. Please try again, or contact hello@missionctrl.agency for a direct consultation.');
   });
 
   // ── Render results ───────────────────────────────────────────────────
