@@ -1520,6 +1520,23 @@
   .dm-sub{font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:20px;}
   .dm-box form{display:flex;flex-direction:column;gap:13px;}
   .dm-thanks{font-size:0.92rem;color:#fff;line-height:1.5;margin-bottom:14px;border-left:2px solid var(--trust-cool);padding-left:12px;}
+
+  /* ── logo motion: ignition (once) + ambient ── */
+  .lg-ign .lg-outline{stroke-dasharray:100;animation:lgDraw 1.3s ease-out .2s both;}
+  .lg-ign .lg-tri{animation:lgFill .7s ease-out .9s both;}
+  .lg-ign .lg-glow{animation:lgGlowIn .7s ease-out 1s both, lgAmb 4s ease-in-out 2.8s infinite;}
+  .lg-ign .lg-mlight{animation:lgCast .9s ease-out 1.3s both, lgAmbM 4s ease-in-out 2.8s infinite;}
+  .lg-ign .lg-ring{transform-origin:60px 50px;animation:lgRing 1.1s ease-out 1.1s both;}
+  .lg-amb .lg-glow{animation:lgAmb 4s ease-in-out infinite;}
+  .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
+  @keyframes lgDraw{0%{stroke-dashoffset:100;opacity:1}70%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+  @keyframes lgFill{from{opacity:0}to{opacity:1}}
+  @keyframes lgGlowIn{from{opacity:0}to{opacity:.95}}
+  @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
+  @keyframes lgCast{from{opacity:0}to{opacity:.8}}
+  @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
+  @keyframes lgRing{0%{transform:scale(.92);opacity:0}25%{opacity:.55}100%{transform:scale(1.6);opacity:0}}
+  @media (prefers-reduced-motion: reduce){.lg-ign *,.lg-amb *{animation:none!important}}
 </style>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -1529,14 +1546,7 @@
 <nav>
   <div class="nav-left">
     <a href="/" class="nav-wordmark" style="display:flex;align-items:center;gap:10px;">
-      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
-        <defs>
-          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
-          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
-        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
-      </svg>
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" class="lg-amb" style="flex-shrink:0;"><defs><linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="nav-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="nav-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#nav-ml)"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#nav-glow)"/><polygon points="30,12 90,12 60,88" fill="url(#nav-tg)"/></svg>
       <span><span class="trust">Trust</span><span class="os">OS</span></span>
     </a>
     <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;">

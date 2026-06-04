@@ -958,6 +958,32 @@
   .dm-sub{font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:20px;}
   .dm-box form{display:flex;flex-direction:column;gap:13px;}
   .dm-thanks{font-size:0.92rem;color:#fff;line-height:1.5;margin-bottom:14px;border-left:2px solid var(--trust-cool);padding-left:12px;}
+  .hp-ic{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.18);margin-bottom:14px;}
+
+  /* ── logo motion: ignition (once) + ambient ── */
+  .lg-ign .lg-outline{stroke-dasharray:100;animation:lgDraw 1.3s ease-out .2s both;}
+  .lg-ign .lg-tri{animation:lgFill .7s ease-out .9s both;}
+  .lg-ign .lg-glow{animation:lgGlowIn .7s ease-out 1s both, lgAmb 4s ease-in-out 2.8s infinite;}
+  .lg-ign .lg-mlight{animation:lgCast .9s ease-out 1.3s both, lgAmbM 4s ease-in-out 2.8s infinite;}
+  .lg-ign .lg-ring{transform-origin:60px 50px;animation:lgRing 1.1s ease-out 1.1s both;}
+  .lg-amb .lg-glow{animation:lgAmb 4s ease-in-out infinite;}
+  .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
+  @keyframes lgDraw{0%{stroke-dashoffset:100;opacity:1}70%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+  @keyframes lgFill{from{opacity:0}to{opacity:1}}
+  @keyframes lgGlowIn{from{opacity:0}to{opacity:.95}}
+  @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
+  @keyframes lgCast{from{opacity:0}to{opacity:.8}}
+  @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
+  @keyframes lgRing{0%{transform:scale(.92);opacity:0}25%{opacity:.55}100%{transform:scale(1.6);opacity:0}}
+  @media (prefers-reduced-motion: reduce){.lg-ign *,.lg-amb *{animation:none!important}}
+
+  /* ── benefit tiles: ignite on hover ── */
+  .hero-pillar .hp-ic{transition:background .3s ease,border-color .3s ease;}
+  .hero-pillar .hp-ic svg{transition:filter .3s ease;}
+  .hero-pillar .hp-ic svg .hov-cast{opacity:0;transition:opacity .35s ease;}
+  .hero-pillar:hover .hp-ic{background:rgba(90,138,154,0.16);border-color:rgba(109,160,184,0.45);}
+  .hero-pillar:hover .hp-ic svg{filter:drop-shadow(0 0 6px rgba(109,160,184,0.55));}
+  .hero-pillar:hover .hp-ic svg .hov-cast{opacity:.55;}
 </style>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -968,14 +994,7 @@
 <nav>
   <div class="nav-left">
     <a href="#top" class="nav-wordmark" style="display:flex;align-items:center;gap:10px;">
-      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
-        <defs>
-          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
-          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
-        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
-      </svg>
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" class="lg-amb" style="flex-shrink:0;"><defs><linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="nav-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="nav-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#nav-ml)"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#nav-glow)"/><polygon points="30,12 90,12 60,88" fill="url(#nav-tg)"/></svg>
       <span><span class="trust">Trust</span><span class="os">OS</span></span>
     </a>
     <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;">
@@ -998,14 +1017,7 @@
   <div class="hero-inner">
     <div>
       <div class="hero-anim hero-anim-d1" style="display:flex;justify-content:center;margin-bottom:20px;">
-        <svg width="56" height="70" viewBox="0 0 120 148" fill="none">
-          <defs>
-            <linearGradient id="hero-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
-            <filter id="hero-glow"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          </defs>
-          <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
-          <polygon points="30,12 90,12 60,88" fill="url(#hero-tg)" filter="url(#hero-glow)"/>
-        </svg>
+        <svg width="56" height="70" viewBox="0 0 120 148" fill="none" class="lg-ign"><defs><linearGradient id="hero-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="hero-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="hero-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#hero-ml)"/><polygon class="lg-ring" points="30,12 90,12 60,88" fill="none" stroke="#6da0b8" stroke-width="2"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#hero-glow)"/><polygon class="lg-tri" points="30,12 90,12 60,88" fill="url(#hero-tg)"/><polygon class="lg-outline" points="30,12 90,12 60,88" fill="none" stroke="#8fb5c0" stroke-width="1.6" pathLength="100"/></svg>
       </div>
       <p class="hero-eyebrow hero-anim hero-anim-d1">Built for brand, comms &amp; marketing leaders</p>
       <h1 class="hero-anim hero-anim-d2">Prove what&#8217;s working. Find where trust is leaking. <em>Lead the next move.</em></h1>
@@ -1016,16 +1028,19 @@
       </div>
       <div class="hero-pillars hero-anim hero-anim-d5">
         <div class="hero-pillar">
-          <p class="hero-pillar-title">Prove impact</p>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="hb1" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><polygon class="hov-cast" points="23.4,7.1 18.7,24.6 5.9,11.8" fill="#6da0b8" filter="url(#hb1)" transform="translate(0,3)"/><path d="M5 28h20 stroke="#5a8a9a" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round"/><path d="M23.4 7.1L18.7 24.6 5.9 11.8z" stroke="#5a8a9a" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <p class="hero-pillar-title">Prove impact</p>
           <p class="hero-pillar-body">Show the board exactly where brand trust is strong &#8212; with scores, trends and evidence they act on.</p>
         </div>
         <div class="hero-pillar">
-          <p class="hero-pillar-title">Spot the leaks</p>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="hb2" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><polygon class="hov-cast" points="16,5 5,26 27,26" fill="#6da0b8" filter="url(#hb2)" transform="translate(0,3)"/><path d="M16 5L5 26h22 stroke="#5a8a9a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M16 5l4.2 8" stroke="#5a8a9a" stroke-width="1.8" stroke-linecap="round"/><path d="M24.2 20.5L27 26" stroke="#5a8a9a" stroke-width="1.8" stroke-linecap="round"/><circle cx="22.3" cy="16.8" r="3.2" stroke="#5a8a9a" stroke-width="1.6"/></svg></div>
+            <p class="hero-pillar-title">Spot the leaks</p>
           <p class="hero-pillar-body">Identify the stakeholder groups and trust drivers where gaps are quietly eroding performance.</p>
         </div>
         <div class="hero-pillar">
-          <p class="hero-pillar-title">Own the conversation</p>
-          <p class="hero-pillar-body">Walk into the boardroom with data that commands respect and a clear plan for what needs to change.</p>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="hb3" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><polygon class="hov-cast" points="10,7.5 10,24.5 27,16" fill="#6da0b8" filter="url(#hb3)" transform="translate(2,2)"/><path d="M10 7.5v17a1.5 1.5 0 0 0 2.3 1.3l13.6-8.5a1.5 1.5 0 0 0 0-2.6L12.3 6.2A1.5 1.5 0 0 0 10 7.5z" fill="#5a8a9a"/></svg></div>
+            <p class="hero-pillar-title">Make the next move</p>
+          <p class="hero-pillar-body">Turn evidence into action &#8212; the data to align the room and move things forward.</p>
         </div>
       </div>
       <p class="hero-anim hero-anim-d6" style="font-size:0.62rem;color:rgba(255,255,255,0.22);font-weight:500;margin-top:28px;">Used across manufacturing, professional services &amp; regulated industries.</p>

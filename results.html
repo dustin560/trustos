@@ -488,7 +488,31 @@
       }
       .score-main { grid-column: 1 / -1; }
     }
-  </style>
+  
+  /* ── logo motion: ignition (once) + ambient ── */
+  .lg-ign .lg-outline{stroke-dasharray:100;animation:lgDraw 1.3s ease-out .2s both;}
+  .lg-ign .lg-tri{animation:lgFill .7s ease-out .9s both;}
+  .lg-ign .lg-glow{animation:lgGlowIn .7s ease-out 1s both, lgAmb 4s ease-in-out 2.8s infinite;}
+  .lg-ign .lg-mlight{animation:lgCast .9s ease-out 1.3s both, lgAmbM 4s ease-in-out 2.8s infinite;}
+  .lg-ign .lg-ring{transform-origin:60px 50px;animation:lgRing 1.1s ease-out 1.1s both;}
+  .lg-amb .lg-glow{animation:lgAmb 4s ease-in-out infinite;}
+  .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
+  @keyframes lgDraw{0%{stroke-dashoffset:100;opacity:1}70%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+  @keyframes lgFill{from{opacity:0}to{opacity:1}}
+  @keyframes lgGlowIn{from{opacity:0}to{opacity:.95}}
+  @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
+  @keyframes lgCast{from{opacity:0}to{opacity:.8}}
+  @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
+  @keyframes lgRing{0%{transform:scale(.92);opacity:0}25%{opacity:.55}100%{transform:scale(1.6);opacity:0}}
+  @media (prefers-reduced-motion: reduce){.lg-ign *,.lg-amb *{animation:none!important}}
+
+  .bcn-tri{animation:bcnTri 5.5s ease-in-out infinite;}
+  .bcn-glow{animation:bcnGlow 5.5s ease-in-out infinite;}
+  .bcn-mlight{animation:bcnBeam 5.5s ease-in-out infinite;}
+  @keyframes bcnTri{0%{opacity:.18}14%{opacity:1}72%{opacity:1}88%,100%{opacity:.18}}
+  @keyframes bcnGlow{0%,8%{opacity:0}22%{opacity:.95}72%{opacity:.95}88%,100%{opacity:0}}
+  @keyframes bcnBeam{0%,16%{opacity:0}36%{opacity:.8}72%{opacity:.8}88%,100%{opacity:0}}
+</style>
 </head>
 <body>
 
@@ -497,7 +521,7 @@
 <!-- NAV -->
 <nav>
   <div style="display:flex;align-items:center;gap:12px;">
-    <a href="/" class="nav-wordmark" style="display:inline-flex;align-items:center;gap:9px;"><svg width="20" height="25" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;"><defs><linearGradient id="rs-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><polygon points="30,12 90,12 60,88" fill="url(#rs-tg)"/></svg><span><span class="trust">Trust</span><span class="os">OS</span></span></a>
+    <a href="/" class="nav-wordmark" style="display:inline-flex;align-items:center;gap:9px;"><svg width="20" height="25" viewBox="0 0 120 148" fill="none" class="lg-amb" style="flex-shrink:0;"><defs><linearGradient id="rs-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="rs-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="rs-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#rs-ml)"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#rs-glow)"/><polygon points="30,12 90,12 60,88" fill="url(#rs-tg)"/></svg><span><span class="trust">Trust</span><span class="os">OS</span></span></a>
     <span class="nav-badge">Navigator Report</span>
   </div>
   <div class="nav-right" id="nav-name"></div>
@@ -506,10 +530,7 @@
 <!-- LOADING SCREEN -->
 <div id="loading-screen">
   <div class="loading-wordmark"><span class="trust">Trust</span><span class="os">OS</span></div>
-  <div class="loading-ring-wrap">
-    <div class="loading-ring"></div>
-    <div class="loading-ring-inner"></div>
-  </div>
+  <div style="display:flex;justify-content:center;"><svg width="84" height="104" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="ld-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="ld-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="ld-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.05"/><path class="bcn-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#ld-ml)"/><polygon class="bcn-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#ld-glow)"/><polygon class="bcn-tri" points="30,12 90,12 60,88" fill="url(#ld-tg)"/></svg></div>
   <div class="loading-progress-bar">
     <div class="loading-progress-fill" id="loading-bar"></div>
   </div>
