@@ -40,7 +40,7 @@
   .nav-product-link { font-size: 0.62rem; font-weight: 500; color: rgba(255,255,255,0.35); margin-left: 16px; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
   .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
   .nav-links a { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; }
-  .nav-cta { font-size: 0.78rem; font-weight: 600; padding: 9px 18px; border-radius: 4px; background: rgba(90,138,154,0.10); color: var(--cool); border: 1px solid rgba(90,138,154,0.25); display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+  .nav-cta { font-size: 0.88rem; font-weight: 600; padding: 10px 22px; background: #5a8a9a; color: #ffffff; border-radius: 6px; display: inline-flex; align-items: center; text-decoration: none; transition: background 0.2s, transform 0.15s; } .nav-cta:hover { background: #4a7a8a; transform: translateY(-1px); }
   .nav-cta .avatar { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, var(--cool), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-weight: 800; color: white; }
 
   .breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 14px 0; font-size: 0.7rem; color: var(--text-muted); border-bottom: 1px solid var(--line); }
@@ -444,6 +444,15 @@
   @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
   @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
   @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}}
+
+  /* four-arrow benefit icons */
+  .wc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
+  .wc-ic{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.18);}
+  .wc-ic .pulse-tri{fill:#5a8a9a;animation:triPulse 3s ease-in-out infinite;}
+  .why-card.c2 .pulse-tri{animation-delay:.4s;} .why-card.c3 .pulse-tri{animation-delay:.8s;}
+  .why-card:hover .pulse-tri{animation:none;opacity:1;}
+  @keyframes triPulse{0%,100%{opacity:.45}50%{opacity:1}}
+  @media (prefers-reduced-motion: reduce){.wc-ic .pulse-tri{animation:none!important;opacity:1;}}
 </style>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -508,9 +517,9 @@
   <!-- BENEFITS -->
   <section id="sense" style="border-bottom:none;padding:30px 0 6px;">
     <div class="why-grid">
-      <div class="why-card c1"><div class="wc-n">01</div><h3>See where trust is leaking</h3><p>Find the gaps between what you promise and what people experience &#8212; before they reach the numbers, or the news.</p></div>
-      <div class="why-card c2"><div class="wc-n">02</div><h3>Measure trust like revenue</h3><p>Turn trust into a number your leadership can act on.</p></div>
-      <div class="why-card c3"><div class="wc-n">03</div><h3>Take charge with data</h3><p>End the cross-functional debate once, with evidence everyone can see.</p></div>
+      <div class="why-card c1"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,5 25,5 16,28"/></svg></div><div class="wc-n">01</div></div><h3>See where trust is leaking</h3><p>Find the gaps between what you promise and what people experience &#8212; before they reach the numbers, or the news.</p></div>
+      <div class="why-card c2"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,27 25,27 16,4"/></svg></div><div class="wc-n">02</div></div><h3>Measure trust like revenue</h3><p>Turn trust into a number your leadership can act on.</p></div>
+      <div class="why-card c3"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="5,7 5,25 28,16"/></svg></div><div class="wc-n">03</div></div><h3>Take charge with data</h3><p>End the cross-functional debate once, with evidence everyone can see.</p></div>
     </div>
     <div class="why-connector">Whatever you are chasing &#8212; standing, answers, or proof &#8212; it starts with seeing where you stand today.</div>
   </section>

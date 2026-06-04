@@ -104,8 +104,8 @@
 
     /* ── HERO VALUE PILLARS ── */
     .hero-pillars {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 16px; max-width: 740px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; max-width: 980px; margin: 0 auto;
     }
     .hero-pillar {
       padding: 24px 20px; text-align: left;
@@ -594,7 +594,7 @@
     @media (max-width: 900px) {
       .hero-inner, .problem-grid, .dashboard-layout,
       .drivers-grid, .solutions-brief { grid-template-columns: 1fr; }
-      .hero-pillars { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .hero-pillars { grid-template-columns: 1fr 1fr; max-width: 600px; margin: 0 auto; }
       .snapshot-form { margin-top: 40px; }
       .phases { grid-template-columns: 1fr; }
       .nav-links { display: none; }
@@ -604,7 +604,10 @@
       .dml-item { grid-template-columns: 10px auto auto; }
       .dml-desc { display: none; }
     }
-  
+    @media (max-width: 540px) {
+      .hero-pillars { grid-template-columns: 1fr; max-width: 400px; }
+    }
+
     .proof-pill {
       font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
       padding:5px 12px;border-radius:20px;
@@ -977,13 +980,16 @@
   @keyframes lgRing{0%{transform:scale(.92);opacity:0}25%{opacity:.55}100%{transform:scale(1.6);opacity:0}}
   @media (prefers-reduced-motion: reduce){.lg-ign *,.lg-amb *{animation:none!important}}
 
-  /* ── benefit tiles: ignite on hover ── */
+  /* ── benefit tiles: pulsing solid triangles; hover = steady ── */
   .hero-pillar .hp-ic{transition:background .3s ease,border-color .3s ease;}
-  .hero-pillar .hp-ic svg{transition:filter .3s ease;}
-  .hero-pillar .hp-ic svg .hov-cast{opacity:0;transition:opacity .35s ease;}
   .hero-pillar:hover .hp-ic{background:rgba(90,138,154,0.16);border-color:rgba(109,160,184,0.45);}
-  .hero-pillar:hover .hp-ic svg{filter:drop-shadow(0 0 6px rgba(109,160,184,0.55));}
-  .hero-pillar:hover .hp-ic svg .hov-cast{opacity:.55;}
+  .hp-ic .pulse-tri{fill:#5a8a9a;animation:triPulse 3s ease-in-out infinite;}
+  .hero-pillar:nth-child(2) .hp-ic .pulse-tri{animation-delay:.4s;}
+  .hero-pillar:nth-child(3) .hp-ic .pulse-tri{animation-delay:.8s;}
+  .hero-pillar:nth-child(4) .hp-ic .pulse-tri{animation-delay:1.2s;}
+  .hero-pillar:hover .hp-ic .pulse-tri{animation:none;opacity:1;}
+  @keyframes triPulse{0%,100%{opacity:.45}50%{opacity:1}}
+  @media (prefers-reduced-motion: reduce){.hp-ic .pulse-tri{animation:none!important;opacity:1;}}
 </style>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -1028,19 +1034,24 @@
       </div>
       <div class="hero-pillars hero-anim hero-anim-d5">
         <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="hb1" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><polygon class="hov-cast" points="23.4,7.1 18.7,24.6 5.9,11.8" fill="#6da0b8" filter="url(#hb1)" transform="translate(0,3)"/><path d="M5 28h20 stroke="#5a8a9a" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round"/><path d="M23.4 7.1L18.7 24.6 5.9 11.8z" stroke="#5a8a9a" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-            <p class="hero-pillar-title">Prove impact</p>
-          <p class="hero-pillar-body">Show the board exactly where brand trust is strong &#8212; with scores, trends and evidence they act on.</p>
-        </div>
-        <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="hb2" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><polygon class="hov-cast" points="16,5 5,26 27,26" fill="#6da0b8" filter="url(#hb2)" transform="translate(0,3)"/><path d="M16 5L5 26h22 stroke="#5a8a9a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M16 5l4.2 8" stroke="#5a8a9a" stroke-width="1.8" stroke-linecap="round"/><path d="M24.2 20.5L27 26" stroke="#5a8a9a" stroke-width="1.8" stroke-linecap="round"/><circle cx="22.3" cy="16.8" r="3.2" stroke="#5a8a9a" stroke-width="1.6"/></svg></div>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,5 25,5 16,28"/></svg></div>
             <p class="hero-pillar-title">Spot the leaks</p>
           <p class="hero-pillar-body">Identify the stakeholder groups and trust drivers where gaps are quietly eroding performance.</p>
         </div>
         <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="hb3" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><polygon class="hov-cast" points="10,7.5 10,24.5 27,16" fill="#6da0b8" filter="url(#hb3)" transform="translate(2,2)"/><path d="M10 7.5v17a1.5 1.5 0 0 0 2.3 1.3l13.6-8.5a1.5 1.5 0 0 0 0-2.6L12.3 6.2A1.5 1.5 0 0 0 10 7.5z" fill="#5a8a9a"/></svg></div>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,27 25,27 16,4"/></svg></div>
+            <p class="hero-pillar-title">Prove impact</p>
+          <p class="hero-pillar-body">Show the board exactly where brand trust is strong &#8212; with scores, trends and evidence they act on.</p>
+        </div>
+        <div class="hero-pillar">
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="5,7 5,25 28,16"/></svg></div>
             <p class="hero-pillar-title">Make the next move</p>
           <p class="hero-pillar-body">Turn evidence into action &#8212; the data to align the room and move things forward.</p>
+        </div>
+        <div class="hero-pillar">
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="27,7 27,25 4,16"/></svg></div>
+            <p class="hero-pillar-title">Learn from every move</p>
+          <p class="hero-pillar-body">Track trust over time &#8212; every read deepens your picture of what builds it and what erodes it.</p>
         </div>
       </div>
       <p class="hero-anim hero-anim-d6" style="font-size:0.62rem;color:rgba(255,255,255,0.22);font-weight:500;margin-top:28px;">Used across manufacturing, professional services &amp; regulated industries.</p>
