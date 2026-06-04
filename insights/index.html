@@ -320,7 +320,14 @@
       .coming-soon { padding: 26px 22px; }
       .nav-cta { font-size: 0.8rem; padding: 8px 16px; }
     }
-  </style>
+  
+  /* logo ambient breathing */
+  .lg-amb .lg-glow{animation:lgAmb 4s ease-in-out infinite;}
+  .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
+  @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
+  @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
+  @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}}
+</style>
 </head>
 <body>
 
@@ -328,14 +335,7 @@
 <nav>
   <div class="nav-left">
     <a href="/" class="nav-wordmark">
-      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
-        <defs>
-          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
-          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
-        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
-      </svg>
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" class="lg-amb" style="flex-shrink:0;"><defs><linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="nav-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="nav-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#nav-ml)"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#nav-glow)"/><polygon points="30,12 90,12 60,88" fill="url(#nav-tg)"/></svg>
       <span><span class="trust">Trust</span><span class="os">OS</span></span>
     </a>
     <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener">
@@ -349,7 +349,7 @@
     <li><a href="/#process">How it works</a></li>
     <li><a href="/insights/" class="active">Sector Insights</a></li>
   </ul>
-  <a href="/?book=demo" class="nav-cta">Book a Demo</a>
+  <a href="/?request=navigator" class="nav-cta">Request a Navigator</a>
 </nav>
 
 <!-- PAGE HERO -->
