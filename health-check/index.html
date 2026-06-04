@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TrustOS — Brand Trust Measurement &amp; Intelligence</title>
-  <meta name="description" content="TrustOS measures brand trust across stakeholder groups — Clarity, Connection, Confidence — giving leadership a live signal of brand performance before it shows in the numbers.">
+  <title>Your Brand Trust Health Check — TrustOS</title>
+  <meta name="description" content="Rate your brand across the three trust drivers — Clarity, Connection, Confidence — in 60 seconds, and see your trust shape take form.">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -403,6 +403,72 @@
       padding-left: 16px;
     }
 
+    /* ── DASHBOARD ── */
+    .dashboard-section { background: var(--deep); position: relative; overflow: hidden; }
+    .dashboard-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 52px; }
+    .dashboard-copy p { font-size: 0.95rem; line-height: 1.85; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+    .module-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
+    .module-item {
+      display: flex; gap: 14px; padding: 13px 16px;
+      background: rgba(255,255,255,0.025); border-radius: 8px;
+      border-left: 2px solid var(--trust-cool);
+    }
+    .module-item:nth-child(2) { border-left-color: #7cc4a8; }
+    .module-item:nth-child(3) { border-left-color: #a78bdb; }
+    .module-item:nth-child(4) { border-left-color: rgba(240,184,85,0.6); }
+    .module-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: rgba(255,255,255,0.06); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 800; color: var(--trust-cool);
+    }
+    .module-text h4 { font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.82); margin-bottom: 3px; }
+    .module-text p { font-size: 0.76rem; line-height: 1.5; color: rgba(255,255,255,0.38); }
+    /* mock */
+    .dashboard-mock {
+      background: var(--deep); border-radius: 12px;
+      padding: 26px;
+      box-shadow: 0 20px 56px rgba(10,15,26,0.25);
+      position: sticky; top: 96px;
+    }
+    .mock-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+    .mock-logo {
+      font-size: 0.9rem; font-weight: 800;
+    }
+    .mock-logo .t { color: #8fb5c0; }
+    .mock-logo .o { color: var(--trust-cool); }
+    .mock-period {
+      font-size: 0.62rem; font-weight: 600; color: var(--trust-cool);
+      background: rgba(90,138,154,0.1); padding: 4px 10px; border-radius: 20px;
+    }
+    .mock-score-row { display: flex; gap: 12px; margin-bottom: 22px; }
+    .mock-score-block { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 14px; text-align: center; }
+    .mock-score-block .label {
+      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); display: block; margin-bottom: 5px;
+    }
+    .mock-score-block .val {
+      font-size: 1.7rem; font-weight: 800; letter-spacing: -0.04em; color: var(--trust-cool);
+    }
+    .mock-score-block.sm .val { font-size: 1.2rem; color: rgba(255,255,255,0.6); }
+    .mock-bars { display: flex; flex-direction: column; gap: 11px; margin-bottom: 18px; }
+    .mock-bar-row { display: grid; grid-template-columns: 72px 1fr 28px; align-items: center; gap: 10px; }
+    .mock-bar-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.4); }
+    .mock-bar-track { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .mock-bar-fill { height: 100%; border-radius: 2px; }
+    .mock-bar-fill.c1 { background: var(--trust-cool); width: 72%; }
+    .mock-bar-fill.c2 { background: #4a7a8a; width: 58%; }
+    .mock-bar-fill.c3 { background: #3a6a7a; width: 81%; }
+    .mock-bar-num { font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.5); text-align: right; }
+    .mock-chips { display: flex; gap: 7px; flex-wrap: wrap; }
+    .mock-chip {
+      font-size: 0.58rem; font-weight: 600; padding: 3px 7px;
+      border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .mock-chip.hi  { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .mock-chip.mid { background: rgba(90,138,154,0.1); color: var(--trust-cool); }
+    .mock-chip.lo  { background: rgba(45,58,74,0.15); color: rgba(255,255,255,0.5); }
+
     /* ── PROCESS ── */
     .process { background: var(--system-grey); }
     .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 52px; background: rgba(45,58,74,0.06); border-radius: 12px; overflow: hidden; }
@@ -493,6 +559,244 @@
     footer a.footer-link { color: var(--trust-cool); transition: color 0.2s; }
     footer a.footer-link:hover { color: #4a7a8a; }
     .footer-measure { font-size: 0.72rem; color: rgba(255,255,255,0.25); font-style: italic; }
+
+    /* ── SNAPSHOT FORM ── */
+    .snapshot-form {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px; padding: 28px 28px 24px;
+      backdrop-filter: blur(8px);
+      position: relative;
+      min-height: 420px;
+      display: flex; flex-direction: column;
+    }
+    .snapshot-header {
+      margin-bottom: 24px;
+    }
+    .snapshot-badge {
+      display: inline-block;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.12em;
+      background: var(--trust-cool); color: var(--white);
+      padding: 4px 10px; border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .snapshot-progress {
+      display: flex; align-items: center; gap: 0; margin-top: 12px;
+    }
+    .progress-step {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700;
+      color: rgba(255,255,255,0.25);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    .progress-step.active {
+      border-color: var(--trust-cool); color: var(--trust-cool);
+      background: rgba(90,138,154,0.12);
+    }
+    .progress-step.done {
+      border-color: var(--trust-cool); color: var(--white);
+      background: var(--trust-cool);
+    }
+    .progress-line {
+      flex: 1; height: 2px;
+      background: rgba(255,255,255,0.08);
+      position: relative; overflow: hidden;
+    }
+    .progress-fill {
+      position: absolute; top: 0; left: 0;
+      height: 100%; width: 0;
+      background: var(--trust-cool);
+      transition: width 0.4s ease;
+    }
+    .progress-line.filled .progress-fill { width: 100%; }
+
+    /* Form Steps */
+    .form-step {
+      display: none; flex-direction: column;
+      flex: 1;
+      animation: stepIn 0.35s ease-out;
+    }
+    .form-step.active { display: flex; }
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateX(16px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .step-label {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 4px;
+    }
+    .step-title {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--white); margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .step-question {
+      font-size: 0.85rem; line-height: 1.6;
+      color: rgba(255,255,255,0.45); margin-bottom: 20px;
+    }
+
+    /* Sliders */
+    .slider-wrap { margin-bottom: 20px; }
+    .snapshot-slider {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px; outline: none;
+      cursor: pointer;
+    }
+    .snapshot-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 22px; height: 22px;
+      background: var(--trust-cool); border-radius: 50%;
+      cursor: pointer; border: 3px solid var(--deep);
+      box-shadow: 0 0 0 2px var(--trust-cool);
+      transition: transform 0.15s;
+    }
+    .snapshot-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .snapshot-slider::-moz-range-thumb {
+      width: 22px; height: 22px;
+      background: var(--trust-cool); border-radius: 50%;
+      cursor: pointer; border: 3px solid var(--deep);
+      box-shadow: 0 0 0 2px var(--trust-cool);
+    }
+    .slider-labels {
+      display: flex; justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .slider-value {
+      text-align: center; margin-top: 10px;
+      font-size: 2rem; font-weight: 800;
+      color: var(--trust-cool); letter-spacing: -0.04em;
+    }
+
+    /* Textarea */
+    .snapshot-textarea {
+      width: 100%; min-height: 110px; padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; color: var(--white);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.88rem; line-height: 1.6;
+      resize: vertical; outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 20px;
+    }
+    .snapshot-textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .snapshot-textarea:focus { border-color: var(--trust-cool); }
+
+    /* Form Inputs */
+    .form-fields {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .snapshot-input {
+      width: 100%; padding: 12px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; color: var(--white);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.88rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .snapshot-input::placeholder { color: rgba(255,255,255,0.25); }
+    .snapshot-input:focus { border-color: var(--trust-cool); }
+    .snapshot-input.error { border-color: #ef4444; }
+    .email-hint {
+      font-size: 0.72rem; color: #ef4444;
+      margin-top: -4px;
+    }
+
+    /* Form Buttons */
+    .step-nav {
+      display: flex; gap: 12px; margin-top: auto;
+    }
+    .btn-next, .btn-submit {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 12px 24px;
+      background: var(--trust-cool); color: var(--white);
+      border: none; border-radius: 6px;
+      cursor: pointer; transition: all 0.2s;
+      margin-top: auto;
+    }
+    .btn-next:hover, .btn-submit:hover {
+      background: #4a7a8a; transform: translateY(-1px);
+    }
+    .btn-back {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 12px 24px;
+      background: transparent; color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 6px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+    .btn-submit {
+      flex: 1;
+    }
+
+    /* Loading */
+    .loading-animation {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px 0;
+    }
+    .loading-ring {
+      width: 48px; height: 48px;
+      border: 3px solid rgba(255,255,255,0.08);
+      border-top-color: var(--trust-cool);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text {
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.4);
+      margin-top: 18px;
+    }
+
+    /* Success */
+    .success-icon {
+      width: 56px; height: 56px; margin: 30px auto 18px;
+      background: var(--trust-cool); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 800; color: var(--white);
+    }
+    .success-title {
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .success-text {
+      font-size: 0.85rem; line-height: 1.65;
+      color: rgba(255,255,255,0.45);
+      max-width: 340px; margin: 0 auto;
+    }
+
+    /* ── SNAPSHOT SECTION ── */
+    .snapshot-section { background: var(--deep); position: relative; overflow: hidden; }
+    .snapshot-section .section-label { color: var(--trust-cool); }
+    .snapshot-section .section-label::before { background: var(--trust-cool); }
+    .snapshot-section .section-title { color: var(--white); }
+    .snapshot-section .section-title em { color: var(--trust-cool); }
+    .snapshot-framing {
+      font-size: 1rem; line-height: 1.85;
+      color: rgba(255,255,255,0.45);
+      max-width: 580px; margin: 18px 0 42px;
+    }
+    .snapshot-form-wrapper {
+      max-width: 560px;
+    }
 
     /* ── SLIDER ENHANCEMENTS ── */
     .slider-readout {
@@ -586,6 +890,132 @@
     @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
     .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── COMBINED TRUST GAP SECTION ── */
+    .tg-header { margin-bottom: 56px; }
+    .tg-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+    .tg-copy { padding-top: 8px; }
+    .tg-copy .problem-text {
+      font-size: 0.95rem; line-height: 1.85;
+      color: rgba(255,255,255,0.55); margin-bottom: 14px;
+    }
+    .tg-copy .problem-text strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .tg-callout {
+      border-left: 2px solid var(--trust-cool);
+      padding: 14px 18px; margin: 24px 0 32px;
+      background: rgba(90,138,154,0.06);
+      border-radius: 0 6px 6px 0;
+    }
+    .tg-callout p { font-size: 0.85rem; line-height: 1.65; color: rgba(255,255,255,0.65); }
+    .driver-mini-list { display: flex; flex-direction: column; gap: 3px; margin-bottom: 28px; }
+    .dml-item {
+      display: grid;
+      grid-template-columns: 10px 90px auto 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+      transition: background 0.2s;
+    }
+    .dml-item:hover { background: rgba(255,255,255,0.04); }
+    .dml-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dml-dot.clarity-dot    { background: var(--trust-cool); }
+    .dml-dot.connection-dot { background: #7cc4a8; }
+    .dml-dot.confidence-dot { background: #a78bdb; }
+    .dml-name { font-size: 0.8rem; font-weight: 700; }
+    .dml-name.clarity-name    { color: var(--trust-cool); }
+    .dml-name.connection-name { color: #7cc4a8; }
+    .dml-name.confidence-name { color: #a78bdb; }
+    .dml-axis { font-size: 0.63rem; color: rgba(255,255,255,0.28); font-weight: 500; }
+    .dml-desc { font-size: 0.68rem; color: rgba(255,255,255,0.38); line-height: 1.4; text-align: right; }
+    .interact-prompt { font-size: 0.72rem; color: rgba(255,255,255,0.3); font-weight: 500; }
+    .interact-prompt span { color: var(--trust-cool); }
+
+    /* Triangle SVG container */
+    .tg-visual { display: flex; flex-direction: column; align-items: center; }
+    .tri-svg-wrap { width: 100%; position: relative; }
+    .tri-svg-wrap svg { width: 100%; height: auto; overflow: visible; }
+
+    /* Polygon, lines, text */
+    .gap-tri-fill { fill: rgba(45,58,74,0.55); transition: fill 0.7s ease; }
+    .eq-achieved  .gap-tri-fill { fill: rgba(90,138,154,0.1); }
+    .gap-divider  { stroke: rgba(255,255,255,0.07); stroke-width: 1; fill: none; }
+    .gap-edge     { fill: none; stroke-width: 2.5; stroke-linecap: round; }
+    .gap-edge-clarity    { stroke: var(--trust-cool); }
+    .gap-edge-connection { stroke: #7cc4a8; }
+    .gap-edge-confidence { stroke: #a78bdb; }
+    .gap-edge-label {
+      font-family: 'Sora', sans-serif; font-size: 11px;
+      font-weight: 800; letter-spacing: 0.18em;
+    }
+    .gel-clarity    { fill: var(--trust-cool); }
+    .gel-connection { fill: #7cc4a8; }
+    .gel-confidence { fill: #a78bdb; }
+    .gap-vertex {
+      font-family: 'Sora', sans-serif; font-size: 13px;
+      font-weight: 700; fill: rgba(255,255,255,0.9);
+    }
+    .gap-center {
+      font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+      fill: rgba(240,184,85,0.6); text-anchor: middle; dominant-baseline: middle;
+      transition: fill 0.6s ease;
+    }
+    .eq-achieved .gap-center { fill: rgba(240,184,85,1); }
+    .eq-circle {
+      fill: none; stroke: rgba(90,138,154,0.3);
+      stroke-width: 1; stroke-dasharray: 5 8;
+      opacity: 0; transition: opacity 0.7s ease;
+    }
+    .eq-achieved .eq-circle { opacity: 1; }
+    @keyframes eq-pulse { 0%,100% { stroke-opacity:0.3; } 50% { stroke-opacity:0.75; } }
+    .eq-achieved .eq-circle { animation: eq-pulse 2.8s ease-in-out infinite; }
+
+    /* Score bar */
+    .gap-score-bar {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      width: 100%; max-width: 520px;
+      margin: 16px 0 20px;
+    }
+    .gsb-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.28); white-space: nowrap; }
+    .gsb-value { font-size: 2rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--white); transition: color 0.5s; min-width: 48px; }
+    .eq-achieved-score .gsb-value { color: var(--trust-cool); }
+    .gsb-track { flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .gsb-fill { height: 100%; background: var(--trust-cool); border-radius: 2px; transition: width 0.25s ease; }
+    .gsb-status { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.22); white-space: nowrap; transition: color 0.5s; }
+    .eq-achieved-score .gsb-status { color: var(--trust-cool); }
+
+    /* Sliders */
+    .gap-sliders { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 520px; }
+    .gap-slider-row { display: grid; grid-template-columns: 90px 1fr 32px; align-items: center; gap: 12px; }
+    .gsr-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
+    .gsr-label.l-clarity    { color: var(--trust-cool); }
+    .gsr-label.l-connection { color: #7cc4a8; }
+    .gsr-label.l-confidence { color: #a78bdb; }
+    .gsr-val { font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.4); text-align: right; font-variant-numeric: tabular-nums; }
+    input.gap-range { -webkit-appearance: none; width: 100%; height: 3px; border-radius: 2px; outline: none; cursor: pointer; }
+    input.gap-range::-webkit-slider-thumb { -webkit-appearance: none; width: 15px; height: 15px; border-radius: 50%; cursor: pointer; transition: transform 0.15s; }
+    input.gap-range::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    input.gap-range::-moz-range-thumb { width: 15px; height: 15px; border-radius: 50%; border: none; cursor: pointer; }
+    input#gap-clarity    { background: linear-gradient(to right, var(--trust-cool) 30%, rgba(255,255,255,0.08) 30%); }
+    input#gap-connection { background: linear-gradient(to right, #7cc4a8 45%, rgba(255,255,255,0.08) 45%); }
+    input#gap-confidence { background: linear-gradient(to right, #a78bdb 25%, rgba(255,255,255,0.08) 25%); }
+    input#gap-clarity::-webkit-slider-thumb    { background: var(--trust-cool); }
+    input#gap-connection::-webkit-slider-thumb { background: #7cc4a8; }
+    input#gap-confidence::-webkit-slider-thumb { background: #a78bdb; }
+    input#gap-clarity::-moz-range-thumb    { background: var(--trust-cool); }
+    input#gap-connection::-moz-range-thumb { background: #7cc4a8; }
+    input#gap-confidence::-moz-range-thumb { background: #a78bdb; }
 
     /* ── SECTOR INSIGHT CARD ── */
     #sector-insights a:hover { border-color: rgba(90,138,154,0.45); transform: translateY(-2px); }
@@ -795,6 +1225,138 @@
     }
 
 
+    /* ── HEALTH CHECK ── */
+    .hc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .hc-left { display: flex; flex-direction: column; gap: 20px; }
+
+    .hc-question {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 20px 22px;
+      transition: border-color 0.2s;
+    }
+    .hc-question:focus-within { border-color: rgba(255,255,255,0.14); }
+    .hc-q-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .hc-q-driver {
+      font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px;
+    }
+    .hc-q-driver.clarity    { background: rgba(90,138,154,0.12); color: #5a8a9a; }
+    .hc-q-driver.connection { background: rgba(124,196,168,0.12); color: #7cc4a8; }
+    .hc-q-driver.confidence { background: rgba(167,139,219,0.12); color: #a78bdb; }
+    .hc-q-val {
+      font-size: 1.4rem; font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1; min-width: 36px; text-align: right;
+    }
+    .hc-q-val.clarity    { color: #5a8a9a; }
+    .hc-q-val.connection { color: #7cc4a8; }
+    .hc-q-val.confidence { color: #a78bdb; }
+    .hc-q-text {
+      font-size: 0.82rem; color: rgba(255,255,255,0.65);
+      line-height: 1.6; margin-bottom: 14px;
+    }
+    .hc-q-text strong { color: rgba(255,255,255,0.88); font-weight: 600; }
+    .hc-q-labels { display: flex; justify-content: space-between; font-size: 0.56rem; color: rgba(255,255,255,0.22); font-weight: 500; margin-top: 7px; }
+
+    input.hc-slider { -webkit-appearance:none; width:100%; height:3px; border-radius:2px; outline:none; cursor:pointer; }
+    input.hc-slider::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; cursor:pointer; transition:transform 0.15s; }
+    input.hc-slider::-webkit-slider-thumb:hover { transform:scale(1.2); }
+    input#hc-clarity::-webkit-slider-thumb    { background:#5a8a9a; }
+    input#hc-connection::-webkit-slider-thumb { background:#7cc4a8; }
+    input#hc-confidence::-webkit-slider-thumb { background:#a78bdb; }
+
+    /* Right panel: triangle + score + insights */
+    .hc-right { position: sticky; top: 88px; }
+    .hc-result-panel {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 18px;
+    }
+    .hc-score-row {
+      display: flex; align-items: center; gap: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hc-ring {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.06);
+      border-top-color: #5a8a9a;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: border-top-color 0.5s;
+      position: relative;
+    }
+    #hc-overall {
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -0.05em;
+      color: #fff; line-height: 1;
+    }
+    .hc-score-meta { flex: 1; }
+    .hc-score-label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 4px; }
+    .hc-status { font-size: 0.7rem; font-weight: 700; }
+    .hc-status.good { color: #4ade80; }
+    .hc-status.mid  { color: #5a8a9a; }
+    .hc-status.risk { color: #f87171; }
+    .hc-score-note { font-size: 0.65rem; color: rgba(255,255,255,0.28); line-height: 1.5; }
+
+    /* Triangle in result panel */
+    .hc-tri-wrap { display: flex; justify-content: center; }
+    .hc-tri-wrap svg { width: 100%; max-width: 360px; height: auto; overflow: visible; }
+    .hc-tri-fill { fill: url(#hc-tri-grad); transition: fill 0.3s ease; }
+    .hc-tri-e-c  { stroke:#5a8a9a; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .hc-tri-e-n  { stroke:#7cc4a8; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .hc-tri-e-f  { stroke:#a78bdb; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .hc-tri-div  { stroke:rgba(90,138,154,0.1); stroke-width:1; fill:none; stroke-dasharray:3 3; }
+    .hc-tri-vtx  { font-family:'Sora',sans-serif; font-size:9px; font-weight:700; fill:rgba(255,255,255,0.65); }
+    .hc-tri-cen  { font-family:'Sora',sans-serif; font-size:8px; font-weight:600; fill:rgba(90,138,154,0.6); text-anchor:middle; dominant-baseline:middle; }
+    .hc-tri-lbl  { font-family:'Sora',sans-serif; font-size:7px; font-weight:800; letter-spacing:0.11em; }
+    .hc-tri-lbl.lc { fill:#5a8a9a; } .hc-tri-lbl.ln { fill:#7cc4a8; } .hc-tri-lbl.lf { fill:#a78bdb; }
+
+    /* Insight cards */
+    .hc-insights-label {
+      font-size: 0.56rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.22); margin-bottom: 6px;
+    }
+    #hc-insights { display: flex; flex-direction: column; gap: 8px; }
+    .hc-insight-card {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px; padding: 12px 14px;
+      opacity: 0.55; transition: opacity 0.3s;
+    }
+    .hc-insight-card.hc-primary { opacity: 1; border-color: rgba(255,255,255,0.09); }
+    .hc-ic-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .hc-ic-type {
+      font-size: 0.54rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 2px 8px; border-radius: 20px; text-transform: uppercase;
+    }
+    .hc-ic-type.leak  { background:rgba(248,113,113,0.1); color:#f87171; border:1px solid rgba(248,113,113,0.2); }
+    .hc-ic-type.watch { background:rgba(240,184,85,0.1);  color:#f0b855; border:1px solid rgba(240,184,85,0.2); }
+    .hc-ic-type.opp   { background:rgba(74,222,128,0.1);  color:#4ade80; border:1px solid rgba(74,222,128,0.2); }
+    .hc-ic-driver {
+      font-size: 0.56rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    .hc-ic-driver.clarity    { color:#5a8a9a; }
+    .hc-ic-driver.connection { color:#7cc4a8; }
+    .hc-ic-driver.confidence { color:#a78bdb; }
+    .hc-ic-title { font-size:0.78rem; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:5px; line-height:1.3; }
+    .hc-ic-body  { font-size:0.7rem; line-height:1.6; color:rgba(255,255,255,0.4); }
+    .hc-ic-action { font-size:0.68rem; font-weight:600; color:#5a8a9a; margin-top:7px; padding-top:7px; border-top:1px solid rgba(255,255,255,0.05); }
+    .hc-ic-action::before { content:'→ '; }
+
+    @media (max-width: 860px) {
+      .hc-layout { grid-template-columns: 1fr; }
+      .hc-right { position: static; }
+    }
+
+
     /* ── SECTOR ROWS ── */
     .sector-row {
       background: rgba(255,255,255,0.025);
@@ -962,12 +1524,11 @@
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
-<body>
 
-<!-- NAV -->
+<body>
 <nav>
   <div class="nav-left">
-    <a href="#top" class="nav-wordmark" style="display:flex;align-items:center;gap:10px;">
+    <a href="/" class="nav-wordmark" style="display:flex;align-items:center;gap:10px;">
       <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
         <defs>
           <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
@@ -986,278 +1547,146 @@
   <ul class="nav-links">
     <li><a href="/health-check/">Trust Health Check</a></li>
     
-    <li><a href="#process">How it works</a></li>
-    <li><a href="#sector-insights">Sector Insights</a></li>
+    <li><a href="/#process">How it works</a></li>
+    <li><a href="/#sector-insights">Sector Insights</a></li>
   </ul>
   <a href="#" onclick="openNav(event)" class="nav-cta" style="cursor:pointer;">Request a Navigator</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
+<div style="background:var(--deep);padding:64px 5% 0;text-align:center;position:relative;">
+  <p style="display:inline-flex;align-items:center;gap:10px;font-size:0.63rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--trust-cool);"><span style="width:20px;height:2px;background:var(--trust-cool);display:block;"></span>Free &#183; 60 seconds</p>
+  <h1 style="font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.1;margin:14px auto 10px;max-width:760px;">Your Brand Trust Health Check.</h1>
+  <p style="font-size:0.95rem;color:rgba(255,255,255,0.45);max-width:560px;margin:0 auto;line-height:1.7;">Three sliders. Your trust shape, live. Your highest-priority gap — and what to do about it.</p>
+</div>
+
+<!-- HEALTH CHECK -->
+<section id="health-check" style="background:var(--deep);padding:80px 5%;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.05);">
   <div class="grid-bg"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-anim hero-anim-d1" style="display:flex;justify-content:center;margin-bottom:20px;">
-        <svg width="56" height="70" viewBox="0 0 120 148" fill="none">
-          <defs>
-            <linearGradient id="hero-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
-            <filter id="hero-glow"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          </defs>
-          <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
-          <polygon points="30,12 90,12 60,88" fill="url(#hero-tg)" filter="url(#hero-glow)"/>
-        </svg>
-      </div>
-      <p class="hero-eyebrow hero-anim hero-anim-d1">Built for brand, comms &amp; marketing leaders</p>
-      <h1 class="hero-anim hero-anim-d2">Prove what&#8217;s working. Find where trust is leaking. <em>Lead the next move.</em></h1>
-      <p class="hero-sub hero-anim hero-anim-d3">TrustOS gives brand, comms and marketing leaders the data to prove their impact, pinpoint where trust is leaking, and walk into the boardroom with a recommendation the board respects.</p>
-      <div class="hero-actions hero-anim hero-anim-d4">
-        <a href="#" onclick="openNav(event)" class="btn-primary" style="font-size:0.9rem;padding:15px 38px;cursor:pointer;">Request your TrustOS Navigator</a>
-        <a href="#" onclick="openDemo(event)" class="btn-ghost" style="font-size:0.85rem;padding:13px 24px;cursor:pointer;">Book a Demo</a>
-      </div>
-      <div class="hero-pillars hero-anim hero-anim-d5">
-        <div class="hero-pillar">
-          <p class="hero-pillar-title">Prove impact</p>
-          <p class="hero-pillar-body">Show the board exactly where brand trust is strong &#8212; with scores, trends and evidence they act on.</p>
-        </div>
-        <div class="hero-pillar">
-          <p class="hero-pillar-title">Spot the leaks</p>
-          <p class="hero-pillar-body">Identify the stakeholder groups and trust drivers where gaps are quietly eroding performance.</p>
-        </div>
-        <div class="hero-pillar">
-          <p class="hero-pillar-title">Own the conversation</p>
-          <p class="hero-pillar-body">Walk into the boardroom with data that commands respect and a clear plan for what needs to change.</p>
-        </div>
-      </div>
-      <p class="hero-anim hero-anim-d6" style="font-size:0.62rem;color:rgba(255,255,255,0.22);font-weight:500;margin-top:28px;">Used across manufacturing, professional services &amp; regulated industries.</p>
-    </div>
-  </div>
-</section>
-
-<!-- HEALTH CHECK TEASER -->
-<section style="background:var(--deep);padding:80px 5%;border-top:1px solid rgba(255,255,255,0.05);position:relative;">
-  <div style="max-width:880px;margin:0 auto;text-align:center;">
-    <p class="section-label" style="display:inline-flex;justify-content:center;">Free &#183; 60 seconds</p>
-    <h2 style="font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin:10px 0 12px;line-height:1.12;">How much do your stakeholders trust you? <em style="color:var(--trust-cool);font-style:normal;">Rate it in 60 seconds.</em></h2>
-    <p style="font-size:0.88rem;color:rgba(255,255,255,0.42);max-width:520px;margin:0 auto 24px;line-height:1.7;">Move three sliders. Watch your trust shape form. See your highest-priority gap — then get it tested properly.</p>
-    <a href="/health-check/" class="btn-primary" style="font-size:0.9rem;padding:15px 38px;display:inline-block;">Take the Trust Health Check &#8594;</a>
-  </div>
-</section>
-
-<!-- BESPOKE -->
-<section style="background:var(--deep);padding:64px 5% 72px;border-top:1px solid rgba(255,255,255,0.05);">
   <div style="max-width:1080px;margin:0 auto;">
-    <div class="bespoke-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;">
-      <div>
-        <p class="section-label">Built for your organisation</p>
-        <h2 style="font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:14px;line-height:1.15;">Every TrustOS dashboard is configured for your sector, your stakeholders, your language.</h2>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.75;margin-bottom:16px;">High-trust categories have fundamentally different stakeholder relationships. A manufacturer&#8217;s relationship with a tier-one contractor is not the same as a university&#8217;s relationship with students. TrustOS adapts &#8212; the model is consistent, the language and stakeholder groups are yours.</p>
-        
-        <div style="padding:14px 18px;background:rgba(90,138,154,0.06);border-left:2px solid var(--trust-cool);border-radius:0 6px 6px 0;">
-          <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.65;margin:0;">TrustOS acts as a <strong style="color:rgba(255,255,255,0.85);font-weight:600;">single source of truth</strong> for brand trust &#8212; a live performance signal that connects what your brand promises to what stakeholders actually experience, updated every quarter.</p>
+
+    <!-- Header -->
+    <div style="margin-bottom:44px;">
+      <p class="section-label">Your Brand Trust Health Check</p>
+      <h2 style="font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:10px;line-height:1.12;">Rate your brand across the three trust drivers.<br/><em style="color:var(--trust-cool);font-style:normal;">See your trust picture take shape.</em></h2>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);max-width:540px;line-height:1.7;">Move each slider honestly. The triangle on the right morphs to reflect your shape &#8212; distorted when gaps exist, equilateral when all three align. Your highest-priority gap surfaces as an action below.</p>
+    </div>
+
+    <div class="hc-layout">
+
+      <!-- LEFT: Three questions -->
+      <div class="hc-left">
+
+        <div class="hc-question">
+          <div class="hc-q-head">
+            <span class="hc-q-driver clarity">Clarity</span>
+            <span class="hc-q-val clarity" id="hc-val-clarity">50</span>
+          </div>
+          <p class="hc-q-text"><strong>How well do your stakeholders understand what your organisation stands for?</strong><br/>Think about whether your frontline teams would describe your purpose the same way your leadership team does.</p>
+          <input type="range" class="hc-slider" id="hc-clarity" min="0" max="100" value="50" step="1">
+          <div class="hc-q-labels"><span>Disconnected</span><span>Crystal clear</span></div>
+        </div>
+
+        <div class="hc-question">
+          <div class="hc-q-head">
+            <span class="hc-q-driver connection">Connection</span>
+            <span class="hc-q-val connection" id="hc-val-connection">50</span>
+          </div>
+          <p class="hc-q-text"><strong>How consistent is the experience your stakeholders have of your organisation?</strong><br/>Does what they experience across teams, channels, and touchpoints match what you promise?</p>
+          <input type="range" class="hc-slider" id="hc-connection" min="0" max="100" value="50" step="1">
+          <div class="hc-q-labels"><span>Highly inconsistent</span><span>Completely coherent</span></div>
+        </div>
+
+        <div class="hc-question">
+          <div class="hc-q-head">
+            <span class="hc-q-driver confidence">Confidence</span>
+            <span class="hc-q-val confidence" id="hc-val-confidence">50</span>
+          </div>
+          <p class="hc-q-text"><strong>How clearly can your stakeholders see your brand&#8217;s distinctive advantage?</strong><br/>Can they point to proof &#8212; outcomes, evidence, and the specific qualities that make you credibly different?</p>
+          <input type="range" class="hc-slider" id="hc-confidence" min="0" max="100" value="50" step="1">
+          <div class="hc-q-labels"><span>No visible distinction</span><span>Clear &amp; proven edge</span></div>
+        </div>
+
+        <div style="padding:16px 20px;background:rgba(90,138,154,0.06);border:1px solid rgba(90,138,154,0.15);border-radius:8px;">
+          <p style="font-size:0.72rem;color:rgba(255,255,255,0.45);line-height:1.65;margin:0;">This is a high-level self-assessment. A full TrustOS deployment measures these drivers across every stakeholder group &#8212; Employees, Clients, Partners, Regulators &#8212; using validated survey data and qualitative signals, updated quarterly.</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Live result panel -->
+      <div class="hc-right">
+        <div class="hc-result-panel">
+
+          <!-- Score row -->
+          <div class="hc-score-row">
+            <div class="hc-ring" id="hc-ring">
+              <span id="hc-overall">50</span>
+            </div>
+            <div class="hc-score-meta">
+              <div class="hc-score-label">Your indicative trust score</div>
+              <div class="hc-status mid" id="hc-status">Gaps detected</div>
+            </div>
+            <p class="hc-score-note" style="font-size:0.6rem;color:rgba(255,255,255,0.22);line-height:1.5;max-width:120px;">Based on your inputs. Adjust sliders to refine.</p>
+          </div>
+
+          <!-- Triangle -->
+          <div class="hc-tri-wrap">
+            <svg viewBox="0 0 290 260" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+              <defs>
+                <linearGradient id="hc-tri-grad" x1="0.5" y1="0" x2="0.5" y2="1">
+                  <stop offset="0%" stop-color="rgba(90,138,154,0.08)"/>
+                  <stop offset="100%" stop-color="rgba(90,138,154,0.22)"/>
+                </linearGradient>
+                <filter id="hc-glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+                  <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.54  0 0 0 0 0.6  0 0 0 0.3 0" result="tealBlur"/>
+                  <feMerge><feMergeNode in="tealBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <polygon id="hc-poly" class="hc-tri-fill" filter="url(#hc-glow)"/>
+              <line id="hc-div1" class="hc-tri-div"/> <line id="hc-div2" class="hc-tri-div"/> <line id="hc-div3" class="hc-tri-div"/>
+              <line id="hc-ec" class="hc-tri-e-c"/> <line id="hc-en" class="hc-tri-e-n"/> <line id="hc-ef" class="hc-tri-e-f"/>
+              <text id="hc-lc" class="hc-tri-lbl lc"></text>
+              <text id="hc-ln" class="hc-tri-lbl ln"></text>
+              <text id="hc-lf" class="hc-tri-lbl lf"></text>
+              <text id="hc-vi" class="hc-tri-vtx"></text>
+              <text id="hc-ve" class="hc-tri-vtx"></text>
+              <text id="hc-vr" class="hc-tri-vtx"></text>
+              <text id="hc-cen" class="hc-tri-cen">Integrity</text>
+            </svg>
+          </div>
+
+          <!-- Insight cards -->
+          <div>
+            <div class="hc-insights-label">What TrustOS flags for your organisation</div>
+            <div id="hc-insights"></div>
+          </div>
+
+          <!-- Share buttons -->
+          <div style="display:none;">
+            
+            
+          </div>
+
         </div>
       </div>
-      <div>
-        <details class="ccd"><summary style="cursor:pointer;list-style:none;font-size:0.78rem;font-weight:700;color:var(--trust-cool);padding:13px 18px;border:1px solid rgba(90,138,154,0.3);border-radius:8px;display:block;">Sectors we work with &#183; 7 sectors</summary><div style="margin-top:14px;">
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="sector-row">
-            <div class="sector-name">Manufacturing &amp; Resources</div>
-            <div class="sector-sh">Clients &middot; Specifiers &middot; Contractors &middot; Regulators &middot; Communities &middot; Employees</div>
-          </div>
-          <div class="sector-row">
-            <div class="sector-name">Professional Services</div>
-            <div class="sector-sh">Clients &middot; Prospects &middot; Partners &middot; Talent &middot; Regulators &middot; Employees</div>
-          </div>
-          <div class="sector-row">
-            <div class="sector-name">Education</div>
-            <div class="sector-sh">Students &middot; Parents &middot; Employers &middot; Funders &middot; Regulators &middot; Staff</div>
-          </div>
-          <div class="sector-row">
-            <div class="sector-name">Social Care &amp; Public Services</div>
-            <div class="sector-sh">Service Users &middot; Commissioners &middot; Regulators &middot; Partners &middot; Staff</div>
-          </div>
-          <div class="sector-row">
-            <div class="sector-name">Healthcare</div>
-            <div class="sector-sh">Patients &middot; Clinicians &middot; Commissioners &middot; Regulators &middot; Partners</div>
-          </div>
-          <div class="sector-row">
-            <div class="sector-name">NGO &amp; Charity</div>
-            <div class="sector-sh">Beneficiaries &middot; Donors &middot; Funders &middot; Regulators &middot; Partners &middot; Staff</div>
-          </div>
-          <div class="sector-row">
-            <div class="sector-name">Technology &amp; AI</div>
-            <div class="sector-sh">Customers &middot; Partners &middot; Investors &middot; Talent &middot; Regulators</div>
+    </div>
+
+    <!-- RESULT-AWARE NEXT STEP -->
+        <div style="margin-top:52px;padding:32px 34px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:12px;text-align:center;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:10px;">Your next step</div>
+          <p id="hc-cta-line" style="font-size:1.08rem;font-weight:700;color:#fff;line-height:1.4;margin-bottom:8px;">See where your trust really stands — beyond self-assessment.</p>
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.65;max-width:540px;margin:0 auto 22px;">Request a free TrustOS Navigator or book a 30-minute demo — either way, your Health Check results come with you, so we start from where you are.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="#" onclick="openNav(event)" class="btn-primary" style="font-size:0.88rem;padding:14px 30px;cursor:pointer;">Request your TrustOS Navigator</a>
+            <a href="#" onclick="openDemo(event)" class="btn-ghost" style="font-size:0.85rem;padding:13px 24px;cursor:pointer;">Book a Demo</a>
           </div>
         </div>
-      </div></details>
-      </div>
-    </div>
+
   </div>
 </section>
 
-<!-- PROCESS -->
-<section style="background:var(--deep);padding:64px 5%;border-top:1px solid rgba(255,255,255,0.05);" id="process">
-  <div style="max-width:1080px;margin:0 auto;">
-    <p class="section-label">What happens next</p>
-    <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:40px;line-height:1.12;">Full deployment across stakeholder groups in six weeks.<br/>Board-ready insights from your first assessment.</h2>
-    <div class="phases">
-      <div class="phase fade-up"><div class="phase-num">01</div><p class="phase-sub">Sense</p><h3>Establish baseline</h3><p>We align on your stakeholder groups, data sources, and what the dashboard needs to show. Baseline live within six weeks.</p></div>
-      <div class="phase fade-up"><div class="phase-num">02</div><p class="phase-sub">Measure</p><h3>Track quarterly</h3><p>Every quarter: updated trust scores, driver breakdown, and a &#8220;what changed&#8221; narrative tied to real decisions and events.</p></div>
-      <div class="phase fade-up"><div class="phase-num">03</div><p class="phase-sub">Act</p><h3>Close the gaps</h3><p>Prioritised Insights &amp; Actions tell your leadership team exactly where to focus &#8212; and whether interventions are working.</p></div>
-    </div>
-  </div>
-</section>
+<!-- FULL DASHBOARD -->
 
-<!-- COMPARISON TABLE -->
-<section id="compare" style="background:var(--deep);padding:80px 5%;border-top:1px solid rgba(255,255,255,0.05);">
-  <div style="max-width:1080px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:40px;">
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.12;max-width:620px;margin:0 auto;">The tools you already run weren&#8217;t built to measure trust. <em style="color:var(--trust-cool);font-style:normal;">TrustOS is.</em></h2>
-    </div>
-    <details style="display:block;text-align:center;">
-      <summary style="cursor:pointer;list-style:none;display:inline-block;font-size:0.8rem;font-weight:700;color:var(--trust-cool);padding:12px 22px;border:1px solid rgba(90,138,154,0.3);border-radius:8px;">See how TrustOS compares &#8212; vs NPS, brand trackers &amp; employee surveys</summary>
-      <div style="overflow-x:auto;margin-top:24px;text-align:left;">
-      <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
-        <thead>
-          <tr style="border-bottom:2px solid rgba(90,138,154,0.3);">
-            <th style="padding:16px 12px;text-align:left;color:rgba(255,255,255,0.5);font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;border-right:1px solid rgba(90,138,154,0.15);">Capability</th>
-            <th style="padding:16px 12px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;border-right:1px solid rgba(90,138,154,0.15);">NPS</th>
-            <th style="padding:16px 12px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;border-right:1px solid rgba(90,138,154,0.15);">Brand Tracking</th>
-            <th style="padding:16px 12px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;border-right:1px solid rgba(90,138,154,0.15);">Employee Surveys</th>
-            <th style="padding:16px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">TrustOS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
-            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Measures trust specifically</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
-            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Multi-stakeholder</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
-            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Identifies trust drivers</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(90,138,154,0.1);">
-            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Board-ready reporting</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">✓</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
-            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
-          </tr>
-          <tr>
-            <td style="padding:14px 12px;color:rgba(255,255,255,0.65);border-right:1px solid rgba(90,138,154,0.15);">Actionable insights</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.35);border-right:1px solid rgba(90,138,154,0.15);">✗</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
-            <td style="padding:14px 12px;text-align:center;color:rgba(255,255,255,0.4);border-right:1px solid rgba(90,138,154,0.15);">◐</td>
-            <td style="padding:14px 12px;text-align:center;color:var(--trust-cool);font-weight:700;">✓</td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- SECTOR INSIGHTS -->
-<section id="sector-insights" style="background:var(--deep);padding:80px 5%;border-top:1px solid rgba(255,255,255,0.05);position:relative;overflow:hidden;">
-  <div class="grid-bg"></div>
-  <div style="max-width:1080px;margin:0 auto;position:relative;z-index:2;">
-    <div style="text-align:center;margin-bottom:48px;">
-      <p style="display:inline-flex;align-items:center;gap:10px;font-size:0.63rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:14px;justify-content:center;"><span style="width:20px;height:2px;background:var(--trust-cool);display:block;"></span>Sector Point of View</p>
-      <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.12;max-width:620px;margin:0 auto 12px;">Trust looks different in every sector.<br/><em style="color:var(--trust-cool);font-style:normal;">Here&#8217;s what the data shows.</em></h2>
-      <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);max-width:520px;margin:0 auto;line-height:1.75;">Each sector POV unpacks the trust shape for a specific industry &#8212; the drivers, the gaps, and what the best-positioned organisations are doing differently.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));max-width:1080px;margin:0 auto;gap:24px;">
-      <!-- ENERGY POV (latest) -->
-      <a href="/energy-integrity-test/" style="display:block;text-decoration:none;background:rgba(90,138,154,0.06);border:1px solid rgba(90,138,154,0.18);border-radius:12px;overflow:hidden;transition:border-color 0.2s,transform 0.15s;" onmouseover="this.style.borderColor='rgba(90,138,154,0.5)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(90,138,154,0.18)';this.style.transform='translateY(0)';">
-        <div style="aspect-ratio:16/9;background-image:url('/energy-integrity-test/banner.png');background-size:cover;background-position:center;border-bottom:1px solid rgba(255,255,255,0.05);"></div>
-        <div style="padding:28px 30px;">
-          <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:10px;">Energy &middot; Latest  ·  Q2 2026</p>
-          <h3 style="font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.2;margin-bottom:10px;">When the chair falls. Energy&#8217;s Integrity test.</h3>
-          <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:14px;">Energy&#8217;s Integrity layer just became visible. The TrustOS methodology applied at sector level across Oil &amp; Gas, Utilities and Renewables.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-            <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(90,138,154,0.12);color:#5a8a9a;">Clarity 74</span>
-            <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(124,196,168,0.12);color:#7cc4a8;">Connection 55</span>
-            <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(167,139,219,0.12);color:#a78bdb;">Confidence 54</span>
-          </div>
-          <span style="font-size:0.82rem;font-weight:600;color:var(--trust-cool);">Read the full sector POV &rarr;</span>
-        </div>
-      </a>
-
-      <!-- MINING POV -->
-      <a href="/mining-trust-window/" style="display:block;text-decoration:none;background:rgba(90,138,154,0.06);border:1px solid rgba(90,138,154,0.18);border-radius:12px;overflow:hidden;transition:border-color 0.2s,transform 0.15s;" onmouseover="this.style.borderColor='rgba(90,138,154,0.5)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(90,138,154,0.18)';this.style.transform='translateY(0)';">
-        <div style="aspect-ratio:16/9;background-image:url('/mining-trust-window/banner.png');background-size:cover;background-position:center;border-bottom:1px solid rgba(255,255,255,0.05);"></div>
-        <div style="padding:28px 30px;">
-          <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:10px;">Mining &middot; Q2 2026</p>
-          <h3 style="font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.2;margin-bottom:10px;">When the merger clears. Mining&#8217;s architecture test.</h3>
-          <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:14px;">Clarity 81. Connection 58. Confidence 62. Anglo Teck cleared Canada last month &mdash; the approval reveals what every other major&#8217;s deal architecture will now be measured against.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-            <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(90,138,154,0.12);color:#5a8a9a;">Clarity 81</span>
-            <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(124,196,168,0.12);color:#7cc4a8;">Connection 58</span>
-            <span style="font-size:0.68rem;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(167,139,219,0.12);color:#a78bdb;">Confidence 62</span>
-          </div>
-          <span style="font-size:0.82rem;font-weight:600;color:var(--trust-cool);">Read the full sector POV &rarr;</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Browse all link -->
-    <div style="text-align:center;margin-top:36px;">
-      <a href="/insights/" style="display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:600;color:var(--trust-cool);text-decoration:none;border-bottom:1px solid rgba(90,138,154,0.4);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='#6da0b8';this.style.borderColor='#6da0b8';" onmouseout="this.style.color='var(--trust-cool)';this.style.borderColor='rgba(90,138,154,0.4)';">Browse all Sector POVs &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="cta">
-  <div class="grid-bg"></div>
-  <div class="section-inner" style="text-align:center;">
-    <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;">Ready to see your real trust picture?</p>
-    <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1.1;margin-bottom:16px;">30 minutes.<br/>Your full trust picture, live.</h2>
-    <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:460px;margin:0 auto 32px;line-height:1.75;">We run a live TrustOS session using your stakeholder groups. You see the dashboard with your context. No templates. No generic demos.</p>
-    <a href="#" onclick="openDemo(event)" class="btn-light" style="font-size:0.92rem;padding:16px 42px;font-weight:700;display:inline-block;cursor:pointer;">Book a Demo</a>
-    <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:14px;">Prefer to self-serve? <a href="/health-check/" style="color:rgba(255,255,255,0.38);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.18);">Complete the Trust Health Check.</a></p>
-  </div>
-</section>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-
-
-
-
-
-
-
-<script>
-/* ── Scroll fade-up animation ── */
-(function() {
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.fade-up').forEach(function(el) {
-    observer.observe(el);
-  });
-})();
-</script>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
@@ -1283,8 +1712,8 @@
       <ul class="footer-nav-list">
         <li><a href="/health-check/">What it measures</a></li>
         
-        <li><a href="#process">How it works</a></li>
-        <li><a href="#sector-insights">Sector Insights</a></li>
+        <li><a href="/#process">How it works</a></li>
+        <li><a href="/#sector-insights">Sector Insights</a></li>
         <li><a href="https://missionctrl.agency" target="_blank" rel="noopener">MissionCTRL Solutions</a></li>
         <li><a href="#" onclick="openNav(event)" style="cursor:pointer;">Request a Navigator</a></li>
       </ul>
@@ -1305,6 +1734,29 @@
   </div>
 </footer>
 
+<!-- NAVIGATOR REQUEST MODAL -->
+<div class="dm-ov" id="navModal" role="dialog" aria-modal="true" aria-label="Request a TrustOS Navigator">
+  <div class="dm-box">
+    <button class="dm-x" onclick="closeNav()" aria-label="Close">&#215;</button>
+    <p class="dm-eyebrow">Free &#183; TrustOS Navigator</p>
+    <h3>See where your brand&#8217;s trust stands &#8212; free.</h3>
+    <p class="dm-sub">A no-cost read of how far your organisation is set up to be trusted &#8212; from public signals alone. Tell us who you are and we&#8217;ll prepare yours.</p>
+<form id="nav-form" name="trustos-navigator" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return handleNavSubmit(event)" style="max-width:520px;margin:0 auto;">
+        <input type="hidden" name="form-name" value="trustos-navigator"><input type="hidden" name="hc-clarity" id="f-hc-c"><input type="hidden" name="hc-connection" id="f-hc-n"><input type="hidden" name="hc-confidence" id="f-hc-f"><input type="hidden" name="hc-score" id="f-hc-s">
+        <p style="position:absolute;left:-9999px;"><label>Leave blank <input name="bot-field"></label></p>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <input type="text" class="df-input" id="nav-name" name="name" placeholder="Your name">
+          <input type="email" class="df-input" id="nav-email" name="email" placeholder="you@organisation.com">
+          <input type="text" class="df-input" id="nav-org" name="organisation" placeholder="Your organisation">
+          <input type="text" class="df-input" name="role" placeholder="Your role (optional)">
+          <div id="nav-error" style="display:none;color:#ef4444;font-size:0.8rem;"></div>
+          <button type="submit" id="nav-submit" class="btn-primary" style="width:100%;border:none;cursor:pointer;font-size:0.9rem;padding:15px;">Request my TrustOS Navigator &#8594;</button>
+          <div id="nav-success" style="display:none;color:var(--trust-cool);font-size:0.9rem;text-align:center;line-height:1.6;padding-top:6px;">Thanks &#8212; we&#8217;ve got your request and we&#8217;ll send your TrustOS Navigator shortly.</div>
+          <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);text-align:center;line-height:1.5;">A Navigator is a free public-signal read. To validate it with primary research, you move to a TrustOS Snapshot.</p>
+        </div>
+      </form>
+  </div>
+</div>
 
 <!-- BOOK A DEMO MODAL -->
 <div class="dm-ov" id="demoModal" role="dialog" aria-modal="true" aria-label="Book a TrustOS demo">
@@ -1333,32 +1785,332 @@
   </div>
 </div>
 
-
-<!-- NAVIGATOR REQUEST MODAL -->
-<div class="dm-ov" id="navModal" role="dialog" aria-modal="true" aria-label="Request a TrustOS Navigator">
-  <div class="dm-box">
-    <button class="dm-x" onclick="closeNav()" aria-label="Close">&#215;</button>
-    <p class="dm-eyebrow">Free &#183; TrustOS Navigator</p>
-    <h3>See where your brand&#8217;s trust stands &#8212; free.</h3>
-    <p class="dm-sub">A no-cost read of how far your organisation is set up to be trusted &#8212; from public signals alone. Tell us who you are and we&#8217;ll prepare yours.</p>
-<form id="nav-form" name="trustos-navigator" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return handleNavSubmit(event)" style="max-width:520px;margin:0 auto;">
-        <input type="hidden" name="form-name" value="trustos-navigator"><input type="hidden" name="hc-clarity" id="f-hc-c"><input type="hidden" name="hc-connection" id="f-hc-n"><input type="hidden" name="hc-confidence" id="f-hc-f"><input type="hidden" name="hc-score" id="f-hc-s">
-        <p style="position:absolute;left:-9999px;"><label>Leave blank <input name="bot-field"></label></p>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <input type="text" class="df-input" id="nav-name" name="name" placeholder="Your name">
-          <input type="email" class="df-input" id="nav-email" name="email" placeholder="you@organisation.com">
-          <input type="text" class="df-input" id="nav-org" name="organisation" placeholder="Your organisation">
-          <input type="text" class="df-input" name="role" placeholder="Your role (optional)">
-          <div id="nav-error" style="display:none;color:#ef4444;font-size:0.8rem;"></div>
-          <button type="submit" id="nav-submit" class="btn-primary" style="width:100%;border:none;cursor:pointer;font-size:0.9rem;padding:15px;">Request my TrustOS Navigator &#8594;</button>
-          <div id="nav-success" style="display:none;color:var(--trust-cool);font-size:0.9rem;text-align:center;line-height:1.6;padding-top:6px;">Thanks &#8212; we&#8217;ve got your request and we&#8217;ll send your TrustOS Navigator shortly.</div>
-          <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);text-align:center;line-height:1.5;">A Navigator is a free public-signal read. To validate it with primary research, you move to a TrustOS Snapshot.</p>
-        </div>
-      </form>
-  </div>
-</div>
-
 <script>
+/* ── Morphing trust gap triangle ── */
+(function() {
+  var EQ  = { intent: {x:130,y:140}, expectation: {x:130,y:380}, reality: {x:338,y:260} };
+  var GAP = { intent: {x:45,y:20},   expectation: {x:35,y:500},  reality: {x:490,y:260} };
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function ease(t){ return t<0.5?2*t*t:-1+(4-2*t)*t; }
+  function lerpPt(g,e,t){ var s=ease(t); return {x:lerp(g.x,e.x,s),y:lerp(g.y,e.y,s)}; }
+
+  function setLine(id,a,b){
+    var el=document.getElementById(id); if(!el) return;
+    el.setAttribute('x1',a.x.toFixed(1)); el.setAttribute('y1',a.y.toFixed(1));
+    el.setAttribute('x2',b.x.toFixed(1)); el.setAttribute('y2',b.y.toFixed(1));
+  }
+
+  function placeEdgeLabel(id,a,b,cen){
+    var el=document.getElementById(id); if(!el) return;
+    var mx=(a.x+b.x)/2, my=(a.y+b.y)/2;
+    var dx=b.x-a.x, dy=b.y-a.y, len=Math.sqrt(dx*dx+dy*dy);
+    if(len<10) return;
+    var angle=Math.atan2(dy,dx)*180/Math.PI;
+    if(ang>90)ang-=180; if(ang<-90)ang+=180;
+    var px=-dy/len, py=dx/len;
+    var dot=px*(cen.x-mx)+py*(cen.y-my);
+    if(dot>0){px=-px;py=-py;}
+    var offset=26, lx=mx+px*offset, ly=my+py*offset;
+    el.setAttribute('x',lx.toFixed(1)); el.setAttribute('y',ly.toFixed(1));
+    el.setAttribute('text-anchor','middle'); el.setAttribute('dominant-baseline','middle');
+    el.setAttribute('transform','rotate('+angle.toFixed(1)+','+lx.toFixed(1)+','+ly.toFixed(1)+')');
+  }
+
+  function updateTrack(id,val,color){
+    var el=document.getElementById(id);
+    if(el) el.style.background='linear-gradient(to right,'+color+' '+val+'%,rgba(255,255,255,0.08) '+val+'%)';
+  }
+
+  function update(){
+    var cl=parseInt(document.getElementById('gap-clarity').value);
+    var cn=parseInt(document.getElementById('gap-connection').value);
+    var cf=parseInt(document.getElementById('gap-confidence').value);
+    var v={
+      intent:      lerpPt(GAP.intent,      EQ.intent,      cl/100),
+      expectation: lerpPt(GAP.expectation, EQ.expectation, cn/100),
+      reality:     lerpPt(GAP.reality,     EQ.reality,     cf/100)
+    };
+    var cen={
+      x:(v.intent.x+v.expectation.x+v.reality.x)/3,
+      y:(v.intent.y+v.expectation.y+v.reality.y)/3
+    };
+
+    document.getElementById('gap-poly').setAttribute('points',
+      v.intent.x.toFixed(1)+','+v.intent.y.toFixed(1)+' '+
+      v.expectation.x.toFixed(1)+','+v.expectation.y.toFixed(1)+' '+
+      v.reality.x.toFixed(1)+','+v.reality.y.toFixed(1)
+    );
+
+    setLine('gdiv-1',cen,v.intent);
+    setLine('gdiv-2',cen,v.expectation);
+    setLine('gdiv-3',cen,v.reality);
+    setLine('gedge-clarity',    v.intent,      v.expectation);
+    setLine('gedge-connection', v.expectation, v.reality);
+    setLine('gedge-confidence', v.reality,     v.intent);
+
+    placeEdgeLabel('glabel-clarity',    v.intent,      v.expectation, cen);
+    placeEdgeLabel('glabel-connection', v.expectation, v.reality,     cen);
+    placeEdgeLabel('glabel-confidence', v.reality,     v.intent,      cen);
+
+    var iv=document.getElementById('gv-intent');
+    iv.setAttribute('x',(v.intent.x-10).toFixed(1));
+    iv.setAttribute('y',(v.intent.y-14).toFixed(1));
+    iv.setAttribute('text-anchor','end');
+
+    var ev=document.getElementById('gv-expectation');
+    ev.setAttribute('x',(v.expectation.x-10).toFixed(1));
+    ev.setAttribute('y',(v.expectation.y+20).toFixed(1));
+    ev.setAttribute('text-anchor','end');
+
+    var rv=document.getElementById('gv-reality');
+    rv.setAttribute('x',(v.reality.x+12).toFixed(1));
+    rv.setAttribute('y',(v.reality.y+5).toFixed(1));
+    rv.setAttribute('text-anchor','start');
+
+    var gc=document.getElementById('g-center');
+    gc.setAttribute('x',cen.x.toFixed(1));
+    gc.setAttribute('y',cen.y.toFixed(1));
+
+    var ring=document.getElementById('geq-ring');
+    ring.setAttribute('cx',cen.x.toFixed(1));
+    ring.setAttribute('cy',cen.y.toFixed(1));
+
+    var score=Math.round((cl+cn+cf)/3);
+    document.getElementById('gsb-num').textContent=score;
+    document.getElementById('gsb-fill').style.width=score+'%';
+    document.getElementById('gval-clarity').textContent=cl;
+    document.getElementById('gval-connection').textContent=cn;
+    document.getElementById('gval-confidence').textContent=cf;
+
+    updateTrack('gap-clarity',    cl, '#5a8a9a');
+    updateTrack('gap-connection', cn, '#7cc4a8');
+    updateTrack('gap-confidence', cf, '#a78bdb');
+
+    var isEq=cl>=90&&cn>=90&&cf>=90;
+    var statusEl=document.getElementById('gsb-status');
+    statusEl.textContent=isEq?'Trust aligned':score>=70?'Trust building':score>=45?'Gap closing':'Gap detected';
+    document.getElementById('tri-svg-container').classList.toggle('eq-achieved',isEq);
+    document.getElementById('gap-score-display').classList.toggle('eq-achieved-score',isEq);
+    gc.textContent=isEq?'Trust aligned':'Integrity';
+  }
+
+  ['gap-clarity','gap-connection','gap-confidence'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.addEventListener('input',update);
+  });
+
+  if(document.getElementById('gap-poly')) update();
+})();
+</script>
+<script>
+(function() {
+  /* ── HEALTH CHECK INTERACTIVE EXPERIENCE ── */
+
+  var scores = { clarity: 50, connection: 50, confidence: 50 };
+
+  var INSIGHTS = {
+    clarity: {
+      low:  { type:'leak',  title:'Leadership story isn\'t landing consistently',        body:'When frontline teams describe the organisation differently to how the board does, strategic alignment breaks down. Clarity is your most urgent gap.', action:'Align on one clear strategic narrative — and cascade it explicitly.' },
+      mid:  { type:'watch', title:'Clarity is developing but not yet anchored',           body:'Your core story is understood at senior levels. The risk is that it fades in translation across teams, regions, or channels.', action:'Test message recognition with mid-management and client-facing teams.' },
+      high: { type:'opp',   title:'Your strategic clarity is a real differentiator',     body:'Stakeholders understand what you stand for. This is a genuine competitive edge — most organisations score far lower here.', action:'Turn this into proof: case studies, leadership content, and partner communications that anchor the narrative.' },
+    },
+    connection: {
+      low:  { type:'leak',  title:'Experience isn\'t matching what you promise',          body:'The gap between your stated commitments and what stakeholders actually encounter day-to-day is where trust erodes fastest — quietly, before it shows in numbers.', action:'Map the experience gap: where do touchpoints diverge from the promise? Fix the top two.' },
+      mid:  { type:'watch', title:'Connection is inconsistent across touchpoints',        body:'Some stakeholder groups experience you well; others less so. The risk is that loyalty is relationship-dependent rather than institutionally embedded.', action:'Identify which touchpoints are strongest and replicate those behaviours systematically.' },
+      high: { type:'opp',   title:'Stakeholder relationships are a core strength',        body:'Your Connection score suggests people experience you as coherent and reliable. This is hard to build and easy to lose — it deserves to be measured and protected.', action:'Quantify and communicate this strength: retention data, relationship depth, consistency metrics.' },
+    },
+    confidence: {
+      low:  { type:'leak',  title:'Your brand&#8217;s distinctive advantage isn&#8217;t visible',     body:'Good work is happening, but it isn\'t being claimed. Stakeholders can\'t verify claims, see progress, or point to evidence. This makes loyalty transactional.', action:'Identify your three strongest proof points and make them visible — in every channel, consistently.' },
+      mid:  { type:'watch', title:'Evidence exists but isn\'t structured for impact',    body:'You have outcomes and credentials — but they\'re not systematically surfaced where decisions are made. The gap between "we deliver" and "they believe it" is still open.', action:'Build a brand distinction narrative: specific, evidenced, and used consistently in all stakeholder communications.' },
+      high: { type:'opp',   title:'Your brand&#8217;s distinction is clear and credible',   body:'Your Confidence score shows stakeholders can verify your claims and trust your accountability. This is where institutional trust is built — it compounds over time.', action:'Turn your brand&#8217;s distinction into a repeatable story &#8212; case studies, proof points, and a narrative that makes your edge undeniable.' },
+    }
+  };
+
+  function getLevel(score) {
+    if (score < 45) return 'low';
+    if (score < 72) return 'mid';
+    return 'high';
+  }
+
+  function update() {
+    var cl = parseInt(document.getElementById('hc-clarity').value);
+    var cn = parseInt(document.getElementById('hc-connection').value);
+    var cf = parseInt(document.getElementById('hc-confidence').value);
+    scores.clarity = cl; scores.connection = cn; scores.confidence = cf;
+
+    // Update displayed values
+    document.getElementById('hc-val-clarity').textContent    = cl;
+    document.getElementById('hc-val-connection').textContent = cn;
+    document.getElementById('hc-val-confidence').textContent = cf;
+
+    // Update slider track fill
+    updateTrack('hc-clarity',    cl, '#5a8a9a');
+    updateTrack('hc-connection', cn, '#7cc4a8');
+    updateTrack('hc-confidence', cf, '#a78bdb');
+
+    // Overall score
+    var overall = Math.round((cl + cn + cf) / 3);
+    document.getElementById('hc-overall').textContent = overall;
+
+    // Score ring colour
+    var ring = document.getElementById('hc-ring');
+    ring.style.borderTopColor = overall >= 70 ? '#4ade80' : overall >= 50 ? '#5a8a9a' : '#f87171';
+
+    // Status label
+    var status = overall >= 70 ? 'Trust building' : overall >= 50 ? 'Gaps detected' : 'Urgent gaps';
+    document.getElementById('hc-status').textContent = status;
+    document.getElementById('hc-status').className = 'hc-status ' + (overall >= 70 ? 'good' : overall >= 50 ? 'mid' : 'risk');
+
+    // Update morphing triangle
+    updateTriangle(cl, cn, cf);
+
+    // Render insight cards
+    renderInsights(cl, cn, cf);
+  }
+
+  function updateTrack(id, val, color) {
+    var el = document.getElementById(id);
+    if (el) el.style.background = 'linear-gradient(to right,' + color + ' ' + val + '%,rgba(255,255,255,0.08) ' + val + '%)';
+  }
+
+  /* Triangle geometry – downward-pointing to match TrustOS mark */
+  var FC = {x:145, y:110}, FR = 105;
+  var ang30 = Math.PI/6;
+  var FEQ = {
+    intent:      {x: FC.x + FR*Math.cos(Math.PI + ang30), y: FC.y + FR*Math.sin(Math.PI + ang30)},
+    expectation: {x: FC.x, y: FC.y + FR},
+    reality:     {x: FC.x + FR*Math.cos(-ang30), y: FC.y + FR*Math.sin(-ang30)}
+  };
+
+  function computeVerts(cl, cn, cf) {
+    var fi = (cl + cf) / 2 / 100;
+    var fe = (cl + cn) / 2 / 100;
+    var fr = (cn + cf) / 2 / 100;
+    return {
+      intent:      {x: FC.x + (FEQ.intent.x      - FC.x)*fi, y: FC.y + (FEQ.intent.y      - FC.y)*fi},
+      expectation: {x: FC.x + (FEQ.expectation.x - FC.x)*fe, y: FC.y + (FEQ.expectation.y - FC.y)*fe},
+      reality:     {x: FC.x + (FEQ.reality.x     - FC.x)*fr, y: FC.y + (FEQ.reality.y     - FC.y)*fr}
+    };
+  }
+
+  function centroid(v) {
+    return {x:(v.intent.x+v.expectation.x+v.reality.x)/3, y:(v.intent.y+v.expectation.y+v.reality.y)/3};
+  }
+
+  function f1(n) { return n.toFixed(1); }
+  function setLn(id,a,b) {
+    var el=document.getElementById(id);
+    if (!el) return;
+    el.setAttribute('x1',f1(a.x)); el.setAttribute('y1',f1(a.y));
+    el.setAttribute('x2',f1(b.x)); el.setAttribute('y2',f1(b.y));
+  }
+  function setTx(id,x,y,anchor,txt) {
+    var el=document.getElementById(id); if(!el) return;
+    el.setAttribute('x',f1(x)); el.setAttribute('y',f1(y));
+    el.setAttribute('text-anchor',anchor); el.textContent=txt;
+  }
+  function placeLbl(id,a,b,cen,txt) {
+    var el=document.getElementById(id); if(!el) return;
+    var mx=(a.x+b.x)/2, my=(a.y+b.y)/2;
+    var dx=b.x-a.x, dy=b.y-a.y, len=Math.sqrt(dx*dx+dy*dy);
+    if(len<4) return;
+    var ang=Math.atan2(dy,dx)*180/Math.PI;
+    /* Normalise so text always reads left-to-right (never upside down) */
+    if(ang > 90)  ang -= 180;
+    if(ang < -90) ang += 180;
+    var px=-dy/len, py=dx/len;
+    if(px*(cen.x-mx)+py*(cen.y-my)>0){px=-px;py=-py;}
+    var lx=mx+px*14, ly=my+py*14;
+    el.setAttribute('x',f1(lx)); el.setAttribute('y',f1(ly));
+    el.setAttribute('text-anchor','middle'); el.setAttribute('dominant-baseline','middle');
+    el.setAttribute('transform','rotate('+ang.toFixed(1)+','+f1(lx)+','+f1(ly)+')');
+    el.textContent=txt;
+  }
+
+  function updateTriangle(cl, cn, cf) {
+    var v = computeVerts(cl, cn, cf);
+    var cen = centroid(v);
+    var I=v.intent, E=v.expectation, R=v.reality;
+    var poly = document.getElementById('hc-poly');
+    if (poly) poly.setAttribute('points', f1(I.x)+','+f1(I.y)+' '+f1(E.x)+','+f1(E.y)+' '+f1(R.x)+','+f1(R.y));
+    setLn('hc-div1',cen,I); setLn('hc-div2',cen,E); setLn('hc-div3',cen,R);
+    setLn('hc-ec',I,E); setLn('hc-en',E,R); setLn('hc-ef',R,I);
+    placeLbl('hc-lc',I,E,cen,'CLARITY');
+    placeLbl('hc-ln',E,R,cen,'CONNECTION');
+    placeLbl('hc-lf',R,I,cen,'CONFIDENCE');
+    setTx('hc-vi', I.x-6, I.y-10, 'end',   'Intent');
+    setTx('hc-ve', E.x, E.y+16, 'middle',   'Expectation');
+    setTx('hc-vr', R.x+6, R.y-10,  'start', 'Reality');
+    var gc=document.getElementById('hc-cen');
+    if(gc){gc.setAttribute('x',f1(cen.x));gc.setAttribute('y',f1(cen.y));}
+  }
+
+  function renderInsights(cl, cn, cf) {
+    var container = document.getElementById('hc-insights');
+    if (!container) return;
+    var drivers = [
+      {key:'clarity', score:cl, label:'Clarity'},
+      {key:'connection', score:cn, label:'Connection'},
+      {key:'confidence', score:cf, label:'Confidence'}
+    ];
+    // Sort by urgency: lowest score first
+    drivers.sort(function(a,b){return a.score-b.score;});
+    var html = '';
+    drivers.forEach(function(d, i) {
+      var level = getLevel(d.score);
+      var ins = INSIGHTS[d.key][level];
+      var typeClass = ins.type;
+      var typeLabel = ins.type === 'leak' ? '↓ Gap' : ins.type === 'watch' ? '~ Watch' : '↑ Strength';
+      var driverClass = d.key;
+      html += '<div class="hc-insight-card' + (i===0?' hc-primary':'') + '">' +
+        '<div class="hc-ic-head">' +
+          '<span class="hc-ic-type ' + typeClass + '">' + typeLabel + '</span>' +
+          '<span class="hc-ic-driver ' + driverClass + '">' + d.label + ' &mdash; ' + d.score + '</span>' +
+        '</div>' +
+        '<div class="hc-ic-title">' + ins.title + '</div>' +
+        '<div class="hc-ic-body">' + ins.body + '</div>' +
+        '<div class="hc-ic-action">' + ins.action + '</div>' +
+      '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  // Bind sliders
+  ['hc-clarity','hc-connection','hc-confidence'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', update);
+  });
+
+  // Init
+  if (document.getElementById('hc-poly')) {
+    update();
+  }
+})();
+</script>
+<script>
+/* ── Scroll fade-up animation ── */
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+</script>
+<script>
+  function hcState(){var c=+document.getElementById('hc-clarity').value,n=+document.getElementById('hc-connection').value,f=+document.getElementById('hc-confidence').value;return {c:c,n:n,f:f,avg:Math.round((c+n+f)/3)};}
+  window.hcFill=function(){var s=hcState();[['f-hc-c',s.c],['f-hc-n',s.n],['f-hc-f',s.f],['f-hc-s',s.avg],['d-hc-c',s.c],['d-hc-n',s.n],['d-hc-f',s.f],['d-hc-s',s.avg]].forEach(function(p){var el=document.getElementById(p[0]);if(el)el.value=p[1];});};
+  function hcCta(){var s=hcState(),el=document.getElementById('hc-cta-line');if(!el)return;var m=Math.min(s.c,s.n,s.f);var name=m===s.c?'Clarity':(m===s.n?'Connection':'Confidence');
+    el.textContent = m>=70 ? 'Strong shape — now test it against what stakeholders actually say.' : 'Your biggest gap is '+name+' — a Navigator would show you where it\u2019s leaking.';}
+  ['hc-clarity','hc-connection','hc-confidence'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',hcCta);});hcCta();
   window.handleNavSubmit = function(e){
     e.preventDefault(); if(typeof hcFill==='function')hcFill();
     var name=document.getElementById('nav-name').value.trim();
