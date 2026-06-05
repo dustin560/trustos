@@ -523,14 +523,7 @@
       .cta-buttons { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-ghost { text-align: center; }
     }
-  
-  /* logo ambient breathing */
-  .lg-amb .lg-glow{animation:lgAmb 4s ease-in-out infinite;}
-  .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
-  @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
-  @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
-  @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}}
-</style>
+  </style>
 </head>
 <body>
 
@@ -538,7 +531,14 @@
 <nav>
   <div class="nav-left">
     <a href="/" class="nav-wordmark">
-      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" class="lg-amb" style="flex-shrink:0;"><defs><linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="nav-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="nav-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#nav-ml)"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#nav-glow)"/><polygon points="30,12 90,12 60,88" fill="url(#nav-tg)"/></svg>
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
+        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
+      </svg>
       <span><span class="trust">Trust</span><span class="os">OS</span></span>
     </a>
     <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener">
@@ -547,12 +547,12 @@
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="/health-check/">Trust Health Check</a></li>
-    
+    <li><a href="/#health-check">Trust Health Check</a></li>
+    <li><a href="/#dashboard">Dashboard</a></li>
     <li><a href="/#process">How it works</a></li>
     <li><a href="/insights/">Sector Insights</a></li>
   </ul>
-  <a href="/?request=navigator" class="nav-cta">Request a Navigator</a>
+  <a href="/#book-demo" class="nav-cta">Book a demo</a>
 </nav>
 
 <!-- ARTICLE HERO -->
@@ -736,8 +736,8 @@
     <h2>See your sector's Trust Shape &mdash; in your own scoring.</h2>
     <p>If you lead brand, comms or corporate affairs in an Energy house and your team is being asked harder trust questions than the existing measurement architecture can answer, book a 30-minute walkthrough. We'll run the methodology against your public disclosures and the public signal around your sector position, and show you the diagnostic on your own data.</p>
     <div class="cta-buttons">
-      <a href="/?book=demo" class="btn-primary">Book a Demo</a>
-      <a href="/health-check/" class="btn-ghost">Free Trust Health Check</a>
+      <a href="/#book-demo" class="btn-primary">Book a Trust Snapshot demo</a>
+      <a href="/#health-check" class="btn-ghost">Free Trust Health Check</a>
     </div>
   </div>
 </section>
@@ -745,16 +745,21 @@
 <!-- RELATED POVS -->
 <section class="related-povs">
   <div class="related-povs-label">Related Sector POVs</div>
-  <div class="related-grid">
-    <a href="/netzero-consent-test/" class="related-card">
-      <div class="related-card-eyebrow">2026 Sector POV  ·  Net Zero</div>
-      <h3>&pound;455bn in the pipeline. Net Zero's consent test.</h3>
-      <p>Clarity 78. Connection 52. Confidence 56. The UK's net zero economy just posted &pound;105bn &mdash; and execution decides who captures the &pound;455bn pipeline. Execution runs on consent; consent runs on trust.</p>
-    </a>
+  <div class="related-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
     <a href="/mining-trust-window/" class="related-card">
       <div class="related-card-eyebrow">2026 Sector POV  ·  Mining</div>
       <h3>When the merger clears. Mining's architecture test.</h3>
-      <p>Clarity 81. Connection 58. Confidence 62. Anglo Teck just cleared Canada &mdash; the story underneath the approval is the one Mining hasn't been telling itself. Trust architecture is now deal infrastructure.</p>
+      <p>Clarity 81. Connection 58. Confidence 62. Anglo Teck cleared Canada last month &mdash; the approval reveals what every other major's deal architecture will now be measured against.</p>
+    </a>
+    <a href="/social-care-workforce-test/" class="related-card">
+      <div class="related-card-eyebrow">2026 Sector POV  ·  Social Care</div>
+      <h3>When the pipeline closes. Social Care's workforce trust test.</h3>
+      <p>Clarity 62. Connection 48. Confidence 52. The Casey Commission reports next month &mdash; into a sector that has just lost its workforce pipeline.</p>
+    </a>
+    <a href="/education-public-purpose-test/" class="related-card">
+      <div class="related-card-eyebrow">2026 Sector POV  ·  Education</div>
+      <h3>When the courses close. Education's public-purpose test.</h3>
+      <p>Clarity 68. Connection 52. Confidence 50. Queen Mary just closed History, English, Philosophy and Creative Writing &mdash; the moment Education's public-purpose foundation became visible.</p>
     </a>
   </div>
 </section>
@@ -801,12 +806,12 @@
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul class="footer-nav-list">
-        <li><a href="/health-check/">What it measures</a></li>
-        
+        <li><a href="/#model">What it measures</a></li>
+        <li><a href="/#dashboard">Dashboard</a></li>
         <li><a href="/#process">How it works</a></li>
-        <li><a href="https://missionctrl.agency" target="_blank" rel="noopener">MissionCTRL Solutions</a></li>
+        <li><a href="/#solutions">Solutions</a></li>
         <li><a href="/insights/">Sector Insights</a></li>
-        <li><a href="/?request=navigator">Request a Navigator</a></li>
+        <li><a href="/#snapshot-form">Free Snapshot</a></li>
       </ul>
     </div>
     <div class="footer-col">

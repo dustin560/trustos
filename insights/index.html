@@ -199,7 +199,6 @@
       background-size: cover;
       background-position: center;
     }
-    .insight-card-img.netzero { background-image: url('/netzero-consent-test/banner.png'); }
     .insight-card-img.energy { background-image: url('/energy-integrity-test/banner.png'); }
     .insight-card-img.mining { background-image: url('/mining-trust-window/banner.png'); }
 
@@ -320,14 +319,7 @@
       .coming-soon { padding: 26px 22px; }
       .nav-cta { font-size: 0.8rem; padding: 8px 16px; }
     }
-  
-  /* logo ambient breathing */
-  .lg-amb .lg-glow{animation:lgAmb 4s ease-in-out infinite;}
-  .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
-  @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
-  @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
-  @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}}
-</style>
+  </style>
 </head>
 <body>
 
@@ -335,7 +327,14 @@
 <nav>
   <div class="nav-left">
     <a href="/" class="nav-wordmark">
-      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" class="lg-amb" style="flex-shrink:0;"><defs><linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="nav-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="nav-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#nav-ml)"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#nav-glow)"/><polygon points="30,12 90,12 60,88" fill="url(#nav-tg)"/></svg>
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+          <filter id="nav-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
+        <polygon points="30,12 90,12 60,88" fill="url(#nav-tg)" filter="url(#nav-glow)"/>
+      </svg>
       <span><span class="trust">Trust</span><span class="os">OS</span></span>
     </a>
     <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener">
@@ -344,12 +343,12 @@
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="/health-check/">Trust Health Check</a></li>
-    
+    <li><a href="/#health-check">Trust Health Check</a></li>
+    <li><a href="/#dashboard">Dashboard</a></li>
     <li><a href="/#process">How it works</a></li>
     <li><a href="/insights/" class="active">Sector Insights</a></li>
   </ul>
-  <a href="/?request=navigator" class="nav-cta">Request a Navigator</a>
+  <a href="/#book-demo" class="nav-cta">Book a demo</a>
 </nav>
 
 <!-- PAGE HERO -->
@@ -370,34 +369,53 @@
 <!-- INSIGHTS GRID -->
 <div class="insights-grid">
 
-  <!-- NET ZERO (latest) -->
-  <a href="/netzero-consent-test/" class="insight-card">
+  <a href="/social-care-workforce-test/" class="insight-card">
     <div class="insight-card-inner">
       <div class="insight-card-content">
-        <div class="insight-card-eyebrow">2026 Sector POV  ·  Net Zero<span class="latest-pill">Latest</span></div>
-        <h2>&pound;455bn in the pipeline. Net Zero&#8217;s consent test.</h2>
-        <p class="desc">The UK&#8217;s net zero economy just posted &pound;105bn and a &pound;455bn pipeline &mdash; and the report behind the numbers says execution decides who captures it. Execution runs on consent; consent runs on trust. The methodology applied across the delivery economy: developers, storage, hydrogen and the capital behind them.</p>
+        <div class="insight-card-eyebrow">2026 Sector POV  ·  Social Care<span class="latest-pill">Latest</span></div>
+        <h2>When the pipeline closes. Social Care's workforce trust test.</h2>
+        <p class="desc">The Casey Commission reports next month. The sector it&#8217;s trying to reform has just lost its workforce pipeline. Workforce Trust is the foundation under every other trust claim &mdash; and Social Care has been quietly running on a pipeline that no longer exists.</p>
         <div class="insight-card-chips">
-          <span class="chip clarity">Clarity 78</span>
-          <span class="chip connection">Connection 52</span>
-          <span class="chip confidence">Confidence 56</span>
+          <span class="chip clarity">Clarity 62</span>
+          <span class="chip connection">Connection 48</span>
+          <span class="chip confidence">Confidence 52</span>
         </div>
         <div class="insight-card-meta">
-          <span><strong>4 June 2026</strong></span>
+          <span><strong>27 May 2026</strong></span>
           <span>12 min read</span>
           <span class="cta">Read the POV  &rarr;</span>
         </div>
       </div>
-      <div class="insight-card-img netzero"></div>
+      <div class="insight-card-img" style="background-image: url('/social-care-workforce-test/banner.png');"></div>
     </div>
   </a>
 
-  <!-- ENERGY -->
+  <a href="/education-public-purpose-test/" class="insight-card">
+    <div class="insight-card-inner">
+      <div class="insight-card-content">
+        <div class="insight-card-eyebrow">2026 Sector POV  ·  Education<span class="latest-pill">Latest</span></div>
+        <h2>When the courses close. Education's public-purpose test.</h2>
+        <p class="desc">Queen Mary just closed History, English, Philosophy and Creative Writing. The story underneath the closure is the one Education hasn&#8217;t been telling itself: public purpose is the foundation under every other trust claim &mdash; and the sector has been treating it as assumed.</p>
+        <div class="insight-card-chips">
+          <span class="chip clarity">Clarity 68</span>
+          <span class="chip connection">Connection 52</span>
+          <span class="chip confidence">Confidence 50</span>
+        </div>
+        <div class="insight-card-meta">
+          <span><strong>27 May 2026</strong></span>
+          <span>12 min read</span>
+          <span class="cta">Read the POV  &rarr;</span>
+        </div>
+      </div>
+      <div class="insight-card-img" style="background-image: url('/education-public-purpose-test/banner.png');"></div>
+    </div>
+  </a>
+
   <a href="/energy-integrity-test/" class="insight-card">
     <div class="insight-card-inner">
       <div class="insight-card-content">
         <div class="insight-card-eyebrow">2026 Sector POV  ·  Energy</div>
-        <h2>When the chair falls. Energy&#8217;s Integrity test.</h2>
+        <h2>When the chair falls. Energy's Integrity test.</h2>
         <p class="desc">Energy&#8217;s Integrity layer just became visible. The TrustOS methodology applied at sector level across Oil &amp; Gas, Utilities and Renewables &mdash; what the BP chair event proves about the foundation under every other trust claim.</p>
         <div class="insight-card-chips">
           <span class="chip clarity">Clarity 74</span>
@@ -410,16 +428,15 @@
           <span class="cta">Read the POV  &rarr;</span>
         </div>
       </div>
-      <div class="insight-card-img energy"></div>
+      <div class="insight-card-img" style="background-image: url('/energy-integrity-test/banner.png');"></div>
     </div>
   </a>
 
-  <!-- MINING -->
   <a href="/mining-trust-window/" class="insight-card">
     <div class="insight-card-inner">
       <div class="insight-card-content">
         <div class="insight-card-eyebrow">2026 Sector POV  ·  Mining</div>
-        <h2>When the merger clears. Mining&#8217;s architecture test.</h2>
+        <h2>When the merger clears. Mining's architecture test.</h2>
         <p class="desc">Anglo Teck cleared Canada last month. The story underneath the approval is the one Mining hasn&#8217;t been telling itself: trust architecture is no longer a communications layer &mdash; it is deal infrastructure. The methodology applied at sector level across the major houses.</p>
         <div class="insight-card-chips">
           <span class="chip clarity">Clarity 81</span>
@@ -432,20 +449,21 @@
           <span class="cta">Read the POV  &rarr;</span>
         </div>
       </div>
-      <div class="insight-card-img mining"></div>
+      <div class="insight-card-img" style="background-image: url('/mining-trust-window/banner.png');"></div>
     </div>
   </a>
 
   <!-- Coming soon -->
   <div class="coming-soon">
     <h3>More sector POVs publishing through 2026</h3>
-    <p>Local Government, Healthcare and Higher Education next in the rotation. Want an early read on your sector? <a href="/?request=navigator">Request a TrustOS Navigator</a>.</p>
+    <p>Healthcare, Local Government, Financial Services, Social Housing and Defence next in the rotation. Want an early read on your sector? <a href="/#book-demo">Book a Trust Snapshot demo</a>.</p>
     <div class="coming-soon-list">
-      <span>Local Government</span>
       <span>Healthcare</span>
-      <span>Higher Education</span>
+      <span>Local Government</span>
+      <span>Higher Education (US/Global)</span>
       <span>Financial Services</span>
       <span>Social Housing</span>
+      <span>Defence</span>
     </div>
   </div>
 
@@ -456,8 +474,8 @@
   <div class="grid-bg"></div>
   <div class="cta-strip-inner">
     <h2>See your sector's Trust Shape &mdash; in your own scoring.</h2>
-    <p>Every POV maps a sector. The TrustOS Navigator maps your house against it. Thirty minutes, your public disclosures, the methodology running on your own data.</p>
-    <a href="/?request=navigator" class="cta-btn">Request a TrustOS Navigator</a>
+    <p>Every POV maps a sector. The Trust Snapshot maps your house against it. Thirty minutes, your public disclosures, the methodology running on your own data.</p>
+    <a href="/#book-demo" class="cta-btn">Book a Trust Snapshot demo</a>
   </div>
 </section>
 
@@ -485,12 +503,12 @@
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul class="footer-nav-list">
-        <li><a href="/health-check/">What it measures</a></li>
-        
+        <li><a href="/#model">What it measures</a></li>
+        <li><a href="/#dashboard">Dashboard</a></li>
         <li><a href="/#process">How it works</a></li>
-        <li><a href="https://missionctrl.agency" target="_blank" rel="noopener">MissionCTRL Solutions</a></li>
+        <li><a href="/#solutions">Solutions</a></li>
         <li><a href="/insights/">Sector Insights</a></li>
-        <li><a href="/?request=navigator">Request a Navigator</a></li>
+        <li><a href="/#snapshot-form">Free Snapshot</a></li>
       </ul>
     </div>
     <div class="footer-col">
