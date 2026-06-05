@@ -448,11 +448,12 @@
   /* four-arrow benefit icons */
   .wc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
   .wc-ic{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(90,138,154,0.08);border:1px solid rgba(90,138,154,0.18);}
-  .wc-ic .pulse-tri{fill:#5a8a9a;animation:triPulse 3s ease-in-out infinite;}
-  .why-card.c2 .pulse-tri{animation-delay:.4s;} .why-card.c3 .pulse-tri{animation-delay:.8s;}
-  .why-card:hover .pulse-tri{animation:none;opacity:1;}
-  @keyframes triPulse{0%,100%{opacity:.45}50%{opacity:1}}
-  @media (prefers-reduced-motion: reduce){.wc-ic .pulse-tri{animation:none!important;opacity:1;}}
+  .wc-ic .tri-solid{fill:#5a8a9a;}
+  .wc-ic .tri-glow{fill:#6da0b8;animation:icGlow 4s ease-in-out infinite;}
+  .why-card.c2 .tri-glow{animation-delay:.5s;} .why-card.c3 .tri-glow{animation-delay:1s;}
+  .why-card:hover .tri-glow{animation:none;opacity:1;}
+  @keyframes icGlow{0%,100%{opacity:.3}50%{opacity:1}}
+  @media (prefers-reduced-motion: reduce){.wc-ic .tri-glow{animation:none!important;opacity:.55;}}
 </style>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -517,9 +518,9 @@
   <!-- BENEFITS -->
   <section id="sense" style="border-bottom:none;padding:30px 0 6px;">
     <div class="why-grid">
-      <div class="why-card c1"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,5 25,5 16,28"/></svg></div><div class="wc-n">01</div></div><h3>See where trust is leaking</h3><p>Find the gaps between what you promise and what people experience &#8212; before they reach the numbers, or the news.</p></div>
-      <div class="why-card c2"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,27 25,27 16,4"/></svg></div><div class="wc-n">02</div></div><h3>Measure trust like revenue</h3><p>Turn trust into a number your leadership can act on.</p></div>
-      <div class="why-card c3"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="5,7 5,25 28,16"/></svg></div><div class="wc-n">03</div></div><h3>Take charge with data</h3><p>End the cross-functional debate once, with evidence everyone can see.</p></div>
+      <div class="why-card c1"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><defs><filter id="icbD" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="7,5 25,5 16,28" filter="url(#icbD)"/><polygon class="tri-solid" points="7,5 25,5 16,28"/></svg></div><div class="wc-n">01</div></div><h3>See where trust is leaking</h3><p>Find the gaps between what you promise and what people experience &#8212; before they reach the numbers, or the news.</p></div>
+      <div class="why-card c2"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><defs><filter id="icbU" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="7,27 25,27 16,4" filter="url(#icbU)"/><polygon class="tri-solid" points="7,27 25,27 16,4"/></svg></div><div class="wc-n">02</div></div><h3>Measure trust like revenue</h3><p>Turn trust into a number your leadership can act on.</p></div>
+      <div class="why-card c3"><div class="wc-top"><div class="wc-ic"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><defs><filter id="icbF" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="5,7 5,25 28,16" filter="url(#icbF)"/><polygon class="tri-solid" points="5,7 5,25 28,16"/></svg></div><div class="wc-n">03</div></div><h3>Take charge with data</h3><p>End the cross-functional debate once, with evidence everyone can see.</p></div>
     </div>
     <div class="why-connector">Whatever you are chasing &#8212; standing, answers, or proof &#8212; it starts with seeing where you stand today.</div>
   </section>

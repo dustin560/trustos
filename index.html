@@ -983,13 +983,14 @@
   /* ── benefit tiles: pulsing solid triangles; hover = steady ── */
   .hero-pillar .hp-ic{transition:background .3s ease,border-color .3s ease;}
   .hero-pillar:hover .hp-ic{background:rgba(90,138,154,0.16);border-color:rgba(109,160,184,0.45);}
-  .hp-ic .pulse-tri{fill:#5a8a9a;animation:triPulse 3s ease-in-out infinite;}
-  .hero-pillar:nth-child(2) .hp-ic .pulse-tri{animation-delay:.4s;}
-  .hero-pillar:nth-child(3) .hp-ic .pulse-tri{animation-delay:.8s;}
-  .hero-pillar:nth-child(4) .hp-ic .pulse-tri{animation-delay:1.2s;}
-  .hero-pillar:hover .hp-ic .pulse-tri{animation:none;opacity:1;}
-  @keyframes triPulse{0%,100%{opacity:.45}50%{opacity:1}}
-  @media (prefers-reduced-motion: reduce){.hp-ic .pulse-tri{animation:none!important;opacity:1;}}
+  .hp-ic .tri-solid{fill:#5a8a9a;}
+  .hp-ic .tri-glow{fill:#6da0b8;animation:icGlow 4s ease-in-out infinite;}
+  .hero-pillar:nth-child(2) .hp-ic .tri-glow{animation-delay:.5s;}
+  .hero-pillar:nth-child(3) .hp-ic .tri-glow{animation-delay:1s;}
+  .hero-pillar:nth-child(4) .hp-ic .tri-glow{animation-delay:1.5s;}
+  .hero-pillar:hover .hp-ic .tri-glow{animation:none;opacity:1;}
+  @keyframes icGlow{0%,100%{opacity:.3}50%{opacity:1}}
+  @media (prefers-reduced-motion: reduce){.hp-ic .tri-glow{animation:none!important;opacity:.55;}}
 </style>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -1034,22 +1035,22 @@
       </div>
       <div class="hero-pillars hero-anim hero-anim-d5">
         <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,5 25,5 16,28"/></svg></div>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbD" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="7,5 25,5 16,28" filter="url(#icbD)"/><polygon class="tri-solid" points="7,5 25,5 16,28"/></svg></div>
             <p class="hero-pillar-title">Spot the leaks</p>
           <p class="hero-pillar-body">Identify the stakeholder groups and trust drivers where gaps are quietly eroding performance.</p>
         </div>
         <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="7,27 25,27 16,4"/></svg></div>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbU" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="7,27 25,27 16,4" filter="url(#icbU)"/><polygon class="tri-solid" points="7,27 25,27 16,4"/></svg></div>
             <p class="hero-pillar-title">Prove impact</p>
           <p class="hero-pillar-body">Show the board exactly where brand trust is strong &#8212; with scores, trends and evidence they act on.</p>
         </div>
         <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="5,7 5,25 28,16"/></svg></div>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbF" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="5,7 5,25 28,16" filter="url(#icbF)"/><polygon class="tri-solid" points="5,7 5,25 28,16"/></svg></div>
             <p class="hero-pillar-title">Make the next move</p>
           <p class="hero-pillar-body">Turn evidence into action &#8212; the data to align the room and move things forward.</p>
         </div>
         <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><polygon class="pulse-tri" points="27,7 27,25 4,16"/></svg></div>
+          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbB" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="27,7 27,25 4,16" filter="url(#icbB)"/><polygon class="tri-solid" points="27,7 27,25 4,16"/></svg></div>
             <p class="hero-pillar-title">Learn from every move</p>
           <p class="hero-pillar-body">Track trust over time &#8212; every read deepens your picture of what builds it and what erodes it.</p>
         </div>
