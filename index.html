@@ -989,6 +989,41 @@
   .hero-pillar:hover .hp-ic .tri-glow{animation:none;opacity:1;}
   @keyframes icGlow{0%,100%{opacity:.3}50%{opacity:1}}
   @media (prefers-reduced-motion: reduce){.hp-ic .tri-glow{animation:none!important;opacity:.55;}}
+
+  /* benefits controller */
+  .bench{margin-top:40px;}
+  .bench-comp{container-type:inline-size;width:100%;}
+  .bench-cross{display:grid;grid-template-columns:1fr 150px 1fr;grid-template-rows:auto 150px auto;gap:10px 28px;align-items:center;justify-items:center;max-width:740px;margin:0 auto;}
+  .bench-ctrl-cell{grid-column:2;grid-row:2;}
+  .bench-ben{max-width:230px;transition:opacity .45s ease;}
+  .bench-ben.n{grid-column:2;grid-row:1;text-align:center;}
+  .bench-ben.s{grid-column:2;grid-row:3;text-align:center;}
+  .bench-ben.w{grid-column:1;grid-row:2;text-align:right;}
+  .bench-ben.e{grid-column:3;grid-row:2;text-align:left;}
+  .bench-h{font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.5);margin:0 0 6px;transition:color .4s;}
+  .bench-b{font-size:0.74rem;line-height:1.65;color:rgba(255,255,255,0.3);margin:0;transition:color .4s;}
+  .bench-ben.on,.bench-cap.on{opacity:1;}
+  .bench-ben.on .bench-h,.bench-cap.on .bench-h{color:var(--trust-cool);}
+  .bench-ben.on .bench-b,.bench-cap.on .bench-b{color:rgba(255,255,255,0.6);}
+  .bench-ben:not(.on){opacity:0.42;}
+  .bench-ctrl{position:relative;width:150px;height:150px;border:0;background:none;padding:0;cursor:pointer;display:block;}
+  .bench-ctrl:focus-visible{outline:2px solid var(--trust-cool);outline-offset:6px;border-radius:30px;}
+  .bench-pad{position:absolute;inset:0;border-radius:30px;background:radial-gradient(circle at 50% 50%,rgba(90,138,154,0.10),rgba(90,138,154,0.015));border:1px solid rgba(90,138,154,0.16);}
+  .bench-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  .bench-rot{transform-origin:120px 120px;transition:transform .8s cubic-bezier(.22,1,.36,1);}
+  .bench-cast{opacity:0;transition:opacity .55s ease;}
+  .bench-ctrl.lit .bench-cast{opacity:.9;}
+  .bench-tri{transition:filter .4s ease;}
+  .bench-ctrl.lit .bench-tri{filter:drop-shadow(0 0 5px rgba(109,160,184,0.55));}
+  .bench-cap{display:none;}
+  @container (max-width:520px){
+    .bench-cross{grid-template-columns:1fr;grid-template-rows:auto auto;gap:6px;max-width:340px;}
+    .bench-ctrl-cell{grid-column:1;grid-row:1;}
+    .bench-ben{display:none;}
+    .bench-cap{display:block;grid-column:1;grid-row:2;text-align:center;min-height:92px;}
+    .bench-cap .bench-h{font-size:1rem;}.bench-cap .bench-b{font-size:0.78rem;}
+  }
+  @media (prefers-reduced-motion: reduce){.bench-rot{transition:none;}.bench-ben{opacity:1!important;}}
 </style>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -1031,26 +1066,31 @@
         <a href="#" onclick="openNav(event)" class="btn-primary" style="font-size:0.9rem;padding:15px 38px;cursor:pointer;">Request your TrustOS Navigator</a>
         <a href="#" onclick="openDemo(event)" class="btn-ghost" style="font-size:0.85rem;padding:13px 24px;cursor:pointer;">Book a Demo</a>
       </div>
-      <div class="hero-pillars hero-anim hero-anim-d5">
-        <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbD" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="7,5 25,5 16,28" filter="url(#icbD)"/><polygon class="tri-solid" points="7,5 25,5 16,28"/></svg></div>
-            <p class="hero-pillar-title">Spot the leaks</p>
-          <p class="hero-pillar-body">Identify the stakeholder groups and trust drivers where gaps are quietly eroding performance.</p>
-        </div>
-        <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbU" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="7,27 25,27 16,4" filter="url(#icbU)"/><polygon class="tri-solid" points="7,27 25,27 16,4"/></svg></div>
-            <p class="hero-pillar-title">Prove impact</p>
-          <p class="hero-pillar-body">Show the board exactly where brand trust is strong &#8212; with scores, trends and evidence they act on.</p>
-        </div>
-        <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbF" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="5,7 5,25 28,16" filter="url(#icbF)"/><polygon class="tri-solid" points="5,7 5,25 28,16"/></svg></div>
-            <p class="hero-pillar-title">Make the next move</p>
-          <p class="hero-pillar-body">Turn evidence into action &#8212; the data to align the room and move things forward.</p>
-        </div>
-        <div class="hero-pillar">
-          <div class="hp-ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><filter id="icbB" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><polygon class="tri-glow" points="27,7 27,25 4,16" filter="url(#icbB)"/><polygon class="tri-solid" points="27,7 27,25 4,16"/></svg></div>
-            <p class="hero-pillar-title">Learn from every move</p>
-          <p class="hero-pillar-body">Track trust over time &#8212; every read deepens your picture of what builds it and what erodes it.</p>
+      <div class="bench hero-anim hero-anim-d5">
+        <div class="bench-comp">
+          <div class="bench-cross">
+            <div class="bench-ben n" data-i="0"><p class="bench-h">Prove impact</p><p class="bench-b">Show the board exactly where brand trust is strong &#8212; with scores, trends and evidence they act on.</p></div>
+            <div class="bench-ben w" data-i="3"><p class="bench-h">Learn from every move</p><p class="bench-b">Track trust over time &#8212; every read deepens your picture of what builds it and what erodes it.</p></div>
+            <div class="bench-ctrl-cell">
+              <button class="bench-ctrl lit" type="button" aria-label="Show next benefit">
+                <span class="bench-pad"></span>
+                <svg class="bench-svg" viewBox="0 0 240 240" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="bc-tf" x1="120" y1="120" x2="120" y2="196" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6da0b8"/><stop offset="1" stop-color="#5a8a9a"/></linearGradient>
+                    <linearGradient id="bc-mc" x1="120" y1="120" x2="120" y2="248" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7fb4cc" stop-opacity="0.78"/><stop offset="0.55" stop-color="#6da0b8" stop-opacity="0.28"/><stop offset="1" stop-color="#6da0b8" stop-opacity="0"/></linearGradient>
+                    <filter id="bc-gb" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="5.5"/></filter>
+                  </defs>
+                  <g class="bench-rot">
+                    <path class="bench-cast" d="M64,248 L90,120 L120,196 L150,120 L176,248 Z" fill="url(#bc-mc)" filter="url(#bc-gb)"/>
+                    <polygon class="bench-tri" points="90,120 150,120 120,196" fill="url(#bc-tf)"/>
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <div class="bench-ben e" data-i="1"><p class="bench-h">Make the next move</p><p class="bench-b">Turn evidence into action &#8212; the data to align the room and move things forward.</p></div>
+            <div class="bench-ben s" data-i="2"><p class="bench-h">Spot the leaks</p><p class="bench-b">Identify the stakeholder groups and trust drivers where gaps are quietly eroding performance.</p></div>
+            <div class="bench-cap"><p class="bench-h"></p><p class="bench-b"></p></div>
+          </div>
         </div>
       </div>
       <p class="hero-anim hero-anim-d6" style="font-size:0.62rem;color:rgba(255,255,255,0.22);font-weight:500;margin-top:28px;">Used across manufacturing, professional services &amp; regulated industries.</p>
@@ -1570,6 +1610,32 @@
    document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDemo();closeNav();}});
    if(/[?&]book=demo/.test(location.search)){window.addEventListener('load',function(){openDemo();});}
    if(/[?&]request=navigator/.test(location.search)){window.addEventListener('load',function(){openNav();});}})();
+</script>
+<script>
+(function(){
+  var comp=document.querySelector('.bench-comp'); if(!comp) return;
+  var B=[
+    {h:'Prove impact',b:'Show the board exactly where brand trust is strong — with scores, trends and evidence they act on.'},
+    {h:'Make the next move',b:'Turn evidence into action — the data to align the room and move things forward.'},
+    {h:'Spot the leaks',b:'Identify the stakeholder groups and trust drivers where gaps are quietly eroding performance.'},
+    {h:'Learn from every move',b:'Track trust over time — every read deepens your picture of what builds it and what erodes it.'}
+  ];
+  var DEG=[180,270,0,90];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rotEl=comp.querySelector('.bench-rot'),ctrl=comp.querySelector('.bench-ctrl');
+  var bens=[].slice.call(comp.querySelectorAll('.bench-ben'));
+  var cap=comp.querySelector('.bench-cap'),ch=cap.querySelector('.bench-h'),cb=cap.querySelector('.bench-b');
+  var rot=0,idx=2,timer=null,held=false;
+  function shortTo(c,tg){return c+(((tg-(c%360))+540)%360-180);}
+  function paint(i){bens.forEach(function(b){b.classList.toggle('on',+b.dataset.i===i);});ch.textContent=B[i].h;cb.textContent=B[i].b;cap.classList.add('on');ctrl.classList.remove('lit');void ctrl.offsetWidth;ctrl.classList.add('lit');}
+  function go(i){idx=i;rot=shortTo(rot,DEG[i]);rotEl.style.transform='rotate('+rot+'deg)';paint(i);}
+  function next(){go((idx+1)%4);}
+  function start(){if(reduce)return;stop();timer=setInterval(function(){if(!held)next();},2500);}
+  function stop(){if(timer)clearInterval(timer);}
+  bens.forEach(function(el){el.addEventListener('mouseenter',function(){held=true;go(+el.dataset.i);});el.addEventListener('mouseleave',function(){held=false;});});
+  ctrl.addEventListener('click',function(){held=true;next();setTimeout(function(){held=false;},3000);});
+  go(2);start();
+})();
 </script>
 </body>
 </html>
