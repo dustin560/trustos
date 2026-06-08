@@ -1010,7 +1010,7 @@
   .bench-ctrl:focus-visible{outline:2px solid var(--trust-cool);outline-offset:6px;border-radius:30px;}
   .bench-pad{position:absolute;inset:0;border-radius:30px;background:radial-gradient(circle at 50% 50%,rgba(90,138,154,0.10),rgba(90,138,154,0.015));border:1px solid rgba(90,138,154,0.16);}
   .bench-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
-  .bench-rot{transform-origin:120px 120px;transition:transform .8s cubic-bezier(.22,1,.36,1);}
+  .bench-rot{transform-box:view-box;transform-origin:50% 50%;transition:transform .8s cubic-bezier(.22,1,.36,1);}
   .bench-cast{opacity:0;transition:opacity .55s ease;}
   .bench-ctrl.lit .bench-cast{opacity:.9;}
   .bench-tri{transition:filter .4s ease;}
