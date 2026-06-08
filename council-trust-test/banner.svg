@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="g-teal" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#5a8a9a"/><stop offset="100%" stop-color="#6da0b8"/></linearGradient>
+    <linearGradient id="g-bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0"/><stop offset="15%" stop-color="#5a8a9a"/><stop offset="85%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#6da0b8" stop-opacity="0"/></linearGradient>
+    <radialGradient id="g-glow1" cx="0.5" cy="0.4" r="0.55"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.08"/><stop offset="60%" stop-color="#5a8a9a" stop-opacity="0.02"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-glow2" cx="0.17" cy="0.78" r="0.32"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.10"/><stop offset="60%" stop-color="#5a8a9a" stop-opacity="0.025"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0"/></radialGradient>
+    <pattern id="g-grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60,0 L60,60 M0,60 L60,60" fill="none" stroke="rgba(255,255,255,0.015)" stroke-width="0.5"/></pattern>
+    <filter id="f-tglow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur in="SourceGraphic" stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="g-tri-fill" cx="0.5" cy="0.4" r="0.6"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.10"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0a0f1a"/>
+  <rect width="1280" height="720" fill="url(#g-grid)"/>
+  <rect width="1280" height="720" fill="url(#g-glow1)"/>
+  <rect width="1280" height="720" fill="url(#g-glow2)"/>
+  <g>
+    <circle cx="215" cy="545" r="65" fill="none" stroke="rgba(90,138,154,0.10)" stroke-width="1"/>
+    <circle cx="215" cy="545" r="120" fill="none" stroke="rgba(90,138,154,0.08)" stroke-width="1"/>
+    <circle cx="215" cy="545" r="190" fill="none" stroke="rgba(90,138,154,0.06)" stroke-width="1"/>
+    <circle cx="215" cy="545" r="275" fill="none" stroke="rgba(90,138,154,0.045)" stroke-width="1"/>
+    <circle cx="215" cy="545" r="375" fill="none" stroke="rgba(90,138,154,0.035)" stroke-width="1"/>
+    <circle cx="215" cy="545" r="495" fill="none" stroke="rgba(90,138,154,0.028)" stroke-width="1"/>
+    <circle cx="215" cy="545" r="635" fill="none" stroke="rgba(90,138,154,0.022)" stroke-width="1"/>
+    <circle cx="215" cy="545" r="800" fill="none" stroke="rgba(90,138,154,0.016)" stroke-width="1"/>
+  </g>
+  <g transform="translate(85, 540) scale(0.6)" opacity="0.025"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff"/></g>
+  <polygon points="753.8,247.5 1126.2,247.5 940.0,570.0" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8" stroke-dasharray="3,4"/>
+  <polygon points="851.6,303.9 1019.1,309.3 940.0,451.8" fill="url(#g-tri-fill)"/>
+  <g stroke-dasharray="2,4">
+    <line x1="940" y1="355" x2="851.6" y2="303.9" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+    <line x1="940" y1="355" x2="1019.1" y2="309.3" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+    <line x1="940" y1="355" x2="940.0" y2="451.8" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+  </g>
+  <line x1="851.6" y1="303.9" x2="940.0" y2="451.8" stroke="#5a8a9a" stroke-width="2.10" opacity="0.75" stroke-linecap="round"/>
+  <line x1="1019.1" y1="309.3" x2="940.0" y2="451.8" stroke="#7cc4a8" stroke-width="1.88" opacity="0.71" stroke-linecap="round"/>
+  <line x1="851.6" y1="303.9" x2="1019.1" y2="309.3" stroke="#a78bdb" stroke-width="1.99" opacity="0.73" stroke-linecap="round"/>
+  <circle cx="851.6" cy="303.9" r="4" fill="#ffffff" opacity="0.9"/>
+  <circle cx="1019.1" cy="309.3" r="4" fill="#ffffff" opacity="0.9"/>
+  <circle cx="940.0" cy="451.8" r="4" fill="#ffffff" opacity="0.9"/>
+  <text x="940" y="341" text-anchor="middle" font-family="Sora" font-size="14" font-weight="500" font-style="italic" fill="rgba(255,255,255,0.60)" letter-spacing="1">Resident</text>
+  <text x="940" y="391" text-anchor="middle" font-family="Sora" font-size="52" font-weight="800" fill="#5a8a9a" letter-spacing="-1.5">45</text>
+  <text x="822.1" y="286.9" text-anchor="end" font-family="Sora" font-size="18" font-weight="700" fill="#ffffff">Intent</text>
+  <text x="1048.6" y="292.3" text-anchor="start" font-family="Sora" font-size="18" font-weight="700" fill="#ffffff">Reality</text>
+  <text x="940.0" y="489.8" text-anchor="middle" font-family="Sora" font-size="18" font-weight="700" fill="#ffffff">Expectation</text>
+  <text x="931.5" y="266.8" text-anchor="middle" font-family="Sora" font-size="14" font-weight="800" fill="#a78bdb" letter-spacing="3.5">CONFIDENCE</text>
+  <text x="860.2" y="396.2" text-anchor="middle" transform="rotate(59.1, 860.2, 396.2)" font-family="Sora" font-size="14" font-weight="800" fill="#5a8a9a" letter-spacing="3.5">CLARITY</text>
+  <text x="1013.2" y="402.2" text-anchor="middle" transform="rotate(-60.9, 1013.2, 402.2)" font-family="Sora" font-size="14" font-weight="800" fill="#7cc4a8" letter-spacing="3.5">CONNECTION</text>
+  <text x="80" y="178" font-family="Sora" font-size="13" font-weight="700" fill="#5a8a9a" opacity="0.7" letter-spacing="3.5">TRUSTOS  ·  BUYER-HERO POV  ·  COUNCIL</text>
+  <text x="80" y="270" font-family="Sora" font-size="50" font-weight="800" fill="#ffffff" letter-spacing="-1.4" opacity="0.96">When the council flips.</text>
+  <text x="80" y="340" font-family="Sora" font-size="50" font-weight="800" fill="url(#g-teal)" letter-spacing="-1.4" filter="url(#f-tglow)">Comms leader's trust test.</text>
+  <text x="80" y="390" font-family="Sora" font-size="18" font-weight="400" fill="#ffffff" opacity="0.42" letter-spacing="0.3">The four-audience resident-trust contract just became visible.</text>
+  <text x="80" y="450" font-family="Sora" font-size="11" font-weight="500" fill="#ffffff" opacity="0.30" letter-spacing="3">BUYER-HERO DIAGNOSTIC  ·  Q2 2026</text>
+  <g>
+    <text x="80" y="492" font-family="Sora" font-size="12" font-weight="700" fill="#5a8a9a" letter-spacing="2">CLARITY</text>
+    <rect x="200" y="484" width="180" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+    <rect x="200" y="484" width="90" height="6" rx="3" fill="#5a8a9a"/>
+    <text x="400" y="492" text-anchor="end" font-family="Sora" font-size="13" font-weight="800" fill="#5a8a9a">50</text>
+    <text x="80" y="520" font-family="Sora" font-size="12" font-weight="700" fill="#7cc4a8" letter-spacing="2">CONNECTION</text>
+    <rect x="200" y="512" width="180" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+    <rect x="200" y="512" width="72" height="6" rx="3" fill="#7cc4a8"/>
+    <text x="400" y="520" text-anchor="end" font-family="Sora" font-size="13" font-weight="800" fill="#7cc4a8">40</text>
+    <text x="80" y="548" font-family="Sora" font-size="12" font-weight="700" fill="#a78bdb" letter-spacing="2">CONFIDENCE</text>
+    <rect x="200" y="540" width="180" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+    <rect x="200" y="540" width="81" height="6" rx="3" fill="#a78bdb"/>
+    <text x="400" y="548" text-anchor="end" font-family="Sora" font-size="13" font-weight="800" fill="#a78bdb">45</text>
+  </g>
+  <text x="80" y="590" font-family="Sora" font-size="14" font-weight="500" fill="#ffffff" opacity="0.55">Four audiences. Two structural stresses. Contract exposed.</text>
+  <text x="80" y="660" font-family="Sora" font-size="12" font-weight="500" fill="#ffffff" opacity="0.4" letter-spacing="2.5">MISSIONCTRL  ·  TRUSTOS  ·  JUN 2026</text>
+  <text x="1200" y="660" text-anchor="end" font-family="Sora" font-size="13" font-weight="500" fill="#5a8a9a" opacity="0.55" letter-spacing="0.4">trustos.missionctrl.agency</text>
+  <rect x="0" y="718" width="1280" height="2" fill="url(#g-bar)"/>
+</svg>
