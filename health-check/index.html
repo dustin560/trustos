@@ -1308,7 +1308,7 @@
 
     /* Triangle in result panel */
     .hc-tri-wrap { display: flex; justify-content: center; }
-    .hc-tri-wrap svg { width: 100%; max-width: 360px; height: auto; overflow: visible; }
+    .hc-tri-wrap svg { width: 100%; max-width: 360px; aspect-ratio: 29 / 26; height: auto; overflow: visible; display: block; margin: 0 auto; }
     .hc-tri-fill { fill: url(#hc-tri-grad); transition: fill 0.3s ease; }
     .hc-tri-e-c  { stroke:#5a8a9a; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     .hc-tri-e-n  { stroke:#7cc4a8; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
@@ -1670,7 +1670,7 @@
 
           <!-- Triangle -->
           <div class="hc-tri-wrap">
-            <svg viewBox="0 0 290 260" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+            <svg viewBox="0 0 290 260" width="290" height="260" xmlns="http://www.w3.org/2000/svg" overflow="visible">
               <defs>
                 <linearGradient id="hc-tri-grad" x1="0.5" y1="0" x2="0.5" y2="1">
                   <stop offset="0%" stop-color="rgba(90,138,154,0.08)"/>
