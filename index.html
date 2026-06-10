@@ -1382,8 +1382,9 @@
     .si-soon{font-size:0.54rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.06);padding:2px 7px;border-radius:20px;}
     .si-panel{background:rgba(90,138,154,0.05);border:1px solid rgba(90,138,154,0.16);border-radius:14px;padding:26px 30px 24px;}
     .si-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--trust-cool);margin:0 0 10px;text-align:center;}
-    .si-tri-wrap{display:flex;justify-content:center;padding:8px 0 4px;}
-    .si-tri{width:100%;max-width:320px;aspect-ratio:29 / 26;height:auto;overflow:visible;display:block;margin:0 auto;}
+    .si-tri-wrap{position:relative;width:100%;max-width:300px;margin:8px auto 4px;}
+    .si-tri-wrap::before{content:"";display:block;padding-bottom:89.66%;}
+    .si-tri{position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible;}
     .si-tri-fill{fill:url(#si-tri-grad);transition:opacity .3s ease;}
     .si-tri-e-c{stroke:#5a8a9a;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
     .si-tri-e-n{stroke:#7cc4a8;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
@@ -1415,9 +1416,9 @@
     @media (max-width:820px){
       .si-layout{grid-template-columns:1fr;gap:20px;}
       .si-selector{order:2;} .si-panel{order:1;}
-      .si-tri{max-width:280px;max-height:252px;}
-      #si-list{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
-      .si-opt{min-width:200px;margin-bottom:0;}
+      .si-tri-wrap{max-width:240px;}
+      #si-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+      .si-opt{min-width:0;margin-bottom:0;}
     }
   </style>
 
