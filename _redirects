@@ -1,0 +1,2 @@
+/health-check/*    /explorer/:splat    301
+/health-check      /explorer/          301
