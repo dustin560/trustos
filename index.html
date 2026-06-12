@@ -1094,7 +1094,7 @@
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="/health-check/">Trust Health Check</a></li>
+    <li><a href="/explorer/">TrustOS Explorer</a></li>
     
     <li><a href="/methodology/">How it works</a></li>
     <li><a href="#sector-insights">Sector Insights</a></li>
@@ -1346,7 +1346,7 @@
         <p class="si-read" id="si-readline">Connection is the thinnest layer &#8212; where this sector&#8217;s trust leaks first.</p>
 
         <div class="si-cta">
-          <a href="/health-check/" class="si-cta-primary" id="si-hc">Take the 2-min Trust Health Check &rarr;</a>
+          <a href="/explorer/" class="si-cta-primary" id="si-hc">Try the 2-min TrustOS Explorer &rarr;</a>
           <a href="/energy-integrity-test/" class="si-cta-ghost" id="si-pov">Read the full POV &rarr;</a>
         </div>
         <p class="si-hc-note">See how you think you&#8217;d score against this sector benchmark.</p>
@@ -1436,7 +1436,7 @@
       {key:'memberbodies',name:'Membership Bodies',eyebrow:'Membership &amp; Professional Bodies · Sector POV · Q2 2026',stake:'Members · Future Members · Employers · Regulators · Public · Staff',cl:58,cn:44,cf:50,comp:51,headline:'When the renewal is the referendum. The membership body’s charter test.',url:'/membership-bodies-trust-test/',read:'Read the full POV →'}
     ];
 
-    /* geometry — identical to the Health Check triangle (downward, deforms by score) */
+    /* geometry — identical to the Explorer triangle (downward, deforms by score) */
     var FC={x:145,y:118}, FR=98, ang30=Math.PI/6;
     var FEQ={
       intent:{x:FC.x+FR*Math.cos(Math.PI+ang30), y:FC.y+FR*Math.sin(Math.PI+ang30)},
@@ -1523,7 +1523,7 @@
         showComp=false;elComp.textContent='–';elCompL.textContent='INTEGRITY';
         elHl.innerHTML='Sector POV in development &#8212; map your own shape.';
         elChips.style.opacity='0.3';elCL.textContent='–';elCN.textContent='–';elCF.textContent='–';
-        elRl.textContent='No published read yet. Take the Health Check to map this sector’s trust shape from your own view.';
+        elRl.textContent='No published read yet. Open the TrustOS Explorer to map this sector’s trust shape from your own view.';
         elPOV.style.display='none';elHC.textContent='Map your trust shape →';
         cur={cl:100,cn:100,cf:100,comp:0};draw(100,100,100,0);
         return;
@@ -1531,7 +1531,7 @@
       showComp=true;panel.classList.remove('soon');svg.classList.remove('soon');elChips.style.opacity='1';
       elHl.innerHTML=s.headline;
       elRl.innerHTML=weakest(s)+' is the thinnest layer &#8212; where this sector’s trust leaks first.';
-      elPOV.style.display='';elPOV.href=s.url;elPOV.innerHTML=s.read;elHC.textContent='Take the 2-min Trust Health Check →';
+      elPOV.style.display='';elPOV.href=s.url;elPOV.innerHTML=s.read;elHC.textContent='Try the 2-min TrustOS Explorer →';
       animTo({cl:s.cl,cn:s.cn,cf:s.cf,comp:s.comp});
     }
     cur={cl:0,cn:0,cf:0,comp:0};select(0);
@@ -1545,7 +1545,7 @@
     <p class="section-label" style="display:inline-flex;justify-content:center;">Free &#183; 60 seconds</p>
     <h2 style="font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin:10px 0 12px;line-height:1.12;">How much do your stakeholders trust you? <em style="color:var(--trust-cool);font-style:normal;">Rate it in 60 seconds.</em></h2>
     <p style="font-size:0.88rem;color:rgba(255,255,255,0.42);max-width:520px;margin:0 auto 24px;line-height:1.7;">Move three sliders. Watch your trust shape form. See your highest-priority gap — then get it tested properly.</p>
-    <a href="/health-check/" class="btn-primary" style="font-size:0.9rem;padding:15px 38px;display:inline-block;">Take the Trust Health Check &#8594;</a>
+    <a href="/explorer/" class="btn-primary" style="font-size:0.9rem;padding:15px 38px;display:inline-block;">Launch the TrustOS Explorer &#8594;</a>
   </div>
 </section>
 
@@ -1558,7 +1558,7 @@
     <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1.1;margin-bottom:16px;">30 minutes.<br/>Your full trust picture, live.</h2>
     <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:460px;margin:0 auto 32px;line-height:1.75;">We run a live TrustOS session using your stakeholder groups. You see the dashboard with your context. No templates. No generic demos.</p>
     <a href="#" onclick="openDemo(event)" class="btn-light" style="font-size:0.92rem;padding:16px 42px;font-weight:700;display:inline-block;cursor:pointer;">Book a Demo</a>
-    <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:14px;">Prefer to self-serve? <a href="/health-check/" style="color:rgba(255,255,255,0.38);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.18);">Complete the Trust Health Check.</a></p>
+    <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:14px;">Prefer to self-serve? <a href="/explorer/" style="color:rgba(255,255,255,0.38);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.18);">Open the TrustOS Explorer.</a></p>
   </div>
 </section>
 
@@ -1612,7 +1612,7 @@
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul class="footer-nav-list">
-        <li><a href="/health-check/">What it measures</a></li>
+        <li><a href="/explorer/">What it measures</a></li>
         
         <li><a href="/methodology/">How it works</a></li>
         <li><a href="#sector-insights">Sector Insights</a></li>
