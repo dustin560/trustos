@@ -1704,6 +1704,18 @@
 </div>
 
 <script>
+  window.hsSubmit = function(name,email,org,role,source){
+    try{
+      var parts=(name||'').trim().split(/\s+/), first=parts.shift()||'', last=parts.join(' ');
+      var msg=[org?('Organisation: '+org):'', role?('Role: '+role):'', source?('Enquiry: '+source):''].filter(Boolean).join(' · ');
+      fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/148702411/512d69a9-063a-4b9a-970d-53c6ad5924a0',{
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({fields:[
+          {name:'email',value:email||''},{name:'firstname',value:first},{name:'lastname',value:last},{name:'message',value:msg}
+        ], context:{pageUri:location.href, pageName:document.title}})
+      }).catch(function(){});
+    }catch(e){}
+  };
   window.handleNavSubmit = function(e){
     e.preventDefault(); if(typeof hcFill==='function')hcFill();
     var name=document.getElementById('nav-name').value.trim();
@@ -1713,6 +1725,7 @@
     if(!name||!email||!org){err.textContent='Please add your name, email and organisation.';err.style.display='block';return false;}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Please enter a valid work email.';err.style.display='block';return false;}
     var btn=document.getElementById('nav-submit'); btn.textContent='Sending…'; btn.disabled=true;
+    if(window.hsSubmit)hsSubmit(name,email,org,(document.querySelector('#nav-form [name=role]')||{}).value||'','TrustOS Navigator');
     var data=new FormData(document.getElementById('nav-form'));
     fetch('/',{method:'POST',headers:{'Accept':'application/x-www-form-urlencoded'},body:new URLSearchParams(data)})
       .then(function(){btn.style.display='none';document.getElementById('nav-success').style.display='block';})
@@ -1731,6 +1744,7 @@
     if(!n||!em||!o){err.textContent='Please add your name, email and organisation.';err.style.display='block';return false;}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){err.textContent='Please enter a valid work email.';err.style.display='block';return false;}
     var b=document.getElementById('dm-submit');b.textContent='Sending…';b.disabled=true;
+    if(window.hsSubmit)hsSubmit(n,em,o,(document.querySelector('#dm-form [name=role]')||{}).value||'','TrustOS Demo');
     var data=new FormData(document.getElementById('dm-form'));
     fetch('/',{method:'POST',headers:{'Accept':'application/x-www-form-urlencoded'},body:new URLSearchParams(data)})
       .then(function(){showDemoCal(n,em);}).catch(function(){showDemoCal(n,em);});
