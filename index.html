@@ -1750,8 +1750,8 @@
       .then(function(){showDemoCal(n,em);}).catch(function(){showDemoCal(n,em);});
     return false;};
   function showDemoCal(n,em){document.getElementById('dm-step1').style.display='none';var s2=document.getElementById('dm-step2');s2.style.display='block';var m=document.getElementById('dm-cal');
-    if(window.Calendly&&Calendly.initInlineWidget){m.style.minHeight='640px';Calendly.initInlineWidget({url:'https://calendly.com/dl-unicornunited/trustos-demo?hide_gdpr_banner=1',parentElement:m,prefill:{name:n||'',email:em||''}});}
-    else{m.innerHTML='<a class="btn-primary" target="_blank" rel="noopener" href="https://calendly.com/dl-unicornunited/trustos-demo">Open the scheduler →</a>';}}
+    m.style.minHeight='auto';
+    m.innerHTML='<div style="text-align:center;padding:14px 0;"><p style="margin:0 0 16px;color:rgba(255,255,255,0.7);font-size:0.9rem;">Your details are saved &mdash; pick a time that suits you:</p><a class="btn-primary" target="_blank" rel="noopener" href="'+'https://meetings-eu1.hubspot.com/dustin-lawrence?firstName='+encodeURIComponent(n||'')+'&email='+encodeURIComponent(em||'')+'" style="display:inline-block;">Open the scheduler →</a></div>';}
   (function(){['demoModal','navModal'].forEach(function(id){var ov=document.getElementById(id);if(ov)ov.addEventListener('click',function(e){if(e.target===ov){closeDemo();closeNav();}});});
    document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDemo();closeNav();}});
    if(/[?&]book=demo/.test(location.search)){window.addEventListener('load',function(){openDemo();});}

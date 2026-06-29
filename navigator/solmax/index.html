@@ -455,8 +455,6 @@
   @keyframes icGlow{0%,100%{opacity:.3}50%{opacity:1}}
   @media (prefers-reduced-motion: reduce){.wc-ic .tri-glow{animation:none!important;opacity:.55;}}
 </style>
-<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <!-- seo-ai:start -->
 <meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://trustos.missionctrl.agency/navigator/solmax/" />
@@ -500,7 +498,7 @@
       <li><a href="/methodology/">How it works</a></li>
       <li><a href="https://trustos.missionctrl.agency/#sector-insights">Sector Insights</a></li>
     </ul>
-    <a href="https://calendly.com/dl-unicornunited/trustos-navigator-call" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    <a href="https://meetings-eu1.hubspot.com/dustin-lawrence" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
   </nav>
 
   <div class="breadcrumb">
@@ -1023,8 +1021,8 @@
   var goBook=document.getElementById('goBook');if(goBook)goBook.addEventListener('click',showBook);
   var backToEst=document.getElementById('backToEst');if(backToEst)backToEst.addEventListener('click',showEst);
   function revealCal(name,email){document.getElementById('bookForm').style.display='none';document.getElementById('bookCal').style.display='block';var mount=document.getElementById('calMount');
-    if(window.Calendly&&Calendly.initInlineWidget){mount.style.minHeight='640px';Calendly.initInlineWidget({url:'https://calendly.com/dl-unicornunited/trustos-snapshot?hide_gdpr_banner=1',parentElement:mount,prefill:{name:name||'',email:email||''}});}
-    else{mount.innerHTML='<a class="btn btn-measure" target="_blank" rel="noopener" href="https://calendly.com/dl-unicornunited/trustos-snapshot">Open the scheduler &#8594;</a>';}}
+    mount.style.minHeight='auto';
+    mount.innerHTML='<div style="text-align:center;padding:14px 0;"><p style="margin:0 0 16px;font-size:0.9rem;">Your details are saved &mdash; pick a time that suits you:</p><a class="btn btn-measure" target="_blank" rel="noopener" href="'+'https://meetings-eu1.hubspot.com/dustin-lawrence?firstName='+encodeURIComponent(name||'')+'&email='+encodeURIComponent(email||'')+'" style="display:inline-block;">Open the scheduler &#8594;</a></div>';}
   var navForm=document.getElementById('navForm');
   if(navForm)navForm.addEventListener('submit',function(e){e.preventDefault();var btn=document.getElementById('navSubmit');if(btn){btn.textContent='Sending…';btn.disabled=true;}var data=new FormData(navForm);
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()})
