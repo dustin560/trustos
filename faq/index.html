@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustOS FAQ — Trust Measurement, Answered | TrustOS</title>
+  <meta name="description" content="Answers to the questions leaders ask about TrustOS: what it measures, how it differs from reputation trackers, the method and cadence, pricing, and how trust becomes board-ready evidence. Ask a question and get a direct answer." />
+  <meta property="og:title" content="TrustOS FAQ — Trust Measurement, Answered" />
+  <meta property="og:description" content="Answers to the questions leaders ask about TrustOS: what it measures, how it differs from reputation trackers, the method and cadence, pricing, and how trust becomes board-ready evidence. Ask a question and get a direct answer." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trustos.missionctrl.agency/faq/" />
+<meta property="og:image" content="https://trustos.missionctrl.agency/og-image.png" />
+<meta name="twitter:image" content="https://trustos.missionctrl.agency/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TrustOS FAQ — Trust Measurement, Answered" />
+  <meta name="twitter:description" content="Answers to the questions leaders ask about TrustOS: what it measures, how it differs from reputation trackers, the method and cadence, pricing, and how trust becomes board-ready evidence. Ask a question and get a direct answer." />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --trust-slate: #2d3a4a;
+      --trust-cool:  #5a8a9a;
+      --trust-ice:   #6da0b8;
+      --trust-mid:   #8fb5c0;
+      --system-grey: #f4f4f6;
+      --deep:        #0a0f1a;
+      --white:       #ffffff;
+
+      /* Driver colours — match site dashboard */
+      --clarity:     #5a8a9a;
+      --connection:  #7cc4a8;
+      --confidence:  #a78bdb;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Sora', system-ui, sans-serif;
+      color: rgba(255,255,255,0.78);
+      background: var(--deep);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.65;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* NAV (matches main TrustOS nav) */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(10,15,26,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav-left { display: flex; align-items: center; }
+    .nav-wordmark {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-wordmark .trust { color: #8fb5c0; }
+    .nav-wordmark .os { color: var(--trust-cool); }
+    .nav-product-link {
+      font-size: 0.62rem; font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      margin-left: 16px;
+      transition: color 0.2s;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .nav-product-link:hover { color: var(--trust-cool); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-size: 0.88rem; font-weight: 600;
+      padding: 10px 22px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #4a7a8a; transform: translateY(-1px); }
+
+    /* ARTICLE HERO */
+    .article-hero {
+      padding: 130px 5% 50px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .article-hero .grid-bg { opacity: 0.6; }
+    .article-hero-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .breadcrumb {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 28px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .breadcrumb a {
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--trust-cool); }
+    .breadcrumb .sep { color: rgba(255,255,255,0.25); }
+    .breadcrumb .here { color: var(--trust-cool); }
+    .article-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 22px;
+    }
+    .article-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--trust-cool); display: block; }
+    .article-hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 800; line-height: 1.04;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      margin-bottom: 22px;
+    }
+    .article-hero h1 .gradient {
+      background: linear-gradient(95deg, var(--trust-cool) 0%, var(--trust-ice) 50%, var(--trust-mid) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .article-hero-sub {
+      font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+      font-weight: 300; line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+    .article-meta {
+      display: flex; flex-wrap: wrap; gap: 24px 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.74rem; color: rgba(255,255,255,0.45);
+    }
+    .article-meta-item strong {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      font-size: 0.66rem;
+      margin-bottom: 6px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .article-meta-item a {
+      color: var(--trust-cool);
+      transition: color 0.2s;
+    }
+    .article-meta-item a:hover { color: var(--trust-ice); }
+
+    /* BANNER IMAGE */
+    .article-banner-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+    .article-banner {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      margin-top: -20px;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 80px 5% 60px;
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.78);
+      font-weight: 300;
+    }
+    .article-body p { margin-bottom: 1.4em; }
+    .article-body strong { color: var(--white); font-weight: 600; }
+    .article-body em { color: var(--trust-cool); font-style: italic; }
+    .article-body a {
+      color: var(--trust-cool);
+      border-bottom: 1px solid rgba(90,138,154,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .article-body a:hover { color: var(--trust-ice); border-color: var(--trust-ice); }
+
+    /* Lede */
+    .lede { margin-bottom: 2.4em; }
+    .lede p {
+      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      line-height: 1.32;
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.6em;
+    }
+    .lede p.sub {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--trust-cool);
+    }
+
+    /* Headings */
+    .article-body h2 {
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 800;
+      line-height: 1.18;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      margin: 2.6em 0 0.8em;
+      padding-top: 1.2em;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .article-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--trust-cool);
+      margin: 2em 0 0.6em;
+      letter-spacing: -0.01em;
+    }
+
+    /* Pull quote */
+    .pullquote {
+      margin: 2.6em 0;
+      padding: 28px 32px;
+      background: rgba(90,138,154,0.06);
+      border-left: 3px solid var(--trust-cool);
+      border-radius: 0 8px 8px 0;
+    }
+    .pullquote p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--white);
+      margin: 0;
+    }
+
+    /* Diagnostic strip */
+    .diagnostic-strip {
+      margin: 2.4em 0 2em;
+      padding: 28px 32px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+    .diagnostic-strip .ds-label {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 18px;
+    }
+    .ds-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 36px;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .ds-row:last-child { margin-bottom: 0; }
+    .ds-name {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .ds-row.clarity    .ds-name { color: var(--clarity); }
+    .ds-row.connection .ds-name { color: var(--connection); }
+    .ds-row.confidence .ds-name { color: var(--confidence); }
+    .ds-row.composite  .ds-name { color: rgba(255,255,255,0.7); }
+    .ds-bar-bg {
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .ds-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .ds-row.clarity    .ds-bar { background: var(--clarity);    width: 74%; }
+    .ds-row.connection .ds-bar { background: var(--connection); width: 53%; }
+    .ds-row.confidence .ds-bar { background: var(--confidence); width: 54%; }
+    .ds-row.composite  .ds-bar { background: rgba(255,255,255,0.5); width: 60%; }
+    .ds-score {
+      font-size: 0.86rem; font-weight: 800;
+      text-align: right;
+    }
+    .ds-row.clarity    .ds-score { color: var(--clarity); }
+    .ds-row.connection .ds-score { color: var(--connection); }
+    .ds-row.confidence .ds-score { color: var(--confidence); }
+    .ds-row.composite  .ds-score { color: rgba(255,255,255,0.85); }
+    .ds-row.composite {
+      padding-top: 14px;
+      margin-top: 6px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Inline question (closing emphasis) */
+    .key-question {
+      font-size: 1.2rem;
+      color: var(--white);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 1.4em;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--trust-slate);
+      padding: 90px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section .grid-bg { opacity: 0.5; }
+    .cta-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .cta-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 22px;
+    }
+    .cta-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--trust-cool); display: block; }
+    .cta-section h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      line-height: 1.18;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      font-size: 0.88rem; font-weight: 600;
+      padding: 14px 32px;
+      background: var(--trust-cool); color: var(--white);
+      border-radius: 6px; border: 2px solid var(--trust-cool);
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: #4a7a8a; border-color: #4a7a8a; transform: translateY(-2px); }
+    .btn-ghost {
+      font-size: 0.88rem; font-weight: 600;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+
+    /* RELATED POVS */
+    .related-povs {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 5% 40px;
+    }
+    .related-povs-label {
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 26px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .related-povs-label::before { content: ''; width: 24px; height: 2px; background: var(--trust-cool); display: block; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .related-card {
+      display: block;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 24px 28px;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    }
+    .related-card:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(90,138,154,0.4);
+      transform: translateY(-2px);
+    }
+    .related-card-eyebrow {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--trust-cool); margin-bottom: 10px;
+    }
+    .related-card h3 {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); letter-spacing: -0.015em;
+      margin-bottom: 8px;
+    }
+    .related-card p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* SOURCES */
+    .sources {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 5% 80px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 40px;
+    }
+    .sources-label {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 22px;
+      padding-top: 40px;
+    }
+    .sources ul { list-style: none; }
+    .sources li {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 10px;
+      padding-left: 18px;
+      position: relative;
+    }
+    .sources li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 12px;
+      width: 8px;
+      height: 1px;
+      background: var(--trust-cool);
+    }
+    .sources li em {
+      color: rgba(255,255,255,0.78);
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep);
+      padding: 48px 5% 36px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 36px;
+    }
+    .footer-wordmark { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; }
+    .footer-wordmark .trust { color: #8fb5c0; }
+    .footer-wordmark .os { color: var(--trust-cool); }
+    .footer-brand-tagline { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin: 8px 0 14px; }
+    .footer-brand-desc { font-size: 0.76rem; color: rgba(255,255,255,0.3); line-height: 1.65; max-width: 360px; }
+    .footer-brand-desc a { color: var(--trust-cool); border-bottom: 1px solid rgba(90,138,154,0.4); }
+    .footer-col h4 {
+      font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); margin-bottom: 16px;
+    }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { margin-bottom: 10px; }
+    .footer-nav-list a { font-size: 0.82rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-nav-list a:hover { color: var(--white); }
+    .footer-connect-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 12px; }
+    .footer-connect-item a { color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-connect-item a:hover { color: var(--trust-cool); }
+    .footer-legal {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.65;
+    }
+    .footer-legal a {
+      color: rgba(255,255,255,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-legal a:hover { color: var(--trust-cool); }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      nav { padding: 0 5%; }
+      .article-hero { padding: 110px 5% 50px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .article-banner { margin-top: 0; }
+      .article-body { padding: 60px 6% 40px; }
+      .pullquote { padding: 22px 24px; }
+      .diagnostic-strip { padding: 22px 24px; }
+    }
+    @media (max-width: 600px) {
+      .nav-cta { font-size: 0.8rem; padding: 8px 16px; }
+      .article-meta { gap: 20px 32px; }
+      .cta-buttons { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-ghost { text-align: center; }
+    }
+  
+  /* logo ambient breathing */
+  .lg-amb .lg-glow{animation:lgAmb 4s ease-in-out infinite;}
+  .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
+  @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
+  @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
+  @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}}
+
+  /* ===== FAQ redesign ===== */
+  .faq-shell { max-width: 1120px; margin: 0 auto; padding: 40px 5% 70px; }
+
+  /* Just ask bar */
+  .faq-askwrap { margin: 0 0 44px; }
+  .faq-ask { background: linear-gradient(180deg, rgba(90,138,154,0.10), rgba(90,138,154,0.03)); border: 1px solid rgba(109,160,184,0.28); border-radius: 16px; padding: 22px 22px 20px; }
+  .faq-ask-label { display:inline-flex; align-items:center; gap:8px; font-size:0.66rem; font-weight:800; letter-spacing:0.22em; text-transform:uppercase; color: var(--trust-ice); margin-bottom:12px; }
+  .faq-ask-row { display:flex; gap:10px; }
+  .faq-ask-input { flex:1; background: rgba(10,15,26,0.6); border:1px solid rgba(255,255,255,0.14); border-radius:9px; padding:14px 16px; color:var(--white); font-family:inherit; font-size:0.95rem; outline:none; transition:border-color .2s; }
+  .faq-ask-input:focus { border-color: var(--trust-cool); }
+  .faq-ask-input::placeholder { color: rgba(255,255,255,0.34); }
+  .faq-ask-btn { flex-shrink:0; border:none; cursor:pointer; background: var(--trust-cool); color:#fff; font-family:inherit; font-weight:700; font-size:0.9rem; padding:0 22px; border-radius:9px; transition:background .2s, transform .15s; }
+  .faq-ask-btn:hover { background:#4a7a8a; transform:translateY(-1px); }
+  .faq-ask-btn:disabled { opacity:.6; cursor:default; transform:none; }
+  .faq-ask-results { margin-top:12px; display:flex; flex-direction:column; gap:6px; }
+  .faq-ask-results .ask-res, .faq-ask-answer .ask-res { text-align:left; width:100%; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:11px 14px; color:rgba(255,255,255,0.82); font-family:inherit; font-size:0.86rem; cursor:pointer; transition:background .15s,border-color .15s; display:flex; justify-content:space-between; gap:12px; align-items:center; }
+  .faq-ask-results .ask-res:hover, .faq-ask-answer .ask-res:hover { background:rgba(90,138,154,0.12); border-color:rgba(109,160,184,0.4); }
+  .ask-res-sec { font-size:0.66rem; color:rgba(255,255,255,0.35); white-space:nowrap; }
+  .faq-ask-answer { margin-top:14px; background:rgba(10,15,26,0.5); border:1px solid rgba(124,196,168,0.22); border-left:3px solid #7cc4a8; border-radius:10px; padding:18px 20px; }
+  .ask-ans-label { font-size:0.6rem; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#7cc4a8; margin-bottom:8px; }
+  .ask-ans-body { color:rgba(255,255,255,0.82); font-size:0.92rem; line-height:1.7; white-space:pre-wrap; }
+  .ask-ans-rel { margin-top:14px; display:flex; flex-direction:column; gap:6px; }
+  .ask-ans-rel > span { font-size:0.66rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:2px; }
+  .ask-loading { color:rgba(255,255,255,0.5); font-size:0.9rem; }
+  .ask-loading::after { content:''; display:inline-block; width:6px; height:6px; margin-left:6px; border-radius:50%; background:var(--trust-cool); animation:askpulse 1s infinite; }
+  @keyframes askpulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+  .ask-disclaimer { margin-top:10px; font-size:0.7rem; color:rgba(255,255,255,0.32); }
+  .faq-ask-touch { margin-top:14px; font-size:0.82rem; color:rgba(255,255,255,0.5); }
+  .faq-linkbtn { background:none; border:none; padding:0; cursor:pointer; color:var(--trust-ice); font-family:inherit; font-size:inherit; border-bottom:1px solid rgba(109,160,184,0.4); }
+  .faq-linkbtn:hover { color:#8fb5c0; }
+
+  /* email form */
+  .faq-email-form { margin-top:16px; display:flex; flex-direction:column; gap:10px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px; }
+  .faq-ef-input { background:rgba(10,15,26,0.6); border:1px solid rgba(255,255,255,0.14); border-radius:8px; padding:11px 14px; color:var(--white); font-family:inherit; font-size:0.88rem; outline:none; resize:vertical; }
+  .faq-ef-input:focus { border-color:var(--trust-cool); }
+  .faq-ef-actions { display:flex; align-items:center; gap:14px; }
+  .faq-ef-error { color:#ef4444; font-size:0.8rem; }
+  .faq-ef-success { color:#7cc4a8; font-size:0.88rem; }
+
+  /* layout */
+  .faq-layout { display:grid; grid-template-columns: 224px 1fr; gap:52px; align-items:start; }
+  .faq-toc { position:sticky; top:96px; align-self:start; }
+  .faq-toc-label { font-size:0.62rem; font-weight:800; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+  .faq-toc-list { list-style:none; padding:0; margin:0 0 22px; display:flex; flex-direction:column; gap:2px; border-left:1px solid rgba(255,255,255,0.1); }
+  .faq-toc-list a { display:block; padding:7px 0 7px 14px; margin-left:-1px; border-left:2px solid transparent; font-size:0.82rem; color:rgba(255,255,255,0.5); line-height:1.35; transition:color .15s, border-color .15s; }
+  .faq-toc-list a:hover { color:rgba(255,255,255,0.85); }
+  .faq-toc-list a.active { color:var(--white); border-left-color:var(--trust-cool); font-weight:600; }
+  .faq-toc-help { font-size:0.8rem; color:rgba(255,255,255,0.5); }
+  .faq-toc-help p { margin:0 0 8px; font-weight:600; color:rgba(255,255,255,0.75); }
+  .faq-toc-email, .faq-toc-call { display:block; width:100%; text-align:center; margin-bottom:8px; padding:9px 12px; border-radius:8px; font-size:0.8rem; font-family:inherit; cursor:pointer; }
+  .faq-toc-email { background:var(--trust-cool); color:#fff; border:none; }
+  .faq-toc-email:hover { background:#4a7a8a; }
+  .faq-toc-call { background:transparent; color:var(--trust-cool); border:1px solid rgba(90,138,154,0.4); }
+  .faq-toc-call:hover { color:var(--trust-ice); border-color:var(--trust-ice); }
+
+  /* accordion main */
+  .faq-main { min-width:0; }
+  .faq-main-head { display:flex; justify-content:flex-end; align-items:center; gap:14px; margin-bottom:6px; }
+  .faq-count { font-size:0.72rem; color:rgba(255,255,255,0.35); margin-right:auto; }
+  .faq-toggle-all { background:none; border:1px solid rgba(255,255,255,0.14); color:rgba(255,255,255,0.6); font-family:inherit; font-size:0.74rem; padding:6px 12px; border-radius:7px; cursor:pointer; }
+  .faq-toggle-all:hover { color:var(--white); border-color:rgba(255,255,255,0.3); }
+  .faq-group { margin-top:34px; }
+  .faq-group:first-of-type { margin-top:8px; }
+  .faq-group-title { font-size:0.72rem; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:var(--trust-cool); margin:0 0 10px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .faq-item { border-bottom:1px solid rgba(255,255,255,0.07); }
+  .faq-q-h { margin:0; font-size:inherit; font-weight:inherit; }
+  .faq-q-btn { width:100%; display:flex; align-items:flex-start; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:17px 2px; color:var(--white); font-family:inherit; font-size:1rem; font-weight:600; line-height:1.4; letter-spacing:-0.01em; transition:color .15s; }
+  .faq-q-btn:hover { color:var(--trust-ice); }
+  .faq-chev { flex-shrink:0; margin-top:4px; color:rgba(255,255,255,0.4); transition:transform .22s ease, color .15s; }
+  .faq-item.open .faq-chev { transform:rotate(180deg); color:var(--trust-cool); }
+  .faq-a-panel { display:none; padding:0 2px 20px; }
+  .faq-item.open .faq-a-panel { display:block; }
+  .faq-a-panel p { margin:0; color:rgba(255,255,255,0.66); font-size:0.93rem; line-height:1.75; }
+  .faq-a-panel a { color:var(--trust-cool); border-bottom:1px solid rgba(90,138,154,0.4); }
+  .faq-a-panel a:hover { color:var(--trust-ice); }
+
+  /* sectors */
+  .faq-sector-lead { color:rgba(255,255,255,0.6); font-size:0.92rem; line-height:1.7; margin:0 0 16px; }
+  .faq-sectors { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .faq-sectors li { padding:13px 15px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07); border-left:3px solid var(--trust-cool); border-radius:10px; }
+  .faq-sectors a { display:block; color:var(--white); font-weight:600; font-size:0.9rem; border-bottom:none; }
+  .faq-sectors a:hover { color:var(--trust-cool); }
+  .faq-sector-t { display:block; margin-top:3px; font-size:0.78rem; color:rgba(255,255,255,0.5); line-height:1.45; }
+  .faq-sector-scores { display:block; margin-top:6px; font-size:0.68rem; color:rgba(255,255,255,0.34); letter-spacing:0.02em; }
+
+  /* CTA */
+  .faq-cta { margin-top:44px; padding:28px 30px; background:rgba(124,196,168,0.05); border:1px solid rgba(124,196,168,0.2); border-left:3px solid #7cc4a8; border-radius:12px; }
+  .faq-cta h3 { font-size:1.05rem; font-weight:800; color:#fff; letter-spacing:-0.02em; margin:0 0 10px; }
+  .faq-cta p { font-size:0.88rem; color:rgba(255,255,255,0.6); line-height:1.7; margin:0 0 18px; }
+  .faq-cta-btns { display:flex; gap:12px; flex-wrap:wrap; }
+  .faq-btn-primary { font-size:0.82rem; font-weight:700; padding:11px 20px; background:var(--trust-cool); color:#fff; border-radius:7px; text-decoration:none; }
+  .faq-btn-ghost { font-size:0.82rem; font-weight:600; padding:11px 18px; background:transparent; color:var(--trust-cool); border:1px solid rgba(90,138,154,0.4); border-radius:7px; text-decoration:none; }
+
+  @media (max-width: 860px) {
+    .faq-layout { grid-template-columns:1fr; gap:8px; }
+    .faq-toc { position:static; margin-bottom:26px; }
+    .faq-toc-list { max-height:none; }
+    .faq-sectors { grid-template-columns:1fr; }
+    .faq-ask-row { flex-direction:column; }
+    .faq-ask-btn { padding:13px; }
+  }
+</style>
+<!-- seo-ai:start -->
+<link rel="canonical" href="https://trustos.missionctrl.agency/faq/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://trustos.missionctrl.agency/faq/",
+      "url": "https://trustos.missionctrl.agency/faq/",
+      "name": "TrustOS FAQ — Trust Measurement, Answered",
+      "description": "Answers to the questions leaders ask about TrustOS: what it measures, how it differs from reputation trackers, the method and cadence, pricing, and how trust becomes board-ready evidence. Ask a question and get a direct answer.",
+      "isPartOf": {
+        "@id": "https://trustos.missionctrl.agency/#website"
+      },
+      "publisher": {
+        "@id": "https://trustos.missionctrl.agency/#org"
+      }
+    }
+  ]
+}
+</script>
+<!-- seo-ai:end -->
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-KQ0lt2TsPlWmFkUuKy011.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is TrustOS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TrustOS is the operating system for organisational trust: a trust-intelligence layer that measures how far your organisation is set up to be trusted, reads it across every stakeholder group, and turns it into board-ready evidence. It scores three drivers — Clarity, Connection and Confidence — on a foundation of Integrity, and surfaces where trust is leaking before it shows in the numbers. It’s a MissionCTRL product."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is TrustOS a reputation-monitoring or brand-tracking tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Reputation and brand tools track perception and sentiment, usually for the comms team. TrustOS measures trust specifically — a leading indicator of resilience and growth — and connects it to strategy, for the C-suite and the brand, comms and sustainability leaders accountable for it. Different job, different buyer, different room."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does “trust” mean in TrustOS, and why trust rather than reputation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trust is the truest read of whether your strategy is actually landing with the people it depends on. Reputation is the lagging echo of that — it tells you what people already think. Trust is the leading indicator: it moves first, which is why measuring it warns you before performance does. Put plainly, trust is the strength of the relationships your business and brand are built on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Clarity, Connection and Confidence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They’re the three drivers of trust, each measured across your stakeholders. Clarity is how well people understand what your organisation stands for. Connection is how consistent the experience is with what you promise — the say-do gap. Confidence is how clearly people can see your distinctive advantage, backed by proof. All three sit on a foundation of Integrity. In eleven of the twelve sectors we’ve read, Connection is the weakest layer — trailing Clarity by around 18 points — because it’s the layer no single function owns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the dashboard show Intent, Expectation and Reality when the drivers are Clarity, Connection and Confidence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They’re the same model in two views. TrustOS reads trust as the alignment between what your organisation intends, what your stakeholders expect, and what they actually experience. The drivers are the gaps between them — Clarity is Intent ↔ Expectation, Connection is Expectation ↔ Reality, and Confidence is Intent ↔ Reality. Inside the product you navigate by Intent, Expectation and Reality; the scores you read are Clarity, Connection and Confidence. Same measurement, two lenses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is Integrity the foundation and not a fourth driver?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because Integrity isn’t something you optimise alongside the others — it’s the ground they stand on. Clarity, Connection and Confidence describe how well trust is being built; Integrity is whether the organisation is doing the right thing in the first place. Score well on the three drivers without it and the trust isn’t real. That’s why it sits underneath, not beside."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is TrustOS different from Caliber, RepTrak or a brand tracker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tools like Caliber and RepTrak standardise and monitor perception continuously, for comms. TrustOS is configured around your organisation, measures trust specifically across every stakeholder, and is built to drive strategy decisions — not to report sentiment. It’s the only instrument in the category that warns you before the numbers move, and the only one built for the boardroom rather than the dashboard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Isn’t this just another reputation survey or tracker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A tracker asks a standard set of questions and reports the score. TrustOS is configured entirely around your sector, stakeholders and language — no two TrustOS dashboards are alike — and it’s built to inform decisions, not describe mood. The model is consistent, so your results are still comparable to a sector benchmark; only the configuration is bespoke."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What’s the difference between the Explorer, the Navigator and a Snapshot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three steps, increasing in depth. The TrustOS Explorer is a free, self-serve 60-second self-assessment. The TrustOS Navigator is free too — a directional read we prepare on your organisation’s public signals, no input required. The TrustOS Snapshot is the paid, bespoke read, validated with primary research into your own stakeholders and refreshed each quarter. The Explorer is what you do; the Navigator is what we prepare; the Snapshot is what you act on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does TrustOS fit alongside the tools I already run, like NPS, employee surveys or ESG ratings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Above them. None of those measure trust specifically, and none measure it across every stakeholder at once — NPS reads customers, employee surveys read staff, ESG ratings read raters. TrustOS reads the whole ecosystem and identifies the trust drivers beneath the scores, so it frames what your existing tools each measure in part."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does TrustOS measure trust?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We start from the data you already hold and read it for the gaps across Intent, Expectation and Reality — your published communications, strategy documents and annual reports on one side, and the stakeholder evidence on the other. A data-availability audit shows where existing data is enough and where it isn’t; where it’s thin, we gather it directly through a consistent, validated instrument run as interviews, surveys or workshops — a five-item trust index, driver diagnostics, and an importance-versus-performance value map, plus open-text. We use AI to gather and analyse at scale, on a principle of just enough, done efficiently. The result is a standard model, configured to your stakeholders, sources and language — producing a score you can benchmark against your sector."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the method robust enough to take to a board?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — and it’s built for exactly that room. TrustOS applies a consistent, published model across every organisation it reads, so your result sits against a real sector benchmark rather than floating on its own. The configuration is bespoke; the instrument — a validated trust index and driver diagnostics — and the benchmark are not. A data-availability audit keeps every score traceable to its evidence, and where that evidence is thin we say so. The method builds on an established brand-health-check approach, grounded in recognised academic thinking and refined across two decades of practice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Whose voice is in the data, and which stakeholders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whoever shapes your trust. TrustOS is configured per engagement across the groups that matter to you — customers, employees, investors, regulators, communities, partners. Measuring across the whole ecosystem, rather than one audience at a time, is where the say-do gaps surface."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you measure consent and social licence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — and most tools don’t. Alongside the three drivers, TrustOS reads whether your stakeholders actually grant you the social licence to operate — the consent that regulated, energy and infrastructure organisations depend on and that sentiment tools miss. We approach it case by case: a human-centred design in which the research itself is a form of stakeholder engagement, gathering insight through an interactive, consent-driven process rather than extracting it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I benchmark against my sector?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every TrustOS read is scored against a published sector shape, so you see not just your own drivers but how they compare — where you’re strong, where the gap is, and where the foundation is under pressure across your sector. You can preview any sector’s published shape in the Explorer before you start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is public signal, and what are its limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Public signal is everything your organisation already puts into the world — disclosures, communications, published behaviour — read against the trust model. It’s enough for a directional Navigator, and it’s honest about its limits: it sees what’s public, not what your stakeholders privately experience. That private layer is what the Snapshot’s primary research adds, and why the Snapshot is the rigorous read."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often is TrustOS updated, and is it real-time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and deliberately so. TrustOS is a considered, board-cadence read — not a live feed. It refreshes each quarter, because trust is a strategic measure you act on in strategy cycles, not a notifications stream you watch by the hour. Depth beats frequency: a quarterly read gives you evidence you can actually take into a decision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why quarterly and not continuous?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the things that matter most about trust — lived experience, the say-do gap, shifting stakeholder expectations — can’t be scraped in real time. A considered quarterly read produces a clear “what changed” narrative and evidence you can act on. Each quarter also shows where expectations are rising, so you’re measured against the bar that’s coming, not the one that’s passed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is TrustOS tailored to my organisation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your sector, stakeholders, language and strategy define the dashboard — no two deployments are alike, and there are no generic templates. What stays constant is the model beneath it, so bespoke configuration never costs you comparability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to get value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Baseline live within six weeks, with board-ready insights from your first assessment. We start by aligning on your stakeholder groups, data sources and what the dashboard needs to show, then stand up the baseline from there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I get each quarter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Updated scores, the drivers beneath them, the lived experience behind them, and a “what changed” narrative — including where stakeholder expectations are rising. In practice: your Trust Score overall and by stakeholder group, the Clarity / Connection / Confidence breakdown, how your core promise and key messages are landing, an importance-versus-performance value map, and the qualitative themes beneath the numbers — all resolving into prioritised Insights & Actions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns TrustOS inside the organisation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The C-suite and strategy owner hold it, and the brand, comms and sustainability leaders accountable for trust own it day to day. It’s built to give those leaders the evidence — and the standing — to bring trust into the boardroom, not to sit in a comms workflow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does TrustOS relate to MissionCTRL and the Brand Effect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TrustOS is a MissionCTRL product — the trust-intelligence layer of the Brand Effect, MissionCTRL’s methodology for turning purpose-led brands into movements (Believe → Align → Prove → Move). MissionCTRL is the brand-strategy consultancy that closes the gap between what an organisation believes, says and does. TrustOS senses and measures where trust is leaking; MissionCTRL closes the gap — and then compounds it. Every MissionCTRL engagement is powered by TrustOS, and you can use TrustOS on its own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What decisions does TrustOS help me make?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Where to focus, which stakeholder groups are at risk, whether your strategy is landing, and what’s actually working. It gives you evidence for the board — not a comms scorecard — so trust decisions get made on data rather than instinct."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prove the ROI, or the business case?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trust is a leading indicator of resilience and growth, and the cost of losing it is measurable: £841bn of FTSE 350 value — 28% of total market cap — is attributable to trust (Echo Research, 2026); reputation losses have run at up to five times the operational cost of the trust event (Schmalenbach Journal of Business Research); strong-trust brands recovered from crisis in 45 weeks against the market’s 100 (Kantar BrandZ); and a 5% lift in retention drives a 25–95% lift in profit (Bain / Reichheld). Trust now equals price and quality as a reason to buy (Edelman, 2025). TrustOS measures that asset before it shows in the numbers — and, by mapping the stakeholder ecosystem, it breaks down silos and becomes a single source of truth for planning across the organisation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is TrustOS for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The C-suite and strategy owners, and the brand, comms and sustainability leaders accountable for trust. It’s used across energy, manufacturing, professional services and regulated industries — anywhere trust is priced into performance and someone is accountable for it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does TrustOS cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Explorer and the Navigator are free. The paid step is the Snapshot, and pricing is transparent and scope-based — the same figures set out in your TrustOS Navigator. As an indicative guide: a single Snapshot starts at around £16,000, and an annual programme of four quarterly Snapshots from around £63,000–£75,000 — the exact figure depending on how much usable data you already hold. Final scope and price are confirmed after a short data assessment; bespoke programming and add-ons such as synthetic stakeholders sit outside the base figure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three ways in, and your results travel with you: rate yourself in 60 seconds with the free Explorer; request a free, prepared Navigator read of your public signals; or book a live 30-minute demo run on your own stakeholder groups. When you’re ready to validate any of it with primary research, you move to a paid Snapshot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you handle data, privacy and confidentiality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We work to industry-standard data management and privacy practice, reinforced by your own organisational policies on these matters. We’re transparent about how your data is handled and protected, and we operate within your compliance requirements and the confidentiality your competitive position demands."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are synthetic stakeholders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Synthetic stakeholders are AI-modelled versions of your real stakeholder groups, built from the trust data already in your TrustOS deployment. They let you convene a virtual focus group on demand — to pressure-test an idea, a message or a decision before you take it to the people it affects. Think of it as a rehearsal space between the quarterly reads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are synthetic stakeholders a replacement for real research?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — and we’re deliberate about that line. TrustOS measures trust with real signal and, in a Snapshot, primary research into your actual stakeholders. Synthetic stakeholders sit on top of that evidence as a way to explore and rehearse, not to measure. What they surface is a hypothesis to validate with real people, never a finding to take to the board. Measurement stays evidence; synthesis stays exploration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can I use synthetic stakeholders for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Testing messages and ideas before launch, co-creating options with a stand-in for each stakeholder group, and stress-testing a decision from several stakeholder perspectives at once — all between the quarterly reads, without standing up a new research panel each time. It’s an add-on to a paid deployment, because the personas are only as reliable as the data beneath them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are synthetic stakeholders built from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "From what your deployment already holds — the primary research, public signal and stakeholder mapping gathered for your TrustOS read. Where the data is thin and a persona needs sharpening, we stress-test it with the people who know that group best — for example, your sales team for a client persona — so the stand-in stays grounded in reality rather than assumption."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="/" class="nav-wordmark">
+      <svg width="22" height="27" viewBox="0 0 120 148" fill="none" class="lg-amb" style="flex-shrink:0;"><defs><linearGradient id="nav-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient><linearGradient id="nav-ml" x1="60" y1="12" x2="60" y2="140"><stop offset="0%" stop-color="#5a8a9a" stop-opacity="0.5"/><stop offset="100%" stop-color="#5a8a9a" stop-opacity="0.03"/></linearGradient><filter id="nav-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/><path class="lg-mlight" d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="url(#nav-ml)"/><polygon class="lg-glow" points="30,12 90,12 60,88" fill="#6da0b8" filter="url(#nav-glow)"/><polygon points="30,12 90,12 60,88" fill="url(#nav-tg)"/></svg>
+      <span><span class="trust">Trust</span><span class="os">OS</span></span>
+    </a>
+    <a href="https://missionctrl.agency" class="nav-product-link" target="_blank" rel="noopener">
+      <svg width="10" height="12" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="nav-mg" x1="0" y1="148" x2="120" y2="0"><stop offset="0%" stop-color="#ff6b2b"/><stop offset="100%" stop-color="#ffad3b"/></linearGradient><clipPath id="nav-mlc"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z"/></clipPath></defs><rect width="120" height="148" fill="url(#nav-mg)" clip-path="url(#nav-mlc)"/></svg>
+      A MissionCTRL product &rarr;
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/explorer/">TrustOS Explorer</a></li>
+    
+    <li><a href="/methodology/">How it works</a></li>
+    <li><a href="/insights/">Sector Insights</a></li>
+    <li><a href="/faq/">FAQ</a></li>
+  </ul>
+  <a href="/?request=navigator" class="nav-cta">Request a Navigator</a>
+</nav>
+
+
+<!-- ARTICLE HERO -->
+<section class="article-hero">
+  <div class="grid-bg"></div>
+  <div class="article-hero-inner">
+    <div class="breadcrumb">
+      <a href="/">TrustOS</a>
+      <span class="sep">/</span>
+      <span class="here">FAQ</span>
+    </div>
+    <div class="article-eyebrow">TrustOS FAQ</div>
+    <h1>Frequently asked questions.<br/><span class="gradient">Trust measurement, answered.</span></h1>
+    <p class="article-hero-sub">The questions leaders ask before they run a TrustOS read. Browse by section, expand any question — or just ask, and get a direct answer.</p>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<div class="faq-shell">
+<div class="faq-askwrap"><div class="faq-ask">
+    <div class="faq-ask-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Just ask</div>
+    <div class="faq-ask-row">
+      <input type="text" id="askInput" class="faq-ask-input" placeholder="Ask anything — e.g. how is trust measured, or what does it cost?" autocomplete="off" aria-label="Ask a question about TrustOS">
+      <button type="button" id="askBtn" class="faq-ask-btn">Get an answer</button>
+    </div>
+    <div id="askResults" class="faq-ask-results" hidden></div>
+    <div id="askAnswer" class="faq-ask-answer" hidden></div>
+    <div class="faq-ask-touch">Prefer a person? <button type="button" class="faq-linkbtn" data-ask-email>Email Dustin</button> or <a class="faq-linkbtn" href="https://meetings-eu1.hubspot.com/dustin-lawrence" target="_blank" rel="noopener">book a call</a>.</div>
+    <form id="askEmailForm" class="faq-email-form" name="trustos-faq-ask" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="trustos-faq-ask">
+      <p style="position:absolute;left:-9999px;"><label>Leave blank <input name="bot-field"></label></p>
+      <input type="text" class="faq-ef-input" id="ef-name" name="name" placeholder="Your name">
+      <input type="email" class="faq-ef-input" id="ef-email" name="email" placeholder="you@organisation.com">
+      <textarea class="faq-ef-input" id="ef-msg" name="message" rows="3" placeholder="Your question"></textarea>
+      <div id="ef-error" class="faq-ef-error" hidden></div>
+      <div class="faq-ef-actions"><button type="submit" id="ef-submit" class="faq-ask-btn">Send to Dustin</button><button type="button" class="faq-linkbtn" data-ask-email-cancel>Cancel</button></div>
+      <div id="ef-success" class="faq-ef-success" hidden>Thanks — Dustin has your question and will be in touch.</div>
+    </form>
+  </div></div>
+<div class="faq-layout">
+<aside class="faq-toc" aria-label="On this page"><div class="faq-toc-inner">
+<p class="faq-toc-label">On this page</p>
+<ul class="faq-toc-list">
+<li><a href="#sec-what-trustos-is">What TrustOS is</a></li>
+<li><a href="#sec-how-its-different">How it&rsquo;s different</a></li>
+<li><a href="#sec-method-and-rigour">Method and rigour</a></li>
+<li><a href="#sec-cadence">Cadence</a></li>
+<li><a href="#sec-custom-and-deployment">Custom and deployment</a></li>
+<li><a href="#sec-value-and-outcomes">Value and outcomes</a></li>
+<li><a href="#sec-commercial-and-practical">Commercial and practical</a></li>
+<li><a href="#sec-synthetic-stakeholders-add-on">Synthetic stakeholders (add-on)</a></li>
+<li><a href="#sec-trust-by-sector">Trust by sector</a></li>
+</ul>
+<div class="faq-toc-help"><p>Still stuck?</p><button type="button" class="faq-toc-email" data-ask-email>Email Dustin</button><a class="faq-toc-call" href="https://meetings-eu1.hubspot.com/dustin-lawrence" target="_blank" rel="noopener">Book a call</a></div>
+</div></aside>
+<div class="faq-main">
+<div class="faq-main-head"><p class="faq-count">33 questions</p><button type="button" id="faqToggleAll" class="faq-toggle-all">Expand all</button></div>
+<section class="faq-group" id="sec-what-trustos-is"><h2 class="faq-group-title">What TrustOS is</h2>
+<div class="faq-item" id="what-is-trustos"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-is-trustos"><span class="faq-q-text">What is TrustOS?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-is-trustos" role="region"><p>TrustOS is the operating system for organisational trust: a trust-intelligence layer that measures how far your organisation is set up to be trusted, reads it across every stakeholder group, and turns it into board-ready evidence. It scores three drivers — Clarity, Connection and Confidence — on a foundation of Integrity, and surfaces where trust is leaking before it shows in the numbers. It&rsquo;s a MissionCTRL product.</p></div></div>
+<div class="faq-item" id="is-trustos-a-reputation-monitoring-or-brand-tracking-tool"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-is-trustos-a-reputation-monitoring-or-brand-tracking-tool"><span class="faq-q-text">Is TrustOS a reputation-monitoring or brand-tracking tool?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-is-trustos-a-reputation-monitoring-or-brand-tracking-tool" role="region"><p>No. Reputation and brand tools track perception and sentiment, usually for the comms team. TrustOS measures trust specifically — a leading indicator of resilience and growth — and connects it to strategy, for the C-suite and the brand, comms and sustainability leaders accountable for it. Different job, different buyer, different room.</p></div></div>
+<div class="faq-item" id="what-does-trust-mean-in-trustos-and-why-trust-rather-than-re"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-does-trust-mean-in-trustos-and-why-trust-rather-than-re"><span class="faq-q-text">What does &ldquo;trust&rdquo; mean in TrustOS, and why trust rather than reputation?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-does-trust-mean-in-trustos-and-why-trust-rather-than-re" role="region"><p>Trust is the truest read of whether your strategy is actually landing with the people it depends on. Reputation is the lagging echo of that — it tells you what people already think. Trust is the leading indicator: it moves first, which is why measuring it warns you before performance does. Put plainly, trust is the strength of the relationships your business and brand are built on.</p></div></div>
+<div class="faq-item" id="what-are-clarity-connection-and-confidence"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-are-clarity-connection-and-confidence"><span class="faq-q-text">What are Clarity, Connection and Confidence?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-are-clarity-connection-and-confidence" role="region"><p>They&rsquo;re the three drivers of trust, each measured across your stakeholders. <strong>Clarity</strong> is how well people understand what your organisation stands for. <strong>Connection</strong> is how consistent the experience is with what you promise — the say-do gap. <strong>Confidence</strong> is how clearly people can see your distinctive advantage, backed by proof. All three sit on a foundation of <strong>Integrity</strong>. In eleven of the twelve sectors we&rsquo;ve read, Connection is the weakest layer — trailing Clarity by around 18 points — because it&rsquo;s the layer no single function owns.</p></div></div>
+<div class="faq-item" id="why-does-the-dashboard-show-intent-expectation-and-reality-w"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-why-does-the-dashboard-show-intent-expectation-and-reality-w"><span class="faq-q-text">Why does the dashboard show Intent, Expectation and Reality when the drivers are Clarity, Connection and Confidence?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-why-does-the-dashboard-show-intent-expectation-and-reality-w" role="region"><p>They&rsquo;re the same model in two views. TrustOS reads trust as the alignment between what your organisation <em>intends</em>, what your stakeholders <em>expect</em>, and what they actually <em>experience</em>. The drivers are the gaps between them — Clarity is Intent&nbsp;&harr;&nbsp;Expectation, Connection is Expectation&nbsp;&harr;&nbsp;Reality, and Confidence is Intent&nbsp;&harr;&nbsp;Reality. Inside the product you navigate by Intent, Expectation and Reality; the scores you read are Clarity, Connection and Confidence. Same measurement, two lenses.</p></div></div>
+<div class="faq-item" id="why-is-integrity-the-foundation-and-not-a-fourth-driver"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-why-is-integrity-the-foundation-and-not-a-fourth-driver"><span class="faq-q-text">Why is Integrity the foundation and not a fourth driver?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-why-is-integrity-the-foundation-and-not-a-fourth-driver" role="region"><p>Because Integrity isn&rsquo;t something you optimise alongside the others — it&rsquo;s the ground they stand on. Clarity, Connection and Confidence describe how well trust is being built; Integrity is whether the organisation is doing the right thing in the first place. Score well on the three drivers without it and the trust isn&rsquo;t real. That&rsquo;s why it sits underneath, not beside.</p></div></div>
+</section>
+<section class="faq-group" id="sec-how-its-different"><h2 class="faq-group-title">How it&rsquo;s different</h2>
+<div class="faq-item" id="how-is-trustos-different-from-caliber-reptrak-or-a-brand-tra"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-is-trustos-different-from-caliber-reptrak-or-a-brand-tra"><span class="faq-q-text">How is TrustOS different from Caliber, RepTrak or a brand tracker?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-is-trustos-different-from-caliber-reptrak-or-a-brand-tra" role="region"><p>Tools like <a href="https://www.groupcaliber.com/" target="_blank" rel="noopener">Caliber</a> and <a href="https://www.reptrak.com/" target="_blank" rel="noopener">RepTrak</a> standardise and monitor perception continuously, for comms. TrustOS is configured around your organisation, measures trust specifically across every stakeholder, and is built to drive strategy decisions — not to report sentiment. It&rsquo;s the only instrument in the category that warns you before the numbers move, and the only one built for the boardroom rather than the dashboard.</p></div></div>
+<div class="faq-item" id="isnt-this-just-another-reputation-survey-or-tracker"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-isnt-this-just-another-reputation-survey-or-tracker"><span class="faq-q-text">Isn&rsquo;t this just another reputation survey or tracker?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-isnt-this-just-another-reputation-survey-or-tracker" role="region"><p>No. A tracker asks a standard set of questions and reports the score. TrustOS is configured entirely around your sector, stakeholders and language — no two TrustOS dashboards are alike — and it&rsquo;s built to inform decisions, not describe mood. The model is consistent, so your results are still comparable to a sector benchmark; only the configuration is bespoke.</p></div></div>
+<div class="faq-item" id="whats-the-difference-between-the-explorer-the-navigator-and"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-whats-the-difference-between-the-explorer-the-navigator-and"><span class="faq-q-text">What&rsquo;s the difference between the Explorer, the Navigator and a Snapshot?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-whats-the-difference-between-the-explorer-the-navigator-and" role="region"><p>Three steps, increasing in depth. The <strong>TrustOS Explorer</strong> is a free, self-serve 60-second self-assessment. The <strong>TrustOS Navigator</strong> is free too — a directional read <em>we</em> prepare on your organisation&rsquo;s public signals, no input required. The <strong>TrustOS Snapshot</strong> is the paid, bespoke read, validated with primary research into your own stakeholders and refreshed each quarter. The Explorer is what you do; the Navigator is what we prepare; the Snapshot is what you act on.</p></div></div>
+<div class="faq-item" id="where-does-trustos-fit-alongside-the-tools-i-already-run-lik"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-where-does-trustos-fit-alongside-the-tools-i-already-run-lik"><span class="faq-q-text">Where does TrustOS fit alongside the tools I already run, like NPS, employee surveys or ESG ratings?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-where-does-trustos-fit-alongside-the-tools-i-already-run-lik" role="region"><p>Above them. None of those measure trust specifically, and none measure it across every stakeholder at once — NPS reads customers, employee surveys read staff, ESG ratings read raters. TrustOS reads the whole ecosystem and identifies the trust drivers beneath the scores, so it frames what your existing tools each measure in part.</p></div></div>
+</section>
+<section class="faq-group" id="sec-method-and-rigour"><h2 class="faq-group-title">Method and rigour</h2>
+<div class="faq-item" id="how-does-trustos-measure-trust"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-does-trustos-measure-trust"><span class="faq-q-text">How does TrustOS measure trust?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-does-trustos-measure-trust" role="region"><p>We start from the data you already hold and read it for the gaps across Intent, Expectation and Reality — your published communications, strategy documents and annual reports on one side, and the stakeholder evidence on the other. A data-availability audit shows where existing data is enough and where it isn&rsquo;t; where it&rsquo;s thin, we gather it directly through a consistent, validated instrument run as interviews, surveys or workshops — a five-item trust index, driver diagnostics, and an importance-versus-performance value map, plus open-text. We use AI to gather and analyse at scale, on a principle of <em>just enough, done efficiently</em>. The result is a standard model, configured to your stakeholders, sources and language — producing a score you can benchmark against your sector.</p></div></div>
+<div class="faq-item" id="is-the-method-robust-enough-to-take-to-a-board"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-is-the-method-robust-enough-to-take-to-a-board"><span class="faq-q-text">Is the method robust enough to take to a board?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-is-the-method-robust-enough-to-take-to-a-board" role="region"><p>Yes — and it&rsquo;s built for exactly that room. TrustOS applies a consistent, published model across every organisation it reads, so your result sits against a real sector benchmark rather than floating on its own. The configuration is bespoke; the instrument — a validated trust index and driver diagnostics — and the benchmark are not. A data-availability audit keeps every score traceable to its evidence, and where that evidence is thin we say so. The method builds on an established brand-health-check approach, grounded in recognised academic thinking and refined across two decades of practice.</p></div></div>
+<div class="faq-item" id="whose-voice-is-in-the-data-and-which-stakeholders"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-whose-voice-is-in-the-data-and-which-stakeholders"><span class="faq-q-text">Whose voice is in the data, and which stakeholders?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-whose-voice-is-in-the-data-and-which-stakeholders" role="region"><p>Whoever shapes your trust. TrustOS is configured per engagement across the groups that matter to you — customers, employees, investors, regulators, communities, partners. Measuring across the whole ecosystem, rather than one audience at a time, is where the say-do gaps surface.</p></div></div>
+<div class="faq-item" id="do-you-measure-consent-and-social-licence"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-do-you-measure-consent-and-social-licence"><span class="faq-q-text">Do you measure consent and social licence?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-do-you-measure-consent-and-social-licence" role="region"><p>Yes — and most tools don&rsquo;t. Alongside the three drivers, TrustOS reads whether your stakeholders actually grant you the <a href="https://www.sciencedirect.com/science/article/pii/S0301420723006736" target="_blank" rel="noopener">social licence to operate</a> — the consent that regulated, energy and infrastructure organisations depend on and that sentiment tools miss. We approach it case by case: a human-centred design in which the research itself is a form of stakeholder engagement, gathering insight through an interactive, consent-driven process rather than extracting it.</p></div></div>
+<div class="faq-item" id="can-i-benchmark-against-my-sector"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-can-i-benchmark-against-my-sector"><span class="faq-q-text">Can I benchmark against my sector?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-can-i-benchmark-against-my-sector" role="region"><p>Yes. Every TrustOS read is scored against a published sector shape, so you see not just your own drivers but how they compare — where you&rsquo;re strong, where the gap is, and where the foundation is under pressure across your sector. You can preview any sector&rsquo;s published shape in the Explorer before you start.</p></div></div>
+<div class="faq-item" id="what-is-public-signal-and-what-are-its-limits"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-is-public-signal-and-what-are-its-limits"><span class="faq-q-text">What is public signal, and what are its limits?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-is-public-signal-and-what-are-its-limits" role="region"><p>Public signal is everything your organisation already puts into the world — disclosures, communications, published behaviour — read against the trust model. It&rsquo;s enough for a directional Navigator, and it&rsquo;s honest about its limits: it sees what&rsquo;s public, not what your stakeholders privately experience. That private layer is what the Snapshot&rsquo;s primary research adds, and why the Snapshot is the rigorous read.</p></div></div>
+</section>
+<section class="faq-group" id="sec-cadence"><h2 class="faq-group-title">Cadence</h2>
+<div class="faq-item" id="how-often-is-trustos-updated-and-is-it-real-time"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-often-is-trustos-updated-and-is-it-real-time"><span class="faq-q-text">How often is TrustOS updated, and is it real-time?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-often-is-trustos-updated-and-is-it-real-time" role="region"><p>No, and deliberately so. TrustOS is a considered, board-cadence read — not a live feed. It refreshes each quarter, because trust is a strategic measure you act on in strategy cycles, not a notifications stream you watch by the hour. Depth beats frequency: a quarterly read gives you evidence you can actually take into a decision.</p></div></div>
+<div class="faq-item" id="why-quarterly-and-not-continuous"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-why-quarterly-and-not-continuous"><span class="faq-q-text">Why quarterly and not continuous?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-why-quarterly-and-not-continuous" role="region"><p>Because the things that matter most about trust — lived experience, the say-do gap, shifting stakeholder expectations — can&rsquo;t be scraped in real time. A considered quarterly read produces a clear &ldquo;what changed&rdquo; narrative and evidence you can act on. Each quarter also shows where expectations are rising, so you&rsquo;re measured against the bar that&rsquo;s coming, not the one that&rsquo;s passed.</p></div></div>
+</section>
+<section class="faq-group" id="sec-custom-and-deployment"><h2 class="faq-group-title">Custom and deployment</h2>
+<div class="faq-item" id="how-is-trustos-tailored-to-my-organisation"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-is-trustos-tailored-to-my-organisation"><span class="faq-q-text">How is TrustOS tailored to my organisation?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-is-trustos-tailored-to-my-organisation" role="region"><p>Your sector, stakeholders, language and strategy define the dashboard — no two deployments are alike, and there are no generic templates. What stays constant is the model beneath it, so bespoke configuration never costs you comparability.</p></div></div>
+<div class="faq-item" id="how-long-does-it-take-to-get-value"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-long-does-it-take-to-get-value"><span class="faq-q-text">How long does it take to get value?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-long-does-it-take-to-get-value" role="region"><p>Baseline live within six weeks, with board-ready insights from your first assessment. We start by aligning on your stakeholder groups, data sources and what the dashboard needs to show, then stand up the baseline from there.</p></div></div>
+<div class="faq-item" id="what-do-i-get-each-quarter"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-do-i-get-each-quarter"><span class="faq-q-text">What do I get each quarter?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-do-i-get-each-quarter" role="region"><p>Updated scores, the drivers beneath them, the lived experience behind them, and a &ldquo;what changed&rdquo; narrative — including where stakeholder expectations are rising. In practice: your Trust Score overall and by stakeholder group, the Clarity / Connection / Confidence breakdown, how your core promise and key messages are landing, an importance-versus-performance value map, and the qualitative themes beneath the numbers — all resolving into prioritised Insights &amp; Actions.</p></div></div>
+<div class="faq-item" id="who-owns-trustos-inside-the-organisation"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-who-owns-trustos-inside-the-organisation"><span class="faq-q-text">Who owns TrustOS inside the organisation?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-who-owns-trustos-inside-the-organisation" role="region"><p>The C-suite and strategy owner hold it, and the brand, comms and sustainability leaders accountable for trust own it day to day. It&rsquo;s built to give those leaders the evidence — and the standing — to bring trust into the boardroom, not to sit in a comms workflow.</p></div></div>
+<div class="faq-item" id="how-does-trustos-relate-to-missionctrl-and-the-brand-effect"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-does-trustos-relate-to-missionctrl-and-the-brand-effect"><span class="faq-q-text">How does TrustOS relate to MissionCTRL and the Brand Effect?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-does-trustos-relate-to-missionctrl-and-the-brand-effect" role="region"><p>TrustOS is a MissionCTRL product — the trust-intelligence layer of the Brand Effect, MissionCTRL&rsquo;s methodology for turning purpose-led brands into movements (Believe &rarr; Align &rarr; Prove &rarr; Move). MissionCTRL is the brand-strategy consultancy that closes the gap between what an organisation believes, says and does. TrustOS senses and measures where trust is leaking; MissionCTRL closes the gap — and then compounds it. Every MissionCTRL engagement is powered by TrustOS, and you can use TrustOS on its own.</p></div></div>
+</section>
+<section class="faq-group" id="sec-value-and-outcomes"><h2 class="faq-group-title">Value and outcomes</h2>
+<div class="faq-item" id="what-decisions-does-trustos-help-me-make"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-decisions-does-trustos-help-me-make"><span class="faq-q-text">What decisions does TrustOS help me make?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-decisions-does-trustos-help-me-make" role="region"><p>Where to focus, which stakeholder groups are at risk, whether your strategy is landing, and what&rsquo;s actually working. It gives you evidence for the board — not a comms scorecard — so trust decisions get made on data rather than instinct.</p></div></div>
+<div class="faq-item" id="how-do-i-prove-the-roi-or-the-business-case"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-do-i-prove-the-roi-or-the-business-case"><span class="faq-q-text">How do I prove the ROI, or the business case?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-do-i-prove-the-roi-or-the-business-case" role="region"><p>Trust is a leading indicator of resilience and growth, and the cost of losing it is measurable: £841bn of FTSE 350 value — 28% of total market cap — is attributable to trust (<a href="https://www.echoresearch.com/news-events/new-report-trust-now-drives-841bn-of-uk-market-value/" target="_blank" rel="noopener">Echo Research, 2026</a>); reputation losses have run at up to five times the operational cost of the trust event (<a href="https://link.springer.com/journal/41471" target="_blank" rel="noopener">Schmalenbach Journal of Business Research</a>); strong-trust brands recovered from crisis in 45 weeks against the market&rsquo;s 100 (<a href="https://www.kantar.com/campaigns/brandz" target="_blank" rel="noopener">Kantar BrandZ</a>); and a 5% lift in retention drives a 25&ndash;95% lift in profit (<a href="https://hbr.org/2014/10/the-value-of-keeping-the-right-customers" target="_blank" rel="noopener">Bain / Reichheld</a>). Trust now equals price and quality as a reason to buy (<a href="https://www.edelman.com/trust/2025/trust-barometer" target="_blank" rel="noopener">Edelman, 2025</a>). TrustOS measures that asset before it shows in the numbers — and, by mapping the stakeholder ecosystem, it breaks down silos and becomes a single source of truth for planning across the organisation.</p></div></div>
+<div class="faq-item" id="who-is-trustos-for"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-who-is-trustos-for"><span class="faq-q-text">Who is TrustOS for?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-who-is-trustos-for" role="region"><p>The C-suite and strategy owners, and the brand, comms and sustainability leaders accountable for trust. It&rsquo;s used across energy, manufacturing, professional services and regulated industries — anywhere trust is priced into performance and someone is accountable for it.</p></div></div>
+</section>
+<section class="faq-group" id="sec-commercial-and-practical"><h2 class="faq-group-title">Commercial and practical</h2>
+<div class="faq-item" id="what-does-trustos-cost"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-does-trustos-cost"><span class="faq-q-text">What does TrustOS cost?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-does-trustos-cost" role="region"><p>The Explorer and the Navigator are free. The paid step is the Snapshot, and pricing is transparent and scope-based — the same figures set out in your TrustOS Navigator. As an indicative guide: a single Snapshot starts at around £16,000, and an annual programme of four quarterly Snapshots from around £63,000&ndash;£75,000 — the exact figure depending on how much usable data you already hold. Final scope and price are confirmed after a short data assessment; bespoke programming and add-ons such as synthetic stakeholders sit outside the base figure.</p></div></div>
+<div class="faq-item" id="how-do-we-get-started"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-do-we-get-started"><span class="faq-q-text">How do we get started?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-do-we-get-started" role="region"><p>Three ways in, and your results travel with you: rate yourself in 60 seconds with the free <strong>Explorer</strong>; request a free, prepared <strong>Navigator</strong> read of your public signals; or book a live 30-minute <strong>demo</strong> run on your own stakeholder groups. When you&rsquo;re ready to validate any of it with primary research, you move to a paid Snapshot.</p></div></div>
+<div class="faq-item" id="how-do-you-handle-data-privacy-and-confidentiality"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-how-do-you-handle-data-privacy-and-confidentiality"><span class="faq-q-text">How do you handle data, privacy and confidentiality?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-how-do-you-handle-data-privacy-and-confidentiality" role="region"><p>We work to industry-standard data management and privacy practice, reinforced by your own organisational policies on these matters. We&rsquo;re transparent about how your data is handled and protected, and we operate within your compliance requirements and the confidentiality your competitive position demands.</p></div></div>
+</section>
+<section class="faq-group" id="sec-synthetic-stakeholders-add-on"><h2 class="faq-group-title">Synthetic stakeholders (add-on)</h2>
+<div class="faq-item" id="what-are-synthetic-stakeholders"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-are-synthetic-stakeholders"><span class="faq-q-text">What are synthetic stakeholders?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-are-synthetic-stakeholders" role="region"><p>Synthetic stakeholders are AI-modelled versions of your real stakeholder groups, built from the trust data already in your TrustOS deployment. They let you convene a virtual focus group on demand — to pressure-test an idea, a message or a decision before you take it to the people it affects. Think of it as a rehearsal space between the quarterly reads.</p></div></div>
+<div class="faq-item" id="are-synthetic-stakeholders-a-replacement-for-real-research"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-are-synthetic-stakeholders-a-replacement-for-real-research"><span class="faq-q-text">Are synthetic stakeholders a replacement for real research?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-are-synthetic-stakeholders-a-replacement-for-real-research" role="region"><p>No — and we&rsquo;re deliberate about that line. TrustOS measures trust with real signal and, in a Snapshot, primary research into your actual stakeholders. Synthetic stakeholders sit on top of that evidence as a way to explore and rehearse, not to measure. What they surface is a hypothesis to validate with real people, never a finding to take to the board. Measurement stays evidence; synthesis stays exploration.</p></div></div>
+<div class="faq-item" id="what-can-i-use-synthetic-stakeholders-for"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-can-i-use-synthetic-stakeholders-for"><span class="faq-q-text">What can I use synthetic stakeholders for?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-can-i-use-synthetic-stakeholders-for" role="region"><p>Testing messages and ideas before launch, co-creating options with a stand-in for each stakeholder group, and stress-testing a decision from several stakeholder perspectives at once — all between the quarterly reads, without standing up a new research panel each time. It&rsquo;s an add-on to a paid deployment, because the personas are only as reliable as the data beneath them.</p></div></div>
+<div class="faq-item" id="what-are-synthetic-stakeholders-built-from"><h3 class="faq-q-h"><button type="button" class="faq-q-btn" aria-expanded="false" aria-controls="a-what-are-synthetic-stakeholders-built-from"><span class="faq-q-text">What are synthetic stakeholders built from?</span><svg class="faq-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="faq-a-panel" id="a-what-are-synthetic-stakeholders-built-from" role="region"><p>From what your deployment already holds — the primary research, public signal and stakeholder mapping gathered for your TrustOS read. Where the data is thin and a persona needs sharpening, we stress-test it with the people who know that group best — for example, your sales team for a client persona — so the stand-in stays grounded in reality rather than assumption.</p></div></div>
+</section>
+<section class="faq-group" id="sec-trust-by-sector"><h2 class="faq-group-title">Trust by sector</h2>
+<p class="faq-sector-lead">Trust looks different in every sector. We&rsquo;ve published trust shapes for twelve — read the full point of view for yours, then see where your own organisation sits.</p>
+<ul class="faq-sectors">
+<li><a href="/energy-integrity-test/">Energy</a><span class="faq-sector-t">When the chair falls — Energy&rsquo;s Integrity test.</span><span class="faq-sector-scores">Cl&nbsp;74 &middot; Cn&nbsp;53 &middot; Cf&nbsp;54</span></li>
+<li><a href="/mining-trust-window/">Mining</a><span class="faq-sector-t">When the merger clears — trust architecture is deal infrastructure.</span><span class="faq-sector-scores">Cl&nbsp;81 &middot; Cn&nbsp;58 &middot; Cf&nbsp;62</span></li>
+<li><a href="/council-trust-test/">Local Government</a><span class="faq-sector-t">When the council flips — the trust architecture goes first.</span><span class="faq-sector-scores">Cl&nbsp;50 &middot; Cn&nbsp;40 &middot; Cf&nbsp;45</span></li>
+<li><a href="/membership-bodies-trust-test/">Membership &amp; Professional Bodies</a><span class="faq-sector-t">The profession is trusted; the institution is the question.</span><span class="faq-sector-scores">Cl&nbsp;58 &middot; Cn&nbsp;44 &middot; Cf&nbsp;50</span></li>
+<li><a href="/professional-services-trust-test/">Professional Services</a><span class="faq-sector-t">When the auditors are outnumbered.</span><span class="faq-sector-scores">Cl&nbsp;70 &middot; Cn&nbsp;44 &middot; Cf&nbsp;50</span></li>
+<li><a href="/healthcare-trust-test/">Healthcare</a><span class="faq-sector-t">When the centre dissolves — trust is the currency.</span><span class="faq-sector-scores">Cl&nbsp;67 &middot; Cn&nbsp;45 &middot; Cf&nbsp;50</span></li>
+<li><a href="/social-care-workforce-test/">Social Care</a><span class="faq-sector-t">When the pipeline closes.</span><span class="faq-sector-scores">Cl&nbsp;62 &middot; Cn&nbsp;48 &middot; Cf&nbsp;52</span></li>
+<li><a href="/education-public-purpose-test/">Education</a><span class="faq-sector-t">When the courses close.</span><span class="faq-sector-scores">Cl&nbsp;68 &middot; Cn&nbsp;52 &middot; Cf&nbsp;50</span></li>
+<li><a href="/private-capital-trust-test/">Private Capital</a><span class="faq-sector-t">Twelve is the new five.</span><span class="faq-sector-scores">Cl&nbsp;64 &middot; Cn&nbsp;46 &middot; Cf&nbsp;50</span></li>
+<li><a href="/regtech-brand-trust/">RegTech</a><span class="faq-sector-t">When the rebrand is the question.</span><span class="faq-sector-scores">Cl&nbsp;60 &middot; Cn&nbsp;45 &middot; Cf&nbsp;50</span></li>
+<li><a href="/netzero-consent-test/">Net Zero</a><span class="faq-sector-t">Execution runs on consent; consent runs on trust.</span><span class="faq-sector-scores">Cl&nbsp;78 &middot; Cn&nbsp;52 &middot; Cf&nbsp;56</span></li>
+<li><a href="/ingo-brand-trust/">International NGO</a><span class="faq-sector-t">When the funding collapses.</span><span class="faq-sector-scores">Cl&nbsp;55 &middot; Cn&nbsp;42 &middot; Cf&nbsp;48</span></li>
+</ul></section>
+<div class="faq-cta">
+      <h3>See your own trust shape</h3>
+      <p>Start free with the Explorer, or request a Navigator — a prepared read of your public signal, no input required.</p>
+      <div class="faq-cta-btns"><a href="/explorer/" class="faq-btn-primary">Launch the TrustOS Explorer &rarr;</a><a href="/?request=navigator" class="faq-btn-ghost">Request a Navigator &rarr;</a></div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <svg width="24" height="30" viewBox="0 0 120 148" fill="none">
+          <defs>
+            <linearGradient id="ft-tg" x1="60" y1="12" x2="60" y2="88"><stop offset="0%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#5a8a9a"/></linearGradient>
+            <filter id="ft-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z" fill="#ffffff" opacity="0.06"/>
+          <polygon points="30,12 90,12 60,88" fill="url(#ft-tg)" filter="url(#ft-glow)"/>
+        </svg>
+        <span class="footer-wordmark"><span class="trust">Trust</span><span class="os">OS</span></span>
+      </div>
+      <p class="footer-brand-tagline" style="display:flex;align-items:center;gap:6px;">
+        <svg width="10" height="12" viewBox="0 0 120 148" fill="none"><defs><linearGradient id="ft-mg" x1="0" y1="148" x2="120" y2="0"><stop offset="0%" stop-color="#ff6b2b"/><stop offset="100%" stop-color="#ffad3b"/></linearGradient><clipPath id="ft-mlc"><path d="M4,140 L30,12 L60,88 L90,12 L116,140 Z"/></clipPath></defs><rect width="120" height="148" fill="url(#ft-mg)" clip-path="url(#ft-mlc)"/></svg>
+        A MissionCTRL product
+      </p>
+      <p class="footer-brand-desc">TrustOS is the trust-intelligence layer of the Brand Effect &mdash; MissionCTRL's methodology for turning purpose-led brands into movements. <a href="https://missionctrl.agency" target="_blank" rel="noopener">Learn about the Brand Effect at missionctrl.agency</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul class="footer-nav-list">
+        <li><a href="/explorer/">What it measures</a></li>
+        
+        <li><a href="/methodology/">How it works</a></li>
+        <li><a href="https://missionctrl.agency" target="_blank" rel="noopener">MissionCTRL Solutions</a></li>
+        <li><a href="/insights/">Sector Insights</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/?request=navigator">Request a Navigator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-connect-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://www.linkedin.com/showcase/trust-os/" target="_blank" rel="noopener">Follow TrustOS on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    &copy; 2026 TrustOS &middot; A MissionCTRL product &middot; MissionCTRL Ltd &middot; Company No. 17018199 &middot; Registered in England &amp; Wales &middot; <a href="/privacy-policy/">Privacy Policy</a> &middot; <a href="/cookie-policy/">Cookie Policy</a> &middot; <a href="/terms/">Terms &amp; Conditions</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var IDX = [{"id": "what-is-trustos", "q": "What is TrustOS?", "sec": "What TrustOS is"}, {"id": "is-trustos-a-reputation-monitoring-or-brand-tracking-tool", "q": "Is TrustOS a reputation-monitoring or brand-tracking tool?", "sec": "What TrustOS is"}, {"id": "what-does-trust-mean-in-trustos-and-why-trust-rather-than-re", "q": "What does “trust” mean in TrustOS, and why trust rather than reputation?", "sec": "What TrustOS is"}, {"id": "what-are-clarity-connection-and-confidence", "q": "What are Clarity, Connection and Confidence?", "sec": "What TrustOS is"}, {"id": "why-does-the-dashboard-show-intent-expectation-and-reality-w", "q": "Why does the dashboard show Intent, Expectation and Reality when the drivers are Clarity, Connection and Confidence?", "sec": "What TrustOS is"}, {"id": "why-is-integrity-the-foundation-and-not-a-fourth-driver", "q": "Why is Integrity the foundation and not a fourth driver?", "sec": "What TrustOS is"}, {"id": "how-is-trustos-different-from-caliber-reptrak-or-a-brand-tra", "q": "How is TrustOS different from Caliber, RepTrak or a brand tracker?", "sec": "How it’s different"}, {"id": "isnt-this-just-another-reputation-survey-or-tracker", "q": "Isn’t this just another reputation survey or tracker?", "sec": "How it’s different"}, {"id": "whats-the-difference-between-the-explorer-the-navigator-and", "q": "What’s the difference between the Explorer, the Navigator and a Snapshot?", "sec": "How it’s different"}, {"id": "where-does-trustos-fit-alongside-the-tools-i-already-run-lik", "q": "Where does TrustOS fit alongside the tools I already run, like NPS, employee surveys or ESG ratings?", "sec": "How it’s different"}, {"id": "how-does-trustos-measure-trust", "q": "How does TrustOS measure trust?", "sec": "Method and rigour"}, {"id": "is-the-method-robust-enough-to-take-to-a-board", "q": "Is the method robust enough to take to a board?", "sec": "Method and rigour"}, {"id": "whose-voice-is-in-the-data-and-which-stakeholders", "q": "Whose voice is in the data, and which stakeholders?", "sec": "Method and rigour"}, {"id": "do-you-measure-consent-and-social-licence", "q": "Do you measure consent and social licence?", "sec": "Method and rigour"}, {"id": "can-i-benchmark-against-my-sector", "q": "Can I benchmark against my sector?", "sec": "Method and rigour"}, {"id": "what-is-public-signal-and-what-are-its-limits", "q": "What is public signal, and what are its limits?", "sec": "Method and rigour"}, {"id": "how-often-is-trustos-updated-and-is-it-real-time", "q": "How often is TrustOS updated, and is it real-time?", "sec": "Cadence"}, {"id": "why-quarterly-and-not-continuous", "q": "Why quarterly and not continuous?", "sec": "Cadence"}, {"id": "how-is-trustos-tailored-to-my-organisation", "q": "How is TrustOS tailored to my organisation?", "sec": "Custom and deployment"}, {"id": "how-long-does-it-take-to-get-value", "q": "How long does it take to get value?", "sec": "Custom and deployment"}, {"id": "what-do-i-get-each-quarter", "q": "What do I get each quarter?", "sec": "Custom and deployment"}, {"id": "who-owns-trustos-inside-the-organisation", "q": "Who owns TrustOS inside the organisation?", "sec": "Custom and deployment"}, {"id": "how-does-trustos-relate-to-missionctrl-and-the-brand-effect", "q": "How does TrustOS relate to MissionCTRL and the Brand Effect?", "sec": "Custom and deployment"}, {"id": "what-decisions-does-trustos-help-me-make", "q": "What decisions does TrustOS help me make?", "sec": "Value and outcomes"}, {"id": "how-do-i-prove-the-roi-or-the-business-case", "q": "How do I prove the ROI, or the business case?", "sec": "Value and outcomes"}, {"id": "who-is-trustos-for", "q": "Who is TrustOS for?", "sec": "Value and outcomes"}, {"id": "what-does-trustos-cost", "q": "What does TrustOS cost?", "sec": "Commercial and practical"}, {"id": "how-do-we-get-started", "q": "How do we get started?", "sec": "Commercial and practical"}, {"id": "how-do-you-handle-data-privacy-and-confidentiality", "q": "How do you handle data, privacy and confidentiality?", "sec": "Commercial and practical"}, {"id": "what-are-synthetic-stakeholders", "q": "What are synthetic stakeholders?", "sec": "Synthetic stakeholders (add-on)"}, {"id": "are-synthetic-stakeholders-a-replacement-for-real-research", "q": "Are synthetic stakeholders a replacement for real research?", "sec": "Synthetic stakeholders (add-on)"}, {"id": "what-can-i-use-synthetic-stakeholders-for", "q": "What can I use synthetic stakeholders for?", "sec": "Synthetic stakeholders (add-on)"}, {"id": "what-are-synthetic-stakeholders-built-from", "q": "What are synthetic stakeholders built from?", "sec": "Synthetic stakeholders (add-on)"}];
+  var $ = function(s,r){return (r||document).querySelector(s);};
+  var $$ = function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
+  var input = $('#askInput'), results = $('#askResults'), answer = $('#askAnswer'), askBtn = $('#askBtn');
+
+  function esc(s){return (s+'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function toks(s){return ((s||'').toLowerCase().match(/[a-z0-9]+/g)||[]).filter(function(t){return t.length>1;});}
+  var STOP = {the:1,a:1,an:1,is:1,are:1,do:1,does:1,to:1,of:1,and:1,or:1,for:1,in:1,on:1,how:1,what:1,why:1,my:1,me:1,i:1,you:1,it:1,can:1,with:1};
+  function score(it, qt){
+    var s=0, ql=it.q.toLowerCase(), sl=(it.sec||'').toLowerCase();
+    qt.forEach(function(t){ if(STOP[t])return;
+      if(ql.indexOf(t)>=0) s+=5;
+      if(sl.indexOf(t)>=0) s+=2;
+    });
+    return s;
+  }
+  function search(q){
+    var qt=toks(q); if(!qt.length) return [];
+    return IDX.map(function(it){return {it:it,s:score(it,qt)};})
+      .filter(function(x){return x.s>0;})
+      .sort(function(a,b){return b.s-a.s;})
+      .slice(0,6).map(function(x){return x.it;});
+  }
+  function resBtn(it){ return '<button type="button" class="ask-res" data-id="'+it.id+'"><span>'+esc(it.q)+'</span><span class="ask-res-sec">'+esc(it.sec||'')+'</span></button>'; }
+  function renderResults(list){
+    if(!list.length){ results.hidden=true; results.innerHTML=''; return; }
+    results.innerHTML = list.map(resBtn).join('');
+    results.hidden=false;
+  }
+  if(input){
+    input.addEventListener('input', function(){ answer.hidden=true; renderResults(search(input.value)); });
+    input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); ai(); } });
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('.ask-res');
+    if(b){ openItem(b.getAttribute('data-id'), true); results.hidden=true; if(input) input.blur(); }
+  });
+
+  // ---- accordion ----
+  function setOpen(item, open){
+    if(!item) return;
+    item.classList.toggle('open', open);
+    var btn = item.querySelector('.faq-q-btn');
+    if(btn) btn.setAttribute('aria-expanded', open?'true':'false');
+  }
+  function openItem(id, scroll){
+    var el = document.getElementById(id);
+    if(!el || !el.classList.contains('faq-item')) return;
+    setOpen(el, true);
+    if(scroll) el.scrollIntoView({behavior:'smooth', block:'center'});
+    try{ history.replaceState(null,'','#'+id); }catch(e){}
+  }
+  $$('.faq-q-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var open = !item.classList.contains('open');
+      setOpen(item, open);
+      if(open){ try{ history.replaceState(null,'','#'+item.id); }catch(e){} }
+    });
+  });
+  var toggleAll = $('#faqToggleAll');
+  if(toggleAll){
+    toggleAll.addEventListener('click', function(){
+      var anyClosed = !!$('.faq-item:not(.open)');
+      $$('.faq-item').forEach(function(it){ setOpen(it, anyClosed); });
+      toggleAll.textContent = anyClosed ? 'Collapse all' : 'Expand all';
+    });
+  }
+  // deep-link open
+  if(location.hash && location.hash.length>1){
+    var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(t && t.classList.contains('faq-item')){ setTimeout(function(){ openItem(t.id, true); }, 120); }
+  }
+
+  // ---- scroll-spy ----
+  var tocLinks = $$('.faq-toc-list a');
+  var secs = $$('.faq-group');
+  if(window.IntersectionObserver && secs.length && tocLinks.length){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var id = en.target.id;
+          tocLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+id); });
+        }
+      });
+    }, {rootMargin:'-15% 0px -75% 0px'});
+    secs.forEach(function(s){ obs.observe(s); });
+  }
+
+  // ---- AI answer ----
+  function touchNote(){
+    return '<div class="ask-disclaimer">AI-generated from the TrustOS FAQ — check anything important with us. Prefer a person? <button type="button" class="faq-linkbtn" data-ask-email>Email Dustin</button> or <a class="faq-linkbtn" href="https://meetings-eu1.hubspot.com/dustin-lawrence" target="_blank" rel="noopener">book a call</a>.</div>';
+  }
+  function ai(){
+    if(!input) return;
+    var q = input.value.trim();
+    if(!q){ input.focus(); return; }
+    results.hidden = true;
+    answer.hidden = false;
+    answer.innerHTML = '<div class="ask-loading">Finding your answer</div>';
+    askBtn.disabled = true;
+    fetch('/.netlify/functions/faq-ask', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({question:q})
+    })
+    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
+    .then(function(res){
+      var d = res.d || {};
+      var rel = (d.sources||[]).map(resBtn).join('');
+      var relBlock = rel ? '<div class="ask-ans-rel"><span>Related questions</span>'+rel+'</div>' : '';
+      var body = d.answer || 'I could not find that in the FAQ.';
+      answer.innerHTML = '<div class="ask-ans-label">Answer</div><div class="ask-ans-body">'+esc(body)+'</div>'+relBlock+touchNote();
+    })
+    .catch(function(){
+      var list = search(q);
+      var rel = list.length ? list.map(resBtn).join('') : '<p class="ask-ans-body">No close match — try rephrasing, or get in touch below.</p>';
+      answer.innerHTML = '<div class="ask-ans-label">Closest questions</div><div class="ask-ans-rel">'+rel+'</div>'+touchNote();
+    })
+    .then(function(){ askBtn.disabled = false; });
+  }
+  if(askBtn) askBtn.addEventListener('click', ai);
+
+  // ---- email / contact ----
+  var emailForm = $('#askEmailForm');
+  function openEmail(){
+    if(!emailForm) return;
+    emailForm.hidden = false;
+    var msg = $('#ef-msg');
+    if(msg && !msg.value && input && input.value.trim()) msg.value = input.value.trim();
+    emailForm.scrollIntoView({behavior:'smooth', block:'center'});
+    var nm = $('#ef-name'); if(nm) nm.focus();
+  }
+  document.addEventListener('click', function(e){
+    if(e.target.closest && e.target.closest('[data-ask-email]')){ e.preventDefault(); openEmail(); }
+    if(e.target.closest && e.target.closest('[data-ask-email-cancel]')){ e.preventDefault(); emailForm.hidden = true; }
+  });
+  function hsSubmit(name,email,msg){
+    try{
+      var parts=(name||'').trim().split(/\s+/), first=parts.shift()||'', last=parts.join(' ');
+      fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/148702411/512d69a9-063a-4b9a-970d-53c6ad5924a0',{
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({fields:[
+          {name:'email',value:email||''},{name:'firstname',value:first},{name:'lastname',value:last},
+          {name:'message',value:'FAQ question: '+(msg||'')}
+        ], context:{pageUri:location.href, pageName:document.title}})
+      }).catch(function(){});
+    }catch(e){}
+  }
+  if(emailForm){
+    emailForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name=($('#ef-name').value||'').trim(), email=($('#ef-email').value||'').trim(), msg=($('#ef-msg').value||'').trim();
+      var err=$('#ef-error'); err.hidden=true;
+      if(!name||!email||!msg){ err.textContent='Please add your name, email and question.'; err.hidden=false; return; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent='Please enter a valid email.'; err.hidden=false; return; }
+      var btn=$('#ef-submit'); btn.textContent='Sending…'; btn.disabled=true;
+      hsSubmit(name,email,msg);
+      var data=new FormData(emailForm);
+      fetch('/', {method:'POST', headers:{'Accept':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data)})
+        .then(function(){ done(); }).catch(function(){ done(); });
+      function done(){
+        emailForm.querySelectorAll('.faq-ef-input, .faq-ef-actions').forEach(function(el){ el.style.display='none'; });
+        $('#ef-success').hidden=false;
+      }
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
