@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How We Score — The TrustOS Method | TrustOS</title>
-  <meta name="description" content="How TrustOS scores trust: the four-layer model, the 0–100 Trust Index, what a public-signal read can and cannot know, and how a Snapshot turns an estimate into evidence." />
+  <meta name="description" content="How TrustOS scores trust: three drivers on a foundation of Integrity, one 0–100 Trust Index, and how a Snapshot turns an estimate into evidence." />
   <meta property="og:title" content="How We Score — The TrustOS Method" />
-  <meta property="og:description" content="The TrustOS method in plain sight: four layers, one number — the Trust Index, an honest account of what a public-signal read can know — and what only primary research can." />
+  <meta property="og:description" content="The TrustOS model in brief: four layers, one number — the Trust Index. The full working is a conversation." />
   
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://trustos.missionctrl.agency/methodology/" />
@@ -14,7 +14,7 @@
 <meta name="twitter:image" content="https://trustos.missionctrl.agency/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="How We Score — The TrustOS Method" />
-  <meta name="twitter:description" content="The TrustOS method in plain sight: four layers, one number — the Trust Index, an honest account of what a public-signal read can know — and what only primary research can." />
+  <meta name="twitter:description" content="The TrustOS model in brief: four layers, one number — the Trust Index. The full working is a conversation." />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -533,7 +533,9 @@
   .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
   @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
   @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
-  @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}}
+  .meth-pulse{animation:methPulse 6s ease-in-out infinite;}
+  @keyframes methPulse{0%,100%{opacity:0.4;}50%{opacity:0.75;}}
+  @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}.meth-pulse{animation:none!important}}
 </style>
 <!-- seo-ai:start -->
 <link rel="canonical" href="https://trustos.missionctrl.agency/methodology/" />
@@ -546,7 +548,7 @@
       "@id": "https://trustos.missionctrl.agency/methodology/",
       "url": "https://trustos.missionctrl.agency/methodology/",
       "name": "How We Score — The TrustOS Method",
-      "description": "How TrustOS scores trust: the four-layer model, the 0–100 Trust Index, what a public-signal read can and cannot know, and how a Snapshot turns an estimate into evidence.",
+      "description": "How TrustOS scores trust: three drivers on a foundation of Integrity, one 0–100 Trust Index, and how a Snapshot turns an estimate into evidence.",
       "isPartOf": {
         "@id": "https://trustos.missionctrl.agency/#website"
       },
@@ -604,13 +606,13 @@
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="/explorer/">TrustOS Explorer</a></li>
+    <li><a href="/?request=navigator">Request a Navigator</a></li>
     
     <li><a href="/methodology/">How it works</a></li>
     <li><a href="/insights/">Sector Insights</a></li>
     <li><a href="/faq/">FAQ</a></li>
   </ul>
-  <a href="/?request=navigator" class="nav-cta">Request a Navigator</a>
+  <a href="/explorer/" class="nav-cta">Try the Explorer &mdash; free</a>
 </nav>
 
 
@@ -624,8 +626,8 @@
       <span class="here">How we score</span>
     </div>
     <div class="article-eyebrow">TrustOS Methodology</div>
-    <h1>How we score.<br/><span class="gradient">The method, in plain sight.</span></h1>
-    <p class="article-hero-sub">Every TrustOS number is a measured estimate of trust, built the same way in every sector. Here is exactly what it measures, what it can and cannot know, and what turns an estimate into evidence.</p>
+    <h1>How we score.<br/><span class="gradient">The model, in brief.</span></h1>
+    <p class="article-hero-sub">What TrustOS measures, why it moves before the numbers do, and what turns an estimate into evidence. The full working, we share in a conversation.</p>
   </div>
 </section>
 
@@ -643,43 +645,32 @@
   <p>A trust signal is a measured, repeatable read of that trust &mdash; not a sentiment headline or a brand-awareness score, but the <strong>Trust Index</strong>, a 0–100 composite built from three drivers (Clarity, Connection and Confidence) on a foundation of Integrity. It moves before the performance numbers do, which is what makes it a <strong>leading</strong> indicator of resilience and growth rather than a lagging one.</p>
 
   <h2>The shape: three drivers on a foundation</h2>
-  <div style="display:flex;justify-content:center;margin:6px 0 30px;"><svg viewBox="0 0 320 300" width="320" height="300" style="max-width:340px;width:100%;height:auto;aspect-ratio:16 / 15;display:block;" aria-hidden="true">
-  <polygon points="50,70 270,70 160,255" fill="#5a8a9a" fill-opacity="0.05"/>
-  <line x1="50" y1="70" x2="270" y2="70" stroke="#a78bdb" stroke-width="2.6" stroke-linecap="round"/>
-  <line x1="50" y1="70" x2="160" y2="255" stroke="#5a8a9a" stroke-width="2.6" stroke-linecap="round"/>
-  <line x1="270" y1="70" x2="160" y2="255" stroke="#7cc4a8" stroke-width="2.6" stroke-linecap="round"/>
-  <text x="160" y="58" text-anchor="middle" font-size="9" font-weight="800" letter-spacing="1.6" fill="#a78bdb" font-family="Sora,sans-serif">CONFIDENCE</text>
-  <text x="92" y="172" text-anchor="middle" font-size="9" font-weight="800" letter-spacing="1.2" fill="#5a8a9a" font-family="Sora,sans-serif" transform="rotate(-59 92 172)">CLARITY</text>
-  <text x="228" y="172" text-anchor="middle" font-size="9" font-weight="800" letter-spacing="1.2" fill="#7cc4a8" font-family="Sora,sans-serif" transform="rotate(59 228 172)">CONNECTION</text>
-  <text x="50" y="62" text-anchor="middle" font-size="9.5" font-weight="700" fill="rgba(255,255,255,0.7)" font-family="Sora,sans-serif">Intent</text>
-  <text x="270" y="62" text-anchor="middle" font-size="9.5" font-weight="700" fill="rgba(255,255,255,0.7)" font-family="Sora,sans-serif">Reality</text>
-  <text x="160" y="274" text-anchor="middle" font-size="9.5" font-weight="700" fill="rgba(255,255,255,0.7)" font-family="Sora,sans-serif">Expectation</text>
-  <text x="160" y="150" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="2" fill="rgba(255,255,255,0.4)" font-family="Sora,sans-serif">COMPOSITE</text>
-  <text x="160" y="290" text-anchor="middle" font-size="8" font-weight="800" letter-spacing="1.8" fill="rgba(255,255,255,0.4)" font-family="Sora,sans-serif">FOUNDATION · INTEGRITY · 0–100</text>
-</svg></div>
-  <p>TrustOS reads trust as <strong>alignment</strong> between three things: what an organisation <em>intends</em>, what its stakeholders <em>expect</em>, and what they actually <em>experience</em>. The gaps between them are the three drivers.</p>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 6px;"><div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-left:3px solid #5a8a9a;border-radius:10px;padding:20px 22px;"><div style="font-size:0.7rem;font-weight:800;letter-spacing:0.04em;color:#5a8a9a;margin-bottom:4px;">Clarity</div><div style="font-size:0.66rem;font-weight:600;color:rgba(255,255,255,0.4);margin-bottom:9px;">Intent &harr; Expectation</div><p style="font-size:0.84rem;color:rgba(255,255,255,0.6);line-height:1.6;margin:0;">Is the promise understood, consistent and decision-ready &mdash; the same thing to everyone who hears it?</p></div><div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-left:3px solid #7cc4a8;border-radius:10px;padding:20px 22px;"><div style="font-size:0.7rem;font-weight:800;letter-spacing:0.04em;color:#7cc4a8;margin-bottom:4px;">Connection</div><div style="font-size:0.66rem;font-weight:600;color:rgba(255,255,255,0.4);margin-bottom:9px;">Expectation &harr; Reality</div><p style="font-size:0.84rem;color:rgba(255,255,255,0.6);line-height:1.6;margin:0;">Does every stakeholder actually experience the same thing? This is where the promise has to land in the world &mdash; and the layer that&rsquo;s weakest in almost every sector we read.</p></div><div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-left:3px solid #a78bdb;border-radius:10px;padding:20px 22px;"><div style="font-size:0.7rem;font-weight:800;letter-spacing:0.04em;color:#a78bdb;margin-bottom:4px;">Confidence</div><div style="font-size:0.66rem;font-weight:600;color:rgba(255,255,255,0.4);margin-bottom:9px;">Intent &harr; Reality</div><p style="font-size:0.84rem;color:rgba(255,255,255,0.6);line-height:1.6;margin:0;">Is the organisation delivering what it said, with proof stakeholders can verify for themselves?</p></div></div>
-  <p>These three sit on a foundation the methodology calls <strong>Integrity</strong> &mdash; whether the governance, conduct and oversight that hold it all up actually work, and can be evidenced. It is the layer organisations treat as assumed, until an event makes it visible.</p>
-
-  <h2>The number</h2>
-  <p>Each layer scores from 0 to 100. The headline <strong>Composite</strong> is the average of the three drivers &mdash; one figure, with the full breakdown always shown beneath it, never instead of it. The triangle deforms to the scores: a strong, balanced organisation fills it; a weak or lopsided one pulls a corner in, showing exactly where trust is thinning.</p>
-
-  <h2>What a public-signal read can &mdash; and cannot &mdash; know</h2>
-  <p>A TrustOS Navigator or sector POV is read from <strong>public signal alone</strong>: annual reports, regulation, disclosure, news and the public footprint. That makes every score a <strong>directional estimate, not a statistically validated measurement</strong>. It is an informed external read &mdash; reliable for seeing the shape and locating the likely leak, not a substitute for asking your stakeholders directly. We label it that way on purpose, because the honesty is the point.</p>
-
-  <h2>The bar keeps moving</h2>
-  <p>Expectation is not fixed. It is what each stakeholder group expects and <em>increasingly needs</em> &mdash; and events keep raising it. Measured against a rising bar, a score that merely holds steady is already slipping. Where the bar is heading is something a public-signal read can <strong>hypothesise</strong>, but not confirm. That is the honest limit of reading from the outside &mdash; and the reason the method has a second gear.</p>
+  <div style="display:flex;justify-content:center;margin:10px 0 34px;">
+    <svg viewBox="0 0 320 300" width="300" style="max-width:320px;width:100%;height:auto;display:block;overflow:visible;" aria-hidden="true">
+      <defs>
+        <linearGradient id="meth-fill" x1="160" y1="50" x2="160" y2="260" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#7fb4cc"/><stop offset="55%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#4d7a8a"/>
+        </linearGradient>
+        <filter id="meth-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+      </defs>
+      <polygon class="meth-pulse" points="50,50 270,50 160,260" fill="#6da0b8" filter="url(#meth-glow)" opacity="0.55"/>
+      <polygon points="50,50 270,50 160,260" fill="url(#meth-fill)"/>
+    </svg>
+  </div>
+  <p>TrustOS reads trust as <strong>alignment</strong> &mdash; between what an organisation intends, what its stakeholders expect, and what they actually experience. Three drivers &mdash; <strong>Clarity</strong>, <strong>Connection</strong> and <strong>Confidence</strong> &mdash; sit on a foundation of <strong>Integrity</strong>, and roll up into one 0&ndash;100 <strong>Trust Index</strong>, with the full breakdown always shown beneath it, never instead of it. The triangle deforms to the scores: a strong, balanced organisation fills the shape; a lopsided one pulls a corner in, showing exactly where trust is thinning.</p>
 
   <h2>From estimate to evidence: Sense &rarr; Measure &rarr; Act</h2>
+  <p>A Navigator or sector POV is read from <strong>public signal alone</strong> &mdash; annual reports, disclosure, news, the public footprint. That makes it a <strong>directional estimate, not a statistically validated measurement</strong>, and we label it that way on purpose. A <strong>Snapshot</strong> replaces the estimate with primary research across your stakeholders &mdash; measured against a bar that keeps rising. The honesty is the point.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 6px;"><div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 22px;"><div style="font-size:0.6rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#5a8a9a;margin-bottom:8px;">01 &middot; Sense</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6;"><strong style="color:#fff;font-weight:600;">The Navigator / sector POV.</strong> Infers trust from public signal alone. A directional estimate &mdash; the hypothesis.</div></div><div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 22px;"><div style="font-size:0.6rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#7cc4a8;margin-bottom:8px;">02 &middot; Measure</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6;"><strong style="color:#fff;font-weight:600;">A TrustOS Snapshot.</strong> Replaces the estimate with primary research across your stakeholders &mdash; scored, and tracked quarter over quarter. The test.</div></div><div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 22px;"><div style="font-size:0.6rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#a78bdb;margin-bottom:8px;">03 &middot; Act</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6;"><strong style="color:#fff;font-weight:600;">MissionCTRL.</strong> Turns the picture into the moves that close the gaps.</div></div></div>
-  <p style="margin-top:1.4em;">You cannot validate a moving target from the outside. The Navigator gives you the hypothesis in days, for free. The <strong>Snapshot</strong> is what confirms where each stakeholder group&rsquo;s bar actually sits now &mdash; and how well you are meeting it.</p>
+  
 
   <div style="margin-top:36px;padding:28px 30px;background:rgba(124,196,168,0.05);border:1px solid rgba(124,196,168,0.2);border-left:3px solid #7cc4a8;border-radius:12px;">
-    <h3 style="font-size:1.05rem;font-weight:800;color:#fff;letter-spacing:-0.02em;margin:0 0 10px;">How to read a TrustOS number</h3>
-    <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 18px;">It is a measured estimate of trust: <strong style="color:rgba(255,255,255,0.85);font-weight:600;">directional from public signal, precise from primary research.</strong> Treat the Navigator as the hypothesis, and the Snapshot as the test.</p>
+    <h3 style="font-size:1.05rem;font-weight:800;color:#fff;letter-spacing:-0.02em;margin:0 0 10px;">The working session</h3>
+    <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 18px;">How the drivers map to the gaps, how the instrument is built, and how the scores are weighted &mdash; <strong style="color:rgba(255,255,255,0.85);font-weight:600;">that&rsquo;s a conversation, not a webpage.</strong> Bring your sector; we&rsquo;ll bring the model.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;">
       <a href="/explorer/" style="font-size:0.82rem;font-weight:700;padding:11px 20px;background:var(--trust-cool);color:#fff;border-radius:7px;text-decoration:none;">Launch the TrustOS Explorer &rarr;</a>
       <a href="/?request=navigator" style="font-size:0.82rem;font-weight:600;padding:11px 18px;background:transparent;color:var(--trust-cool);border:1px solid rgba(90,138,154,0.4);border-radius:7px;text-decoration:none;">Request a Navigator &rarr;</a>
+      <a href="/?book=demo" style="font-size:0.82rem;font-weight:600;padding:11px 18px;background:transparent;color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.2);border-radius:7px;text-decoration:none;">Book the working session &rarr;</a>
     </div>
   </div>
 

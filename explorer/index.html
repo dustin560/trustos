@@ -1314,7 +1314,7 @@
     .hc-tri-e-n  { stroke:#7cc4a8; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     .hc-tri-e-f  { stroke:#a78bdb; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     .hc-tri-div  { stroke:rgba(90,138,154,0.1); stroke-width:1; fill:none; stroke-dasharray:3 3; }
-    .hc-tri-vtx  { font-family:'Sora',sans-serif; font-size:9px; font-weight:700; fill:rgba(255,255,255,0.65); }
+
     .hc-tri-cen  { font-family:'Sora',sans-serif; font-size:8px; font-weight:600; fill:rgba(90,138,154,0.6); text-anchor:middle; dominant-baseline:middle; }
     .hc-tri-lbl  { font-family:'Sora',sans-serif; font-size:7px; font-weight:800; letter-spacing:0.11em; }
     .hc-tri-lbl.lc { fill:#5a8a9a; } .hc-tri-lbl.ln { fill:#7cc4a8; } .hc-tri-lbl.lf { fill:#a78bdb; }
@@ -1718,9 +1718,6 @@
               <text id="hc-lc" class="hc-tri-lbl lc"></text>
               <text id="hc-ln" class="hc-tri-lbl ln"></text>
               <text id="hc-lf" class="hc-tri-lbl lf"></text>
-              <text id="hc-vi" class="hc-tri-vtx"></text>
-              <text id="hc-ve" class="hc-tri-vtx"></text>
-              <text id="hc-vr" class="hc-tri-vtx"></text>
               <text id="hc-cen" class="hc-tri-cen">Integrity</text>
             </svg>
           </div>
@@ -2179,9 +2176,6 @@
     placeLbl('hc-lc',I,E,cen,'CLARITY');
     placeLbl('hc-ln',E,R,cen,'CONNECTION');
     placeLbl('hc-lf',R,I,cen,'CONFIDENCE');
-    setTx('hc-vi', I.x-6, I.y-10, 'end',   'Intent');
-    setTx('hc-ve', E.x, E.y+16, 'middle',   'Expectation');
-    setTx('hc-vr', R.x+6, R.y-10,  'start', 'Reality');
     var gc=document.getElementById('hc-cen');
     if(gc){gc.setAttribute('x',f1(cen.x));gc.setAttribute('y',f1(cen.y));}
   }
