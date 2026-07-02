@@ -533,6 +533,23 @@
   .lg-amb .lg-mlight{animation:lgAmbM 4s ease-in-out infinite;}
   @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
   @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
+  
+  .md-demo{display:grid;grid-template-columns:290px 1fr;gap:40px;align-items:center;margin:18px 0 38px;padding:30px 32px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:14px;}
+  .md-tri{display:flex;justify-content:center;}
+  .md-lbl{font-family:'Sora',sans-serif;font-size:7px;font-weight:800;letter-spacing:0.11em;}
+  .md-lbl.lc{fill:#8fb5c0;}.md-lbl.ln{fill:#7cc4a8;}.md-lbl.lf{fill:#a78bdb;}
+  .md-comp{font-family:'Sora',sans-serif;font-size:17px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:middle;letter-spacing:-0.02em;}
+  .md-cap{font-family:'Sora',sans-serif;font-size:6px;font-weight:700;letter-spacing:0.16em;fill:rgba(255,255,255,0.75);text-anchor:middle;dominant-baseline:middle;}
+  .md-state{font-size:0.62rem;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--trust-cool);margin:0 0 10px;}
+  .md-title{font-size:1.15rem;font-weight:800;color:#fff;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.25;}
+  .md-body{font-size:0.9rem;color:rgba(255,255,255,0.62);line-height:1.65;margin:0 0 14px;}
+  .md-action{display:flex;gap:10px;align-items:baseline;font-size:0.84rem;color:rgba(255,255,255,0.78);line-height:1.55;margin:0 0 18px;padding:12px 16px;background:rgba(109,160,184,0.07);border-left:2px solid var(--trust-ice);border-radius:0 8px 8px 0;}
+  .md-action-k{font-size:0.58rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--trust-ice);white-space:nowrap;position:relative;top:-1px;}
+  .md-dots{display:flex;gap:8px;}
+  .md-dot{width:26px;height:4px;border-radius:2px;background:rgba(255,255,255,0.14);border:none;cursor:pointer;padding:0;transition:background .25s;}
+  .md-dot.on{background:var(--trust-ice);}
+  @media(max-width:760px){.md-demo{grid-template-columns:1fr;gap:18px;padding:22px 18px;}.md-tri svg{width:230px;height:auto;}}
+
   .meth-pulse{animation:methPulse 6s ease-in-out infinite;}
   @keyframes methPulse{0%,100%{opacity:0.4;}50%{opacity:0.75;}}
   @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}.meth-pulse{animation:none!important}}
@@ -645,17 +662,35 @@
   <p>A trust signal is a measured, repeatable read of that trust &mdash; not a sentiment headline or a brand-awareness score, but the <strong>Trust Index</strong>, a 0–100 composite built from three drivers (Clarity, Connection and Confidence) on a foundation of Integrity. It moves before the performance numbers do, which is what makes it a <strong>leading</strong> indicator of resilience and growth rather than a lagging one.</p>
 
   <h2>The shape: three drivers on a foundation</h2>
-  <div style="display:flex;justify-content:center;margin:10px 0 34px;">
-    <svg viewBox="0 0 320 300" width="300" style="max-width:320px;width:100%;height:auto;display:block;overflow:visible;" aria-hidden="true">
-      <defs>
-        <linearGradient id="meth-fill" x1="160" y1="50" x2="160" y2="260" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#7fb4cc"/><stop offset="55%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#4d7a8a"/>
-        </linearGradient>
-        <filter id="meth-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
-      </defs>
-      <polygon class="meth-pulse" points="50,50 270,50 160,260" fill="#6da0b8" filter="url(#meth-glow)" opacity="0.55"/>
-      <polygon points="50,50 270,50 160,260" fill="url(#meth-fill)"/>
-    </svg>
+  <div class="md-demo" id="md-demo">
+    <div class="md-tri">
+      <svg viewBox="0 0 290 260" width="290" height="260" overflow="visible" aria-hidden="true">
+        <defs>
+          <linearGradient id="md-grad" x1="0.5" y1="0" x2="0.5" y2="1">
+            <stop offset="0%" stop-color="#7fb4cc"/><stop offset="55%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#4d7a8a"/>
+          </linearGradient>
+          <filter id="md-glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+            <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.43  0 0 0 0 0.63  0 0 0 0 0.72  0 0 0 0.45 0" result="tealBlur"/>
+            <feMerge><feMergeNode in="tealBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <polygon id="md-ideal" points="" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1.2" stroke-dasharray="4 5"/>
+        <polygon id="md-poly" fill="url(#md-grad)" filter="url(#md-glow)"/>
+        <text id="md-lc" class="md-lbl lc"></text>
+        <text id="md-ln" class="md-lbl ln"></text>
+        <text id="md-lf" class="md-lbl lf"></text>
+        <text id="md-comp" class="md-comp"></text>
+        <text id="md-comp-l" class="md-cap">TRUST INDEX</text>
+      </svg>
+    </div>
+    <div class="md-panel">
+      <p class="md-state" id="md-state"></p>
+      <h3 class="md-title" id="md-title"></h3>
+      <p class="md-body" id="md-body"></p>
+      <p class="md-action"><span class="md-action-k">Suggested focus</span><span id="md-action"></span></p>
+      <div class="md-dots" id="md-dots" role="tablist" aria-label="Example trust shapes"></div>
+    </div>
   </div>
   <p>TrustOS reads trust as <strong>alignment</strong> &mdash; between what an organisation intends, what its stakeholders expect, and what they actually experience. Three drivers &mdash; <strong>Clarity</strong>, <strong>Connection</strong> and <strong>Confidence</strong> &mdash; sit on a foundation of <strong>Integrity</strong>, and roll up into one 0&ndash;100 <strong>Trust Index</strong>, with the full breakdown always shown beneath it, never instead of it. The triangle deforms to the scores: a strong, balanced organisation fills the shape; a lopsided one pulls a corner in, showing exactly where trust is thinning.</p>
 
@@ -722,5 +757,62 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var C={x:145,y:118},R=98,a30=Math.PI/6;
+  var EQ={i:{x:C.x+R*Math.cos(Math.PI+a30),y:C.y+R*Math.sin(Math.PI+a30)},e:{x:C.x,y:C.y+R},r:{x:C.x+R*Math.cos(-a30),y:C.y+R*Math.sin(-a30)}};
+  function verts(cl,cn,cf){var fi=(cl+cf)/2/100,fe=(cl+cn)/2/100,fr=(cn+cf)/2/100;
+    return {i:{x:C.x+(EQ.i.x-C.x)*fi,y:C.y+(EQ.i.y-C.y)*fi},e:{x:C.x+(EQ.e.x-C.x)*fe,y:C.y+(EQ.e.y-C.y)*fe},r:{x:C.x+(EQ.r.x-C.x)*fr,y:C.y+(EQ.r.y-C.y)*fr}};}
+  function f1(n){return n.toFixed(1);}
+  function lbl(id,a,b,cen,txt){var el=document.getElementById(id);if(!el)return;
+    var mx=(a.x+b.x)/2,my=(a.y+b.y)/2,dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy);if(len<4)return;
+    var ang=Math.atan2(dy,dx)*180/Math.PI;if(ang>90)ang-=180;if(ang<-90)ang+=180;
+    var px=-dy/len,py=dx/len;if(px*(cen.x-mx)+py*(cen.y-my)>0){px=-px;py=-py;}
+    var lx=mx+px*13,ly=my+py*13;
+    el.setAttribute('x',f1(lx));el.setAttribute('y',f1(ly));el.setAttribute('text-anchor','middle');el.setAttribute('dominant-baseline','middle');
+    el.setAttribute('transform','rotate('+ang.toFixed(1)+','+f1(lx)+','+f1(ly)+')');el.textContent=txt;}
+  var IV=verts(100,100,100);
+  var ideal=document.getElementById('md-ideal');
+  if(ideal)ideal.setAttribute('points',f1(IV.i.x)+','+f1(IV.i.y)+' '+f1(IV.e.x)+','+f1(IV.e.y)+' '+f1(IV.r.x)+','+f1(IV.r.y));
+  var STATES=[
+    {cl:78,cn:74,cf:76,state:'Balanced &middot; strong',title:'The shape you want.',body:'All three drivers pulling together, filling the shape \u2014 trust compounding quarter on quarter.',action:'Protect it. Keep measuring, keep proving.'},
+    {cl:74,cn:48,cf:58,state:'High Clarity &middot; low Connection',title:'The classic leak.',body:'The promise is understood \u2014 it just is not being experienced. The most common shape we read, in eleven of twelve sectors.',action:'Close the say-do gap where stakeholders actually meet you.'},
+    {cl:52,cn:62,cf:78,state:'Low Clarity &middot; high Confidence',title:'Quiet delivery.',body:'Doing the work, under-telling the story. Stakeholders cannot value what they cannot see.',action:'Make the promise as sharp as the delivery.'},
+    {cl:72,cn:64,cf:44,state:'Low Confidence',title:'Claims outrunning proof.',body:'The story lands, but stakeholders cannot verify it \u2014 and unverifiable claims erode fast.',action:'Publish progress people can check for themselves.'}
+  ];
+  var cur={cl:60,cn:60,cf:60},anim=null,idx=0,timer=null;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function draw(cl,cn,cf){var v=verts(cl,cn,cf),cen={x:(v.i.x+v.e.x+v.r.x)/3,y:(v.i.y+v.e.y+v.r.y)/3};
+    document.getElementById('md-poly').setAttribute('points',f1(v.i.x)+','+f1(v.i.y)+' '+f1(v.e.x)+','+f1(v.e.y)+' '+f1(v.r.x)+','+f1(v.r.y));
+    lbl('md-lc',v.i,v.e,cen,'CLARITY');lbl('md-ln',v.e,v.r,cen,'CONNECTION');lbl('md-lf',v.r,v.i,cen,'CONFIDENCE');
+    var n=document.getElementById('md-comp');n.setAttribute('x',f1(cen.x));n.setAttribute('y',f1(cen.y-4));n.textContent=Math.round((cl+cn+cf)/3);
+    var c=document.getElementById('md-comp-l');c.setAttribute('x',f1(cen.x));c.setAttribute('y',f1(cen.y+8));}
+  function morph(t){if(anim)cancelAnimationFrame(anim);
+    if(reduce){cur={cl:t.cl,cn:t.cn,cf:t.cf};draw(cur.cl,cur.cn,cur.cf);return;}
+    var from={cl:cur.cl,cn:cur.cn,cf:cur.cf},start=null,dur=700;
+    function step(ts){if(!start)start=ts;var k=Math.min(1,(ts-start)/dur),ev=1-Math.pow(1-k,3);
+      cur.cl=from.cl+(t.cl-from.cl)*ev;cur.cn=from.cn+(t.cn-from.cn)*ev;cur.cf=from.cf+(t.cf-from.cf)*ev;
+      draw(cur.cl,cur.cn,cur.cf);if(k<1)anim=requestAnimationFrame(step);}
+    anim=requestAnimationFrame(step);}
+  var dots=document.getElementById('md-dots');
+  STATES.forEach(function(st,i){var b=document.createElement('button');b.className='md-dot';b.type='button';
+    b.setAttribute('role','tab');b.setAttribute('aria-label','Shape example '+(i+1)+': '+st.title);
+    b.addEventListener('click',function(){go(i);restart();});dots.appendChild(b);});
+  function go(i){idx=i;var st=STATES[i];
+    document.getElementById('md-state').innerHTML=st.state;
+    document.getElementById('md-title').textContent=st.title;
+    document.getElementById('md-body').textContent=st.body;
+    document.getElementById('md-action').textContent=st.action;
+    Array.prototype.forEach.call(dots.children,function(d,j){d.className='md-dot'+(j===i?' on':'');});
+    morph(st);}
+  function tick(){go((idx+1)%STATES.length);}
+  function restart(){if(timer)clearInterval(timer);if(!reduce)timer=setInterval(tick,5000);}
+  var demo=document.getElementById('md-demo');
+  demo.addEventListener('mouseenter',function(){if(timer)clearInterval(timer);timer=null;});
+  demo.addEventListener('mouseleave',restart);
+  go(0);restart();
+})();
+</script>
 </body>
 </html>

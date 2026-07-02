@@ -1358,23 +1358,23 @@
           <svg id="si-tri-svg" viewBox="0 0 290 260" width="290" height="260" class="si-tri" overflow="visible" aria-hidden="true">
             <defs>
               <linearGradient id="si-tri-grad" x1="0.5" y1="0" x2="0.5" y2="1">
-                <stop offset="0%" stop-color="rgba(90,138,154,0.08)"/>
-                <stop offset="100%" stop-color="rgba(90,138,154,0.22)"/>
+                <stop offset="0%" stop-color="#7fb4cc"/>
+                <stop offset="55%" stop-color="#6da0b8"/>
+                <stop offset="100%" stop-color="#4d7a8a"/>
               </linearGradient>
-              <filter id="si-glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
-                <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.54  0 0 0 0 0.6  0 0 0 0.3 0" result="tealBlur"/>
+              <filter id="si-glow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+                <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.43  0 0 0 0 0.63  0 0 0 0 0.72  0 0 0 0.45 0" result="tealBlur"/>
                 <feMerge><feMergeNode in="tealBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
             </defs>
-            <polygon id="si-poly" class="si-tri-fill" filter="url(#si-glow)"/>
-            <line id="si-div1" class="si-tri-div"/><line id="si-div2" class="si-tri-div"/><line id="si-div3" class="si-tri-div"/>
             <line id="si-ec" class="si-tri-e-c"/><line id="si-en" class="si-tri-e-n"/><line id="si-ef" class="si-tri-e-f"/>
+            <polygon id="si-poly" class="si-tri-fill" filter="url(#si-glow)"/>
             <text id="si-lc" class="si-tri-lbl lc"></text>
             <text id="si-ln" class="si-tri-lbl ln"></text>
             <text id="si-lf" class="si-tri-lbl lf"></text>
             <text id="si-comp" class="si-tri-comp"></text>
-            <text id="si-comp-l" class="si-tri-cen">COMPOSITE</text>
+            <text id="si-comp-l" class="si-tri-cen">TRUST INDEX</text>
           </svg>
         </div>
 
@@ -1432,16 +1432,13 @@
     .si-tri-wrap::before{content:"";display:block;padding-bottom:89.66%;}
     .si-tri{position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible;}
     .si-tri-fill{fill:url(#si-tri-grad);transition:opacity .3s ease;}
-    .si-tri-e-c{stroke:#5a8a9a;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .si-tri-e-n{stroke:#7cc4a8;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .si-tri-e-f{stroke:#a78bdb;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .si-tri-div{stroke:rgba(90,138,154,0.1);stroke-width:1;fill:none;stroke-dasharray:3 3;}
+    .si-tri-e-c,.si-tri-e-n,.si-tri-e-f{stroke:transparent;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4 5;}
     .si-tri-lbl{font-family:'Sora',sans-serif;font-size:7px;font-weight:800;letter-spacing:0.11em;}
-    .si-tri-lbl.lc{fill:#5a8a9a;} .si-tri-lbl.ln{fill:#7cc4a8;} .si-tri-lbl.lf{fill:#a78bdb;}
+    .si-tri-lbl.lc{fill:#8fb5c0;} .si-tri-lbl.ln{fill:#7cc4a8;} .si-tri-lbl.lf{fill:#a78bdb;}
     .si-tri-comp{font-family:'Sora',sans-serif;font-size:17px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:middle;letter-spacing:-0.02em;}
-    .si-tri-cen{font-family:'Sora',sans-serif;font-size:6px;font-weight:700;letter-spacing:0.16em;fill:rgba(90,138,154,0.8);text-anchor:middle;dominant-baseline:middle;}
+    .si-tri-cen{font-family:'Sora',sans-serif;font-size:6px;font-weight:700;letter-spacing:0.16em;fill:rgba(255,255,255,0.75);text-anchor:middle;dominant-baseline:middle;}
     .si-tri.soon .si-tri-fill{opacity:0;}
-    .si-tri.soon .si-tri-e-c,.si-tri.soon .si-tri-e-n,.si-tri.soon .si-tri-e-f{stroke:rgba(255,255,255,0.12);}
+    .si-tri.soon .si-tri-e-c,.si-tri.soon .si-tri-e-n,.si-tri.soon .si-tri-e-f{stroke:rgba(255,255,255,0.15);}
     .si-tri.soon .si-tri-lbl{fill:rgba(255,255,255,0.25);}
     .si-headline{font-size:clamp(1.1rem,1.9vw,1.35rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.22;margin:10px 0 16px;text-align:center;min-height:2.6em;}
     .si-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:12px;}
@@ -1533,7 +1530,6 @@
       var cen={x:(v.intent.x+v.expectation.x+v.reality.x)/3,y:(v.intent.y+v.expectation.y+v.reality.y)/3};
       var I=v.intent,E=v.expectation,R=v.reality;
       document.getElementById('si-poly').setAttribute('points',f1(I.x)+','+f1(I.y)+' '+f1(E.x)+','+f1(E.y)+' '+f1(R.x)+','+f1(R.y));
-      setLn('si-div1',cen,I);setLn('si-div2',cen,E);setLn('si-div3',cen,R);
       setLn('si-ec',I,E);setLn('si-en',E,R);setLn('si-ef',R,I);
       placeLbl('si-lc',I,E,cen,'CLARITY');placeLbl('si-ln',E,R,cen,'CONNECTION');placeLbl('si-lf',R,I,cen,'CONFIDENCE');
       setTx('si-comp',cen.x,cen.y-4,'middle',null); if(showComp)elComp.textContent=Math.round(comp);

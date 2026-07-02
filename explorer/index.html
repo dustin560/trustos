@@ -1310,14 +1310,12 @@
     .hc-tri-wrap { display: flex; justify-content: center; }
     .hc-tri-wrap svg { width: 100%; max-width: 360px; aspect-ratio: 29 / 26; height: auto; overflow: visible; display: block; margin: 0 auto; }
     .hc-tri-fill { fill: url(#hc-tri-grad); transition: fill 0.3s ease; }
-    .hc-tri-e-c  { stroke:#5a8a9a; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
-    .hc-tri-e-n  { stroke:#7cc4a8; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
-    .hc-tri-e-f  { stroke:#a78bdb; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
-    .hc-tri-div  { stroke:rgba(90,138,154,0.1); stroke-width:1; fill:none; stroke-dasharray:3 3; }
+    .hc-tri-e-c, .hc-tri-e-n, .hc-tri-e-f { stroke:transparent; stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
 
-    .hc-tri-cen  { font-family:'Sora',sans-serif; font-size:8px; font-weight:600; fill:rgba(90,138,154,0.6); text-anchor:middle; dominant-baseline:middle; }
+    .hc-tri-cen  { font-family:'Sora',sans-serif; font-size:6px; font-weight:700; letter-spacing:0.16em; fill:rgba(255,255,255,0.75); text-anchor:middle; dominant-baseline:middle; }
+    .hc-tri-comp { font-family:'Sora',sans-serif; font-size:17px; font-weight:800; fill:#fff; text-anchor:middle; dominant-baseline:middle; letter-spacing:-0.02em; }
     .hc-tri-lbl  { font-family:'Sora',sans-serif; font-size:7px; font-weight:800; letter-spacing:0.11em; }
-    .hc-tri-lbl.lc { fill:#5a8a9a; } .hc-tri-lbl.ln { fill:#7cc4a8; } .hc-tri-lbl.lf { fill:#a78bdb; }
+    .hc-tri-lbl.lc { fill:#8fb5c0; } .hc-tri-lbl.ln { fill:#7cc4a8; } .hc-tri-lbl.lf { fill:#a78bdb; }
 
     /* Insight cards */
     .hc-insights-label {
@@ -1593,13 +1591,13 @@
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="/explorer/">TrustOS Explorer</a></li>
+    <li><a href="#" onclick="openNav(event)" style="cursor:pointer;">Request a Navigator</a></li>
     
     <li><a href="/methodology/">How it works</a></li>
-    <li><a href="/#sector-insights">Sector Insights</a></li>
+    <li><a href="/insights/">Sector Insights</a></li>
     <li><a href="/faq/">FAQ</a></li>
   </ul>
-  <a href="#" onclick="openNav(event)" class="nav-cta" style="cursor:pointer;">Request a Navigator</a>
+  <a href="#" onclick="openDemo(event)" class="nav-cta" style="cursor:pointer;">Book a Demo</a>
 </nav>
 
 <div style="background:var(--deep);padding:64px 5% 0;text-align:center;position:relative;">
@@ -1703,22 +1701,23 @@
             <svg viewBox="0 0 290 260" width="290" height="260" xmlns="http://www.w3.org/2000/svg" overflow="visible">
               <defs>
                 <linearGradient id="hc-tri-grad" x1="0.5" y1="0" x2="0.5" y2="1">
-                  <stop offset="0%" stop-color="rgba(90,138,154,0.08)"/>
-                  <stop offset="100%" stop-color="rgba(90,138,154,0.22)"/>
+                  <stop offset="0%" stop-color="#7fb4cc"/>
+                  <stop offset="55%" stop-color="#6da0b8"/>
+                  <stop offset="100%" stop-color="#4d7a8a"/>
                 </linearGradient>
-                <filter id="hc-glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
-                  <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.54  0 0 0 0 0.6  0 0 0 0.3 0" result="tealBlur"/>
+                <filter id="hc-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+                  <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.43  0 0 0 0 0.63  0 0 0 0 0.72  0 0 0 0.45 0" result="tealBlur"/>
                   <feMerge><feMergeNode in="tealBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-              <polygon id="hc-poly" class="hc-tri-fill" filter="url(#hc-glow)"/>
-              <line id="hc-div1" class="hc-tri-div"/> <line id="hc-div2" class="hc-tri-div"/> <line id="hc-div3" class="hc-tri-div"/>
               <line id="hc-ec" class="hc-tri-e-c"/> <line id="hc-en" class="hc-tri-e-n"/> <line id="hc-ef" class="hc-tri-e-f"/>
+              <polygon id="hc-poly" class="hc-tri-fill" filter="url(#hc-glow)"/>
               <text id="hc-lc" class="hc-tri-lbl lc"></text>
               <text id="hc-ln" class="hc-tri-lbl ln"></text>
               <text id="hc-lf" class="hc-tri-lbl lf"></text>
-              <text id="hc-cen" class="hc-tri-cen">Integrity</text>
+              <text id="hc-cen-num" class="hc-tri-comp"></text>
+              <text id="hc-cen" class="hc-tri-cen">TRUST INDEX</text>
             </svg>
           </div>
 
@@ -1801,7 +1800,7 @@
         <li><a href="/explorer/">What it measures</a></li>
         
         <li><a href="/methodology/">How it works</a></li>
-        <li><a href="/#sector-insights">Sector Insights</a></li>
+        <li><a href="/insights/">Sector Insights</a></li>
         <li><a href="/faq/">FAQ</a></li>
         <li><a href="https://missionctrl.agency" target="_blank" rel="noopener">MissionCTRL Solutions</a></li>
         <li><a href="#" onclick="openNav(event)" style="cursor:pointer;">Request a Navigator</a></li>
@@ -2171,13 +2170,14 @@
     var I=v.intent, E=v.expectation, R=v.reality;
     var poly = document.getElementById('hc-poly');
     if (poly) poly.setAttribute('points', f1(I.x)+','+f1(I.y)+' '+f1(E.x)+','+f1(E.y)+' '+f1(R.x)+','+f1(R.y));
-    setLn('hc-div1',cen,I); setLn('hc-div2',cen,E); setLn('hc-div3',cen,R);
     setLn('hc-ec',I,E); setLn('hc-en',E,R); setLn('hc-ef',R,I);
     placeLbl('hc-lc',I,E,cen,'CLARITY');
     placeLbl('hc-ln',E,R,cen,'CONNECTION');
     placeLbl('hc-lf',R,I,cen,'CONFIDENCE');
+    var gn=document.getElementById('hc-cen-num');
+    if(gn){gn.setAttribute('x',f1(cen.x));gn.setAttribute('y',f1(cen.y-4));gn.textContent=Math.round((cl+cn+cf)/3);}
     var gc=document.getElementById('hc-cen');
-    if(gc){gc.setAttribute('x',f1(cen.x));gc.setAttribute('y',f1(cen.y));}
+    if(gc){gc.setAttribute('x',f1(cen.x));gc.setAttribute('y',f1(cen.y+8));}
   }
 
   function renderInsights(cl, cn, cf) {
