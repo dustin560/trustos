@@ -534,7 +534,29 @@
   @keyframes lgAmb{0%,100%{opacity:.95}50%{opacity:.55}}
   @keyframes lgAmbM{0%,100%{opacity:.8}50%{opacity:.45}}
   @media (prefers-reduced-motion: reduce){.lg-amb *{animation:none!important}}
-</style>
+
+    /* Live sector banner (replaces static banner image) */
+    .live-banner{display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:center;background:radial-gradient(circle at 72% 45%,rgba(90,138,154,0.10),rgba(90,138,154,0.02));border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:36px 42px;box-shadow:0 30px 80px rgba(0,0,0,0.4);margin-top:-20px;position:relative;z-index:3;}
+    .lb-kicker{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin:0 0 20px;}
+    .lb-bars{display:flex;flex-direction:column;gap:12px;max-width:420px;}
+    .lb-bar{display:grid;grid-template-columns:96px 1fr 30px;align-items:center;gap:14px;}
+    .lb-bar-l{font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+    .lb-bar-l.cl{color:#8fb5c0;}.lb-bar-l.cn{color:#7cc4a8;}.lb-bar-l.cf{color:#a78bdb;}
+    .lb-track{height:5px;border-radius:3px;background:rgba(255,255,255,0.08);overflow:hidden;}
+    .lb-fill{height:100%;border-radius:3px;}
+    .lb-fill.cl{background:#5a8a9a;}.lb-fill.cn{background:#7cc4a8;}.lb-fill.cf{background:#a78bdb;}
+    .lb-bar-v{font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.75);text-align:right;font-variant-numeric:tabular-nums;}
+    .lb-hook{font-size:0.84rem;color:rgba(255,255,255,0.5);line-height:1.6;margin:22px 0 0;}
+    .lb-hook strong{color:rgba(255,255,255,0.8);font-weight:600;}
+    .lb-tri{display:flex;justify-content:center;}
+    .lb-tri svg{overflow:visible;}
+    .lb-lbl{font-family:'Sora',sans-serif;font-size:7px;font-weight:800;letter-spacing:0.11em;}
+    .lb-lbl.cl{fill:#8fb5c0;}.lb-lbl.cn{fill:#7cc4a8;}.lb-lbl.cf{fill:#a78bdb;}
+    .lb-comp{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:middle;letter-spacing:-0.02em;}
+    .lb-cap{font-family:'Sora',sans-serif;font-size:6.5px;font-weight:700;letter-spacing:0.16em;fill:rgba(255,255,255,0.75);text-anchor:middle;dominant-baseline:middle;}
+    @media(max-width:760px){.live-banner{grid-template-columns:1fr;gap:26px;padding:26px 22px;}.lb-tri svg{width:200px;height:auto;}}
+
+  </style>
 <!-- seo-ai:start -->
 <link rel="canonical" href="https://trustos.missionctrl.agency/mining-trust-window/" />
 <script type="application/ld+json">
@@ -678,10 +700,14 @@
 
 <!-- BANNER IMAGE -->
 <div class="article-banner-wrap">
-  <picture>
-    <source srcset="./banner@2x.png" media="(min-width: 1400px)" />
-    <img src="./banner.png" alt="TrustOS Mining POV banner — When the merger clears. Mining's architecture test. Composite trust score 67. Clarity 81, Connection 58, Confidence 62." class="article-banner" />
-  </picture>
+  <div class="live-banner">
+    <div class="lb-left">
+      <p class="lb-kicker">Sector diagnostic &middot; Q2 2026</p>
+      <div class="lb-bars"><div class="lb-bar"><span class="lb-bar-l cl">Clarity</span><div class="lb-track"><div class="lb-fill cl" style="width:81%"></div></div><span class="lb-bar-v">81</span></div><div class="lb-bar"><span class="lb-bar-l cn">Connection</span><div class="lb-track"><div class="lb-fill cn" style="width:58%"></div></div><span class="lb-bar-v">58</span></div><div class="lb-bar"><span class="lb-bar-l cf">Confidence</span><div class="lb-track"><div class="lb-fill cf" style="width:62%"></div></div><span class="lb-bar-v">62</span></div></div>
+      <p class="lb-hook"><strong>Connection is the thinnest layer</strong> &mdash; where this sector&rsquo;s trust leaks first.</p>
+    </div>
+    <div class="lb-tri"><svg width="240" height="228" viewBox="58.3 57.0 163.6 155.1" aria-hidden="true"><defs><linearGradient id="lb-grad" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="#7fb4cc"/><stop offset="55%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#4d7a8a"/></linearGradient><filter id="lb-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/><feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.43  0 0 0 0 0.63  0 0 0 0 0.72  0 0 0 0.45 0" result="tealBlur"/><feMerge><feMergeNode in="tealBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polygon fill="url(#lb-grad)" filter="url(#lb-glow)" points="84.3,83.0 145.0,186.1 195.9,88.6"/><text class="lb-lbl cl" x="103.5" y="141.1" text-anchor="middle" dominant-baseline="middle" transform="rotate(59.5,103.5,141.1)">CLARITY</text><text class="lb-lbl cn" x="182.0" y="143.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(-62.4,182.0,143.4)">CONNECTION</text><text class="lb-lbl cf" x="140.8" y="72.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(2.9,140.8,72.8)">CONFIDENCE</text><text class="lb-comp" x="141.7" y="115.2">67</text><text class="lb-cap" x="141.7" y="127.2">TRUST INDEX</text></svg></div>
+  </div>
 </div>
 
 <!-- ARTICLE BODY -->
