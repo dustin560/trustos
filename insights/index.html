@@ -209,14 +209,10 @@
     .insight-card-img.mining { background-image: url('/mining-trust-window/banner.png'); }
 
     /* Score visual (triangle + 3C bars) replacing the banner thumbnail */
-    .insight-card-img.icv-ready{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:radial-gradient(circle at 50% 38%,rgba(90,138,154,0.10),rgba(90,138,154,0.02));padding:28px 24px;}
+    .insight-card-img.icv-ready{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:radial-gradient(circle at 50% 38%,rgba(90,138,154,0.10),rgba(90,138,154,0.02));padding:30px 24px;}
     .icv-tri{flex-shrink:0;overflow:visible;}
-    .icv-tri-fill{fill:rgba(90,138,154,0.14);}
-    .icv-tri-ec{stroke:#5a8a9a;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .icv-tri-en{stroke:#7cc4a8;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .icv-tri-ef{stroke:#a78bdb;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .icv-tri-comp{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:middle;letter-spacing:-0.02em;}
-    .icv-tri-cl{font-family:'Sora',sans-serif;font-size:7px;font-weight:700;letter-spacing:0.16em;fill:rgba(90,138,154,0.85);text-anchor:middle;dominant-baseline:middle;}
+    .icv-tri-comp{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:middle;letter-spacing:-0.02em;}
+    .icv-tri-cl{font-family:'Sora',sans-serif;font-size:6.5px;font-weight:700;letter-spacing:0.16em;fill:rgba(255,255,255,0.75);text-anchor:middle;dominant-baseline:middle;}
     .icv-bars{width:100%;max-width:230px;display:flex;flex-direction:column;gap:9px;}
     .icv-bar{display:grid;grid-template-columns:66px 1fr 26px;align-items:center;gap:10px;}
     .icv-bar-l{font-size:0.62rem;font-weight:600;color:rgba(255,255,255,0.5);}
@@ -757,18 +753,22 @@
   function f(n){return n.toFixed(1);}
   function num(card,sel){var el=card.querySelector(sel);if(!el)return null;var m=el.textContent.match(/(\d+)/);return m?parseInt(m[1],10):null;}
   function bar(l,c,v){return '<div class="icv-bar"><span class="icv-bar-l">'+l+'</span><div class="icv-track"><div class="icv-fill '+c+'" style="width:'+v+'%"></div></div><span class="icv-bar-v">'+v+'</span></div>';}
-  document.querySelectorAll('.insight-card').forEach(function(card){
+  document.querySelectorAll('.insight-card').forEach(function(card,ci){
     var img=card.querySelector('.insight-card-img'); if(!img) return;
     var cl=num(card,'.chip.clarity'),cn=num(card,'.chip.connection'),cf=num(card,'.chip.confidence');
     if(cl==null||cn==null||cf==null) return;
     var v=V(cl,cn,cf),cen={x:(v.i.x+v.e.x+v.r.x)/3,y:(v.i.y+v.e.y+v.r.y)/3},comp=Math.round((cl+cn+cf)/3);
-    var svg='<svg class="icv-tri" width="178" height="160" viewBox="0 0 290 260" aria-hidden="true">'+
-      '<polygon class="icv-tri-fill" points="'+f(v.i.x)+','+f(v.i.y)+' '+f(v.e.x)+','+f(v.e.y)+' '+f(v.r.x)+','+f(v.r.y)+'"/>'+
-      '<line class="icv-tri-ec" x1="'+f(v.i.x)+'" y1="'+f(v.i.y)+'" x2="'+f(v.e.x)+'" y2="'+f(v.e.y)+'"/>'+
-      '<line class="icv-tri-en" x1="'+f(v.e.x)+'" y1="'+f(v.e.y)+'" x2="'+f(v.r.x)+'" y2="'+f(v.r.y)+'"/>'+
-      '<line class="icv-tri-ef" x1="'+f(v.r.x)+'" y1="'+f(v.r.y)+'" x2="'+f(v.i.x)+'" y2="'+f(v.i.y)+'"/>'+
+    var xs=[v.i.x,v.e.x,v.r.x],ys=[v.i.y,v.e.y,v.r.y];
+    var pad=26,minx=Math.min.apply(null,xs)-pad,miny=Math.min.apply(null,ys)-pad;
+    var w=Math.max.apply(null,xs)-minx+pad,h=Math.max.apply(null,ys)-miny+pad;
+    var svg='<svg class="icv-tri" width="210" height="'+Math.round(210*h/w)+'" viewBox="'+f(minx)+' '+f(miny)+' '+f(w)+' '+f(h)+'" aria-hidden="true">'+
+      '<defs>'+
+      '<linearGradient id="icv-grad-'+ci+'" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="#7fb4cc"/><stop offset="55%" stop-color="#6da0b8"/><stop offset="100%" stop-color="#4d7a8a"/></linearGradient>'+
+      '<filter id="icv-glow-'+ci+'" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/><feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.43  0 0 0 0 0.63  0 0 0 0 0.72  0 0 0 0.45 0" result="tealBlur"/><feMerge><feMergeNode in="tealBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'+
+      '</defs>'+
+      '<polygon class="icv-tri-fill" fill="url(#icv-grad-'+ci+')" filter="url(#icv-glow-'+ci+')" points="'+f(v.i.x)+','+f(v.i.y)+' '+f(v.e.x)+','+f(v.e.y)+' '+f(v.r.x)+','+f(v.r.y)+'"/>'+
       '<text class="icv-tri-comp" x="'+f(cen.x)+'" y="'+f(cen.y-3)+'">'+comp+'</text>'+
-      '<text class="icv-tri-cl" x="'+f(cen.x)+'" y="'+f(cen.y+9)+'">COMPOSITE</text></svg>';
+      '<text class="icv-tri-cl" x="'+f(cen.x)+'" y="'+f(cen.y+9)+'">TRUST INDEX</text></svg>';
     var bars='<div class="icv-bars">'+bar('Clarity','cl',cl)+bar('Connection','cn',cn)+bar('Confidence','cf',cf)+'</div>';
     img.style.backgroundImage='none';
     img.innerHTML=svg+bars;
