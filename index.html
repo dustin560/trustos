@@ -405,15 +405,20 @@
 
     /* ── PROCESS ── */
     .process { background: var(--system-grey); }
-    .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 52px; background: rgba(45,58,74,0.06); border-radius: 12px; overflow: hidden; }
-    .phase { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); padding: 36px 28px; position: relative; overflow: hidden; border-radius:0; }
-    .phase::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--trust-cool); }
-    .phase:nth-child(2)::before { background: #4a7a8a; }
-    .phase:nth-child(3)::before { background: #3a6a7a; }
-    .phase-num { font-size: 2.8rem; font-weight: 800; color: rgba(255,255,255,0.12); letter-spacing: -0.06em; line-height: 1; margin-bottom: 14px; }
-    .phase-sub { font-size: 0.63rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--trust-cool); margin-bottom: 8px; }
-    .phase:nth-child(2) .phase-sub { color: #4a7a8a; }
-    .phase:nth-child(3) .phase-sub { color: #3a6a7a; }
+    /* Process timeline strip */
+    .tl { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
+    .tl-line { position: absolute; top: 8px; left: 9px; right: 26%; height: 1px; background: linear-gradient(90deg, rgba(109,160,184,0.55), rgba(109,160,184,0.12)); }
+    .tl-step { position: relative; padding-top: 34px; }
+    .tl-mark { position: absolute; top: 0; left: 0; width: 17px; height: 17px; display: block; background: var(--deep); }
+    .tl-mark svg { width: 100%; height: 100%; display: block; overflow: visible; filter: drop-shadow(0 0 5px rgba(109,160,184,0.55)); }
+    .tl-head { font-size: 0.98rem; font-weight: 700; color: #fff; margin: 0 0 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .tl-stage { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; color: var(--trust-cool); white-space: nowrap; }
+    .tl-body { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; max-width: 300px; }
+    @media (max-width: 820px) {
+      .tl { grid-template-columns: 1fr; gap: 28px; }
+      .tl-line { top: 9px; left: 8px; right: auto; bottom: 24px; width: 1px; height: auto; background: linear-gradient(180deg, rgba(109,160,184,0.55), rgba(109,160,184,0.12)); }
+      .tl-step { padding-top: 0; padding-left: 34px; }
+    }
     .phase h3 { font-size: 0.98rem; font-weight: 800; color: rgba(255,255,255,0.85); margin-bottom: 10px; }
     .phase p { font-size: 0.86rem; line-height: 1.65; color: rgba(255,255,255,0.45); }
 
@@ -594,7 +599,6 @@
       .drivers-grid, .solutions-brief { grid-template-columns: 1fr; }
       .hero-pillars { grid-template-columns: 1fr 1fr; max-width: 600px; margin: 0 auto; }
       .snapshot-form { margin-top: 40px; }
-      .phases { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-product-link { display: none; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -991,6 +995,19 @@
   @media (prefers-reduced-motion: reduce){.hp-ic .tri-glow{animation:none!important;opacity:.55;}}
 
   /* benefits controller */
+
+  /* Evidence slider */
+  .ev-slider{position:relative;}
+  .ev-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding:4px 2px 10px;mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);}
+  .ev-track::-webkit-scrollbar{display:none;}
+  .ev-slide{flex:0 0 262px;scroll-snap-align:start;background:rgba(255,255,255,0.03);border:1px solid rgba(90,138,154,0.18);border-radius:12px;padding:24px 20px;}
+  .ev-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid rgba(90,138,154,0.4);background:rgba(10,15,26,0.85);color:#8fb5c0;font-size:1rem;cursor:pointer;transition:background .2s,border-color .2s;display:flex;align-items:center;justify-content:center;}
+  .ev-arrow:hover{background:rgba(90,138,154,0.25);border-color:#6da0b8;}
+  .ev-arrow.prev{left:-16px;}
+  .ev-arrow.next{right:-16px;}
+  .ev-arrow[disabled]{opacity:0.25;cursor:default;}
+  @media(max-width:640px){.ev-slide{flex-basis:82%;}.ev-arrow{display:none;}}
+
   .bench{margin-top:48px;}
   .bench-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1020px;margin:0 auto;text-align:center;}
   .bench-item{position:relative;padding-top:26px;}
@@ -1149,32 +1166,37 @@
       <p style="display:inline-flex;align-items:center;gap:10px;font-size:0.63rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--trust-cool);margin-bottom:14px;justify-content:center;"><span style="width:20px;height:2px;background:var(--trust-cool);display:block;"></span>The evidence</p>
       <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.12;max-width:620px;margin:0 auto;">Trust isn&#8217;t soft. It&#8217;s the most expensive thing to lose.</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(208px,1fr));gap:18px;">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(90,138,154,0.18);border-radius:12px;padding:24px 20px;">
+    <div class="ev-slider">
+      <button class="ev-arrow prev" type="button" aria-label="Previous stat">&#8592;</button>
+      <div class="ev-track" id="evTrack">
+
+      <div class="ev-slide">
         <p style="font-size:2rem;font-weight:800;color:var(--trust-cool);letter-spacing:-0.02em;margin-bottom:8px;">&#163;841bn</p>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:10px;">of FTSE 350 value is attributable to trust &#8212; 28% of total market cap. It&#8217;s not a comms line. It&#8217;s priced into the business.</p>
         <p style="font-size:0.68rem;color:rgba(255,255,255,0.35);line-height:1.5;">Echo Research, 2026</p>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(90,138,154,0.18);border-radius:12px;padding:24px 20px;">
+      <div class="ev-slide">
         <p style="font-size:2rem;font-weight:800;color:var(--trust-cool);letter-spacing:-0.02em;margin-bottom:8px;">5&#215;</p>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:10px;">Reputation losses ran at up to five times the operational cost of the trust event.</p>
         <p style="font-size:0.68rem;color:rgba(255,255,255,0.35);line-height:1.5;">Peer-reviewed, <em>Schmalenbach Journal of Business Research</em></p>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(90,138,154,0.18);border-radius:12px;padding:24px 20px;">
+      <div class="ev-slide">
         <p style="font-size:2rem;font-weight:800;color:var(--trust-cool);letter-spacing:-0.02em;margin-bottom:8px;">45<span style="font-size:1rem;font-weight:600;color:rgba(255,255,255,0.45);"> vs </span>100<span style="font-size:0.9rem;font-weight:600;color:rgba(255,255,255,0.45);"> wks</span></p>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:10px;">Strong-trust brands recovered from crisis in 45 weeks; the broader market took 100.</p>
         <p style="font-size:0.68rem;color:rgba(255,255,255,0.35);line-height:1.5;">Kantar BrandZ</p>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(90,138,154,0.18);border-radius:12px;padding:24px 20px;">
+      <div class="ev-slide">
         <p style="font-size:2rem;font-weight:800;color:var(--trust-cool);letter-spacing:-0.02em;margin-bottom:8px;">81%</p>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:10px;">cite &#8220;a brand I can trust&#8221; as a top reason to buy &#8212; trust now equals price and quality.</p>
         <p style="font-size:0.68rem;color:rgba(255,255,255,0.35);line-height:1.5;">Edelman, 2025</p>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(90,138,154,0.18);border-radius:12px;padding:24px 20px;">
+      <div class="ev-slide">
         <p style="font-size:2rem;font-weight:800;color:var(--trust-cool);letter-spacing:-0.02em;margin-bottom:8px;">5% &#8594; 25&#8211;95%</p>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:10px;">A 5% lift in retention drives a 25&#8211;95% lift in profit.</p>
         <p style="font-size:0.68rem;color:rgba(255,255,255,0.35);line-height:1.5;">Bain / Reichheld</p>
       </div>
+          </div>
+      <button class="ev-arrow next" type="button" aria-label="Next stat">&#8594;</button>
     </div>
     <p style="text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:26px;line-height:1.7;max-width:620px;margin-left:auto;margin-right:auto;">Trust is the leading indicator of Resilience and Growth &#8212; TrustOS measures it before it shows in the numbers.</p>
   </div>
@@ -1276,11 +1298,24 @@
 <section style="background:var(--deep);padding:64px 5%;border-top:1px solid rgba(255,255,255,0.05);" id="process">
   <div style="max-width:1080px;margin:0 auto;">
     <p class="section-label">What happens next</p>
-    <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:40px;line-height:1.12;">Full deployment across stakeholder groups in six weeks.<br/>Board-ready insights from your first assessment.</h2>
-    <div class="phases">
-      <div class="phase fade-up"><div class="phase-num">01</div><p class="phase-sub">Sense</p><h3>Establish baseline</h3><p>We agree your stakeholder groups, data sources and what the dashboard shows. Live within six weeks.</p></div>
-      <div class="phase fade-up"><div class="phase-num">02</div><p class="phase-sub">Measure</p><h3>Track quarterly</h3><p>A considered, board-cadence read &#8212; not a live feed. Each quarter: updated scores, the driver breakdown, and what changed.</p></div>
-      <div class="phase fade-up"><div class="phase-num">03</div><p class="phase-sub">Act</p><h3>Close the gaps</h3><p>Prioritised Insights &amp; Actions show your team where to focus &#8212; and whether it&#8217;s working.</p></div>
+    <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:44px;line-height:1.12;">Live in six weeks. Board-ready from your first read.</h2>
+    <div class="tl">
+      <div class="tl-line" aria-hidden="true"></div>
+      <div class="tl-step fade-up">
+        <span class="tl-mark" aria-hidden="true"><svg viewBox="0 0 20 20"><polygon points="10,15 4,5 16,5" fill="#6da0b8"/></svg></span>
+        <p class="tl-head"><span class="tl-stage">01 &middot; Sense</span>Establish baseline</p>
+        <p class="tl-body">We agree your stakeholder groups and data sources &#8212; live within six weeks.</p>
+      </div>
+      <div class="tl-step fade-up">
+        <span class="tl-mark" aria-hidden="true"><svg viewBox="0 0 20 20"><polygon points="10,15 4,5 16,5" fill="#6da0b8"/></svg></span>
+        <p class="tl-head"><span class="tl-stage">02 &middot; Measure</span>Track quarterly</p>
+        <p class="tl-body">A board-cadence read: updated scores, the driver breakdown, what changed.</p>
+      </div>
+      <div class="tl-step fade-up">
+        <span class="tl-mark" aria-hidden="true"><svg viewBox="0 0 20 20"><polygon points="10,15 4,5 16,5" fill="#6da0b8"/></svg></span>
+        <p class="tl-head"><span class="tl-stage">03 &middot; Act</span>Close the gaps</p>
+        <p class="tl-body">Prioritised Insights &amp; Actions show where to focus &#8212; and whether it&#8217;s working.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1748,6 +1783,17 @@
     el.addEventListener('mouseleave',function(){held=false;});
   });
   go(0);start();
+})();
+</script>
+<script>
+(function(){
+  var tr=document.getElementById('evTrack'); if(!tr) return;
+  var prev=document.querySelector('.ev-arrow.prev'),next=document.querySelector('.ev-arrow.next');
+  function step(){var c=tr.querySelector('.ev-slide');return c?c.getBoundingClientRect().width+18:280;}
+  function sync(){prev.disabled=tr.scrollLeft<10;next.disabled=tr.scrollLeft>tr.scrollWidth-tr.clientWidth-10;}
+  prev.addEventListener('click',function(){tr.scrollBy({left:-step(),behavior:'smooth'});});
+  next.addEventListener('click',function(){tr.scrollBy({left:step(),behavior:'smooth'});});
+  tr.addEventListener('scroll',sync,{passive:true});window.addEventListener('resize',sync);sync();
 })();
 </script>
 </body>
